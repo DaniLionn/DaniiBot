@@ -1,0 +1,239 @@
+
+7/10/2023, 3:59:46 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 3:59:46 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 3:59:46 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 3:59:46 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 3:59:46 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 3:59:46 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 3:59:46 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 3:59:46 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 3:59:46 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 3:59:46 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 3:59:46 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 3:59:46 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 3:59:46 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 3:59:46 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 3:59:46 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 3:59:46 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 3:59:46 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 3:59:46 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 3:59:46 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 3:59:46 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 3:59:46 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 3:59:46 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 3:59:46 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 3:59:46 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 3:59:46 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 3:59:46 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 3:59:46 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 3:59:46 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 3:59:46 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 3:59:46 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 3:59:46 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 3:59:46 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 3:59:46 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 3:59:46 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:13 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:13 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:13 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:13 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:13 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:13 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:13 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:13 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:13 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:13 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:13 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:13 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:13 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:13 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:13 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:13 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:13 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:13 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:13 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:13 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:13 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:13 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:13 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:13 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:13 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:13 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:13 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:13 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:13 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:13 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:13 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:13 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:13 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:13 PM: Error: Cannot find module './deploy-commands'
+Require stack:
+- C:\DaniBot\bot.js
+7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
+7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
+7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
+7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
+7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
+7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
+7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
+7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
+7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
+7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
+7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
+7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
+7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
+7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
+7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
+7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
+7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
+7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
+7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
+7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
+7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
+7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
+7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
+7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
+7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
+7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
+7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
+7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
+7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
+7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
+7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
+7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
+7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
+7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
