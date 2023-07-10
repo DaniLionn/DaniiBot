@@ -1,0 +1,6 @@
+#Files that aren't really needed for the github release
+.space
+.ignore
+.ignore/retired-commands
+.eslintrc.json
+.ffmpeg.exe

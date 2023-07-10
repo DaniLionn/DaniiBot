@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+    DaniLionn, 2023
+-->
+<html>
+
+<head>
+    <title>DaniBot's Website</title>
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <!--Main Text-->
+
+    <h1>DaniBot's Website</h1>
+    <p>Not much here, mostly using this to host files that DaniBot can post.</p>
+    <p>Maybe I'll do something with this in the future.</p>
+    <p>DaniBot is a Discord bot I made, don't know if i'll release her publicly though.</p>
+
+</head>
+
+<body class="customCursor">
+    <!--Add a button with a counter--> 
+    <p>Here's a button you can click, it makes a number go up.</p>
+
+     <script type="text/javascript">
+
+        var clicks = 0;
+
+        function onClick() {
+            clicks += 1;
+            document.getElementById("clicks").innerHTML = clicks;
+        };
+
+        </script>
+
+<div class="container">
+    <div class="center">
+        <button type="button" class="customCursorHover" onClick="onClick()">Click me</button>
+    </div>
+</div>
+
+    <p>Clicks: <a id="clicks">0</a></p>
+    <!--Add a fact about this file's size-->
+    <p>Fun fact: The size of this HTML file is 1.37KB</p>
+</body>
+
+<footer>
+    <hr class="dotted">
+    <h4><a href="https://github.com/DaniLionn" class="customCursorHover" >DaniLionn, 2023</a></h4>
+    <img src="dani_lionnALT.png" alt="danilionn picrew pfp thingie lol" width="150" height="150" align="right"> 
+
+    <button class="customCursorHover" onclick="window.location.href='assets/other-pages/baby/baby.htm'" class="hidden">
+
+      </button>
+</footer>
+</html>
