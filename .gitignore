@@ -2,5 +2,6 @@
 .space
 .ignore
 .ignore/retired-commands
+.ignore/baby
 .eslintrc.json
 .ffmpeg.exe

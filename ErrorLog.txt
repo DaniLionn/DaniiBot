@@ -237,3 +237,108 @@ Require stack:
 7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
 7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
 7/10/2023, 4:01:46 PM: Error: ENOTDIR: not a directory, scandir 'C:\DaniBot\commands\annoy.js'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/15/2023, 2:30:23 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\tempYoutubeDownloads\Mai, Asterian  DEATHBODY [Original Song Collaboration].mp3'
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:14:46 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
