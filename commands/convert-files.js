@@ -93,6 +93,7 @@ module.exports = {
                                     console.log(code)
                                     
                                     if (code === 0) {
+                                        await interaction.editReply("Finished!")
                                         await interaction.channel.send({
                                             content: `<@${interaction.user.id}> Your file was converted!`,
                                             files: [path2]
@@ -113,7 +114,7 @@ module.exports = {
                         
                     });
                 
-            })
+            }, 1150)
         }
         
     },
