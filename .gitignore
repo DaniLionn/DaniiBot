@@ -3,5 +3,6 @@
 .ignore
 .ignore/retired-commands
 .ignore/baby
+.ignore/postible-assets
 .eslintrc.json
 .ffmpeg.exe

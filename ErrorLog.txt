@@ -342,3 +342,291 @@ Require stack:
 7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
 7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
 7/25/2023, 7:16:31 PM: TypeError: Cannot read properties of undefined (reading 'send')
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:49:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.ogg'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.tt'
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:55:48 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:04 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:04 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:04 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:04 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:04 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:04 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:04 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:04 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:04 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:04 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:04 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:04 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:04 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:05 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:05 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:05 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:05 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:05 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:05 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:05 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:05 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:05 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:05 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:05 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:05 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:05 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:05 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:05 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:05 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:05 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:05 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:05 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:05 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:05 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:05 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:05 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:57:05 PM: DiscordAPIError[50035]: Invalid Form Body
+content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
+7/28/2023, 6:59:52 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:52 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:52 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:52 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:52 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
+7/28/2023, 6:59:53 PM: Error: ENOENT: no such file or directory, stat 'C:\DaniBot\scapegoat_low_quality.txt'
