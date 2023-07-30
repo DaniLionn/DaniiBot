@@ -1,8 +1,16 @@
 const express = require('express')
 const bodyparser = require('body-parser')
-const { createCanvas, Image, GlobalFonts  } = require('@napi-rs/canvas');
-const { readFile } = require('fs/promises');
-const { request } = require('undici');
+const {
+    createCanvas,
+    Image,
+    GlobalFonts
+} = require('@napi-rs/canvas');
+const {
+    readFile
+} = require('fs/promises');
+const {
+    request
+} = require('undici');
 const {
     OpenCloudDataStore
 } = require('rblx');
@@ -76,7 +84,9 @@ const {
 const {
     channel
 } = require('node:diagnostics_channel');
-const { err } = require('rblx/dist/util');
+const {
+    err
+} = require('rblx/dist/util');
 // const emojiRegex = require('emoji-regex/RGI_Emoji.js');
 
 const audios = ['./postable-assets/fart.mp3', './postable-assets/janky-ass-music.mp3', './postable-assets/mimimimimimi.mp3', './postable-assets/laugh.mp3', './postable-assets/amog.mp3', './postable-assets/alert.mp3', './postable-assets/arooga.mp3', './postable-assets/BANG.mp3', './postable-assets/bluekid.mp3', './postable-assets/cough.mp3', './postable-assets/fart.mp3', './postable-assets/omg.mp3', , './postable-assets/omg2.mp3', './postable-assets/poop.mp3', './postable-assets/run.mp3', './postable-assets/scary.mp3', './postable-assets/scream.mp3']
@@ -350,80 +360,147 @@ client.once(Events.ClientReady, c => {
     // 	else {
     // 		client.user.setAvatar('./DaniBotPFP.png');
     // 	}
-
+    
     //testStatusGet()
     
     let lastStatus = "Operational"
-
+    
     setInterval(() => {
         
-       try {
-        https.get(`https://4277980205320394.hostedstatus.com/1.0/status/59db90dbcdeb2f04dadcf16d`, (resp) => {
+        try {
+            https.get(`https://4277980205320394.hostedstatus.com/1.0/status/59db90dbcdeb2f04dadcf16d`, (resp) => {
+                
+                let data = '';
+                
+                resp.on('data', (chunk) => {
+                    
+                    data += chunk;
+                });
+                
+                resp.on('end', async () => {
+                    const result = JSON.parse(data)
+                    
+                    let status_overall = result["result"]["status_overall"]["status"]
+                    let full_status = result["result"]["status"]
+                    
+                    if (status_overall != lastStatus) {
+                        
+                        const StatusEmbed = new EmbedBuilder()
+                            .setColor(0xFFFFFF)
+                            .setTitle('<@1133561883144757328> ROBLOX STATUS UPDATE')
+                            .setURL('https://status.roblox.com')
+                            .setDescription(`Current Status: ${status_overall}`)
+                            .addFields({
+                                    name: full_status[0]['name'],
+                                    value: full_status[0]['status']
+                                }, {
+                                    name: full_status[0]['containers'][0]['name'],
+                                    value: full_status[0]['containers'][0]['status']
+                                }, {
+                                    name: full_status[0]['containers'][1]['name'],
+                                    value: full_status[0]['containers'][1]['status'],
+                                    inline: true
+                                }, {
+                                    name: full_status[0]['containers'][2]['name'],
+                                    value: full_status[0]['containers'][2]['status'],
+                                    inline: true
+                                }, {
+                                    name: full_status[0]['containers'][3]['name'],
+                                    value: full_status[0]['containers'][3]['status'],
+                                    inline: true
+                                },
+                                
+                                {
+                                    name: full_status[1]['name'],
+                                    value: full_status[1]['status']
+                                }, {
+                                    name: full_status[1]['containers'][0]['name'],
+                                    value: full_status[1]['containers'][0]['status']
+                                }, {
+                                    name: full_status[1]['containers'][1]['name'],
+                                    value: full_status[1]['containers'][1]['status'],
+                                    inline: true
+                                }, {
+                                    name: full_status[1]['containers'][2]['name'],
+                                    value: full_status[1]['containers'][2]['status'],
+                                    inline: true
+                                }, {
+                                    name: full_status[1]['containers'][3]['name'],
+                                    value: full_status[1]['containers'][3]['status'],
+                                    inline: true
+                                }, {
+                                    name: full_status[1]['containers'][4]['name'],
+                                    value: full_status[1]['containers'][4]['status'],
+                                    inline: true
+                                },
+                                
+                                {
+                                    name: full_status[2]['name'],
+                                    value: full_status[2]['status']
+                                }, {
+                                    name: full_status[2]['containers'][0]['name'],
+                                    value: full_status[2]['containers'][0]['status']
+                                }, {
+                                    name: full_status[2]['containers'][1]['name'],
+                                    value: full_status[2]['containers'][1]['status'],
+                                    inline: true
+                                }, {
+                                    name: full_status[2]['containers'][2]['name'],
+                                    value: full_status[2]['containers'][2]['status'],
+                                    inline: true
+                                }, {
+                                    name: full_status[2]['containers'][3]['name'],
+                                    value: full_status[2]['containers'][3]['status'],
+                                    inline: true
+                                }, {
+                                    name: full_status[2]['containers'][4]['name'],
+                                    value: full_status[2]['containers'][4]['status'],
+                                    inline: true
+                                }, {
+                                    name: full_status[2]['containers'][5]['name'],
+                                    value: full_status[2]['containers'][5]['status'],
+                                    inline: true
+                                }, {
+                                    name: full_status[2]['containers'][6]['name'],
+                                    value: full_status[2]['containers'][6]['status'],
+                                    inline: true
+                                }, {
+                                    name: full_status[2]['containers'][7]['name'],
+                                    value: full_status[2]['containers'][7]['status'],
+                                    inline: true
+                                }, {
+                                    name: full_status[2]['containers'][8]['name'],
+                                    value: full_status[2]['containers'][8]['status'],
+                                    inline: true
+                                }, {
+                                    name: full_status[2]['containers'][9]['name'],
+                                    value: full_status[2]['containers'][9]['status'],
+                                    inline: true
+                                }, {
+                                    name: full_status[2]['containers'][10]['name'],
+                                    value: full_status[2]['containers'][10]['status'],
+                                    inline: true
+                                }, {
+                                    name: full_status[2]['containers'][11]['name'],
+                                    value: full_status[2]['containers'][11]['status'],
+                                    inline: true
+                                },
+                            )
+                        
+                        client.channels.cache.get("1133569909339721788")
+                            .send({
+                                embeds: [StatusEmbed]
+                            })
+                        lastStatus = status_overall
+                        console.log(status_overall)
+                    }
+                    
+                })
+            })
             
-        let data = '';
-        
-        resp.on('data', (chunk) => {
-            
-            data += chunk;
-        });
-        
-        resp.on('end', async () => {
-            const result = JSON.parse(data)
-            
-            let status_overall = result["result"]["status_overall"]["status"]
-            let full_status = result["result"]["status"]
-            
-            if (status_overall != lastStatus) {
-
-                const StatusEmbed = new EmbedBuilder()
-                .setColor(0xFFFFFF)
-                .setTitle('<@1133561883144757328> ROBLOX STATUS UPDATE')
-                .setURL('https://status.roblox.com')
-                .setDescription(`Current Status: ${status_overall}`)
-                .addFields(
-                    { name: full_status[0]['name'], value: full_status[0]['status'] },
-                    { name: full_status[0]['containers'][0]['name'], value: full_status[0]['containers'][0]['status'] },
-                    { name: full_status[0]['containers'][1]['name'], value: full_status[0]['containers'][1]['status'], inline: true },
-                    { name: full_status[0]['containers'][2]['name'], value: full_status[0]['containers'][2]['status'], inline: true },
-                    { name: full_status[0]['containers'][3]['name'], value: full_status[0]['containers'][3]['status'], inline: true },
-              
-                    { name: full_status[1]['name'], value: full_status[1]['status'] },
-                    { name: full_status[1]['containers'][0]['name'], value: full_status[1]['containers'][0]['status'] },
-                    { name: full_status[1]['containers'][1]['name'], value: full_status[1]['containers'][1]['status'], inline: true },
-                    { name: full_status[1]['containers'][2]['name'], value: full_status[1]['containers'][2]['status'], inline: true },
-                    { name: full_status[1]['containers'][3]['name'], value: full_status[1]['containers'][3]['status'], inline: true },
-                    { name: full_status[1]['containers'][4]['name'], value: full_status[1]['containers'][4]['status'], inline: true },
-              
-                    { name: full_status[2]['name'], value: full_status[2]['status'] },
-                    { name: full_status[2]['containers'][0]['name'], value: full_status[2]['containers'][0]['status'] },
-                    { name: full_status[2]['containers'][1]['name'], value: full_status[2]['containers'][1]['status'], inline: true },
-                    { name: full_status[2]['containers'][2]['name'], value: full_status[2]['containers'][2]['status'], inline: true },
-                    { name: full_status[2]['containers'][3]['name'], value: full_status[2]['containers'][3]['status'], inline: true },
-                    { name: full_status[2]['containers'][4]['name'], value: full_status[2]['containers'][4]['status'], inline: true },
-                    { name: full_status[2]['containers'][5]['name'], value: full_status[2]['containers'][5]['status'], inline: true },
-                    { name: full_status[2]['containers'][6]['name'], value: full_status[2]['containers'][6]['status'], inline: true },
-                    { name: full_status[2]['containers'][7]['name'], value: full_status[2]['containers'][7]['status'], inline: true },
-                    { name: full_status[2]['containers'][8]['name'], value: full_status[2]['containers'][8]['status'], inline: true },
-                    { name: full_status[2]['containers'][9]['name'], value: full_status[2]['containers'][9]['status'], inline: true },
-                    { name: full_status[2]['containers'][10]['name'], value: full_status[2]['containers'][10]['status'], inline: true },
-                    { name: full_status[2]['containers'][11]['name'], value: full_status[2]['containers'][11]['status'], inline: true },
-                    )
-
-                client.channels.cache.get("1133569909339721788")
-                    .send({ embeds: [StatusEmbed] })
-                lastStatus = status_overall
-                console.log(status_overall)
-            }
-            
-        })
-    })
-
-
-
-    }
-        catch(err) {
+        } catch (err) {
             writeError(err)
-       }
+        }
         
     }, 180000)
     
@@ -470,189 +547,277 @@ function writeError(error) {
 }
 
 const applyText = (canvas, text) => {
-	const context = canvas.getContext('2d');
-	let fontSize = 70;
-
-	do {
-		context.font = `${fontSize -= 10}px Courier New`;
-	} while (context.measureText(text).width > canvas.width - 300);
-
-	return context.font;
+    const context = canvas.getContext('2d');
+    let fontSize = 70;
+    
+    do {
+        context.font = `${fontSize -= 10}px Courier New`;
+    } while (context.measureText(text)
+        .width > canvas.width - 300);
+    
+    return context.font;
 };
 
 async function createWelcomeGraphic(guildID, channelID, message, user, member) {
-
-    const stamp = new Date().toLocaleString()
-
+    
+    const stamp = new Date()
+        .toLocaleString()
+    
     const fileName = `${user.username}-avatarCard-${stamp}.png`
-
+    
     console.log(`Creating avatar card for ${member.displayName} (${user.username}) with message ${message} in server ${guildID} channel ${channelID}`)
-
+    
     const canvas = createCanvas(700, 250);
-		const context = canvas.getContext('2d');
-
-		let background;
-        let main;
-
-        if (guildID === "1134908713078095933") {
-            background = await readFile('./tamari.jpg');
-            main = '#DFFF00';
-        } else {
-            background = await readFile('./regular.jpg');
-            main = '#FFFFFF';
-        }
-
-		const backgroundImage = new Image();
-		backgroundImage.src = background;
-		context.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
-
-		context.font = applyText(canvas, message);
-		context.fillStyle = '#ffffff';
-        context.strokeStyle = 'black';
-        context.lineWidth = 6;
-        context.strokeText(message, canvas.width / 2.5, canvas.height / 3.5);
-		context.fillText(message, canvas.width / 2.5, canvas.height / 3.5);
-
-		context.font = applyText(canvas, `${member.displayName}`);
-		context.fillStyle = main;
-        context.strokeStyle = 'black';
-        context.lineWidth = 6;
-        context.strokeText(`${member.displayName}`, canvas.width / 2.5, canvas.height / 1.8);
-		context.fillText(`${member.displayName}`, canvas.width / 2.5, canvas.height / 1.8);
-
-		context.beginPath();
-		context.arc(125, 125, 100, 0, Math.PI * 2, true);
-		context.closePath();
-		context.clip();
-
-		const { body } = await request(user.displayAvatarURL({ format: 'jpg' }));
-		const avatar = new Image();
-		avatar.src = Buffer.from(await body.arrayBuffer());
-		context.drawImage(avatar, 25, 25, 200, 200);
-
-		const attachment = new AttachmentBuilder(canvas.toBuffer('image/png'), { name: fileName });
-
-	client.channels.cache.get(channelID).send({ files: [attachment] });
-
+    const context = canvas.getContext('2d');
+    
+    let background;
+    let main;
+    
+    if (guildID === "1134908713078095933") {
+        background = await readFile('./tamari.jpg');
+        main = '#DFFF00';
+    } else {
+        background = await readFile('./regular.jpg');
+        main = '#FFFFFF';
+    }
+    
+    const backgroundImage = new Image();
+    backgroundImage.src = background;
+    context.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+    
+    context.font = applyText(canvas, message);
+    context.fillStyle = '#ffffff';
+    context.strokeStyle = 'black';
+    context.lineWidth = 6;
+    context.strokeText(message, canvas.width / 2.5, canvas.height / 3.5);
+    context.fillText(message, canvas.width / 2.5, canvas.height / 3.5);
+    
+    context.font = applyText(canvas, `${member.displayName}`);
+    context.fillStyle = main;
+    context.strokeStyle = 'black';
+    context.lineWidth = 6;
+    context.strokeText(`${member.displayName}`, canvas.width / 2.5, canvas.height / 1.8);
+    context.fillText(`${member.displayName}`, canvas.width / 2.5, canvas.height / 1.8);
+    
+    context.beginPath();
+    context.arc(125, 125, 100, 0, Math.PI * 2, true);
+    context.closePath();
+    context.clip();
+    
+    const {
+        body
+    } = await request(user.displayAvatarURL({
+        format: 'jpg'
+    }));
+    const avatar = new Image();
+    avatar.src = Buffer.from(await body.arrayBuffer());
+    context.drawImage(avatar, 25, 25, 200, 200);
+    
+    const attachment = new AttachmentBuilder(canvas.toBuffer('image/png'), {
+        name: fileName
+    });
+    
+    client.channels.cache.get(channelID)
+        .send({
+            files: [attachment]
+        });
+    
 }
 
 async function systemessage(guildID, channelID, message, user, member) {
-
-    const stamp = new Date().toLocaleString()
-
+    
+    const stamp = new Date()
+        .toLocaleString()
+    
     const fileName = `${user.username}-systemMessage-${stamp}.png`
-
-
+    
     const canvas = createCanvas(700, 250);
-		const context = canvas.getContext('2d');
-
-		let background;
-        let main;
-
-        if (guildID === "1134908713078095933") {
-            background = await readFile('./tamari.jpg');
-            main = '#DFFF00';
-        } else {
-            background = await readFile('./regular.jpg');
-            main = '#FFFFFF';
-        }
-
-		const backgroundImage = new Image();
-		backgroundImage.src = background;
-		context.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
-
-		context.font = applyText(canvas, `Message from ${member.displayName}.`)
-		context.fillStyle = '#ffffff';
-        context.strokeStyle = 'black';
-        context.lineWidth = 6;
-        context.strokeText(`Message from ${member.displayName}.`, canvas.width / 2.5, canvas.height / 3.5);
-		context.fillText(`Message from ${member.displayName}.`, canvas.width / 2.5, canvas.height / 3.5);
-
-		context.font = applyText(canvas, message);
-		context.fillStyle = main;
-        context.strokeStyle = 'black';
-        context.lineWidth = 6;
-        context.strokeText(message, canvas.width / 2.5, canvas.height / 1.8);
-		context.fillText(message, canvas.width / 2.5, canvas.height / 1.8);
-
-		context.beginPath();
-		context.arc(125, 125, 100, 0, Math.PI * 2, true);
-		context.closePath();
-		context.clip();
-
-		const { body } = await request(user.displayAvatarURL({ format: 'jpg' }));
-		const avatar = new Image();
-		avatar.src = Buffer.from(await body.arrayBuffer());
-		context.drawImage(avatar, 25, 25, 200, 200);
-
-		const attachment = new AttachmentBuilder(canvas.toBuffer('image/png'), { name: fileName });
-
-	client.channels.cache.get(channelID).send({ files: [attachment] });
-
+    const context = canvas.getContext('2d');
+    
+    let background;
+    let main;
+    
+    if (guildID === "1134908713078095933") {
+        background = await readFile('./tamari.jpg');
+        main = '#DFFF00';
+    } else {
+        background = await readFile('./regular.jpg');
+        main = '#FFFFFF';
+    }
+    
+    const backgroundImage = new Image();
+    backgroundImage.src = background;
+    context.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+    
+    context.font = applyText(canvas, `Message from ${member.displayName}.`)
+    context.fillStyle = '#ffffff';
+    context.strokeStyle = 'black';
+    context.lineWidth = 6;
+    context.strokeText(`Message from ${member.displayName}.`, canvas.width / 2.5, canvas.height / 3.5);
+    context.fillText(`Message from ${member.displayName}.`, canvas.width / 2.5, canvas.height / 3.5);
+    
+    context.font = applyText(canvas, message);
+    context.fillStyle = main;
+    context.strokeStyle = 'black';
+    context.lineWidth = 6;
+    context.strokeText(message, canvas.width / 2.5, canvas.height / 1.8);
+    context.fillText(message, canvas.width / 2.5, canvas.height / 1.8);
+    
+    context.beginPath();
+    context.arc(125, 125, 100, 0, Math.PI * 2, true);
+    context.closePath();
+    context.clip();
+    
+    const {
+        body
+    } = await request(user.displayAvatarURL({
+        format: 'jpg'
+    }));
+    const avatar = new Image();
+    avatar.src = Buffer.from(await body.arrayBuffer());
+    context.drawImage(avatar, 25, 25, 200, 200);
+    
+    const attachment = new AttachmentBuilder(canvas.toBuffer('image/png'), {
+        name: fileName
+    });
+    
+    client.channels.cache.get(channelID)
+        .send({
+            files: [attachment]
+        });
+    
 }
 
 function testStatusGet() {
     https.get(`https://4277980205320394.hostedstatus.com/1.0/status/59db90dbcdeb2f04dadcf16d`, (resp) => {
+        
+        let data = '';
+        
+        resp.on('data', (chunk) => {
             
-    let data = '';
-    
-    resp.on('data', (chunk) => {
+            data += chunk;
+        });
         
-        data += chunk;
-    });
-    
-    resp.on('end', async () => {
-        const result = JSON.parse(data)
-        
-        let status_overall = result["result"]["status_overall"]["status"]
-        let full_status = result["result"]["status"]
-        
-
-
+        resp.on('end', async () => {
+            const result = JSON.parse(data)
+            
+            let status_overall = result["result"]["status_overall"]["status"]
+            let full_status = result["result"]["status"]
+            
             const StatusEmbed = new EmbedBuilder()
-            .setColor(0xFFFFFF)
-            .setTitle("ROBLOX STATUS UPDATE!")
-            .setURL('https://status.roblox.com')
-            .setDescription(`Current Status: ${status_overall}`)
-            .addFields(
-                { name: full_status[0]['name'], value: full_status[0]['status'] },
-                { name: full_status[0]['containers'][0]['name'], value: full_status[0]['containers'][0]['status'] },
-                { name: full_status[0]['containers'][1]['name'], value: full_status[0]['containers'][1]['status'], inline: true },
-                { name: full_status[0]['containers'][2]['name'], value: full_status[0]['containers'][2]['status'], inline: true },
-                { name: full_status[0]['containers'][3]['name'], value: full_status[0]['containers'][3]['status'], inline: true },
-          
-                { name: full_status[1]['name'], value: full_status[1]['status'] },
-                { name: full_status[1]['containers'][0]['name'], value: full_status[1]['containers'][0]['status'] },
-                { name: full_status[1]['containers'][1]['name'], value: full_status[1]['containers'][1]['status'], inline: true },
-                { name: full_status[1]['containers'][2]['name'], value: full_status[1]['containers'][2]['status'], inline: true },
-                { name: full_status[1]['containers'][3]['name'], value: full_status[1]['containers'][3]['status'], inline: true },
-                { name: full_status[1]['containers'][4]['name'], value: full_status[1]['containers'][4]['status'], inline: true },
-          
-                { name: full_status[2]['name'], value: full_status[2]['status'] },
-                { name: full_status[2]['containers'][0]['name'], value: full_status[2]['containers'][0]['status'] },
-                { name: full_status[2]['containers'][1]['name'], value: full_status[2]['containers'][1]['status'], inline: true },
-                { name: full_status[2]['containers'][2]['name'], value: full_status[2]['containers'][2]['status'], inline: true },
-                { name: full_status[2]['containers'][3]['name'], value: full_status[2]['containers'][3]['status'], inline: true },
-                { name: full_status[2]['containers'][4]['name'], value: full_status[2]['containers'][4]['status'], inline: true },
-                { name: full_status[2]['containers'][5]['name'], value: full_status[2]['containers'][5]['status'], inline: true },
-                { name: full_status[2]['containers'][6]['name'], value: full_status[2]['containers'][6]['status'], inline: true },
-                { name: full_status[2]['containers'][7]['name'], value: full_status[2]['containers'][7]['status'], inline: true },
-                { name: full_status[2]['containers'][8]['name'], value: full_status[2]['containers'][8]['status'], inline: true },
-                { name: full_status[2]['containers'][9]['name'], value: full_status[2]['containers'][9]['status'], inline: true },
-                { name: full_status[2]['containers'][10]['name'], value: full_status[2]['containers'][10]['status'], inline: true },
-                { name: full_status[2]['containers'][11]['name'], value: full_status[2]['containers'][11]['status'], inline: true },
+                .setColor(0xFFFFFF)
+                .setTitle("ROBLOX STATUS UPDATE!")
+                .setURL('https://status.roblox.com')
+                .setDescription(`Current Status: ${status_overall}`)
+                .addFields({
+                        name: full_status[0]['name'],
+                        value: full_status[0]['status']
+                    }, {
+                        name: full_status[0]['containers'][0]['name'],
+                        value: full_status[0]['containers'][0]['status']
+                    }, {
+                        name: full_status[0]['containers'][1]['name'],
+                        value: full_status[0]['containers'][1]['status'],
+                        inline: true
+                    }, {
+                        name: full_status[0]['containers'][2]['name'],
+                        value: full_status[0]['containers'][2]['status'],
+                        inline: true
+                    }, {
+                        name: full_status[0]['containers'][3]['name'],
+                        value: full_status[0]['containers'][3]['status'],
+                        inline: true
+                    },
+                    
+                    {
+                        name: full_status[1]['name'],
+                        value: full_status[1]['status']
+                    }, {
+                        name: full_status[1]['containers'][0]['name'],
+                        value: full_status[1]['containers'][0]['status']
+                    }, {
+                        name: full_status[1]['containers'][1]['name'],
+                        value: full_status[1]['containers'][1]['status'],
+                        inline: true
+                    }, {
+                        name: full_status[1]['containers'][2]['name'],
+                        value: full_status[1]['containers'][2]['status'],
+                        inline: true
+                    }, {
+                        name: full_status[1]['containers'][3]['name'],
+                        value: full_status[1]['containers'][3]['status'],
+                        inline: true
+                    }, {
+                        name: full_status[1]['containers'][4]['name'],
+                        value: full_status[1]['containers'][4]['status'],
+                        inline: true
+                    },
+                    
+                    {
+                        name: full_status[2]['name'],
+                        value: full_status[2]['status']
+                    }, {
+                        name: full_status[2]['containers'][0]['name'],
+                        value: full_status[2]['containers'][0]['status']
+                    }, {
+                        name: full_status[2]['containers'][1]['name'],
+                        value: full_status[2]['containers'][1]['status'],
+                        inline: true
+                    }, {
+                        name: full_status[2]['containers'][2]['name'],
+                        value: full_status[2]['containers'][2]['status'],
+                        inline: true
+                    }, {
+                        name: full_status[2]['containers'][3]['name'],
+                        value: full_status[2]['containers'][3]['status'],
+                        inline: true
+                    }, {
+                        name: full_status[2]['containers'][4]['name'],
+                        value: full_status[2]['containers'][4]['status'],
+                        inline: true
+                    }, {
+                        name: full_status[2]['containers'][5]['name'],
+                        value: full_status[2]['containers'][5]['status'],
+                        inline: true
+                    }, {
+                        name: full_status[2]['containers'][6]['name'],
+                        value: full_status[2]['containers'][6]['status'],
+                        inline: true
+                    }, {
+                        name: full_status[2]['containers'][7]['name'],
+                        value: full_status[2]['containers'][7]['status'],
+                        inline: true
+                    }, {
+                        name: full_status[2]['containers'][8]['name'],
+                        value: full_status[2]['containers'][8]['status'],
+                        inline: true
+                    }, {
+                        name: full_status[2]['containers'][9]['name'],
+                        value: full_status[2]['containers'][9]['status'],
+                        inline: true
+                    }, {
+                        name: full_status[2]['containers'][10]['name'],
+                        value: full_status[2]['containers'][10]['status'],
+                        inline: true
+                    }, {
+                        name: full_status[2]['containers'][11]['name'],
+                        value: full_status[2]['containers'][11]['status'],
+                        inline: true
+                    },
                 )
-                .setFooter({ text: 'Say "statusupdates-subscribe" to get pinged for new updates and "statusupdates-unsubscribe" to stop getting pinged for new updates. ' })
-
-
+                .setFooter({
+                    text: 'Say "statusupdates-subscribe" to get pinged for new updates and "statusupdates-unsubscribe" to stop getting pinged for new updates. '
+                })
+            
             client.channels.cache.get("946797124824203307")
-                .send({ embeds: [StatusEmbed] })
+                .send({
+                    embeds: [StatusEmbed]
+                })
             lastStatus = status_overall
             console.log(status_overall)
-        
-        
+            
+        })
     })
-})
 }
 
 client.on("messageCreate", async (message) => {
@@ -660,29 +825,33 @@ client.on("messageCreate", async (message) => {
     //updateDatastore(3984205042, message.content, message.author.username, message.channel.name, message.channel.id, message.guild.name, message.guild.id)
     
     if (message.channelId == "946797124824203307") {
-
+        
         if (message.content.toLowerCase() == "statusupdates-subscribe") {
-
+            
             message.delete()
-
-            message.channel.send({content: 'Role added!',
-            ephemeral: true})
-
+            
+            message.channel.send({
+                content: 'Role added!',
+                ephemeral: true
+            })
+            
             message.author.roles.add("1133866225093574858");
-
-        } else  if (message.content.toLowerCase() == "statusupdates-unsubscribe") {
-
+            
+        } else if (message.content.toLowerCase() == "statusupdates-unsubscribe") {
+            
             message.delete()
-
-            message.channel.send({content: 'Role removed!',
-            ephemeral: true})
-
+            
+            message.channel.send({
+                content: 'Role removed!',
+                ephemeral: true
+            })
+            
             message.author.roles.remove("1133866225093574858");
-
+            
         }
-
+        
     }
-
+    
     if (message.content.includes("<@1032426388457787402>")) {
         if (message.author.id == '1032426388457787402') {
             //message.reply("hii bestieee :blush:")
@@ -775,8 +944,6 @@ client.on(Events.InteractionCreate, async interaction => {
     if (canPing === true) {
         
         const command = interaction.client.commands.get(interaction.commandName);
-
-
         
         writeCOmmandsLog(interaction)
         
@@ -784,52 +951,49 @@ client.on(Events.InteractionCreate, async interaction => {
             console.error(`No command matching ${interaction.commandName} was found.`);
             return;
         }
-
-        if (interaction.commandName === 'avatar-card') {
-
-            let msg
         
+        if (interaction.commandName === 'avatar-card') {
+            
+            let msg
+            
             if (interaction.options.getString("text")) {
                 msg = interaction.options.getString("text")
             } else {
                 msg = ""
             }
-
+            
             await interaction.deferReply()
-
+            
             createWelcomeGraphic(interaction.guildId, interaction.channelId, msg, interaction.user, interaction.member)
-
+            
             await interaction.deleteReply()
-
+            
         }
-
+        
         if (interaction.commandName === 'system-message') {
             let msg
-        
+            
             if (interaction.options.getString("text")) {
                 msg = interaction.options.getString("text")
             } else {
                 msg = ""
             }
-
+            
             await interaction.deferReply()
-
+            
             systemessage(interaction.guildId, interaction.guild.systemChannelId, msg, interaction.user, interaction.member)
-
+            
             await interaction.deleteReply()
         }
-
         
         if (interaction.commandName === 'test') {
-
             
-
             await interaction.deferReply()
-
+            
             createWelcomeGraphic(interaction.guildId, interaction.guild.systemChannelId, "Welcome! (Test)", interaction.user, interaction.member)
-
+            
             await interaction.deleteReply()
-
+            
         }
         
         /*if (interaction.commandName === 'ping')
@@ -1562,12 +1726,12 @@ function send() {
     message = ""
 }
 
-client.on("guildMemberAdd", function(member){
-
+client.on("guildMemberAdd", function (member) {
+    
     let systemMessagesChannel = member.guild.systemChannelId
-
+    
     createWelcomeGraphic(member.guildID, systemMessagesChannel, "Welcome!", member.user, member)
-
+    
 });
 
 // client.on("guildMemberRemove", function(member){
@@ -1623,17 +1787,16 @@ app.listen(3003, function () {
     console.log(`started server at http://localhost:${3003}`)
 })
 
-
 setInterval(async () => {
-
+    
     try {
-
+        
         https.get("https://daniibot.dani-lionn.repl.co")
-
+        
         console.log("revived")
-
-    } catch(err) {
-writeError(err)
+        
+    } catch (err) {
+        writeError(err)
     }
-
+    
 }, (1800 * 1000) - 1000)
