@@ -25,7 +25,7 @@ function writeCOmmandsLog(interaction) {
     
     let s = new Date()
         .toLocaleString();
-    const read = fs.readFileSync('./CommandsLog.txt', 'utf8', err => {
+    const read = fs.readFileSync('./CommandsLogg.txt', 'utf8', err => {
         if (err) {
             console.log(err)
         }
@@ -34,7 +34,7 @@ function writeCOmmandsLog(interaction) {
     
     const data = `${read}\n${s}: Command ${command} used by ${interaction.user.tag}!`
     //console.log(data)
-    fs.writeFileSync('./CommandsLog.txt', data, err => {
+    fs.writeFileSync('./CommandsLogg.txt', data, err => {
         if (err) {
             console.error(err);
         }
@@ -530,14 +530,14 @@ function writeError(error) {
     console.log("Error detected! Saving to error log...")
     let s = new Date()
         .toLocaleString();
-    const read = fs.readFileSync('./ErrorLog.txt', 'utf8', err => {
+    const read = fs.readFileSync('./ErrorsLog.txt', 'utf8', err => {
         if (err) {
             console.log(err)
         }
     })
     const data = `${read}\n${s}: ${error}`
     //console.log(data)
-    fs.writeFileSync('./ErrorLog.txt', data, err => {
+    fs.writeFileSync('./ErrorsLog.txt', data, err => {
         if (err) {
             console.error(err);
         }
@@ -1469,14 +1469,14 @@ client.on(Events.InteractionCreate, async interaction => {
             if (interaction.user.id === DaniLionnId) {
                 let s = new Date()
                     .toLocaleString();
-                const read = fs.readFileSync('./ErrorLog.txt', 'utf8', err => {
+                const read = fs.readFileSync('./ErrorsLog.txt', 'utf8', err => {
                     if (err) {
                         console.log(err)
                     }
                 })
                 const data = `${read}\n${s}: Bot was crashed using a command`
                 //console.log(data)
-                fs.writeFileSync('./ErrorLog.txt', data, errr => {
+                fs.writeFileSync('./ErrorsLog.txt', data, errr => {
                     if (errr) {
                         console.error(errr);
                     }
@@ -1499,8 +1499,8 @@ client.on(Events.InteractionCreate, async interaction => {
                 interaction.reply("guess i'll go sit in the corner")
                 setTimeout(function () {
                     console.log("DaniBot was put into time out!")
-                    const data = `${fs.readFileSync('./ErrorLog.txt', 'utf8')}\n${s}: DaniBot was put into time out.`
-                    fs.writeFile('./ErrorLog.txt', data, err => {
+                    const data = `${fs.readFileSync('./ErrorsLog.txt', 'utf8')}\n${s}: DaniBot was put into time out.`
+                    fs.writeFile('./ErrorsLog.txt', data, err => {
                         if (err) {
                             console.error(err);
                         }
