@@ -24,9 +24,7 @@ module.exports = {
                     
                     let status_overall = result["result"]["status_overall"]["status"]
                     let full_status = result["result"]["status"]
-                    
-                    if (status_overall != lastStatus) {
-                        
+                
                         const StatusEmbed = new EmbedBuilder()
                             .setColor(0xFFFFFF)
                             .setTitle('Roblox status')
@@ -133,9 +131,8 @@ module.exports = {
 							embeds: [StatusEmbed]
 						})
 
-                    }
+                    })
                     
-                })
             })
             
         } catch (err) {
