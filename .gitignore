@@ -4,6 +4,7 @@ CommandsLogg.txt
 ErrorsLog.txt
 ErrorLog.txt
 ffmpeg.exe
+commands/ffmpeg.exe
 .space/README
 .space/meta
 danibot/
