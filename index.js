@@ -981,7 +981,7 @@ client.on(Events.InteractionCreate, async interaction => {
             
         }
         
-        if (interaction.commandName === 'system-message') {
+        if (interaction.commandName === 'image-message') {
             await interaction.deferReply()
 
             let msg
@@ -992,7 +992,7 @@ client.on(Events.InteractionCreate, async interaction => {
                 msg = ""
             }
  
-            systemessage(interaction.guildId, interaction.guild.systemChannelId, msg, interaction.user, interaction.member)
+            systemessage(interaction.guildId, interaction.channelId, msg, interaction.user, interaction.member)
             
             await interaction.deleteReply()
         }
