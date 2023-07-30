@@ -1793,7 +1793,7 @@ setInterval(async () => {
         
         https.get("https://daniibot.dani-lionn.repl.co")
         
-        console.log("revived")
+        //console.log("revived")
         
     } catch (err) {
         writeError(err)
