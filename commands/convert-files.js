@@ -4,7 +4,6 @@ const {
 var ffmpeg = require('fluent-ffmpeg');
 
 const ffmpegStatic = require('ffmpeg-static');
-const ffmpeg = require('fluent-ffmpeg');
 ffmpeg.setFfmpegPath(ffmpegStatic);
 const https = require('https'); // or 'https' for https:// URLs
 const fs = require('fs-extra');
