@@ -1,10 +1,8 @@
 #Files that aren't really needed for the github release
 .space
-ignore
-ignore/retired-commands
-ignore/baby
-ignore/postible-assets
-eslintrc.json
+ignore/
+eslintrc.json.bak
 ffmpeg.exe
 New folder/danibot/
 danibot/
+config.json
