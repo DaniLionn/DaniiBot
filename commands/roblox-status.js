@@ -7,7 +7,7 @@ module.exports = {
 
 	async execute(interaction) {
 
-		interaction.deferReply()
+		await interaction.deferReply()
 
 		try {
             https.get(`https://4277980205320394.hostedstatus.com/1.0/status/59db90dbcdeb2f04dadcf16d`, (resp) => {
@@ -127,7 +127,7 @@ module.exports = {
                                 },
                             )
                         
-                        interaction.editReply({
+                        await interaction.editReply({
 							embeds: [StatusEmbed]
 						})
 
@@ -136,7 +136,7 @@ module.exports = {
             })
             
         } catch (err) {
-            interaction.editReply("An error occured!")
+            await interaction.editReply("An error occured!")
         }
 	},
 };
