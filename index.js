@@ -1796,13 +1796,6 @@ app.post('/SendMessage', (request, response) => {
         .send(message);
 })
 
-app.get("/test", function (Request, Res) {
-  console.log("pinged")
-  Res.send('ok');
-});
-
-app.listen(80)
-
 app.listen(port, function () {
     console.log(`started server at http://localhost:${port}`)
 })
@@ -1818,6 +1811,13 @@ app.listen(3002, function () {
 app.listen(3003, function () {
     console.log(`started server at http://localhost:${3003}`)
 })
+
+app.get("/test", function (Request, Res) {
+  console.log("TEST OK")
+  Res.send('ok');
+});
+
+app.listen(80)
 
 // setInterval(async () => {
     
