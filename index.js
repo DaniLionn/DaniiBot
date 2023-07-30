@@ -558,6 +558,18 @@ const applyText = (canvas, text) => {
     return context.font;
 };
 
+const applyText2 = (canvas, text) => {
+    const context = canvas.getContext('2d');
+    let fontSize = 28;
+    
+    do {
+        context.font = `${fontSize -= 10}px Courier New`;
+    } while (context.measureText(text)
+        .width > canvas.width - 300);
+    
+    return context.font;
+};
+
 async function createWelcomeGraphic(guildID, channelID, message, user, member) {
     
     const stamp = new Date()
@@ -585,7 +597,7 @@ async function createWelcomeGraphic(guildID, channelID, message, user, member) {
     backgroundImage.src = background;
     context.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
     
-    context.font = applyText(canvas, message);
+    context.font = applyText2(canvas, message);
     context.fillStyle = '#ffffff';
     context.strokeStyle = 'black';
     context.lineWidth = 6;
@@ -649,7 +661,7 @@ async function systemessage(guildID, channelID, message, user, member) {
     backgroundImage.src = background;
     context.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
     
-    context.font = applyText(canvas, `Message from ${member.displayName}.`)
+    context.font = applyText2(canvas, `Message from ${member.displayName}.`)
     context.fillStyle = '#ffffff';
     context.strokeStyle = 'black';
     context.lineWidth = 6;
