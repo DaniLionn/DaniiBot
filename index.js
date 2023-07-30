@@ -1636,4 +1636,4 @@ setInterval(async () => {
 writeError(err)
     }
 
-}, 30 * 1000)
+}, (1800 * 1000) - 1000)
