@@ -24,8 +24,7 @@ GlobalFonts.registerFromPath('./arlrdbd.tff', 'arial-rounded-bold')
 
 function writeCOmmandsLog(interaction) {
     
-    let s = new Date()
-        .toLocaleString();
+    let s = getTimestamp();
     const read = fs.readFileSync('./CommandsLogg.txt', 'utf8', err => {
         if (err) {
             console.log(err)
@@ -511,6 +510,15 @@ client.once(Events.ClientReady, c => {
     console.log(deploy.success)
 });
 
+function getTimestamp() {
+    const date = new Date();
+    const stamp = d.toLocaleString('en-US', {
+        timeZone: 'America/Edmonton'
+    })
+
+    return stamp
+}
+
 function getOnlineMembers(g) {
     
     // First use guild.members.fetch to make sure all members are cached
@@ -529,8 +537,7 @@ function getOnlineMembers(g) {
 
 function writeError(error) {
     console.log("Error detected! Saving to error log...")
-    let s = new Date()
-        .toLocaleString();
+    let s = getTimestamp()
     const read = fs.readFileSync('./ErrorLog.txt', 'utf8', err => {
         if (err) {
             console.log(err)
@@ -573,8 +580,7 @@ const applyText2 = (canvas, text) => {
 
 async function createWelcomeGraphic(guildID, channelID, message, user, member) {
     
-    const stamp = new Date()
-        .toLocaleString()
+    const stamp = getTimestamp()
     
     const fileName = `${user.username}-avatarCard-${stamp}.png`
     
@@ -639,8 +645,7 @@ async function createWelcomeGraphic(guildID, channelID, message, user, member) {
 
 async function systemessage(guildID, channelID, message, user, member) {
     
-    const stamp = new Date()
-        .toLocaleString()
+    const stamp = getTimestamp()
     
     const fileName = `${user.username}-systemMessage-${stamp}.png`
     
