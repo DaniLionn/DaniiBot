@@ -1,8 +1,2 @@
 #Files that aren't really needed for the github release
-.space
-ignore/
-eslintrc.json.bak
-ffmpeg.exe
-New folder/danibot/
-danibot/
 config.json
