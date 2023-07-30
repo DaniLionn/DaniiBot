@@ -1766,7 +1766,6 @@ client.on("guildMemberAdd", function (member) {
 let ResponseHTML
 fs.readFile('OKPage.html', (err, data) => {
     if (err) throw err;
-    console.log(data);
     ResponseHTML = data
   });
 
