@@ -1763,11 +1763,8 @@ client.on("guildMemberAdd", function (member) {
 //     console.log(`hey! somebody joined: ${member.user.tag}`);
 // 	client.channels.cache.get('1032095616836325398').send(`omg omg guys omg <@${member.user.tag}> left the server :sob::sob::sob::sob::sob:`);
 // });
-let ResponseHTML
-fs.readFile('OKPage.html', (err, data) => {
-    if (err) throw err;
-    ResponseHTML = data
-  });
+let ResponseHTML = fs.readFileSync("OKPage.html", 'utf8');
+
 
 app.post('/part1', (request, response) => {
     response.send("Gotten POST request 1")
