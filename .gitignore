@@ -1,2 +1,6 @@
 #Files that aren't really needed for the github release
 configure.json
+.space/README
+.space/meta
+danibot/
+ignore/
