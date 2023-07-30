@@ -991,14 +991,22 @@ client.on(Events.InteractionCreate, async interaction => {
             await interaction.deferReply()
 
             let msg
+
+            let channel
             
             if (interaction.options.getString("text")) {
                 msg = interaction.options.getString("text")
             } else {
                 msg = ""
             }
+
+            if (interaction.options.getChannel("channel")) {
+                channel = interaction.options.getChannel("channel").id
+            } else {
+                channel = interaction.channelId
+            }
  
-            systemessage(interaction.guildId, interaction.channelId, msg, interaction.user, interaction.member)
+            systemessage(interaction.guildId, channel, msg, interaction.user, interaction.member)
             
             await interaction.deleteReply()
         }

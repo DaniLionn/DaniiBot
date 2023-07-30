@@ -7,7 +7,13 @@ module.exports = {
 		.addStringOption(option =>
 			option.setName('text')
 				.setDescription('the message')
-				.setRequired(true)),
+				.setRequired(true))
+			
+        .addChannelOption(option => option
+            .setName('channel')
+            .setDescription('send in this channel (optional)')
+            .addChannelTypes(ChannelType.GuildText)
+            .setRequired(false)),
 	async execute(interaction) {
 
 	},
