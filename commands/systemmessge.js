@@ -2,8 +2,8 @@ const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('system-message')
-		.setDescription("sends a message in the server's system messages channel")
+		.setName('image-message')
+		.setDescription("makes your message into an image")
 		.addStringOption(option =>
 			option.setName('text')
 				.setDescription('the message')
