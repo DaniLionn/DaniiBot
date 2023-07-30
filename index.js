@@ -512,7 +512,7 @@ client.once(Events.ClientReady, c => {
 
 function getTimestamp() {
     const date = new Date();
-    const stamp = d.toLocaleString('en-US', {
+    const stamp = date.toLocaleString('en-US', {
         timeZone: 'America/Edmonton'
     })
 
