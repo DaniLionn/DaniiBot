@@ -3,6 +3,7 @@ configure.json
 CommandsLogg.txt
 ErrorsLog.txt
 ErrorLog.txt
+ffmpeg.exe
 .space/README
 .space/meta
 danibot/
