@@ -1796,27 +1796,15 @@ app.post('/SendMessage', (request, response) => {
         .send(message);
 })
 
-app.listen(port, function () {
-    console.log(`started server at http://localhost:${port}`)
-})
-
-app.listen(port2, function () {
-    console.log(`started server at http://localhost:${port2}`)
-})
-
-app.listen(3002, function () {
-    console.log(`started server at http://localhost:${3002}`)
-})
-
-app.listen(3003, function () {
-    console.log(`started server at http://localhost:${3003}`)
-})
-
 app.get("/test", function (Request, Res) {
 
   let stamp = getTimestamp()
   console.log(`${stamp}: TEST OK`)
-  Res.send('ok');
+  Res.send('OK');
+});
+
+app.get("/", function (Request, Res) {
+  Res.send('OK');
 });
 
 app.listen(80)
