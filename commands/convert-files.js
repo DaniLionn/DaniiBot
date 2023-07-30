@@ -74,7 +74,7 @@ module.exports = {
                             file.close(); // close() is async, call cb after close completes.
                             
                             await interaction.editReply("Converting...")
-                            exec(`ffmpeg -i ${path} ${path2}`, async (error, stdout, stderr) => {
+                            exec(`../ffmpeg.exe -i ${path} ${path2}`, async (error, stdout, stderr) => {
                                     if (error) {
                                         console.log(`error: ${error.message}`);
                                         await interaction.channel.send("An error occured! Try checking what you're trying to convert to. Make sure it's a similar file type (for example, you can do mp3 to wav but not mp3 to txt)")
