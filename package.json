@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@discordjs/voice": "^0.16.0",
     "@napi-rs/canvas": "^0.1.41",
     "body-parser": "^1.20.2",
     "discord.js": "^14.11.0",
