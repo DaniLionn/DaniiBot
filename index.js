@@ -560,7 +560,7 @@ const applyText = (canvas, text) => {
 
 const applyText2 = (canvas, text) => {
     const context = canvas.getContext('2d');
-    let fontSize = 28;
+    let fontSize = 32;
     
     do {
         context.font = `${fontSize -= 10}px Courier New`;
