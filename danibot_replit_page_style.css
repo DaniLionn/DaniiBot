@@ -1,0 +1,4 @@
+@font-face { font-family: RoundedBold; src: url('ArialRoundedMTBold.ttf'); } 
+      .msg {
+         font-family: RoundedBold
+      }
