@@ -1,9 +1,12 @@
-var http = require('http');
+const express = require('express')
+const app = express()
+var pingport = 80
+
+app.use(express.json())
 console.log("keep_alive running (i think)")
-http.createServer(function (req, res) {
+app.get("/test", function (Request, Res) {
+  console.log("pinged")
+  res.send('ok');
+});
 
-  res.write("I'm alive");
-  console.log("pinged!!")
-  res.end();
-
-}).listen(80);
+app.listen(pingport)

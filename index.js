@@ -1,6 +1,6 @@
 const express = require('express')
 const bodyparser = require('body-parser')
-const keep_alive = require('./keep_alive.js')
+//const keep_alive = require('./keep_alive.js')
 const {
     createCanvas,
     Image,
@@ -1783,6 +1783,13 @@ app.post('/SendMessage', (request, response) => {
         .send(message);
 })
 
+app.get("/test", function (Request, Res) {
+  console.log("pinged")
+  Res.send('ok');
+});
+
+app.listen(80)
+
 app.listen(port, function () {
     console.log(`started server at http://localhost:${port}`)
 })
@@ -1799,16 +1806,16 @@ app.listen(3003, function () {
     console.log(`started server at http://localhost:${3003}`)
 })
 
-setInterval(async () => {
+// setInterval(async () => {
     
-    try {
+//     try {
         
-        https.get("https://daniibot.dani-lionn.repl.co")
+//         https.get("https://daniibot.dani-lionn.repl.co")
         
-        //console.log("revived")
+//         //console.log("revived")
         
-    } catch (err) {
-        writeError(err)
-    }
+//     } catch (err) {
+//         writeError(err)
+//     }
     
-}, (1800 * 1000) - 1000)
+// }, (1800 * 1000) - 1000)
