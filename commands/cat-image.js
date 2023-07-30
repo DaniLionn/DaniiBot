@@ -70,9 +70,7 @@ module.exports = {
 			// 	interaction.reply(`https://cataas.com/cat/old/says/${text}`)
 
 			// }
-		} else {			
-			
-			if (options == "isRegular") {
+		} else if (options == "isRegular") {
 
 			interaction.reply(`https://cataas.com/cat`)
 
@@ -102,14 +100,13 @@ module.exports = {
 
 		}
 
-		// else if (options == "isOld") {
+		else if (options == 'isOld') {
 
-		// 	interaction.reply(`https://cataas.com/cat/old`)
+			interaction.reply(`https://cataas.com/cat/old`)
 
 		// }
-	}
-	},
-};
+		}
+},};
 
 const fs = require('node:fs');
 process.on('unhandledRejection', error =>

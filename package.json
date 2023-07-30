@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@napi-rs/canvas": "^0.1.41",
     "body-parser": "^1.20.2",
     "discord.js": "^14.11.0",
     "express": "^4.18.2",
@@ -9,6 +10,7 @@
     "fs-extra": "^11.1.1",
     "https": "^1.0.0",
     "rblx": "^1.5.1",
+    "undici": "^5.22.1",
     "youtube-mp3-converter": "^1.0.3"
   },
   "name": "danibot",
@@ -27,5 +29,8 @@
   "bugs": {
     "url": "https://github.com/DaniLionn/danibot/issues"
   },
-  "homepage": "https://github.com/DaniLionn/danibot#readme"
+  "homepage": "https://github.com/DaniLionn/danibot#readme",
+  "devDependencies": {
+    "eslint": "^8.46.0"
+  }
 }
