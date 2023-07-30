@@ -1622,3 +1622,18 @@ app.listen(3002, function () {
 app.listen(3003, function () {
     console.log(`started server at http://localhost:${3003}`)
 })
+
+
+setInterval(async () => {
+
+    try {
+
+        fetch("https://daniibot.dani-lionn.repl.co")
+
+        console.log("fetched")
+
+    } catch(err) {
+writeError(err)
+    }
+
+}, 30 * 1000)
