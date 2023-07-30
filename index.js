@@ -1763,8 +1763,12 @@ client.on("guildMemberAdd", function (member) {
 //     console.log(`hey! somebody joined: ${member.user.tag}`);
 // 	client.channels.cache.get('1032095616836325398').send(`omg omg guys omg <@${member.user.tag}> left the server :sob::sob::sob::sob::sob:`);
 // });
-
-let ResponseHTML = '<html> <head> <link rel="stylesheet" href="danibot_replit_page_style.css"> </head> <body> <p>200 OK</p> <p class="msg">Seems like everything is working! Here, have a cat image.</p> <img src="https://cataas.com/cat" alt="random cat image" style="width:256px;height:256px;"> </body> </html>'
+let ResponseHTML
+fs.readFile('OKPage.html', (err, data) => {
+    if (err) throw err;
+    console.log(data);
+    ResponseHTML = data
+  });
 
 app.post('/part1', (request, response) => {
     response.send("Gotten POST request 1")
