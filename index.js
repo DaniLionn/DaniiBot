@@ -1813,7 +1813,9 @@ app.listen(3003, function () {
 })
 
 app.get("/test", function (Request, Res) {
-  console.log("TEST OK")
+
+  let stamp = getTimestamp()
+  console.log(`${stamp}: TEST OK`)
   Res.send('ok');
 });
 
