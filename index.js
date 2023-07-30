@@ -1628,9 +1628,9 @@ setInterval(async () => {
 
     try {
 
-        fetch("https://daniibot.dani-lionn.repl.co")
+        https.get("https://daniibot.dani-lionn.repl.co")
 
-        console.log("fetched")
+        console.log("revived")
 
     } catch(err) {
 writeError(err)
