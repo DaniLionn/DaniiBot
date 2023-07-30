@@ -1086,3 +1086,159 @@ content[BASE_TYPE_MAX_LENGTH]: Must be 2000 or fewer in length.
 7/30/2023, 3:40:50 AM: Error: Authentication failed
 7/30/2023, 3:40:50 AM: Error: Authentication failed
 7/30/2023, 3:40:50 AM: Error: Authentication failed
+7/30/2023, 3:59:34 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:34 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:34 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:34 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:34 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:34 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:34 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:34 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:34 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:35 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:35 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:35 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:35 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:35 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:35 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:35 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:35 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:35 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:35 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:35 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:35 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:35 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:35 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:35 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:35 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:35 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:35 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:35 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:35 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:35 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:35 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:35 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:35 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:35 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:35 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:35 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:35 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:35 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js
+7/30/2023, 3:59:35 AM: Error: Cannot find module './config.json'
+Require stack:
+- /home/runner/DaniiBot/deploy-commands.js
+- /home/runner/DaniiBot/index.js

@@ -65,7 +65,7 @@ const {
     clientId,
     guildId,
     DaniLionnId,
-} = require('./config.json');
+} = require('./configure.json');
 
 const path = require('node:path');
 //const emojiCharacters = require('./emojiCharacters.js');
