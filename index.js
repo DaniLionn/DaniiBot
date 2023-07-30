@@ -965,17 +965,16 @@ client.on(Events.InteractionCreate, async interaction => {
         }
         
         if (interaction.commandName === 'avatar-card') {
-            
+                        
+            await interaction.deferReply()
+
             let msg
             
             if (interaction.options.getString("text")) {
                 msg = interaction.options.getString("text")
             } else {
                 msg = ""
-            }
-            
-            await interaction.deferReply()
-            
+            }     
             createWelcomeGraphic(interaction.guildId, interaction.channelId, msg, interaction.user, interaction.member)
             
             await interaction.deleteReply()
@@ -983,6 +982,8 @@ client.on(Events.InteractionCreate, async interaction => {
         }
         
         if (interaction.commandName === 'system-message') {
+            await interaction.deferReply()
+
             let msg
             
             if (interaction.options.getString("text")) {
@@ -990,9 +991,7 @@ client.on(Events.InteractionCreate, async interaction => {
             } else {
                 msg = ""
             }
-            
-            await interaction.deferReply()
-            
+ 
             systemessage(interaction.guildId, interaction.guild.systemChannelId, msg, interaction.user, interaction.member)
             
             await interaction.deleteReply()
