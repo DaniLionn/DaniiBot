@@ -7,10 +7,10 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('random-cat')
 		.setDescription("gives you a random image of a cat")
-		.addStringOption(option =>
-			option.setName('options')
-				.setDescription('options for the cat image')
-				.setRequired(true))
+		// .addStringOption(option =>
+		// 	option.setName('options')
+		// 		.setDescription('options for the cat image')
+		// 		.setRequired(true))
 				// .addChoices(
 				// 	{ name: 'Regular', value: 'isRegular' },
 				// 	//{ name: 'Gif', value: 'isGif' },
