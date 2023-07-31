@@ -1801,7 +1801,7 @@ app.post('/SendMessage', (request, response) => {
 app.get("/test", function (Request, Res) {
 
   let stamp = getTimestamp()
-  console.log(`${stamp}: TEST OK`)
+  //console.log(`${stamp}: TEST OK`)
   Res.send('OK');
 });
 
