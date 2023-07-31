@@ -7,8 +7,8 @@ const wait = require('node:timers/promises').setTimeout;
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('joke')
-		.setDescription('Tells you a random joke'),
+		.setName('fart')
+		.setDescription('fart'),
 
 
 	async execute(interaction) {
