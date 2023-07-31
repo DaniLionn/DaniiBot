@@ -43,7 +43,7 @@ module.exports = {
 
 			
 
-       await interaction.editReply(jokes[Math.floor(Math.random() * jokes.length)]);
+       //await interaction.editReply(jokes[Math.floor(Math.random() * jokes.length)]);
 	},
 };
 const fs = require('node:fs');
