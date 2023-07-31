@@ -4,6 +4,8 @@ const jokes = ["Why did the golfer bring two pairs of pants?\nIn case he got a h
 
 const wait = require('node:timers/promises').setTimeout;
 
+const url = "https://official-joke-api.appspot.com/random_joke"
+const https = require('https');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('joke')
@@ -13,6 +15,34 @@ module.exports = {
 	async execute(interaction) {
     
        await interaction.deferReply();
+
+			let joke
+
+			https.get(url, (resp) => {
+            let data = '';
+
+
+         resp.on('data', (chunk) => {
+            console.log(" ")
+            console.log("received chunk of data!")
+            data += chunk;
+        });
+    
+         resp.on('end', async () => {
+
+			data = JSON.parse(data)
+
+			let setup = data["setup"]
+			let punchline = data["punchline"]
+
+			joke = `${setup}\n${punchline}`
+
+			await interaction.editReply(joke)
+		 })
+		})
+
+			
+
        await interaction.editReply(jokes[Math.floor(Math.random() * jokes.length)]);
 	},
 };
