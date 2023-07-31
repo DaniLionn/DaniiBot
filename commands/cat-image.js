@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require('discord.js');
 
-
+const https = require('https'); // or 'https' for https:// URLs
+const fs = require('fs-extra');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -9,16 +10,16 @@ module.exports = {
 		.addStringOption(option =>
 			option.setName('options')
 				.setDescription('options for the cat image')
-				.setRequired(true)
-				.addChoices(
-					{ name: 'Regular', value: 'isRegular' },
-					//{ name: 'Gif', value: 'isGif' },
-					{ name: 'Kitten', value: 'isKitten' },
-					{ name: 'Cute', value: 'isCute' },
-					{ name: 'Ugly', value: 'isUgly' },
-					//{ name: 'Old', value: 'isOld' },
+				.setRequired(true))
+				// .addChoices(
+				// 	{ name: 'Regular', value: 'isRegular' },
+				// 	//{ name: 'Gif', value: 'isGif' },
+				// 	{ name: 'Kitten', value: 'isKitten' },
+				// 	{ name: 'Cute', value: 'isCute' },
+				// 	{ name: 'Ugly', value: 'isUgly' },
+				// 	//{ name: 'Old', value: 'isOld' },
 					
-				))
+				// ))
 				.addStringOption(option =>
 					option.setName('text')
 						.setDescription('optional text for the image')
@@ -26,89 +27,48 @@ module.exports = {
 				),
 
 	async execute(interaction) {
-		const options = interaction.options.getString('options');
-		var text = interaction.options.getString('text');
+		await interaction.deferReply()
 
+		//const options = interaction.options.getString('options');
+		var text = interaction.options.getString('text');
+		let url
+		let path
 		if (text != undefined) {
 
 			text = text.replaceAll(" ", "%20")
 
-			
+			 url = `https://cataas.com/cat/says/${text}`
 
-			if (options == "isRegular") {
-
-				interaction.reply(`https://cataas.com/cat/says/${text}`)
-
+			} else {
+				url = "https://cataas.com/cat"
 			}
 
-			// else if (options == "isGif") {
+			const file = fs.createWriteStream("tempcat.png");
+            const request = https.get(url, function (response) {
+                    response.pipe(file);
+                    
+                    // after download completed close filestream
+                    file.on("finish", async () => {
+                        
+                        path = file.path
 
-			// 	interaction.reply(`https://cataas.com/cat/gif`)
+                        
 
-			// }
+                        file.close(); // close() is async, call cb after close completes.
+                        
+                        await interaction.editReply({files: [path]})
 
-			else if (options == "isKitten") {
+						setTimeout(async() => {
 
-				interaction.reply(`https://cataas.com/cat/kitten/says/${text}`)
+							await fs.unlink(path)
 
-			}
+						}, 1000)
 
-			else if (options == "isCute") {
-
-				interaction.reply(`https://cataas.com/cat/cute/says/${text}`)
-
-			}
-
-			else if (options == "isUgly") {
-
-				interaction.reply(`https://cataas.com/cat/ugly/says/${text}`)
-
-			}
-
-			// else if (options == "isOld") {
-
-			// 	interaction.reply(`https://cataas.com/cat/old/says/${text}`)
-
-			// }
-		} else if (options == "isRegular") {
-
-			interaction.reply(`https://cataas.com/cat`)
-
-		}
-
-		// else if (options == "isGif") {
-
-		// 	interaction.reply(`https://cataas.com/cat/gif`)
-
-		// }
-
-		else if (options == "isKitten") {
-
-			interaction.reply(`https://cataas.com/cat/kitten`)
-
-		}
-
-		else if (options == "isCute") {
-
-			interaction.reply(`https://cataas.com/cat/cute`)
-
-		}
-
-		else if (options == "isUgly") {
-
-			interaction.reply(`https://cataas.com/cat/ugly`)
-
-		}
-
-		else if (options == 'isOld') {
-
-			interaction.reply(`https://cataas.com/cat/old`)
-
-		// }
-		}
+          })
+        })
 },};
 
-const fs = require('node:fs');
+
 process.on('unhandledRejection', error =>
 {
 	console.log("Error detected! Saving to error log...")
