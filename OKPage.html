@@ -37,15 +37,20 @@ as a fun little easter egg.
     <p class="msg">Seems like everything is working! Here, have a cat image.</p>
     <img id="catImage" src="https://cataas.com/cat" alt="random cat image" style="width:512px;height:512px;">
 
-    <button type="button" id="reloadButton" onclick="buttonClicked()">gimmie another</button>
+    <button type="button" id="reloadButton" onclick="buttonClicked()" onload="onLoad()" disabled="true">gimmie another</button>
 
     <script>
         function buttonClicked() {
-          const btn = document.getElementById("reloadButton")
+          const btn = document.getElementById("reloadButton");
 
           btn.innerHTML = "Hold on...";
 
           window.location.href='https://daniibot.dani-lionn.repl.co';
+        }
+
+        function onLoad() {
+          const btn = document.getElementById("reloadButton");
+          btn.disabled = false;
         }
     </script>
   </body>
