@@ -1763,6 +1763,8 @@ function download(url, name) {
         // after download completed close filestream
         file.on("finish", async () => {})
             
+            console.log("downloaded")
+
             path = file.path
             file.close(); // close() is async, call cb after close completes.
             return path
@@ -1829,21 +1831,19 @@ app.get("/test", function (Request, Res) {
 
 app.get("/", async function (Request, Res) {
 
-    fs.stat('tempcat.png', function (err) {     
-        if (err) {
-            return console.error(err);
-        }
-     
+    if (fs.existsSync('tempcat.png')) {
         fs.unlink('tempcat.png',function(err){
-             if(err) return console.log(err);
-        });  
-     });
+            if(err) return console.log(err);
+       });  
+    }
 
-  Res.status(200)
+    Res.status(200)
 
-   download("https://cataas.com/cat", 'tempcat.png')
+    let path = download("https://cataas.com/cat", 'tempcat.png')
 
-  Res.send(ResponseHTML);
+     console.log(path)
+
+    Res.send(ResponseHTML);
 });
 
 app.listen(80)
