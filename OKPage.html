@@ -56,7 +56,7 @@ as a fun little easter egg.
     <p>200 OK</p>
     <div class="left">
       <p class="msg">Seems like everything is working! Here, have a cat image.</p>
-      <img id="catImage" src="tempcat.png" alt="random cat image" style="width:512px;height:512px;">
+      <img id="catImage" src="./tempcat.png" alt="random cat image" style="width:512px;height:512px;">
     </div>
     <div class="bottom-middle">
       <p class="msg" id="output"></p>
@@ -83,7 +83,7 @@ as a fun little easter egg.
       }
 
       function downloadButtonClicked() {
-        download("tempcat.png")
+        download("./tempcat.png")
       }
 
       function download(url) {
