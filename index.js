@@ -1750,14 +1750,9 @@ function send() {
     
     message = ""
 }
-let NewPath
-
-function onCLose() {
-    return NewPath
-}
 
 function download(url, name) {
-
+    let path
     
 
     const file = fs.createWriteStream(name);
@@ -1766,13 +1761,18 @@ function download(url, name) {
         response.pipe(file);
             
         // after download completed close filestream
-        file.on("finish", async () => {})
-            
+        file.on("finish", async () => {
+
             console.log("downloaded")
 
-            NewPath = file.path
-            file.close(onCLose); // close() is async, call cb after close completes.
+            path = file.path
+
+            file.close(); // close() is async, call cb after close completes.
            
+            return path
+
+        })
+            
 
     })
 
@@ -1846,7 +1846,7 @@ app.get("/", async function (Request, Res) {
 
     let path = download("https://cataas.com/cat", 'tempcat.png')
 
-     console.log(path)
+    console.log(path)
 
     Res.send(ResponseHTML);
 });
