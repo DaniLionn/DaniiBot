@@ -515,7 +515,7 @@ function getTimestamp() {
     const stamp = date.toLocaleString('en-US', {
         timeZone: 'America/Edmonton'
     })
-
+    
     return stamp
 }
 
@@ -971,16 +971,16 @@ client.on(Events.InteractionCreate, async interaction => {
         }
         
         if (interaction.commandName === 'avatar-card') {
-                        
+            
             await interaction.deferReply()
-
+            
             let msg
             
             if (interaction.options.getString("text")) {
                 msg = interaction.options.getString("text")
             } else {
                 msg = ""
-            }     
+            }
             createWelcomeGraphic(interaction.guildId, interaction.channelId, msg, interaction.user, interaction.member)
             
             await interaction.deleteReply()
@@ -989,9 +989,9 @@ client.on(Events.InteractionCreate, async interaction => {
         
         if (interaction.commandName === 'image-message') {
             await interaction.deferReply()
-
+            
             let msg
-
+            
             let channel
             
             if (interaction.options.getString("text")) {
@@ -999,13 +999,14 @@ client.on(Events.InteractionCreate, async interaction => {
             } else {
                 msg = ""
             }
-
+            
             if (interaction.options.getChannel("channel")) {
-                channel = interaction.options.getChannel("channel").id
+                channel = interaction.options.getChannel("channel")
+                    .id
             } else {
                 channel = interaction.channelId
             }
- 
+            
             systemessage(interaction.guildId, channel, msg, interaction.user, interaction.member)
             
             await interaction.deleteReply()
@@ -1754,31 +1755,27 @@ function send() {
 function download(url, name) {
     let path
     
-
     const file = fs.createWriteStream(name);
     const request = https.get(url, function (response) {
-
+        
         response.pipe(file);
-            
+        
         // after download completed close filestream
         file.on("finish", async () => {
-
-            console.log("downloaded")
-
-            path = file.path
-
-            file.close(); // close() is async, call cb after close completes.
-           
-            return path
-
-        })
             
-
+            console.log("downloaded")
+            
+            path = file.path
+            
+            file.close(); // close() is async, call cb after close completes.
+            
+            return path
+            
+        })
+        
     })
-
+    
 }
-
-
 
 client.on("guildMemberAdd", function (member) {
     
@@ -1793,7 +1790,6 @@ client.on("guildMemberAdd", function (member) {
 // 	client.channels.cache.get('1032095616836325398').send(`omg omg guys omg <@${member.user.tag}> left the server :sob::sob::sob::sob::sob:`);
 // });
 let ResponseHTML = fs.readFileSync("OKPage.html", 'utf8');
-
 
 app.post('/part1', (request, response) => {
     response.send("Gotten POST request 1")
@@ -1828,41 +1824,41 @@ app.post('/SendMessage', (request, response) => {
 })
 
 app.get("/test", function (Request, Res) {
-
-  //let stamp = getTimestamp()
-  //console.log(`${stamp}: TEST OK`)
-  Res.send('OK');
+    
+    //let stamp = getTimestamp()
+    //console.log(`${stamp}: TEST OK`)
+    Res.send('OK');
 });
 
 app.get("/", async function (Request, Res) {
-
+    
     // if (fs.existsSync('tempcat.png')) {
     //     fs.unlink('tempcat.png',function(err){
     //         if(err) return console.log(err);
     //    });  
     // }
-
+    
     Res.status(200)
-
+    
     // let path = download("https://cataas.com/cat", 'tempcat.png')
-
+    
     // console.log(path)
-
+    
     Res.send(ResponseHTML);
 });
 
 app.listen(80)
 
 // setInterval(async () => {
-    
+
 //     try {
-        
+
 //         https.get("https://daniibot.dani-lionn.repl.co")
-        
+
 //         //console.log("revived")
-        
+
 //     } catch (err) {
 //         writeError(err)
 //     }
-    
+
 // }, (1800 * 1000) - 1000)
