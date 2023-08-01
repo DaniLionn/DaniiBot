@@ -1751,6 +1751,28 @@ function send() {
     message = ""
 }
 
+function download(url, name) {
+
+    let path
+
+    const file = fs.createWriteStream(name);
+    const request = https.get(url, function (response) {
+
+        response.pipe(file);
+            
+        // after download completed close filestream
+        file.on("finish", async () => {})
+            
+            path = file.path
+            file.close(); // close() is async, call cb after close completes.
+            return path
+
+    })
+
+}
+
+
+
 client.on("guildMemberAdd", function (member) {
     
     let systemMessagesChannel = member.guild.systemChannelId
@@ -1805,8 +1827,22 @@ app.get("/test", function (Request, Res) {
   Res.send('OK');
 });
 
-app.get("/", function (Request, Res) {
+app.get("/", async function (Request, Res) {
+
+    fs.stat('tempcat.png', function (err) {     
+        if (err) {
+            return console.error(err);
+        }
+     
+        fs.unlink('tempcat.png',function(err){
+             if(err) return console.log(err);
+        });  
+     });
+
   Res.status(200)
+
+   download("https://cataas.com/cat", 'tempcat.png')
+
   Res.send(ResponseHTML);
 });
 

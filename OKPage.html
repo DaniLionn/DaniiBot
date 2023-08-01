@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <!--This HTML file gets loaded as a string using node.js's fs module 
 and gets sent to be displayed to whoever visits https://daniibot.dani-lionn.repl.co/
 as a fun little easter egg.
@@ -7,7 +6,6 @@ as a fun little easter egg.
 
 -DaniLionn, 2023
 -->
-
 <html>
   <head>
     <!--<link rel="stylesheet" href="danibot_replit_page_style.css">-->
@@ -31,19 +29,27 @@ as a fun little easter egg.
         font-family: RoundedBold
       }
 
-      .left{
+      .left {
         float: left;
       }
-      
+
       .bottom-middle {
         position: fixed;
         left: 50%;
         bottom: 20px;
         transform: translate(-50%, -50%);
         margin: 0 auto;
-      }    
-      ;
+      }
 
+      .bottom-middle2 {
+        position: fixed;
+        left: 50%;
+        bottom: 100x;
+        transform: translate(-50%, -50%);
+        margin: 0 auto;
+      }
+
+      ;
     </style>
   </head>
   <body>
@@ -56,24 +62,38 @@ as a fun little easter egg.
       <p class="msg" id="output"></p>
       <button type="button" id="reloadButton" onclick="buttonClicked()" onload="imageLoaded()" disabled="true">gimmie another</button>
     </div>
+    <div class="bottom-middle2">
+      <button type="button" id="download" onclick="downloadButtonClicked()" onload="imageLoaded()" disabled="true">gimmie another</button>
+    </div>
     <script>
-        const btn = document.getElementById("reloadButton");
-        const dlBtn = document.getElementById("download");
-        const img = document.getElementById("catImage");
-        const text = document.getElementById("output");
+      const btn = document.getElementById("reloadButton");
+      const dlBtn = document.getElementById("download");
+      const img = document.getElementById("catImage");
+      const text = document.getElementById("output");
+      img.addEventListener("load", () => {
+        btn.disabled = false;
+        dlBtn.disabled = false;
+      })
 
-        img.addEventListener("load", () => {
-          btn.disabled = false;
-          dlBtn.disabled = false;
-         })
+      function buttonClicked() {
+        btn.disabled = true;
+        dlBtn.disabled = true;
+        text.innerHTML = "Hold on...";
+        window.location.href = 'https://daniibot.dani-lionn.repl.co';
+      }
 
-        function buttonClicked() {
+      function downloadButtonClicked() {
+        download("tempcat.png")
+      }
 
-          btn.disabled = true;
-          text.innerHTML = "Hold on...";
-
-          window.location.href='https://daniibot.dani-lionn.repl.co';
-        }
+      function download(url) {
+        const a = document.createElement('a')
+        a.href = url
+        a.download = url.split('/').pop()
+        document.body.appendChild(a)
+        a.click()
+        document.body.removeChild(a)
+      }
     </script>
   </body>
 </html>
