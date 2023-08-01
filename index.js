@@ -1836,17 +1836,17 @@ app.get("/test", function (Request, Res) {
 
 app.get("/", async function (Request, Res) {
 
-    if (fs.existsSync('tempcat.png')) {
-        fs.unlink('tempcat.png',function(err){
-            if(err) return console.log(err);
-       });  
-    }
+    // if (fs.existsSync('tempcat.png')) {
+    //     fs.unlink('tempcat.png',function(err){
+    //         if(err) return console.log(err);
+    //    });  
+    // }
 
     Res.status(200)
 
-    let path = download("https://cataas.com/cat", 'tempcat.png')
+    // let path = download("https://cataas.com/cat", 'tempcat.png')
 
-    console.log(path)
+    // console.log(path)
 
     Res.send(ResponseHTML);
 });

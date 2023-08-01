@@ -41,13 +41,13 @@ as a fun little easter egg.
         margin: 0 auto;
       }
 
-      .bottom-middle2 {
+      /* .bottom-middle2 {
         position: fixed;
         left: 50%;
         bottom: 100x;
         transform: translate(-50%, -50%);
         margin: 0 auto;
-      }
+      } */
 
       ;
     </style>
@@ -56,22 +56,20 @@ as a fun little easter egg.
     <p>200 OK</p>
     <div class="left">
       <p class="msg">Seems like everything is working! Here, have a cat image.</p>
-      <img id="catImage" src="" alt="random cat image" style="width:512px;height:512px;">
+      <img id="catImage" src="https://cataas.com/cat" alt="random cat image" style="width:512px;height:512px;">
     </div>
     <div class="bottom-middle">
       <p class="msg" id="output"></p>
       <button type="button" id="reloadButton" onclick="buttonClicked()" onload="imageLoaded()" disabled="true">gimmie another</button>
     </div>
-    <div class="bottom-middle2">
+    <!--<div class="bottom-middle2">
       <button type="button" id="download" onclick="downloadButtonClicked()" onload="imageLoaded()" disabled="true">gimmie another</button>
-    </div>
+    </div>-->
     <script>
       const btn = document.getElementById("reloadButton");
-      const dlBtn = document.getElementById("download");
+      //const dlBtn = document.getElementById("download");
       const img = document.getElementById("catImage");
       const text = document.getElementById("output");
-
-      img.src = "./tempcat.png";
 
       img.addEventListener("load", () => {
         btn.disabled = false;
@@ -85,9 +83,9 @@ as a fun little easter egg.
         window.location.href = 'https://daniibot.dani-lionn.repl.co';
       }
 
-      function downloadButtonClicked() {
-        download("./tempcat.png")
-      }
+      // function downloadButtonClicked() {
+      //   download("./tempcat.png")
+      // }
 
       function download(url) {
         const a = document.createElement('a')
