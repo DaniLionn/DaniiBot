@@ -41,7 +41,8 @@ as a fun little easter egg.
         bottom: 20px;
         transform: translate(-50%, -50%);
         margin: 0 auto;
-      };
+      }    
+      ;
 
     </style>
   </head>
@@ -57,11 +58,13 @@ as a fun little easter egg.
     </div>
     <script>
         const btn = document.getElementById("reloadButton");
+        const dlBtn = document.getElementById("download");
         const img = document.getElementById("catImage");
         const text = document.getElementById("output");
 
         img.addEventListener("load", () => {
           btn.disabled = false;
+          dlBtn.disabled = false;
          })
 
         function buttonClicked() {
