@@ -1750,10 +1750,15 @@ function send() {
     
     message = ""
 }
+let NewPath
+
+function onCLose() {
+    return NewPath
+}
 
 function download(url, name) {
 
-    let path
+    
 
     const file = fs.createWriteStream(name);
     const request = https.get(url, function (response) {
@@ -1765,9 +1770,9 @@ function download(url, name) {
             
             console.log("downloaded")
 
-            path = file.path
-            file.close(); // close() is async, call cb after close completes.
-            return path
+            NewPath = file.path
+            file.close(onCLose); // close() is async, call cb after close completes.
+           
 
     })
 
