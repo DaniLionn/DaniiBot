@@ -11,6 +11,8 @@ as a fun little easter egg.
 <html>
   <head>
     <!--<link rel="stylesheet" href="danibot_replit_page_style.css">-->
+    <title>DaniBot's page</title>
+    <link rel="icon" type="image/x-icon" href="https://danilionn.github.io/danis-bot-website/favicon.ico">
     <style>
       p {
         color: white;
@@ -29,28 +31,43 @@ as a fun little easter egg.
         font-family: RoundedBold
       }
 
-      ;
+      .left{
+        float: left;
+      }
+      
+      .bottom-middle {
+        position: fixed;
+        left: 50%;
+        bottom: 20px;
+        transform: translate(-50%, -50%);
+        margin: 0 auto;
+      };
+
     </style>
   </head>
   <body>
     <p>200 OK</p>
-    <p class="msg">Seems like everything is working! Here, have a cat image.</p>
-    <img id="catImage" src="https://cataas.com/cat" alt="random cat image" style="width:512px;height:512px;">
-
-    <button type="button" id="reloadButton" onclick="buttonClicked()" onload="imageLoaded()" disabled="true">gimmie another</button>
-
+    <div class="left">
+      <p class="msg">Seems like everything is working! Here, have a cat image.</p>
+      <img id="catImage" src="https://cataas.com/cat" alt="random cat image" style="width:512px;height:512px;">
+    </div>
+    <div class="bottom-middle">
+      <p class="msg" id="output"></p>
+      <button type="button" id="reloadButton" onclick="buttonClicked()" onload="imageLoaded()" disabled="true">gimmie another</button>
+    </div>
     <script>
-          const btn = document.getElementById("reloadButton");
-          const img = document.getElementById("catImage");
+        const btn = document.getElementById("reloadButton");
+        const img = document.getElementById("catImage");
+        const text = document.getElementById("output");
 
         img.addEventListener("load", () => {
           btn.disabled = false;
          })
-         
+
         function buttonClicked() {
 
-
-          btn.innerHTML = "Hold on...";
+          btn.disabled = true;
+          text.innerHTML = "Hold on...";
 
           window.location.href='https://daniibot.dani-lionn.repl.co';
         }
