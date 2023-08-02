@@ -1,0 +1,12 @@
+#Files that aren't really needed for the github release
+configure.json
+CommandsLogg.txt
+ErrorsLog.txt
+ErrorLog.txt
+ffmpeg.exe
+tempcat.png
+commands/ffmpeg.exe
+.space/README
+.space/meta
+danibot/
+ignore/
