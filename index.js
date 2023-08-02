@@ -1175,6 +1175,9 @@ client.on(Events.InteractionCreate, async interaction => {
         if (interaction.commandName === 'change-status')
         {
         
+
+            console.log("changing sttus")
+
         	if (interaction.user.id === DaniLionnId)
         	{
         		const type = interaction.options.getString('type');
