@@ -213,7 +213,11 @@ function setBotStatus() { // Function that gives the bot a random status based o
     setTimeout(() => {
         
         const status = statusTypes[Math.floor(Math.random() * statusTypes.length)];
+
+        let random = Math.floor(Math.random() * 3)
         
+        if (random === 0) {
+
         if (status === 'ONLINE') {
             
             client.user.setStatus('online');
@@ -228,6 +232,7 @@ function setBotStatus() { // Function that gives the bot a random status based o
             
             client.user.setStatus('idle');
         }
+    }
     }, 1500);
     
 }
@@ -1167,30 +1172,30 @@ client.on(Events.InteractionCreate, async interaction => {
         
         // }
         
-        // if (interaction.commandName === 'change-status')
-        // {
+        if (interaction.commandName === 'change-status')
+        {
         
-        // 	if (interaction.user.id === DaniLionnId)
-        // 	{
-        // 		const type = interaction.options.getString('type');
-        // 		setBotStatus2(type);
+        	if (interaction.user.id === DaniLionnId)
+        	{
+        		const type = interaction.options.getString('type');
+        		setBotStatus2(type);
         
-        // 		await interaction.reply(
-        // 		{
-        // 			content: 'Bot status switched!',
-        // 			ephemeral: true
-        // 		});
+        		await interaction.reply(
+        		{
+        			content: 'Bot status switched!',
+        			ephemeral: true
+        		});
         
-        // 	}
-        // 	else
-        // 	{
-        // 		await interaction.reply(
-        // 		{
-        // 			content: 'Sorry, but this command is reserved for dani only.',
-        // 			ephemeral: true
-        // 		});
-        // 	};
-        // }
+        	}
+        	else
+        	{
+        		await interaction.reply(
+        		{
+        			content: 'Sorry, but this command is reserved for dani only.',
+        			ephemeral: true
+        		});
+        	};
+        }
         
         if (interaction.commandName === 'emojify') {
             
