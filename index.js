@@ -129,9 +129,9 @@ for (const file of commandFiles) {
 
 const activityTypes = ['PLAYING', 'WATCHING', 'LISTENING', 'COMPETING'];
 const statusTypes = ['ONLINE', 'IDLE', 'DND']
-const PlayingMessages = [ /*'with myself 😏'*/ , 'some game i enjoy', 'a board game', 'Roblox', 'something very scary 👻👻👻', 'the piano', 'Playing Playing Playing Playing Playing Playing Playing Playing Playing Playing', 'with a bomb', 'with a ouija board'];
-const WatchingMessages = [ /*'porn'*/ , 'cat videos', 'how 2 take over the universe', 'idiots in cars', 'terraria challeng videos', 'is', 'the', "Minions: Rise of Gru"];
-const ListeningMessages = ['music', 'the voices in my head', 'ghost and pals 😌', 'Spotify'];
+const PlayingMessages = [ /*'with myself 😏'*/ , 'some game i enjoy', 'a board game', 'Roblox', 'something very scary 👻👻👻', 'the piano', 'Playing Playing Playing Playing Playing Playing Playing Playing Playing Playing', 'with a bomb', 'with a ouija board', 'Doubutsu no Mori', 'Doubutsu no Mori+', 'Animal Crossing GCN', 'Doubutsu no Mori e+', 'Animal Crossing: Wild World', 'Animal Crossing: City Folk', 'Animal Crossing: New Leaf', 'Animal Crossing: New Horizons', 'Rhythm Tengoku', 'Rhythm Heaven', 'Rhythm Heaven Fever', 'Rhythm Heaven Megamix', 'Hatsune Miku: Project Diva Megamix', "Demon Slayer -Kimetsu no Yaibu- THe Hinokami Chronicles", "Pokémon Diamond", "Pokémon X", "Pokémon Ultra Sun", "Pokémon Legends: Arceus", "Pokémon Violet", "Pokémon Sword"];
+const WatchingMessages = [ /*'porn'*/ , 'cat videos', 'how 2 take over the universe', 'idiots in cars', 'terraria challeng videos', 'is', 'the', "Minions: Rise of Gru", "Gekijōban Doubutsu no Mori"];
+const ListeningMessages = ['music', 'the voices in my head', 'ghost and pals 😌', 'Spotify', "new leaf's hourly soundtrack", "miitpoia ost"];
 const CompetingMessages = [`sexiest bot championships ${new Date().getFullYear()}`, 'pipe bomb building', "winning your mom's heart"]
 const GayMessages = ['yes i am :smiley:', 'no u :rage:', 'you\'re gay too, i can smell it (you smell like fruit that\'s how i can tell)'];
 const Reactions = ['😭', '🥺', '🏳‍🌈', '😒', '😡', '🤦‍♀️', '✨', '🤪', '🥰', '🔥', /* '😏' , */ /* '😩', */ '😳', '🤩', '👍', '🤔', '🥔', '😔', '❤', '💕', '💔', '😛', '😎', '💀', '🤓', '😈', '🤡', '🤭', '😥', '1048083800590131272', '1056275303720296448'];
