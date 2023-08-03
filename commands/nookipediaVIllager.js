@@ -105,7 +105,7 @@ module.exports = {
                                             value: FinalJSON["sign"],
                                         }, {
                                             name: 'Quote',
-                                            value: FinalJSON["quote"],
+                                            value: `"${FinalJSON["quote"]}"`,
                                         }, {
                                             name: 'Clothing',
                                             value: FinalJSON["clothing"],
