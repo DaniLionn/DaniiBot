@@ -106,8 +106,8 @@ module.exports = {
             .setDescription('events happening in game right now'))
         .addSubcommand(subcommand =>
             subcommand
-            .setName('events-YYYY-MM-DD')
-            .setDescription('events happening in game right now')
+            .setName('events')
+            .setDescription('events happening on the specified date')
             .addStringOption(option => option.setName('date').setDescription('The date you want event info about (MUST BE FORMATTED AS YYYY-MM-DD)').setRequired(true))),
     async execute(interaction) {
         //give the bot time to think! we need to make sure we get all the data
