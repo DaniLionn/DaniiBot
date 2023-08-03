@@ -238,7 +238,7 @@ module.exports = {
         } else if ((interaction.options.getSubcommand() === 'events-today')) {
             let date = new Date().toLocaleDateString()
             console.log(formatDate(date));
-            https.get(`https://api.nookipedia.com/nh/events?${formatDate(date)}`, options, (response) => {
+            https.get(`https://api.nookipedia.com/nh/events?date=${formatDate(date)}`, options, (response) => {
                 
                 var result = ''
                 response.on('data', function (chunk) {
