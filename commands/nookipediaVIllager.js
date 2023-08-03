@@ -105,7 +105,7 @@ function formatDate(date) {
 
 async function createArtGuide(realURL, fakeURL) {
 
-    const stamp = getTimestamp()
+    //const stamp = getTimestamp()
     
     const fileName = `artguide.png`
     
