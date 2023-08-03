@@ -1181,6 +1181,9 @@ client.on(Events.InteractionCreate, async interaction => {
         	if (interaction.user.id === DaniLionnId)
         	{
         		const type = interaction.options.getString('type');
+
+                console.log(type)
+
         		setBotStatus2(type);
         
         		await interaction.reply(
