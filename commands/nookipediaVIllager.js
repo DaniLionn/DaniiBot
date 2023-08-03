@@ -408,6 +408,12 @@ module.exports = {
                                     name: 'Location',
                                     value: FinalJSON["location"]
                                 }, {
+                                    name: 'Shadow Size',
+                                    value: FinalJSON["shadow_size"],
+                                },{
+                                    name: 'Speed',
+                                    value: FinalJSON["shadow_movement"],
+                                },{
                                     name: 'Catches needed to unlock',
                                     value: FinalJSON["total_catch"].toString(),
                                 }, {
