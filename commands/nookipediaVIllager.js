@@ -195,7 +195,7 @@ module.exports = {
             let fishName = interaction.options.getString('fish-name').toLowerCase().replace(" ", "%20")
 
             try {
-                https.get(`https://api.nookipedia.com/nh/fish/${interaction.options.getString('fish-name').toLowerCase()}`, options, (response) => {
+                https.get(`https://api.nookipedia.com/nh/fish/${fishName}`, options, (response) => {
                     
                     var result = ''
                     response.on('data', function (chunk) {
