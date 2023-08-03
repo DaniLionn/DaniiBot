@@ -251,19 +251,14 @@ module.exports = {
                     console.log(FinalJSON)
                     
                     const embed = new EmbedBuilder()
-                        .setColor(FinalJSON["title_color"])
-                        .setTitle(FinalJSON["name"])
+                        .setTitle(FinalJSON["event"])
                         .setURL(FinalJSON["url"])
-                        .setThumbnail(FinalJSON["image_url"])
-                        .addFields({
-                            name: 'Species',
-                            value: FinalJSON["species"]
+                        .addFields( {
+                            name: 'Date',
+                            value: FinalJSON["date"]
                         }, {
-                            name: 'Personality',
-                            value: FinalJSON["personality"]
-                        }, {
-                            name: 'Gender',
-                            value: FinalJSON["gender"],
+                            name: 'Type',
+                            value: FinalJSON["type"],
                         }, {
                             name: 'Birthday',
                             value: `${FinalJSON["birthday_month"]} ${FinalJSON["birthday_day"]}`,
