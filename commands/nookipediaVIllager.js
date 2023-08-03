@@ -192,6 +192,8 @@ module.exports = {
             
         } else if ((interaction.options.getSubcommand() === 'fish')) {
             
+            let fishName = interaction.options.getString('fish-name').toLowerCase().replace(" ", "%20")
+
             try {
                 https.get(`https://api.nookipedia.com/nh/fish/${interaction.options.getString('fish-name').toLowerCase()}`, options, (response) => {
                     
