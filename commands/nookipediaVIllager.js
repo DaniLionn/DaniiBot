@@ -46,253 +46,268 @@ function GetGameString(code) {
     }
     
 }
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+ let date = new Date().toLocaleDateString()
+console.log(formatDate(date));
 
 //const { compare } = require('libsodium-wrappers');
 module.exports = {
-        data: new SlashCommandBuilder()
-            .setName('nookipedia')
-            .setDescription('get various animal crossing related info')
-            .addSubcommand(subcommand =>
-                subcommand
-                .setName('villager')
-                .setDescription('info about a villager')
-                .addStringOption(option => option.setName('name').setDescription('The villager you want info about').setRequired(true)))
-                .addSubcommand(subcommand =>
-                    subcommand
-                    .setName('fish')
-                    .setDescription('info about a fish')
-                    .addStringOption(option => option.setName('fish-name').setDescription('The fish you want info about').setRequired(true)))
-                    .addSubcommand(subcommand =>
-                        subcommand
-                        .setName('bug')
-                        .setDescription('info about a bug')
-                        .addStringOption(option => option.setName('bug-name').setDescription('The bug you want info about').setRequired(true)))
-                        .addSubcommand(subcommand =>
-                            subcommand
-                            .setName('sea-creature')
-                            .setDescription('info about a sea creature')
-                            .addStringOption(option => option.setName('sea-creature-name').setDescription('The sea creature you want info about').setRequired(true)))
-                            .addSubcommand(subcommand =>
-                                subcommand
-                                .setName('clothing')
-                                .setDescription('info about an article of clothing ')
-                                .addStringOption(option => option.setName('clothing-name').setDescription('The clothing you want info about').setRequired(true)))
-                                .addSubcommand(subcommand =>
-                                    subcommand
-                                    .setName('tool')
-                                    .setDescription('info about a tool')
-                                    .addStringOption(option => option.setName('tool-name').setDescription('The tool you want info about').setRequired(true)))
-                                    .addSubcommand(subcommand =>
-                                        subcommand
-                                        .setName('events-today')
-                                        .setDescription('events happening in game right now')),
-        async execute(interaction) {
-            //give the bot time to think! we need to make sure we get all the data
-            //console.log(appDir)
-            await interaction.deferReply();
-            
-            let FinalJSON
-            let appearances = ""
-            
-            if (interaction.options.getSubcommand() === 'villager') {
-                https.get(`https://api.nookipedia.com/villagers?name=${interaction.options.getString('name').toLowerCase()}`, options, (response) => {
-                        
-                        var result = ''
-                        response.on('data', function (chunk) {
-                            result += chunk;
-                        });
-                        
-                        response.on('end', async function () {
-                                
-                                FinalJSON = JSON.parse(result)[0];
-                                
-                                console.log(FinalJSON, FinalJSON["appearances"])
-                            if (FinalJSON) {
-                                for (var i = 0; i < FinalJSON["appearances"].length; i++) {
-                                    appearances = appearances + `\n${GetGameString(FinalJSON["appearances"][i])},`
-                                }
-                                    
-                                    const embed = new EmbedBuilder()
-                                        .setColor(FinalJSON["title_color"])
-                                        .setTitle(FinalJSON["name"])
-                                        .setURL(FinalJSON["url"])
-                                        .setThumbnail(FinalJSON["image_url"])
-                                        .addFields({
-                                            name: 'Species',
-                                            value: FinalJSON["species"]
-                                        }, {
-                                            name: 'Personality',
-                                            value: FinalJSON["personality"]
-                                        }, {
-                                            name: 'Gender',
-                                            value: FinalJSON["gender"],
-                                        }, {
-                                            name: 'Birthday',
-                                            value: `${FinalJSON["birthday_month"]} ${FinalJSON["birthday_day"]}`,
-                                        }, {
-                                            name: 'Star Sign',
-                                            value: FinalJSON["sign"],
-                                        }, {
-                                            name: 'Quote',
-                                            value: `"${FinalJSON["quote"]}"`,
-                                        }, {
-                                            name: 'Clothing',
-                                            value: FinalJSON["clothing"],
-                                        }, {
-                                            name: 'Debut Game',
-                                            value: GetGameString(FinalJSON["debut"]),
-                                        },{
-                                            name: 'Appearances',
-                                            value: appearances,
-                                        })
-                                    
-                                    await interaction.editReply({
-                                        embeds: [embed]
-                                    })
-                                } else {
-                                    await interaction.editReply("No info for that villager was found!")
-                                }
-                                });
-                            
-                        });
-                    
-                } else if ((interaction.options.getSubcommand() === 'fish')) {
-                    https.get(`https://api.nookipedia.com/nh/fish/${interaction.options.getString('fish-name').toLowerCase()}`, options, (response) => {
-                        
-                    var result = ''
-                    response.on('data', function (chunk) {
-                        result += chunk;
-                    });
-                    
-                    response.on('end', async function () {
-                        await interaction.editReply("Not implemented yet")
-                    })
-                })
-                }else if ((interaction.options.getSubcommand() === 'bug')) {
-                    https.get(`https://api.nookipedia.com/nh/bugs/${interaction.options.getString('bug-name').toLowerCase()}`, options, (response) => {
-                        
-                    var result = ''
-                    response.on('data', function (chunk) {
-                        result += chunk;
-                    });
-                    
-                    response.on('end', async function () {
-                        await interaction.editReply("Not implemented yet")
-                    })
-                })
-                    
-                }else if ((interaction.options.getSubcommand() === 'sea-creature')) {
-                    https.get(`https://api.nookipedia.com/nh/sea/${interaction.options.getString('sea-creature-name').toLowerCase()}`, options, (response) => {
-                        
-                    var result = ''
-                    response.on('data', function (chunk) {
-                        result += chunk;
-                    });
-                    
-                    response.on('end', async function () {
-                        await interaction.editReply("Not implemented yet")
-                    })
-                })
-                    
-                }else if ((interaction.options.getSubcommand() === 'clothing')) {
-
-                    https.get(`https://api.nookipedia.com/nh/clothing/${interaction.options.getString('name').toLowerCase()}`, options, (response) => {
-                        
-                    var result = ''
-                    response.on('data', function (chunk) {
-                        result += chunk;
-                    });
-                    
-                    response.on('end', async function () {
-                        await interaction.editReply("Not implemented yet")
-                    })
-                })
-                    
-                }else if ((interaction.options.getSubcommand() === 'tool')) {
-                    https.get(`https://api.nookipedia.com/nh/tools/${interaction.options.getString('name').toLowerCase()}`, options, (response) => {
-                        
-                    var result = ''
-                    response.on('data', function (chunk) {
-                        result += chunk;
-                    });
-                    
-                    response.on('end', async function () {
-                        await interaction.editReply("Not implemented yet")
-                    })
-                })
-                }else if ((interaction.options.getSubcommand() === 'events-today')) {
-                    https.get(`https://api.nookipedia.com/nh/events?today`, options, (response) => {
-                        
-                    var result = ''
-                    response.on('data', function (chunk) {
-                        result += chunk;
-                    });
-                    
-                    response.on('end', async function () {
-                        FinalJSON = JSON.parse(result)[0];
-                                
-                        console.log(FinalJSON)
-                        
-
-                        const embed = new EmbedBuilder()
-                                        .setColor(FinalJSON["title_color"])
-                                        .setTitle(FinalJSON["name"])
-                                        .setURL(FinalJSON["url"])
-                                        .setThumbnail(FinalJSON["image_url"])
-                                        .addFields({
-                                            name: 'Species',
-                                            value: FinalJSON["species"]
-                                        }, {
-                                            name: 'Personality',
-                                            value: FinalJSON["personality"]
-                                        }, {
-                                            name: 'Gender',
-                                            value: FinalJSON["gender"],
-                                        }, {
-                                            name: 'Birthday',
-                                            value: `${FinalJSON["birthday_month"]} ${FinalJSON["birthday_day"]}`,
-                                        }, {
-                                            name: 'Star Sign',
-                                            value: FinalJSON["sign"],
-                                        }, {
-                                            name: 'Quote',
-                                            value: `"${FinalJSON["quote"]}"`,
-                                        }, {
-                                            name: 'Clothing',
-                                            value: FinalJSON["clothing"],
-                                        }, {
-                                            name: 'Debut Game',
-                                            value: GetGameString(FinalJSON["debut"]),
-                                        },{
-                                            name: 'Appearances',
-                                            value: appearances,
-                                        })
-                                    
-                                    await interaction.editReply({
-                                        embeds: [embed]
-                                    })
-                    })
-                })
-                }
+    data: new SlashCommandBuilder()
+        .setName('nookipedia')
+        .setDescription('get various animal crossing related info')
+        .addSubcommand(subcommand =>
+            subcommand
+            .setName('villager')
+            .setDescription('info about a villager')
+            .addStringOption(option => option.setName('name').setDescription('The villager you want info about').setRequired(true)))
+        .addSubcommand(subcommand =>
+            subcommand
+            .setName('fish')
+            .setDescription('info about a fish')
+            .addStringOption(option => option.setName('fish-name').setDescription('The fish you want info about').setRequired(true)))
+        .addSubcommand(subcommand =>
+            subcommand
+            .setName('bug')
+            .setDescription('info about a bug')
+            .addStringOption(option => option.setName('bug-name').setDescription('The bug you want info about').setRequired(true)))
+        .addSubcommand(subcommand =>
+            subcommand
+            .setName('sea-creature')
+            .setDescription('info about a sea creature')
+            .addStringOption(option => option.setName('sea-creature-name').setDescription('The sea creature you want info about').setRequired(true)))
+        .addSubcommand(subcommand =>
+            subcommand
+            .setName('clothing')
+            .setDescription('info about an article of clothing ')
+            .addStringOption(option => option.setName('clothing-name').setDescription('The clothing you want info about').setRequired(true)))
+        .addSubcommand(subcommand =>
+            subcommand
+            .setName('tool')
+            .setDescription('info about a tool')
+            .addStringOption(option => option.setName('tool-name').setDescription('The tool you want info about').setRequired(true)))
+        .addSubcommand(subcommand =>
+            subcommand
+            .setName('events-today')
+            .setDescription('events happening in game right now')),
+    async execute(interaction) {
+        //give the bot time to think! we need to make sure we get all the data
+        //console.log(appDir)
+        await interaction.deferReply();
+        
+        let FinalJSON
+        let appearances = ""
+        
+        if (interaction.options.getSubcommand() === 'villager') {
+            https.get(`https://api.nookipedia.com/villagers?name=${interaction.options.getString('name').toLowerCase()}`, options, (response) => {
                 
-            }
+                var result = ''
+                response.on('data', function (chunk) {
+                    result += chunk;
+                });
+                
+                response.on('end', async function () {
+                    
+                    FinalJSON = JSON.parse(result)[0];
+                    
+                    console.log(FinalJSON, FinalJSON["appearances"])
+                    if (FinalJSON) {
+                        for (var i = 0; i < FinalJSON["appearances"].length; i++) {
+                            appearances = appearances + `\n${GetGameString(FinalJSON["appearances"][i])},`
+                        }
+                        
+                        const embed = new EmbedBuilder()
+                            .setColor(FinalJSON["title_color"])
+                            .setTitle(FinalJSON["name"])
+                            .setURL(FinalJSON["url"])
+                            .setThumbnail(FinalJSON["image_url"])
+                            .addFields({
+                                name: 'Species',
+                                value: FinalJSON["species"]
+                            }, {
+                                name: 'Personality',
+                                value: FinalJSON["personality"]
+                            }, {
+                                name: 'Gender',
+                                value: FinalJSON["gender"],
+                            }, {
+                                name: 'Birthday',
+                                value: `${FinalJSON["birthday_month"]} ${FinalJSON["birthday_day"]}`,
+                            }, {
+                                name: 'Star Sign',
+                                value: FinalJSON["sign"],
+                            }, {
+                                name: 'Quote',
+                                value: `"${FinalJSON["quote"]}"`,
+                            }, {
+                                name: 'Clothing',
+                                value: FinalJSON["clothing"],
+                            }, {
+                                name: 'Debut Game',
+                                value: GetGameString(FinalJSON["debut"]),
+                            }, {
+                                name: 'Appearances',
+                                value: appearances,
+                            })
+                        
+                        await interaction.editReply({
+                            embeds: [embed]
+                        })
+                    } else {
+                        await interaction.editReply("No info for that villager was found!")
+                    }
+                });
+                
+            });
+            
+        } else if ((interaction.options.getSubcommand() === 'fish')) {
+            https.get(`https://api.nookipedia.com/nh/fish/${interaction.options.getString('fish-name').toLowerCase()}`, options, (response) => {
+                
+                var result = ''
+                response.on('data', function (chunk) {
+                    result += chunk;
+                });
+                
+                response.on('end', async function () {
+                    await interaction.editReply("Not implemented yet")
+                })
+            })
+        } else if ((interaction.options.getSubcommand() === 'bug')) {
+            https.get(`https://api.nookipedia.com/nh/bugs/${interaction.options.getString('bug-name').toLowerCase()}`, options, (response) => {
+                
+                var result = ''
+                response.on('data', function (chunk) {
+                    result += chunk;
+                });
+                
+                response.on('end', async function () {
+                    await interaction.editReply("Not implemented yet")
+                })
+            })
+            
+        } else if ((interaction.options.getSubcommand() === 'sea-creature')) {
+            https.get(`https://api.nookipedia.com/nh/sea/${interaction.options.getString('sea-creature-name').toLowerCase()}`, options, (response) => {
+                
+                var result = ''
+                response.on('data', function (chunk) {
+                    result += chunk;
+                });
+                
+                response.on('end', async function () {
+                    await interaction.editReply("Not implemented yet")
+                })
+            })
+            
+        } else if ((interaction.options.getSubcommand() === 'clothing')) {
+            
+            https.get(`https://api.nookipedia.com/nh/clothing/${interaction.options.getString('name').toLowerCase()}`, options, (response) => {
+                
+                var result = ''
+                response.on('data', function (chunk) {
+                    result += chunk;
+                });
+                
+                response.on('end', async function () {
+                    await interaction.editReply("Not implemented yet")
+                })
+            })
+            
+        } else if ((interaction.options.getSubcommand() === 'tool')) {
+            https.get(`https://api.nookipedia.com/nh/tools/${interaction.options.getString('name').toLowerCase()}`, options, (response) => {
+                
+                var result = ''
+                response.on('data', function (chunk) {
+                    result += chunk;
+                });
+                
+                response.on('end', async function () {
+                    await interaction.editReply("Not implemented yet")
+                })
+            })
+        } else if ((interaction.options.getSubcommand() === 'events-today')) {
+            let date = new Date().toLocaleDateString()
+            console.log(formatDate(date));
+            https.get(`https://api.nookipedia.com/nh/events?${formatDate(date)}`, options, (response) => {
+                
+                var result = ''
+                response.on('data', function (chunk) {
+                    result += chunk;
+                });
+                
+                response.on('end', async function () {
+                    FinalJSON = JSON.parse(result)[0];
+                    
+                    console.log(FinalJSON)
+                    
+                    const embed = new EmbedBuilder()
+                        .setColor(FinalJSON["title_color"])
+                        .setTitle(FinalJSON["name"])
+                        .setURL(FinalJSON["url"])
+                        .setThumbnail(FinalJSON["image_url"])
+                        .addFields({
+                            name: 'Species',
+                            value: FinalJSON["species"]
+                        }, {
+                            name: 'Personality',
+                            value: FinalJSON["personality"]
+                        }, {
+                            name: 'Gender',
+                            value: FinalJSON["gender"],
+                        }, {
+                            name: 'Birthday',
+                            value: `${FinalJSON["birthday_month"]} ${FinalJSON["birthday_day"]}`,
+                        }, {
+                            name: 'Star Sign',
+                            value: FinalJSON["sign"],
+                        }, {
+                            name: 'Quote',
+                            value: `"${FinalJSON["quote"]}"`,
+                        }, {
+                            name: 'Clothing',
+                            value: FinalJSON["clothing"],
+                        }, {
+                            name: 'Debut Game',
+                            value: GetGameString(FinalJSON["debut"]),
+                        }, {
+                            name: 'Appearances',
+                            value: appearances,
+                        })
+                    
+                    await interaction.editReply({
+                        embeds: [embed]
+                    })
+                })
+            })
         }
         
-        process.on('unhandledRejection', error => {
-            console.log(error)
-            let s = new Date().toLocaleString();
-            const read = fs.readFileSync('./ErrorLog.txt', 'utf8', err => {
-                if (err) {
-                    console.log(err)
-                }
-            })
-            const data = `${read}\n${s}: ${error}`
-            //console.log(data)
-            fs.writeFileSync('./ErrorLog.txt', data, err => {
-                if (err) {
-                    console.error(err);
-                }
-                // file written successfully
-            });
-        });
-        
+    }
+}
+
+process.on('unhandledRejection', error => {
+    console.log(error)
+    let s = new Date().toLocaleString();
+    const read = fs.readFileSync('./ErrorLog.txt', 'utf8', err => {
+        if (err) {
+            console.log(err)
+        }
+    })
+    const data = `${read}\n${s}: ${error}`
+    //console.log(data)
+    fs.writeFileSync('./ErrorLog.txt', data, err => {
+        if (err) {
+            console.error(err);
+        }
+        // file written successfully
+    });
+});
