@@ -1,6 +1,7 @@
 const {
     SlashCommandBuilder,
-    EmbedBuilder
+    EmbedBuilder,
+    AttachmentBuilder,
 } = require('discord.js');
 const fs = require('node:fs');
 const https = require('https');
@@ -10,6 +11,12 @@ const {
 const {
     dirname
 } = require('path');
+const {
+    createCanvas,
+    Image,
+    GlobalFonts
+} = require('@napi-rs/canvas');
+const { finished } = require('node:stream/promises');
 //const { abort } = require('node:process');
 const appDir = dirname(require.main.filename);
 
@@ -94,6 +101,76 @@ function formatDate(date) {
         day = '0' + day;
     
     return [year, month, day].join('-');
+}
+
+async function createArtGuide(realURL, fakeURL) {
+
+    const stamp = getTimestamp()
+    
+    const fileName = `artguide.png`
+    
+    console.log(`Creating avatar card for ${member.displayName} (${user.username}) with message ${message} in server ${guildID} channel ${channelID}`)
+    
+    const canvas = createCanvas(700, 250);
+    const context = canvas.getContext('2d');
+    
+    let background;
+    let main;
+    
+    
+    // context.font = "32px Courier New";
+    // context.fillStyle = '#ffffff';
+    // context.strokeStyle = 'black';
+    // context.lineWidth = 6;
+    // context.strokeText("REAL", canvas.width / 2.5, canvas.height / 3.5);
+    // context.fillText("REAL", canvas.width / 2.5, canvas.height / 3.5);
+    
+    // context.font = applyText(canvas, `${member.displayName}`);
+    // context.fillStyle = main;
+    // context.strokeStyle = 'black';
+    // context.lineWidth = 6;
+    // context.strokeText(`${member.displayName}`, canvas.width / 2.5, canvas.height / 1.8);
+    // context.fillText(`${member.displayName}`, canvas.width / 2.5, canvas.height / 1.8);
+    
+    
+    const real = {
+        body
+    } = await request(realURL({
+        format: 'jpg'
+    }));
+
+    const fake = {
+        body
+    } = await request(fakeURL({
+        format: 'jpg'
+    }));
+    const realImage = new Image();
+    realImage.src = Buffer.from(await real.body.arrayBuffer());
+    context.drawImage(realImage, 0, 0, 350, 250);
+
+    const fakeimage = new Image();
+    fakeimage.src = Buffer.from(await fake.body.arrayBuffer());
+    context.drawImage(fakeimage, 0, 0, 350, 250);
+
+    context.font = "32px Courier New";
+    context.fillStyle = '#ffffff';
+    context.strokeStyle = 'black';
+    context.lineWidth = 6;
+    context.strokeText("REAL", 50, 150);
+    context.fillText("REAL", 50, 150);
+
+    context.font = "32px Courier New";
+    context.fillStyle = '#ffffff';
+    context.strokeStyle = 'black';
+    context.lineWidth = 6;
+    context.strokeText("FAKE", 400, 550);
+    context.fillText("FAKE", 400, 550);
+    
+    const attachment = new AttachmentBuilder(canvas.toBuffer('image/png'), {
+        name: fileName
+    });
+
+    
 }
 
 function formatNumber(num) {
@@ -207,7 +284,7 @@ module.exports = {
                         FinalJSON = JSON.parse(result)[0];
                         
                         console.log(FinalJSON, FinalJSON["appearances"])
-                        if (!FinalJSON["title"]) {
+                        if (!FinalJSON["title"] || !FinalJSON === '') {
                             for (var i = 0; i < FinalJSON["appearances"].length; i++) {
                                 appearances = appearances + `\n${FormatKey(FinalJSON["appearances"][i])},`
                             }
@@ -282,7 +359,7 @@ module.exports = {
                         
                         console.log(FinalJSON)
                         
-                        if (!FinalJSON["title"]) {
+                        if (!FinalJSON["title"] || !FinalJSON === '') {
                             const embed = new EmbedBuilder()
                                 .setColor(EmbedColours["Fish"])
                                 .setTitle(FinalJSON["name"])
@@ -345,7 +422,7 @@ module.exports = {
                     
                     response.on('end', async function () {
                         FinalJSON = JSON.parse(result);
-                        if (!FinalJSON["title"]) {
+                        if (!FinalJSON["title"] || !FinalJSON === '') {
                             const embed = new EmbedBuilder()
                                 .setColor(EmbedColours["Bug"])
                                 .setTitle(FinalJSON["name"])
@@ -408,7 +485,7 @@ module.exports = {
                         
                         console.log(FinalJSON)
                         
-                        if (!FinalJSON["title"]) {
+                        if (!FinalJSON["title"] || !FinalJSON === '') {
                             
                             const embed = new EmbedBuilder()
                                 .setColor(EmbedColours["DeepSeaCreature"])
@@ -473,7 +550,7 @@ module.exports = {
                     response.on('end', async function () {
                         
                         FinalJSON = JSON.parse(result);
-                        if (!FinalJSON["title"]) {
+                        if (!FinalJSON["title"] || !FinalJSON === '') {
                             const embed = new EmbedBuilder()
                                 .setColor(EmbedColours["Default"])
                                 .setTitle(FinalJSON["name"])
@@ -502,7 +579,7 @@ module.exports = {
                     await interaction.deleteReply();
                 }, 3000)
             }
-            
+            //
         } else if ((interaction.options.getSubcommand() === 'tool')) {
             try {
                 https.get(`https://api.nookipedia.com/nh/tools/${interaction.options.getString('tool-name').toLowerCase()}`, options, (response) => {
@@ -514,7 +591,7 @@ module.exports = {
                     
                     response.on('end', async function () {
                         FinalJSON = JSON.parse(result);
-                        if (!FinalJSON["title"]) {
+                        if (!FinalJSON["title"] || !FinalJSON === '') {
                             const embed = new EmbedBuilder()
                             .setColor(EmbedColours["Default"])
                             .setTitle(FinalJSON["name"])
@@ -620,7 +697,7 @@ module.exports = {
                         
                         console.log(FinalJSON)
                         
-                        if (!FinalJSON["title"]) {
+                        if (!FinalJSON["title"] || !FinalJSON === '') {
                             const embed = new EmbedBuilder()
                                 .setColor(EmbedColours["Default"])
                                 .setTitle(`Events for ${interaction.options.getString('date')}`)
@@ -673,20 +750,46 @@ module.exports = {
                     
                     response.on('end', async function () {
                         FinalJSON = JSON.parse(result);
-                        if (!FinalJSON["title"]) {
+
+                        
+
+                        if (!FinalJSON["title"] || !FinalJSON === '') {
+
+
+
                             const embed = new EmbedBuilder()
                             .setColor(EmbedColours["Artwork"])
                             .setTitle(FinalJSON["name"])
                             .setURL(FinalJSON["url"])
-                            .setThumbnail(FinalJSON["image_url"])
+                            .setThumbnail(FinalJSON["real_info"]["texture_url"])
                             .addFields({
-                                name: 'Number',
-                                value: FinalJSON["number"].toString()
-                            }, )
+                                name: 'Real Name',
+                                value: FinalJSON["art_name"]
+                            },{
+                                name: 'Art Type',
+                                value: FinalJSON["art_type"]
+                            },{
+                                name: 'Art Info',
+                                value: `*Artist*\n${FinalJSON["author"]}\n\n*Year*\n${FinalJSON["year"]}\n\n*Method used*\n${FinalJSON["art_style"]}`
+                            }, {
+                                name: 'Prices',
+                                value: `*Buy*\n${FormatCurrency(FinalJSON["buy"], "Bells")}\n\n*Sell*\n${FormatCurrency(FinalJSON["sell"], "Bells")}`
+                            } )
+                           
+                            if (FinalJSON["has_fake"] === true) {
+                                const file = createArtGuide(FinalJSON["real_info"]["texture_url"], FinalJSON["fake_info"]["texture_url"])
 
-                            await interaction.editReply({
-                                embeds: [embed]
-                            })
+                                embed.setImage("attachment://artguide.png")
+                                await interaction.editReply({
+                                    embeds: [embed], files: [file]
+                                })
+                            } else {
+                                await interaction.editReply({
+                                    embeds: [embed]
+                                })
+                            }
+
+
                         } else {
                             await interaction.editReply("An error occured!")
                             setTimeout(async function () {
@@ -715,7 +818,7 @@ module.exports = {
                     
                     response.on('end', async function () {
                         FinalJSON = JSON.parse(result);
-                        if (!FinalJSON["title"]) {
+                        if (!FinalJSON["title"] || !FinalJSON === '') {
                             const embed = new EmbedBuilder()
                             .setColor(EmbedColours["Default"])
                             .setTitle(FinalJSON["name"])
@@ -757,7 +860,7 @@ module.exports = {
                     
                     response.on('end', async function () {
                         FinalJSON = JSON.parse(result);
-                        if (!FinalJSON["title"]) {
+                        if (!FinalJSON["title"] || !FinalJSON === '') {
                             const embed = new EmbedBuilder()
                             .setColor(EmbedColours["Default"])
                             .setTitle(FinalJSON["name"])
@@ -799,7 +902,7 @@ module.exports = {
                     
                     response.on('end', async function () {
                         FinalJSON = JSON.parse(result);
-                        if (!FinalJSON["title"]) {
+                        if (!FinalJSON["title"] || !FinalJSON === '') {
                             const embed = new EmbedBuilder()
                             .setColor(EmbedColours["Default"])
                             .setTitle(FinalJSON["name"])
@@ -841,7 +944,7 @@ module.exports = {
                     
                     response.on('end', async function () {
                         FinalJSON = JSON.parse(result);
-                        if (!FinalJSON["title"]) {
+                        if (!FinalJSON["title"] || !FinalJSON === '') {
                             const embed = new EmbedBuilder()
                             .setColor(EmbedColours["Default"])
                             .setTitle(FinalJSON["name"])
