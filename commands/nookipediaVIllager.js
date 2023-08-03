@@ -118,228 +118,329 @@ module.exports = {
         let appearances = ""
         
         if (interaction.options.getSubcommand() === 'villager') {
-            https.get(`https://api.nookipedia.com/villagers?name=${interaction.options.getString('name').toLowerCase()}`, options, (response) => {
-                
-                var result = ''
-                response.on('data', function (chunk) {
-                    result += chunk;
-                });
-                
-                response.on('end', async function () {
+            
+            try {
+                https.get(`https://api.nookipedia.com/villagers?name=${interaction.options.getString('name').toLowerCase()}`, options, (response) => {
                     
-                    FinalJSON = JSON.parse(result)[0];
+                    var result = ''
+                    response.on('data', function (chunk) {
+                        result += chunk;
+                    });
                     
-                    console.log(FinalJSON, FinalJSON["appearances"])
-                    if (FinalJSON) {
-                        for (var i = 0; i < FinalJSON["appearances"].length; i++) {
-                            appearances = appearances + `\n${GetGameString(FinalJSON["appearances"][i])},`
-                        }
+                    response.on('end', async function () {
                         
-                        const embed = new EmbedBuilder()
-                            .setColor(FinalJSON["title_color"])
-                            .setTitle(FinalJSON["name"])
-                            .setURL(FinalJSON["url"])
-                            .setThumbnail(FinalJSON["image_url"])
-                            .addFields({
-                                name: 'Species',
-                                value: `${FinalJSON["species"]} (${FinalJSON["id"]})`
-                            }, {
-                                name: 'Personality',
-                                value: FinalJSON["personality"]
-                            }, {
-                                name: 'Gender',
-                                value: FinalJSON["gender"],
-                            }, {
-                                name: 'Birthday',
-                                value: `${FinalJSON["birthday_month"]} ${FinalJSON["birthday_day"]}`,
-                            }, {
-                                name: 'Star Sign',
-                                value: FinalJSON["sign"],
-                            },{
-                                name: 'Catchphrase',
-                                value: `"${FinalJSON["phrase"]}"`,
-                            }, {
-                                name: 'Quote',
-                                value: `"${FinalJSON["quote"]}"`,
-                            }, {
-                                name: 'Clothing',
-                                value: FinalJSON["clothing"],
-                            }, {
-                                name: 'Debut Game',
-                                value: GetGameString(FinalJSON["debut"]),
-                            }, {
-                                name: 'Appearances',
-                                value: appearances,
+                        FinalJSON = JSON.parse(result)[0];
+                        
+                        console.log(FinalJSON, FinalJSON["appearances"])
+                        if (FinalJSON) {
+                            for (var i = 0; i < FinalJSON["appearances"].length; i++) {
+                                appearances = appearances + `\n${GetGameString(FinalJSON["appearances"][i])},`
+                            }
+                            
+                            const embed = new EmbedBuilder()
+                                .setColor(FinalJSON["title_color"])
+                                .setTitle(FinalJSON["name"])
+                                .setURL(FinalJSON["url"])
+                                .setThumbnail(FinalJSON["image_url"])
+                                .addFields({
+                                    name: 'Species',
+                                    value: `${FinalJSON["species"]} (${FinalJSON["id"]})`
+                                }, {
+                                    name: 'Personality',
+                                    value: FinalJSON["personality"]
+                                }, {
+                                    name: 'Gender',
+                                    value: FinalJSON["gender"],
+                                }, {
+                                    name: 'Birthday',
+                                    value: `${FinalJSON["birthday_month"]} ${FinalJSON["birthday_day"]}`,
+                                }, {
+                                    name: 'Star Sign',
+                                    value: FinalJSON["sign"],
+                                }, {
+                                    name: 'Catchphrase',
+                                    value: `"${FinalJSON["phrase"]}"`,
+                                }, {
+                                    name: 'Quote',
+                                    value: `"${FinalJSON["quote"]}"`,
+                                }, {
+                                    name: 'Clothing',
+                                    value: FinalJSON["clothing"],
+                                }, {
+                                    name: 'Debut Game',
+                                    value: GetGameString(FinalJSON["debut"]),
+                                }, {
+                                    name: 'Appearances',
+                                    value: appearances,
+                                })
+                            
+                            await interaction.editReply({
+                                embeds: [embed]
                             })
-                        
-                        await interaction.editReply({
-                            embeds: [embed]
-                        })
-                    } else {
-                        await interaction.editReply("No info for that villager was found!")
-                    }
+                        } else {
+                            await interaction.editReply("No info for that villager was found!")
+                        }
+                    });
+                    
                 });
-                
-            });
+            } catch {
+                await interaction.editReply("An error occured!")
+                setTimeout(async function () {
+                    await interaction.deleteReply();
+                }, 3000)
+            }
             
         } else if ((interaction.options.getSubcommand() === 'fish')) {
-            https.get(`https://api.nookipedia.com/nh/fish/${interaction.options.getString('fish-name').toLowerCase()}`, options, (response) => {
-                
-                var result = ''
-                response.on('data', function (chunk) {
-                    result += chunk;
-                });
-                
-                response.on('end', async function () {
-                    await interaction.editReply("Not implemented yet")
+            
+            try {
+                https.get(`https://api.nookipedia.com/nh/fish/${interaction.options.getString('fish-name').toLowerCase()}`, options, (response) => {
+                    
+                    var result = ''
+                    response.on('data', function (chunk) {
+                        result += chunk;
+                    });
+                    
+                    response.on('end', async function () {
+                        FinalJSON = JSON.parse(result);
+
+                        console.log(FinalJSON)
+
+                        const embed = new EmbedBuilder()
+                                .setColor(defaultEmbedColour)
+                                .setTitle(FinalJSON["name"])
+                                .setURL(FinalJSON["url"])
+                                .setThumbnail(FinalJSON["image_url"])
+                                .addFields({
+                                    name: 'Number',
+                                    value: FinalJSON["number"]
+                                }, {
+                                    name: 'Location',
+                                    value: FinalJSON["location"]
+                                }, {
+                                    name: 'Shadow Size',
+                                    value: FinalJSON["shadow_size"],
+                                }, {
+                                    name: 'Rarity',
+                                    value: FinalJSON["rarity"],
+                                }, {
+                                    name: 'Catches needed to unlock',
+                                    value: FinalJSON["total_catch"],
+                                }, {
+                                    name: 'Sell Price',
+                                    value: `Regular: ${FinalJSON["sell_nook"]}\nC.J.: ${FinalJSON["sell_cj"]}`,
+                                }, {
+                                    name: '"Catch"phrase',
+                                    value: FinalJSON["catchphrases"][0],
+                                },)
+                            
+                            await interaction.editReply({
+                                embeds: [embed]
+                            })
+                    })
                 })
-            })
+            } catch {
+                await interaction.editReply("An error occured!")
+                setTimeout(async function () {
+                    await interaction.deleteReply();
+                }, 3000)
+            }
+            
         } else if ((interaction.options.getSubcommand() === 'bug')) {
-            https.get(`https://api.nookipedia.com/nh/bugs/${interaction.options.getString('bug-name').toLowerCase()}`, options, (response) => {
-                
-                var result = ''
-                response.on('data', function (chunk) {
-                    result += chunk;
-                });
-                
-                response.on('end', async function () {
-                    await interaction.editReply("Not implemented yet")
+            
+            try {
+                https.get(`https://api.nookipedia.com/nh/bugs/${interaction.options.getString('bug-name').toLowerCase()}`, options, (response) => {
+                    
+                    var result = ''
+                    response.on('data', function (chunk) {
+                        result += chunk;
+                    });
+                    
+                    response.on('end', async function () {
+                        FinalJSON = JSON.parse(result);
+                        await interaction.editReply("Not implemented yet")
+                    })
                 })
-            })
+            } catch {
+                await interaction.editReply("An error occured!")
+                setTimeout(async function () {
+                    await interaction.deleteReply();
+                }, 3000)
+            }
             
         } else if ((interaction.options.getSubcommand() === 'sea-creature')) {
-            https.get(`https://api.nookipedia.com/nh/sea/${interaction.options.getString('sea-creature-name').toLowerCase()}`, options, (response) => {
-                
-                var result = ''
-                response.on('data', function (chunk) {
-                    result += chunk;
-                });
-                
-                response.on('end', async function () {
-                    await interaction.editReply("Not implemented yet")
+            
+            try {
+                https.get(`https://api.nookipedia.com/nh/sea/${interaction.options.getString('sea-creature-name').toLowerCase()}`, options, (response) => {
+                    
+                    var result = ''
+                    response.on('data', function (chunk) {
+                        result += chunk;
+                    });
+                    
+                    response.on('end', async function () {
+                        FinalJSON = JSON.parse(result);
+                        await interaction.editReply("Not implemented yet")
+                    })
                 })
-            })
+                
+            } catch {
+                await interaction.editReply("An error occured!")
+                setTimeout(async function () {
+                    await interaction.deleteReply();
+                }, 3000)
+            }
             
         } else if ((interaction.options.getSubcommand() === 'clothing')) {
             
-            https.get(`https://api.nookipedia.com/nh/clothing/${interaction.options.getString('clothing-name').toLowerCase()}`, options, (response) => {
-                
-                var result = ''
-                response.on('data', function (chunk) {
-                    result += chunk;
-                });
-                
-                response.on('end', async function () {
-                    await interaction.editReply("Not implemented yet")
+            try {
+                https.get(`https://api.nookipedia.com/nh/clothing/${interaction.options.getString('clothing-name').toLowerCase()}`, options, (response) => {
+                    
+                    var result = ''
+                    response.on('data', function (chunk) {
+                        result += chunk;
+                    });
+                    
+                    response.on('end', async function () {
+                        FinalJSON = JSON.parse(result);
+                    })
                 })
-            })
+            } catch {
+                await interaction.editReply("An error occured!")
+                setTimeout(async function () {
+                    await interaction.deleteReply();
+                }, 3000)
+            }
             
         } else if ((interaction.options.getSubcommand() === 'tool')) {
-            https.get(`https://api.nookipedia.com/nh/tools/${interaction.options.getString('tool-name').toLowerCase()}`, options, (response) => {
-                
-                var result = ''
-                response.on('data', function (chunk) {
-                    result += chunk;
-                });
-                
-                response.on('end', async function () {
-                    await interaction.editReply("Not implemented yet")
+            try {
+                https.get(`https://api.nookipedia.com/nh/tools/${interaction.options.getString('tool-name').toLowerCase()}`, options, (response) => {
+                    
+                    var result = ''
+                    response.on('data', function (chunk) {
+                        result += chunk;
+                    });
+                    
+                    response.on('end', async function () {
+                        FinalJSON = JSON.parse(result);
+                    })
                 })
-            })
+            } catch {
+                await interaction.editReply("An error occured!")
+                setTimeout(async function () {
+                    await interaction.deleteReply();
+                }, 3000)
+            }
         } else if ((interaction.options.getSubcommand() === 'events-today')) {
             // let date = new Date().toLocaleDateString('en-US', {
             //     timeZone: 'America/Edmonton'
             // })
             console.log(formatDate(date));
-            https.get(`https://api.nookipedia.com/nh/events?today`, options, (response) => {
-                
-                var result = ''
-                response.on('data', function (chunk) {
-                    result += chunk;
-                });
-                
-                response.on('end', async function () {
-                    FinalJSON = JSON.parse(result);
+            
+            try {
+                https.get(`https://api.nookipedia.com/nh/events?today`, options, (response) => {
                     
-                    let total = 0
+                    var result = ''
+                    response.on('data', function (chunk) {
+                        result += chunk;
+                    });
                     
-                    let max = 25
-                    
-                    console.log(FinalJSON)
-                    //mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm wet diaper sludge
-                    const embed = new EmbedBuilder()
-                        .setColor(defaultEmbedColour)
-                        .setTitle(`Events for ${formatDate(date)}`)
-                    
-                    for (var i = 0; i < FinalJSON.length; i++) {
-                        total += 3
+                    response.on('end', async function () {
+                        FinalJSON = JSON.parse(result);
                         
-                        if (total <= max) {
-                            embed.addFields({
-                                name: 'Event Name',
-                                value: FinalJSON[i]["event"]
-                            }, {
-                                name: 'Date',
-                                value: FinalJSON[i]["date"]
-                            }, {
-                                name: 'Type',
-                                value: FinalJSON[i]["type"],
-                            })
+                        let total = 0
+                        
+                        let max = 25
+                        
+                        console.log(FinalJSON)
+                        //mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm wet diaper sludge
+                        const embed = new EmbedBuilder()
+                            .setColor(defaultEmbedColour)
+                            .setTitle(`Events for ${formatDate(date)}`)
+                        
+                        for (var i = 0; i < FinalJSON.length; i++) {
+                            total += 3
+                            
+                            if (total <= max) {
+                                embed.addFields({
+                                    name: 'Event Name',
+                                    value: FinalJSON[i]["event"]
+                                }, {
+                                    name: 'Date',
+                                    value: FinalJSON[i]["date"]
+                                }, {
+                                    name: 'Type',
+                                    value: FinalJSON[i]["type"],
+                                })
+                            }
+                            
                         }
                         
-                    }
-                    
-                    await interaction.editReply({
-                        embeds: [embed]
+                        await interaction.editReply({
+                            embeds: [embed]
+                        })
                     })
                 })
-            })
-        }else if ((interaction.options.getSubcommand() === 'events')) {
+            } catch {
+                await interaction.editReply("An error occured!")
+                setTimeout(async function () {
+                    await interaction.deleteReply();
+                }, 3000)
+            }
+            
+        } else if ((interaction.options.getSubcommand() === 'events')) {
             console.log(formatDate(date));
-            https.get(`https://api.nookipedia.com/nh/events?date=${interaction.options.getString('date')}`, options, (response) => {
+            
+            try {
                 
-                var result = ''
-                response.on('data', function (chunk) {
-                    result += chunk;
-                });
-                
-                response.on('end', async function () {
-                    FinalJSON = JSON.parse(result);
+                https.get(`https://api.nookipedia.com/nh/events?date=${interaction.options.getString('date')}`, options, (response) => {
                     
-                    let total = 0
+                    var result = ''
+                    response.on('data', function (chunk) {
+                        result += chunk;
+                    });
                     
-                    let max = 25
-                    
-                    console.log(FinalJSON)
-                    const embed = new EmbedBuilder()
-                        .setColor(defaultEmbedColour)
-                        .setTitle(`Events for ${interaction.options.getString('date')}`)
-                    
-                    for (var i = 0; i < FinalJSON.length; i++) {
-                        total += 3
+                    response.on('end', async function () {
+                        FinalJSON = JSON.parse(result);
                         
-                        if (total <= max) {
-                            embed.addFields({
-                                name: 'Event Name',
-                                value: FinalJSON[i]["event"]
-                            }, {
-                                name: 'Date',
-                                value: FinalJSON[i]["date"]
-                            }, {
-                                name: 'Type',
-                                value: FinalJSON[i]["type"],
-                            })
+                        let total = 0
+                        
+                        let max = 25
+                        
+                        console.log(FinalJSON)
+                        const embed = new EmbedBuilder()
+                            .setColor(defaultEmbedColour)
+                            .setTitle(`Events for ${interaction.options.getString('date')}`)
+                        
+                        for (var i = 0; i < FinalJSON.length; i++) {
+                            total += 3
+                            
+                            if (total <= max) {
+                                embed.addFields({
+                                    name: 'Event Name',
+                                    value: FinalJSON[i]["event"]
+                                }, {
+                                    name: 'Date',
+                                    value: FinalJSON[i]["date"]
+                                }, {
+                                    name: 'Type',
+                                    value: FinalJSON[i]["type"],
+                                })
+                            }
+                            
                         }
                         
-                    }
-                    
-                    await interaction.editReply({
-                        embeds: [embed]
+                        await interaction.editReply({
+                            embeds: [embed]
+                        })
                     })
                 })
-            })
+            } catch {
+                await interaction.editReply("An error occured!")
+                setTimeout(async function () {
+                    await interaction.deleteReply();
+                }, 3000)
+            }
         }
-        
     }
 }
 
