@@ -335,7 +335,8 @@ module.exports = {
                     });
                     
                 });
-            } catch {
+            } catch(err) {
+                console.log(err)
                 await interaction.editReply("An error occured!")
                 setTimeout(async function () {
                     await interaction.deleteReply();
@@ -403,7 +404,8 @@ module.exports = {
                         
                     })
                 })
-            } catch {
+            } catch(err) {
+                console.log(err)
                 await interaction.editReply("An error occured!")
                 setTimeout(async function () {
                     await interaction.deleteReply();
@@ -463,7 +465,8 @@ module.exports = {
                         
                     })
                 })
-            } catch {
+            } catch(err) {
+                console.log(err)
                 await interaction.editReply("An error occured!")
                 setTimeout(async function () {
                     await interaction.deleteReply();
@@ -530,7 +533,8 @@ module.exports = {
                     })
                 })
                 
-            } catch {
+            } catch(err) {
+                console.log(err)
                 await interaction.editReply("An error occured!")
                 setTimeout(async function () {
                     await interaction.deleteReply();
@@ -573,7 +577,8 @@ module.exports = {
                         }
                     })
                 })
-            } catch {
+            } catch(err) {
+                console.log(err)
                 await interaction.editReply("An error occured!")
                 setTimeout(async function () {
                     await interaction.deleteReply();
@@ -613,7 +618,8 @@ module.exports = {
                         }
                     })
                 })
-            } catch {
+            } catch(err) {
+                console.log(err)
                 await interaction.editReply("An error occured!")
                 setTimeout(async function () {
                     await interaction.deleteReply();
@@ -669,7 +675,8 @@ module.exports = {
                         })
                     })
                 })
-            } catch {
+            } catch(err) {
+                console.log(err)
                 await interaction.editReply("An error occured!")
                 setTimeout(async function () {
                     await interaction.deleteReply();
@@ -732,7 +739,8 @@ module.exports = {
                         
                     })
                 })
-            } catch {
+            } catch(err) {
+                console.log(err)
                 await interaction.editReply("An error occured!")
                 setTimeout(async function () {
                     await interaction.deleteReply();
@@ -750,7 +758,7 @@ module.exports = {
                     
                     response.on('end', async function () {
                         FinalJSON = JSON.parse(result);
-
+                        console.log(FinalJSON)
                         
 
                         if (!FinalJSON["title"] || !FinalJSON === '') {
@@ -799,7 +807,8 @@ module.exports = {
                     })
                 })
                 
-            } catch {
+            } catch(err) {
+                console.log(err)
                 await interaction.editReply("An error occured!")
                 setTimeout(async function () {
                     await interaction.deleteReply();
@@ -841,7 +850,8 @@ module.exports = {
                     })
                 })
                 
-            } catch {
+            } catch(err) {
+                console.log(err)
                 await interaction.editReply("An error occured!")
                 setTimeout(async function () {
                     await interaction.deleteReply();
@@ -883,7 +893,8 @@ module.exports = {
                     })
                 })
                 
-            } catch {
+            } catch(err) {
+                console.log(err)
                 await interaction.editReply("An error occured!")
                 setTimeout(async function () {
                     await interaction.deleteReply();
@@ -925,7 +936,8 @@ module.exports = {
                     })
                 })
                 
-            } catch {
+            } catch(err) {
+                console.log(err)
                 await interaction.editReply("An error occured!")
                 setTimeout(async function () {
                     await interaction.deleteReply();
@@ -967,7 +979,8 @@ module.exports = {
                     })
                 })
                 
-            } catch {
+            } catch(err) {
+                console.log(err)
                 await interaction.editReply("An error occured!")
                 setTimeout(async function () {
                     await interaction.deleteReply();
