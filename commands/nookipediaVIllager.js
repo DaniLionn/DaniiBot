@@ -207,7 +207,7 @@ module.exports = {
                         FinalJSON = JSON.parse(result)[0];
                         
                         console.log(FinalJSON, FinalJSON["appearances"])
-                        if (FinalJSON != "") {
+                        if (!FinalJSON["title"]) {
                             for (var i = 0; i < FinalJSON["appearances"].length; i++) {
                                 appearances = appearances + `\n${FormatKey(FinalJSON["appearances"][i])},`
                             }
@@ -282,7 +282,7 @@ module.exports = {
                         
                         console.log(FinalJSON)
                         
-                        if (FinalJSON != "") {
+                        if (!FinalJSON["title"]) {
                             const embed = new EmbedBuilder()
                                 .setColor(EmbedColours["Fish"])
                                 .setTitle(FinalJSON["name"])
@@ -345,7 +345,7 @@ module.exports = {
                     
                     response.on('end', async function () {
                         FinalJSON = JSON.parse(result);
-                        if (FinalJSON != "") {
+                        if (!FinalJSON["title"]) {
                             const embed = new EmbedBuilder()
                                 .setColor(EmbedColours["Bug"])
                                 .setTitle(FinalJSON["name"])
@@ -408,7 +408,7 @@ module.exports = {
                         
                         console.log(FinalJSON)
                         
-                        if (FinalJSON != "") {
+                        if (!FinalJSON["title"]) {
                             
                             const embed = new EmbedBuilder()
                                 .setColor(EmbedColours["DeepSeaCreature"])
@@ -473,7 +473,7 @@ module.exports = {
                     response.on('end', async function () {
                         
                         FinalJSON = JSON.parse(result);
-                        if (FinalJSON != "") {
+                        if (!FinalJSON["title"]) {
                             const embed = new EmbedBuilder()
                                 .setColor(EmbedColours["Default"])
                                 .setTitle(FinalJSON["name"])
@@ -514,7 +514,7 @@ module.exports = {
                     
                     response.on('end', async function () {
                         FinalJSON = JSON.parse(result);
-                        if (FinalJSON != "") {
+                        if (!FinalJSON["title"]) {
                             const embed = new EmbedBuilder()
                             .setColor(EmbedColours["Default"])
                             .setTitle(FinalJSON["name"])
@@ -620,7 +620,7 @@ module.exports = {
                         
                         console.log(FinalJSON)
                         
-                        if (FinalJSON != "") {
+                        if (!FinalJSON["title"]) {
                             const embed = new EmbedBuilder()
                                 .setColor(EmbedColours["Default"])
                                 .setTitle(`Events for ${interaction.options.getString('date')}`)
@@ -673,7 +673,7 @@ module.exports = {
                     
                     response.on('end', async function () {
                         FinalJSON = JSON.parse(result);
-                        if (FinalJSON != "") {
+                        if (!FinalJSON["title"]) {
                             const embed = new EmbedBuilder()
                             .setColor(EmbedColours["Artwork"])
                             .setTitle(FinalJSON["name"])
@@ -715,7 +715,7 @@ module.exports = {
                     
                     response.on('end', async function () {
                         FinalJSON = JSON.parse(result);
-                        if (FinalJSON != "") {
+                        if (!FinalJSON["title"]) {
                             const embed = new EmbedBuilder()
                             .setColor(EmbedColours["Default"])
                             .setTitle(FinalJSON["name"])
@@ -757,7 +757,7 @@ module.exports = {
                     
                     response.on('end', async function () {
                         FinalJSON = JSON.parse(result);
-                        if (FinalJSON != "") {
+                        if (!FinalJSON["title"]) {
                             const embed = new EmbedBuilder()
                             .setColor(EmbedColours["Default"])
                             .setTitle(FinalJSON["name"])
@@ -799,7 +799,7 @@ module.exports = {
                     
                     response.on('end', async function () {
                         FinalJSON = JSON.parse(result);
-                        if (FinalJSON != "") {
+                        if (!FinalJSON["title"]) {
                             const embed = new EmbedBuilder()
                             .setColor(EmbedColours["Default"])
                             .setTitle(FinalJSON["name"])
@@ -841,7 +841,7 @@ module.exports = {
                     
                     response.on('end', async function () {
                         FinalJSON = JSON.parse(result);
-                        if (FinalJSON != "") {
+                        if (!FinalJSON["title"]) {
                             const embed = new EmbedBuilder()
                             .setColor(EmbedColours["Default"])
                             .setTitle(FinalJSON["name"])
