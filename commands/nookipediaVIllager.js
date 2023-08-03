@@ -150,6 +150,9 @@ module.exports = {
                             }, {
                                 name: 'Star Sign',
                                 value: FinalJSON["sign"],
+                            },{
+                                name: 'Catchphrase',
+                                value: `"${FinalJSON["phrase"]}"`,
                             }, {
                                 name: 'Quote',
                                 value: `"${FinalJSON["quote"]}"`,
