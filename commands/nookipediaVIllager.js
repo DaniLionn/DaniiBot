@@ -629,7 +629,7 @@ module.exports = {
             // let date = new Date().toLocaleDateString('en-US', {
             //     timeZone: 'America/Edmonton'
             // })
-            console.log(formatDate(date));
+            //console.log(formatDate(date));
             
             try {
                 https.get(`https://api.nookipedia.com/nh/events?today`, options, (response) => {
