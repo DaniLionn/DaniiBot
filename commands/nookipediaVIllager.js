@@ -91,8 +91,18 @@ function formatDate(date) {
     
     return [year, month, day].join('-');
 }
-let date = new Date().toLocaleDateString()
-console.log(formatDate(date));
+
+function formatNumber(num) {
+return num.toLocaleString("en-US")
+}
+
+function FormatCurrency(num, currency) {
+
+    let formatted = formatNumber(num)
+
+    return formatted + ` ${currency}`
+}
+
 
 //const { compare } = require('libsodium-wrappers');
 module.exports = {
@@ -288,7 +298,7 @@ module.exports = {
                                     value: FinalJSON["total_catch"].toString(),
                                 }, {
                                     name: 'Sell Price',
-                                    value: `Regular: ${FinalJSON["sell_nook"].toString()}\nC.J.: ${FinalJSON["sell_cj"].toString()}`,
+                                    value: `Regular: ${FormatCurrency(FinalJSON["sell_nook"], "Bells")}\nC.J.: ${FormatCurrency(FinalJSON["sell_cj"], "Bells")}`,
                                 }, {
                                     name: '"Catch" phrase',
                                     value: `"${FinalJSON["catchphrases"][0]}"`,
@@ -348,7 +358,7 @@ module.exports = {
                                     value: FinalJSON["total_catch"].toString(),
                                 }, {
                                     name: 'Sell Price',
-                                    value: `Regular: ${FinalJSON["sell_nook"].toString()}\nFlick: ${FinalJSON["sell_flick"].toString()}`,
+                                    value: `Regular: ${FormatCurrency(FinalJSON["sell_nook"], "Bells")}\nFlick: ${FormatCurrency(FinalJSON["sell_flick"], "Bells")}`,
                                 }, {
                                     name: '"Catch" phrase',
                                     value: `"${FinalJSON["catchphrases"][0]}"`,
@@ -415,7 +425,7 @@ module.exports = {
                                     value: FinalJSON["total_catch"].toString(),
                                 }, {
                                     name: 'Sell Price',
-                                    value: `${FinalJSON["sell_nook"].toString()}`,
+                                    value: `${FormatCurrency(FinalJSON["sell_nook"], "Bells")}`,
                                 }, {
                                     name: '"Catch" phrase',
                                     value: `"${FinalJSON["catchphrases"][0]}"`,
