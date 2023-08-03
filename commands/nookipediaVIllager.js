@@ -418,7 +418,7 @@ module.exports = {
                                     value: FinalJSON["total_catch"].toString(),
                                 }, {
                                     name: 'Sell Price',
-                                    value: `Regular: ${FinalJSON["sell_nook"].toString()}\nFlick: ${FinalJSON["sell_flick"].toString()}`,
+                                    value: `${FinalJSON["sell_nook"].toString()}`,
                                 }, {
                                     name: '"Catch" phrase',
                                     value: `"${FinalJSON["catchphrases"][0]}"`,
