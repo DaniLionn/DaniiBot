@@ -19,10 +19,14 @@ const options = {
     }
 }
 
-const defaultEmbedColour = 0x91EC7D
-const fishEmbedColour = 0x4ABBD7
-const bugEmbedColour = 0x51D74A
-const deepSeaColour = 0x1A2693
+const EmbedColours = {
+//colours are in hex
+    ["Default"]: 0x91EC7D,
+    ["Fish"]: 0x4ABBD7,
+    ["Bug"]: 0x51D74A,
+    ["DeepSeaCreature"]: 0x1A2693,
+    ["Artwork"]: 0xFAFDAB,
+}
 
 function FormatKey(code) {
     
@@ -203,7 +207,7 @@ module.exports = {
                         FinalJSON = JSON.parse(result)[0];
                         
                         console.log(FinalJSON, FinalJSON["appearances"])
-                        if (FinalJSON) {
+                        if (FinalJSON != "") {
                             for (var i = 0; i < FinalJSON["appearances"].length; i++) {
                                 appearances = appearances + `\n${FormatKey(FinalJSON["appearances"][i])},`
                             }
@@ -278,9 +282,9 @@ module.exports = {
                         
                         console.log(FinalJSON)
                         
-                        if (FinalJSON) {
+                        if (FinalJSON != "") {
                             const embed = new EmbedBuilder()
-                                .setColor(fishEmbedColour)
+                                .setColor(EmbedColours["Fish"])
                                 .setTitle(FinalJSON["name"])
                                 .setURL(FinalJSON["url"])
                                 .setThumbnail(FinalJSON["image_url"])
@@ -341,9 +345,9 @@ module.exports = {
                     
                     response.on('end', async function () {
                         FinalJSON = JSON.parse(result);
-                        if (FinalJSON) {
+                        if (FinalJSON != "") {
                             const embed = new EmbedBuilder()
-                                .setColor(bugEmbedColour)
+                                .setColor(EmbedColours["Bug"])
                                 .setTitle(FinalJSON["name"])
                                 .setURL(FinalJSON["url"])
                                 .setThumbnail(FinalJSON["image_url"])
@@ -404,10 +408,10 @@ module.exports = {
                         
                         console.log(FinalJSON)
                         
-                        if (FinalJSON) {
+                        if (FinalJSON != "") {
                             
                             const embed = new EmbedBuilder()
-                                .setColor(deepSeaColour)
+                                .setColor(EmbedColours["DeepSeaCreature"])
                                 .setTitle(FinalJSON["name"])
                                 .setURL(FinalJSON["url"])
                                 .setThumbnail(FinalJSON["image_url"])
@@ -469,7 +473,20 @@ module.exports = {
                     response.on('end', async function () {
                         
                         FinalJSON = JSON.parse(result);
-                        if (FinalJSON) {
+                        if (FinalJSON != "") {
+                            const embed = new EmbedBuilder()
+                                .setColor(EmbedColours["Default"])
+                                .setTitle(FinalJSON["name"])
+                                .setURL(FinalJSON["url"])
+                                .setThumbnail(FinalJSON["image_url"])
+                                .addFields({
+                                    name: 'Number',
+                                    value: FinalJSON["number"].toString()
+                                }, )
+
+                                await interaction.editReply({
+                                    embeds: [embed]
+                                })
                             
                         } else {
                             await interaction.editReply("An error occured!")
@@ -497,8 +514,20 @@ module.exports = {
                     
                     response.on('end', async function () {
                         FinalJSON = JSON.parse(result);
-                        if (FinalJSON) {
-                            
+                        if (FinalJSON != "") {
+                            const embed = new EmbedBuilder()
+                            .setColor(EmbedColours["Default"])
+                            .setTitle(FinalJSON["name"])
+                            .setURL(FinalJSON["url"])
+                            .setThumbnail(FinalJSON["image_url"])
+                            .addFields({
+                                name: 'Number',
+                                value: FinalJSON["number"].toString()
+                            }, )
+
+                            await interaction.editReply({
+                                embeds: [embed]
+                            })
                         } else {
                             await interaction.editReply("An error occured!")
                             setTimeout(async function () {
@@ -537,7 +566,7 @@ module.exports = {
                         console.log(FinalJSON)
                         //mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm wet diaper sludge
                         const embed = new EmbedBuilder()
-                            .setColor(defaultEmbedColour)
+                            .setColor(EmbedColours["Default"])
                             .setTitle(`Events for ${formatDate(date)}`)
                         
                         for (var i = 0; i < FinalJSON.length; i++) {
@@ -591,9 +620,9 @@ module.exports = {
                         
                         console.log(FinalJSON)
                         
-                        if (FinalJSON) {
+                        if (FinalJSON != "") {
                             const embed = new EmbedBuilder()
-                                .setColor(defaultEmbedColour)
+                                .setColor(EmbedColours["Default"])
                                 .setTitle(`Events for ${interaction.options.getString('date')}`)
                             
                             for (var i = 0; i < FinalJSON.length; i++) {
@@ -644,8 +673,20 @@ module.exports = {
                     
                     response.on('end', async function () {
                         FinalJSON = JSON.parse(result);
-                        if (FinalJSON) {
-                            
+                        if (FinalJSON != "") {
+                            const embed = new EmbedBuilder()
+                            .setColor(EmbedColours["Artwork"])
+                            .setTitle(FinalJSON["name"])
+                            .setURL(FinalJSON["url"])
+                            .setThumbnail(FinalJSON["image_url"])
+                            .addFields({
+                                name: 'Number',
+                                value: FinalJSON["number"].toString()
+                            }, )
+
+                            await interaction.editReply({
+                                embeds: [embed]
+                            })
                         } else {
                             await interaction.editReply("An error occured!")
                             setTimeout(async function () {
@@ -674,8 +715,20 @@ module.exports = {
                     
                     response.on('end', async function () {
                         FinalJSON = JSON.parse(result);
-                        if (FinalJSON) {
-                            
+                        if (FinalJSON != "") {
+                            const embed = new EmbedBuilder()
+                            .setColor(EmbedColours["Default"])
+                            .setTitle(FinalJSON["name"])
+                            .setURL(FinalJSON["url"])
+                            .setThumbnail(FinalJSON["image_url"])
+                            .addFields({
+                                name: 'Number',
+                                value: FinalJSON["number"].toString()
+                            }, )
+
+                            await interaction.editReply({
+                                embeds: [embed]
+                            })
                         } else {
                             await interaction.editReply("An error occured!")
                             setTimeout(async function () {
@@ -704,8 +757,20 @@ module.exports = {
                     
                     response.on('end', async function () {
                         FinalJSON = JSON.parse(result);
-                        if (FinalJSON) {
-                            
+                        if (FinalJSON != "") {
+                            const embed = new EmbedBuilder()
+                            .setColor(EmbedColours["Default"])
+                            .setTitle(FinalJSON["name"])
+                            .setURL(FinalJSON["url"])
+                            .setThumbnail(FinalJSON["image_url"])
+                            .addFields({
+                                name: 'Number',
+                                value: FinalJSON["number"].toString()
+                            }, )
+
+                            await interaction.editReply({
+                                embeds: [embed]
+                            })
                         } else {
                             await interaction.editReply("An error occured!")
                             setTimeout(async function () {
@@ -734,8 +799,20 @@ module.exports = {
                     
                     response.on('end', async function () {
                         FinalJSON = JSON.parse(result);
-                        if (FinalJSON) {
-                            
+                        if (FinalJSON != "") {
+                            const embed = new EmbedBuilder()
+                            .setColor(EmbedColours["Default"])
+                            .setTitle(FinalJSON["name"])
+                            .setURL(FinalJSON["url"])
+                            .setThumbnail(FinalJSON["image_url"])
+                            .addFields({
+                                name: 'Number',
+                                value: FinalJSON["number"].toString()
+                            }, )
+
+                            await interaction.editReply({
+                                embeds: [embed]
+                            })
                         } else {
                             await interaction.editReply("An error occured!")
                             setTimeout(async function () {
@@ -764,8 +841,20 @@ module.exports = {
                     
                     response.on('end', async function () {
                         FinalJSON = JSON.parse(result);
-                        if (FinalJSON) {
-                            
+                        if (FinalJSON != "") {
+                            const embed = new EmbedBuilder()
+                            .setColor(EmbedColours["Default"])
+                            .setTitle(FinalJSON["name"])
+                            .setURL(FinalJSON["url"])
+                            .setThumbnail(FinalJSON["image_url"])
+                            .addFields({
+                                name: 'Number',
+                                value: FinalJSON["number"].toString()
+                            }, )
+
+                            await interaction.editReply({
+                                embeds: [embed]
+                            })
                         } else {
                             await interaction.editReply("An error occured!")
                             setTimeout(async function () {
