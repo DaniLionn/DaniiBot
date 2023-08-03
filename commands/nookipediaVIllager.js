@@ -230,7 +230,10 @@ const {
                 }, {
                   name: '"Catch"phrase',
                   value: FinalJSON["catchphrases"][0],
-                },)
+                },{
+                    name: 'Avaliability',
+                    value: `Northern Hemisphere: ${FinalJSON["north"]["months"]}\nSouthern Hemisphere: ${FinalJSON["south"]["months"]}`,
+                  })
   
               await interaction.editReply({
                 embeds: [embed]
