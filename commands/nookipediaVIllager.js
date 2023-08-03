@@ -632,7 +632,7 @@ module.exports = {
             //console.log(formatDate(date));
             
             try {
-                https.get(`https://api.nookipedia.com/nh/events?today`, options, (response) => {
+                https.get(`https://api.nookipedia.com/nh/events?date=today`, options, (response) => {
                     
                     var result = ''
                     response.on('data', function (chunk) {
