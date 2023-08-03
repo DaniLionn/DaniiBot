@@ -20,9 +20,10 @@ const options = {
 }
 
 const defaultEmbedColour = 0x91EC7D
-const fishEmbedColour = 0x4ABBD7 
+const fishEmbedColour = 0x4ABBD7
 const bugEmbedColour = 0x51D74A
-const deepSeaColour = 0x1A2693  
+const deepSeaColour = 0x1A2693
+
 function FormatKey(code) {
     
     if (code === "DNM") {
@@ -73,11 +74,9 @@ function FormatKey(code) {
         return "December"
     } else if (code === "NA") {
         return "Not avaliable"
-    } 
+    }
     
 }
-
-
 
 function formatDate(date) {
     var d = new Date(date),
@@ -269,41 +268,48 @@ module.exports = {
                         
                         console.log(FinalJSON)
                         
-                        const embed = new EmbedBuilder()
-                            .setColor(fishEmbedColour)
-                            .setTitle(FinalJSON["name"])
-                            .setURL(FinalJSON["url"])
-                            .setThumbnail(FinalJSON["image_url"])
-                            .addFields({
-                                name: 'Number',
-                                value: FinalJSON["number"].toString()
-                            }, {
-                                name: 'Location',
-                                value: FinalJSON["location"]
-                            }, {
-                                name: 'Shadow Size',
-                                value: FinalJSON["shadow_size"],
-                            }, {
-                                name: 'Catches needed to unlock',
-                                value: FinalJSON["total_catch"].toString(),
-                            }, {
-                                name: 'Sell Price',
-                                value: `Regular: ${FinalJSON["sell_nook"].toString()}\nC.J.: ${FinalJSON["sell_cj"].toString()}`,
-                            }, {
-                                name: '"Catch" phrase',
-                                value: `"${FinalJSON["catchphrases"][0]}"`,
-                            }, {
-                                name: 'Avaliability',
-                                value: `Northern Hemisphere: ${FinalJSON["north"]["months"]}\nSouthern Hemisphere: ${FinalJSON["south"]["months"]}`,
-                            },{
-                                name: 'Times',
-                                value: `*Northern Hemisphere:* \nJanuary: ${FinalJSON["north"]["times_by_month"]["1"]}\nFeburary: ${FinalJSON["north"]["times_by_month"]["2"]}\nMarch: ${FinalJSON["north"]["times_by_month"]["3"]}\nApril: ${FinalJSON["north"]["times_by_month"]["4"]}\nMay: ${FinalJSON["north"]["times_by_month"]["5"]}\nJune: ${FinalJSON["north"]["times_by_month"]["6"]}\nJuly: ${FinalJSON["north"]["times_by_month"]["7"]}\nAugust: ${FinalJSON["north"]["times_by_month"]["8"]}\nSeptember: ${FinalJSON["north"]["times_by_month"]["9"]}\nOctober: ${FinalJSON["north"]["times_by_month"]["10"]}\nNovember: ${FinalJSON["north"]["times_by_month"]["11"]}\nDecember: ${FinalJSON["north"]["times_by_month"]["12"]}\n\n*Southern Hemisphere:* \nJanuary: ${FinalJSON["south"]["times_by_month"]["1"]}\nFeburary: ${FinalJSON["south"]["times_by_month"]["2"]}\nMarch: ${FinalJSON["south"]["times_by_month"]["3"]}\nApril: ${FinalJSON["south"]["times_by_month"]["4"]}\nMay: ${FinalJSON["south"]["times_by_month"]["5"]}\nJune: ${FinalJSON["south"]["times_by_month"]["6"]}\nJuly: ${FinalJSON["south"]["times_by_month"]["7"]}\nAugust: ${FinalJSON["south"]["times_by_month"]["8"]}\nSeptember: ${FinalJSON["south"]["times_by_month"]["9"]}\nOctober: ${FinalJSON["south"]["times_by_month"]["10"]}\nNovember: ${FinalJSON["south"]["times_by_month"]["11"]}\nDecember: ${FinalJSON["south"]["times_by_month"]["12"]}`,
-                            }
-                            )
+                        if (FinalJSON) {
+                            const embed = new EmbedBuilder()
+                                .setColor(fishEmbedColour)
+                                .setTitle(FinalJSON["name"])
+                                .setURL(FinalJSON["url"])
+                                .setThumbnail(FinalJSON["image_url"])
+                                .addFields({
+                                    name: 'Number',
+                                    value: FinalJSON["number"].toString()
+                                }, {
+                                    name: 'Location',
+                                    value: FinalJSON["location"]
+                                }, {
+                                    name: 'Shadow Size',
+                                    value: FinalJSON["shadow_size"],
+                                }, {
+                                    name: 'Catches needed to unlock',
+                                    value: FinalJSON["total_catch"].toString(),
+                                }, {
+                                    name: 'Sell Price',
+                                    value: `Regular: ${FinalJSON["sell_nook"].toString()}\nC.J.: ${FinalJSON["sell_cj"].toString()}`,
+                                }, {
+                                    name: '"Catch" phrase',
+                                    value: `"${FinalJSON["catchphrases"][0]}"`,
+                                }, {
+                                    name: 'Avaliability',
+                                    value: `Northern Hemisphere: ${FinalJSON["north"]["months"]}\nSouthern Hemisphere: ${FinalJSON["south"]["months"]}`,
+                                }, {
+                                    name: 'Times',
+                                    value: `*Northern Hemisphere:* \nJanuary: ${FinalJSON["north"]["times_by_month"]["1"]}\nFeburary: ${FinalJSON["north"]["times_by_month"]["2"]}\nMarch: ${FinalJSON["north"]["times_by_month"]["3"]}\nApril: ${FinalJSON["north"]["times_by_month"]["4"]}\nMay: ${FinalJSON["north"]["times_by_month"]["5"]}\nJune: ${FinalJSON["north"]["times_by_month"]["6"]}\nJuly: ${FinalJSON["north"]["times_by_month"]["7"]}\nAugust: ${FinalJSON["north"]["times_by_month"]["8"]}\nSeptember: ${FinalJSON["north"]["times_by_month"]["9"]}\nOctober: ${FinalJSON["north"]["times_by_month"]["10"]}\nNovember: ${FinalJSON["north"]["times_by_month"]["11"]}\nDecember: ${FinalJSON["north"]["times_by_month"]["12"]}\n\n*Southern Hemisphere:* \nJanuary: ${FinalJSON["south"]["times_by_month"]["1"]}\nFeburary: ${FinalJSON["south"]["times_by_month"]["2"]}\nMarch: ${FinalJSON["south"]["times_by_month"]["3"]}\nApril: ${FinalJSON["south"]["times_by_month"]["4"]}\nMay: ${FinalJSON["south"]["times_by_month"]["5"]}\nJune: ${FinalJSON["south"]["times_by_month"]["6"]}\nJuly: ${FinalJSON["south"]["times_by_month"]["7"]}\nAugust: ${FinalJSON["south"]["times_by_month"]["8"]}\nSeptember: ${FinalJSON["south"]["times_by_month"]["9"]}\nOctober: ${FinalJSON["south"]["times_by_month"]["10"]}\nNovember: ${FinalJSON["south"]["times_by_month"]["11"]}\nDecember: ${FinalJSON["south"]["times_by_month"]["12"]}`,
+                                })
+                            
+                            await interaction.editReply({
+                                embeds: [embed]
+                            })
+                        } else {
+                            await interaction.editReply("An error occured!")
+                            setTimeout(async function () {
+                                await interaction.deleteReply();
+                            }, 3000)
+                        }
                         
-                        await interaction.editReply({
-                            embeds: [embed]
-                        })
                     })
                 })
             } catch {
@@ -325,37 +331,45 @@ module.exports = {
                     
                     response.on('end', async function () {
                         FinalJSON = JSON.parse(result);
-                        const embed = new EmbedBuilder()
-                            .setColor(bugEmbedColour)
-                            .setTitle(FinalJSON["name"])
-                            .setURL(FinalJSON["url"])
-                            .setThumbnail(FinalJSON["image_url"])
-                            .addFields({
-                                name: 'Number',
-                                value: FinalJSON["number"].toString()
-                            }, {
-                                name: 'Location',
-                                value: FinalJSON["location"]
-                            },{
-                                name: 'Catches needed to unlock',
-                                value: FinalJSON["total_catch"].toString(),
-                            }, {
-                                name: 'Sell Price',
-                                value: `Regular: ${FinalJSON["sell_nook"].toString()}\nFlick: ${FinalJSON["sell_flick"].toString()}`,
-                            }, {
-                                name: '"Catch" phrase',
-                                value: `"${FinalJSON["catchphrases"][0]}"`,
-                            }, {
-                                name: 'Avaliability',
-                                value: `Northern Hemisphere: ${FinalJSON["north"]["months"]}\nSouthern Hemisphere: ${FinalJSON["south"]["months"]}`,
-                            },{
-                                name: 'Times',
-                                value: `*Northern Hemisphere:* \nJanuary: ${FinalJSON["north"]["times_by_month"]["1"]}\nFeburary: ${FinalJSON["north"]["times_by_month"]["2"]}\nMarch: ${FinalJSON["north"]["times_by_month"]["3"]}\nApril: ${FinalJSON["north"]["times_by_month"]["4"]}\nMay: ${FinalJSON["north"]["times_by_month"]["5"]}\nJune: ${FinalJSON["north"]["times_by_month"]["6"]}\nJuly: ${FinalJSON["north"]["times_by_month"]["7"]}\nAugust: ${FinalJSON["north"]["times_by_month"]["8"]}\nSeptember: ${FinalJSON["north"]["times_by_month"]["9"]}\nOctober: ${FinalJSON["north"]["times_by_month"]["10"]}\nNovember: ${FinalJSON["north"]["times_by_month"]["11"]}\nDecember: ${FinalJSON["north"]["times_by_month"]["12"]}\n\n*Southern Hemisphere:* \nJanuary: ${FinalJSON["south"]["times_by_month"]["1"]}\nFeburary: ${FinalJSON["south"]["times_by_month"]["2"]}\nMarch: ${FinalJSON["south"]["times_by_month"]["3"]}\nApril: ${FinalJSON["south"]["times_by_month"]["4"]}\nMay: ${FinalJSON["south"]["times_by_month"]["5"]}\nJune: ${FinalJSON["south"]["times_by_month"]["6"]}\nJuly: ${FinalJSON["south"]["times_by_month"]["7"]}\nAugust: ${FinalJSON["south"]["times_by_month"]["8"]}\nSeptember: ${FinalJSON["south"]["times_by_month"]["9"]}\nOctober: ${FinalJSON["south"]["times_by_month"]["10"]}\nNovember: ${FinalJSON["south"]["times_by_month"]["11"]}\nDecember: ${FinalJSON["south"]["times_by_month"]["12"]}`,
+                        if (FinalJSON) {
+                            const embed = new EmbedBuilder()
+                                .setColor(bugEmbedColour)
+                                .setTitle(FinalJSON["name"])
+                                .setURL(FinalJSON["url"])
+                                .setThumbnail(FinalJSON["image_url"])
+                                .addFields({
+                                    name: 'Number',
+                                    value: FinalJSON["number"].toString()
+                                }, {
+                                    name: 'Location',
+                                    value: FinalJSON["location"]
+                                }, {
+                                    name: 'Catches needed to unlock',
+                                    value: FinalJSON["total_catch"].toString(),
+                                }, {
+                                    name: 'Sell Price',
+                                    value: `Regular: ${FinalJSON["sell_nook"].toString()}\nFlick: ${FinalJSON["sell_flick"].toString()}`,
+                                }, {
+                                    name: '"Catch" phrase',
+                                    value: `"${FinalJSON["catchphrases"][0]}"`,
+                                }, {
+                                    name: 'Avaliability',
+                                    value: `Northern Hemisphere: ${FinalJSON["north"]["months"]}\nSouthern Hemisphere: ${FinalJSON["south"]["months"]}`,
+                                }, {
+                                    name: 'Times',
+                                    value: `*Northern Hemisphere:* \nJanuary: ${FinalJSON["north"]["times_by_month"]["1"]}\nFeburary: ${FinalJSON["north"]["times_by_month"]["2"]}\nMarch: ${FinalJSON["north"]["times_by_month"]["3"]}\nApril: ${FinalJSON["north"]["times_by_month"]["4"]}\nMay: ${FinalJSON["north"]["times_by_month"]["5"]}\nJune: ${FinalJSON["north"]["times_by_month"]["6"]}\nJuly: ${FinalJSON["north"]["times_by_month"]["7"]}\nAugust: ${FinalJSON["north"]["times_by_month"]["8"]}\nSeptember: ${FinalJSON["north"]["times_by_month"]["9"]}\nOctober: ${FinalJSON["north"]["times_by_month"]["10"]}\nNovember: ${FinalJSON["north"]["times_by_month"]["11"]}\nDecember: ${FinalJSON["north"]["times_by_month"]["12"]}\n\n*Southern Hemisphere:* \nJanuary: ${FinalJSON["south"]["times_by_month"]["1"]}\nFeburary: ${FinalJSON["south"]["times_by_month"]["2"]}\nMarch: ${FinalJSON["south"]["times_by_month"]["3"]}\nApril: ${FinalJSON["south"]["times_by_month"]["4"]}\nMay: ${FinalJSON["south"]["times_by_month"]["5"]}\nJune: ${FinalJSON["south"]["times_by_month"]["6"]}\nJuly: ${FinalJSON["south"]["times_by_month"]["7"]}\nAugust: ${FinalJSON["south"]["times_by_month"]["8"]}\nSeptember: ${FinalJSON["south"]["times_by_month"]["9"]}\nOctober: ${FinalJSON["south"]["times_by_month"]["10"]}\nNovember: ${FinalJSON["south"]["times_by_month"]["11"]}\nDecember: ${FinalJSON["south"]["times_by_month"]["12"]}`,
+                                })
+                            
+                            await interaction.editReply({
+                                embeds: [embed]
                             })
+                        } else {
+                            await interaction.editReply("An error occured!")
+                            setTimeout(async function () {
+                                await interaction.deleteReply();
+                            }, 3000)
+                        }
                         
-                        await interaction.editReply({
-                            embeds: [embed]
-                        })
                     })
                 })
             } catch {
@@ -377,37 +391,48 @@ module.exports = {
                     
                     response.on('end', async function () {
                         FinalJSON = JSON.parse(result);
-                        const embed = new EmbedBuilder()
-                        .setColor(deepSeaColour)
-                        .setTitle(FinalJSON["name"])
-                        .setURL(FinalJSON["url"])
-                        .setThumbnail(FinalJSON["image_url"])
-                        .addFields({
-                            name: 'Number',
-                            value: FinalJSON["number"].toString()
-                        }, {
-                            name: 'Location',
-                            value: FinalJSON["location"]
-                        },{
-                            name: 'Catches needed to unlock',
-                            value: FinalJSON["total_catch"].toString(),
-                        }, {
-                            name: 'Sell Price',
-                            value: `Regular: ${FinalJSON["sell_nook"].toString()}\nFlick: ${FinalJSON["sell_flick"].toString()}`,
-                        }, {
-                            name: '"Catch" phrase',
-                            value: `"${FinalJSON["catchphrases"][0]}"`,
-                        }, {
-                            name: 'Avaliability',
-                            value: `Northern Hemisphere: ${FinalJSON["north"]["months"]}\nSouthern Hemisphere: ${FinalJSON["south"]["months"]}`,
-                        },{
-                            name: 'Times',
-                            value: `*Northern Hemisphere:* \nJanuary: ${FinalJSON["north"]["times_by_month"]["1"]}\nFeburary: ${FinalJSON["north"]["times_by_month"]["2"]}\nMarch: ${FinalJSON["north"]["times_by_month"]["3"]}\nApril: ${FinalJSON["north"]["times_by_month"]["4"]}\nMay: ${FinalJSON["north"]["times_by_month"]["5"]}\nJune: ${FinalJSON["north"]["times_by_month"]["6"]}\nJuly: ${FinalJSON["north"]["times_by_month"]["7"]}\nAugust: ${FinalJSON["north"]["times_by_month"]["8"]}\nSeptember: ${FinalJSON["north"]["times_by_month"]["9"]}\nOctober: ${FinalJSON["north"]["times_by_month"]["10"]}\nNovember: ${FinalJSON["north"]["times_by_month"]["11"]}\nDecember: ${FinalJSON["north"]["times_by_month"]["12"]}\n\n*Southern Hemisphere:* \nJanuary: ${FinalJSON["south"]["times_by_month"]["1"]}\nFeburary: ${FinalJSON["south"]["times_by_month"]["2"]}\nMarch: ${FinalJSON["south"]["times_by_month"]["3"]}\nApril: ${FinalJSON["south"]["times_by_month"]["4"]}\nMay: ${FinalJSON["south"]["times_by_month"]["5"]}\nJune: ${FinalJSON["south"]["times_by_month"]["6"]}\nJuly: ${FinalJSON["south"]["times_by_month"]["7"]}\nAugust: ${FinalJSON["south"]["times_by_month"]["8"]}\nSeptember: ${FinalJSON["south"]["times_by_month"]["9"]}\nOctober: ${FinalJSON["south"]["times_by_month"]["10"]}\nNovember: ${FinalJSON["south"]["times_by_month"]["11"]}\nDecember: ${FinalJSON["south"]["times_by_month"]["12"]}`,
-                        })
-                    
-                    await interaction.editReply({
-                        embeds: [embed]
-                    })
+                        
+                        console.log(FinalJSON)
+                        
+                        if (FinalJSON) {
+                            
+                            const embed = new EmbedBuilder()
+                                .setColor(deepSeaColour)
+                                .setTitle(FinalJSON["name"])
+                                .setURL(FinalJSON["url"])
+                                .setThumbnail(FinalJSON["image_url"])
+                                .addFields({
+                                    name: 'Number',
+                                    value: FinalJSON["number"].toString()
+                                }, {
+                                    name: 'Location',
+                                    value: FinalJSON["location"]
+                                }, {
+                                    name: 'Catches needed to unlock',
+                                    value: FinalJSON["total_catch"].toString(),
+                                }, {
+                                    name: 'Sell Price',
+                                    value: `Regular: ${FinalJSON["sell_nook"].toString()}\nFlick: ${FinalJSON["sell_flick"].toString()}`,
+                                }, {
+                                    name: '"Catch" phrase',
+                                    value: `"${FinalJSON["catchphrases"][0]}"`,
+                                }, {
+                                    name: 'Avaliability',
+                                    value: `Northern Hemisphere: ${FinalJSON["north"]["months"]}\nSouthern Hemisphere: ${FinalJSON["south"]["months"]}`,
+                                }, {
+                                    name: 'Times',
+                                    value: `*Northern Hemisphere:* \nJanuary: ${FinalJSON["north"]["times_by_month"]["1"]}\nFeburary: ${FinalJSON["north"]["times_by_month"]["2"]}\nMarch: ${FinalJSON["north"]["times_by_month"]["3"]}\nApril: ${FinalJSON["north"]["times_by_month"]["4"]}\nMay: ${FinalJSON["north"]["times_by_month"]["5"]}\nJune: ${FinalJSON["north"]["times_by_month"]["6"]}\nJuly: ${FinalJSON["north"]["times_by_month"]["7"]}\nAugust: ${FinalJSON["north"]["times_by_month"]["8"]}\nSeptember: ${FinalJSON["north"]["times_by_month"]["9"]}\nOctober: ${FinalJSON["north"]["times_by_month"]["10"]}\nNovember: ${FinalJSON["north"]["times_by_month"]["11"]}\nDecember: ${FinalJSON["north"]["times_by_month"]["12"]}\n\n*Southern Hemisphere:* \nJanuary: ${FinalJSON["south"]["times_by_month"]["1"]}\nFeburary: ${FinalJSON["south"]["times_by_month"]["2"]}\nMarch: ${FinalJSON["south"]["times_by_month"]["3"]}\nApril: ${FinalJSON["south"]["times_by_month"]["4"]}\nMay: ${FinalJSON["south"]["times_by_month"]["5"]}\nJune: ${FinalJSON["south"]["times_by_month"]["6"]}\nJuly: ${FinalJSON["south"]["times_by_month"]["7"]}\nAugust: ${FinalJSON["south"]["times_by_month"]["8"]}\nSeptember: ${FinalJSON["south"]["times_by_month"]["9"]}\nOctober: ${FinalJSON["south"]["times_by_month"]["10"]}\nNovember: ${FinalJSON["south"]["times_by_month"]["11"]}\nDecember: ${FinalJSON["south"]["times_by_month"]["12"]}`,
+                                })
+                            
+                            await interaction.editReply({
+                                embeds: [embed]
+                            })
+                        } else {
+                            await interaction.editReply("An error occured!")
+                            setTimeout(async function () {
+                                await interaction.deleteReply();
+                            }, 3000)
+                        }
                     })
                 })
                 
@@ -429,7 +454,16 @@ module.exports = {
                     });
                     
                     response.on('end', async function () {
+                        
                         FinalJSON = JSON.parse(result);
+                        if (FinalJSON) {
+                            
+                        } else {
+                            await interaction.editReply("An error occured!")
+                            setTimeout(async function () {
+                                await interaction.deleteReply();
+                            }, 3000)
+                        }
                     })
                 })
             } catch {
@@ -450,6 +484,14 @@ module.exports = {
                     
                     response.on('end', async function () {
                         FinalJSON = JSON.parse(result);
+                        if (FinalJSON) {
+                            
+                        } else {
+                            await interaction.editReply("An error occured!")
+                            setTimeout(async function () {
+                                await interaction.deleteReply();
+                            }, 3000)
+                        }
                     })
                 })
             } catch {
@@ -535,31 +577,40 @@ module.exports = {
                         let max = 25
                         
                         console.log(FinalJSON)
-                        const embed = new EmbedBuilder()
-                            .setColor(defaultEmbedColour)
-                            .setTitle(`Events for ${interaction.options.getString('date')}`)
                         
-                        for (var i = 0; i < FinalJSON.length; i++) {
-                            total += 3
+                        if (FinalJSON) {
+                            const embed = new EmbedBuilder()
+                                .setColor(defaultEmbedColour)
+                                .setTitle(`Events for ${interaction.options.getString('date')}`)
                             
-                            if (total <= max) {
-                                embed.addFields({
-                                    name: 'Event Name',
-                                    value: FinalJSON[i]["event"]
-                                }, {
-                                    name: 'Date',
-                                    value: FinalJSON[i]["date"]
-                                }, {
-                                    name: 'Type',
-                                    value: FinalJSON[i]["type"],
-                                })
+                            for (var i = 0; i < FinalJSON.length; i++) {
+                                total += 3
+                                
+                                if (total <= max) {
+                                    embed.addFields({
+                                        name: 'Event Name',
+                                        value: FinalJSON[i]["event"]
+                                    }, {
+                                        name: 'Date',
+                                        value: FinalJSON[i]["date"]
+                                    }, {
+                                        name: 'Type',
+                                        value: FinalJSON[i]["type"],
+                                    })
+                                }
+                                
                             }
                             
+                            await interaction.editReply({
+                                embeds: [embed]
+                            })
+                        } else {
+                            await interaction.editReply("An error occured!")
+                            setTimeout(async function () {
+                                await interaction.deleteReply();
+                            }, 3000)
                         }
                         
-                        await interaction.editReply({
-                            embeds: [embed]
-                        })
                     })
                 })
             } catch {
@@ -568,10 +619,10 @@ module.exports = {
                     await interaction.deleteReply();
                 }, 3000)
             }
-        }else if ((interaction.options.getSubcommand() === 'artwork')) {
+        } else if ((interaction.options.getSubcommand() === 'artwork')) {
             
             try {
-                https.get(`https://api.nookipedia.com/nh/sea/${interaction.options.getString('artwork-name').toLowerCase()}`, options, (response) => {
+                https.get(`https://api.nookipedia.com/nh/art/${interaction.options.getString('artwork-name').toLowerCase()}`, options, (response) => {
                     
                     var result = ''
                     response.on('data', function (chunk) {
@@ -580,30 +631,14 @@ module.exports = {
                     
                     response.on('end', async function () {
                         FinalJSON = JSON.parse(result);
-                        await interaction.editReply("Not implemented yet")
-                    })
-                })
-                
-            } catch {
-                await interaction.editReply("An error occured!")
-                setTimeout(async function () {
-                    await interaction.deleteReply();
-                }, 3000)
-            }
-            
-        }else if ((interaction.options.getSubcommand() === 'furniture')) {
-            
-            try {
-                https.get(`https://api.nookipedia.com/nh/sea/${interaction.options.getString('furniture-name').toLowerCase()}`, options, (response) => {
-                    
-                    var result = ''
-                    response.on('data', function (chunk) {
-                        result += chunk;
-                    });
-                    
-                    response.on('end', async function () {
-                        FinalJSON = JSON.parse(result);
-                        await interaction.editReply("Not implemented yet")
+                        if (FinalJSON) {
+                            
+                        } else {
+                            await interaction.editReply("An error occured!")
+                            setTimeout(async function () {
+                                await interaction.deleteReply();
+                            }, 3000)
+                        }
                     })
                 })
                 
@@ -614,10 +649,10 @@ module.exports = {
                 }, 3000)
             }
             
-        }else if ((interaction.options.getSubcommand() === 'interior-item')) {
+        } else if ((interaction.options.getSubcommand() === 'furniture')) {
             
             try {
-                https.get(`https://api.nookipedia.com/nh/sea/${interaction.options.getString('item-name').toLowerCase()}`, options, (response) => {
+                https.get(`https://api.nookipedia.com/nh/furniture/${interaction.options.getString('furniture-name').toLowerCase()}`, options, (response) => {
                     
                     var result = ''
                     response.on('data', function (chunk) {
@@ -626,7 +661,14 @@ module.exports = {
                     
                     response.on('end', async function () {
                         FinalJSON = JSON.parse(result);
-                        await interaction.editReply("Not implemented yet")
+                        if (FinalJSON) {
+                            
+                        } else {
+                            await interaction.editReply("An error occured!")
+                            setTimeout(async function () {
+                                await interaction.deleteReply();
+                            }, 3000)
+                        }
                     })
                 })
                 
@@ -637,10 +679,10 @@ module.exports = {
                 }, 3000)
             }
             
-        }else if ((interaction.options.getSubcommand() === 'photo')) {
+        } else if ((interaction.options.getSubcommand() === 'interior-item')) {
             
             try {
-                https.get(`https://api.nookipedia.com/nh/sea/${interaction.options.getString('photo-name').toLowerCase()}`, options, (response) => {
+                https.get(`https://api.nookipedia.com/nh/interior/${interaction.options.getString('item-name').toLowerCase()}`, options, (response) => {
                     
                     var result = ''
                     response.on('data', function (chunk) {
@@ -649,7 +691,14 @@ module.exports = {
                     
                     response.on('end', async function () {
                         FinalJSON = JSON.parse(result);
-                        await interaction.editReply("Not implemented yet")
+                        if (FinalJSON) {
+                            
+                        } else {
+                            await interaction.editReply("An error occured!")
+                            setTimeout(async function () {
+                                await interaction.deleteReply();
+                            }, 3000)
+                        }
                     })
                 })
                 
@@ -660,10 +709,10 @@ module.exports = {
                 }, 3000)
             }
             
-        }else if ((interaction.options.getSubcommand() === 'misc-item')) {
+        } else if ((interaction.options.getSubcommand() === 'photo')) {
             
             try {
-                https.get(`https://api.nookipedia.com/nh/sea/${interaction.options.getString('misc-name').toLowerCase()}`, options, (response) => {
+                https.get(`https://api.nookipedia.com/nh/photos/${interaction.options.getString('photo-name').toLowerCase()}`, options, (response) => {
                     
                     var result = ''
                     response.on('data', function (chunk) {
@@ -672,7 +721,44 @@ module.exports = {
                     
                     response.on('end', async function () {
                         FinalJSON = JSON.parse(result);
-                        await interaction.editReply("Not implemented yet")
+                        if (FinalJSON) {
+                            
+                        } else {
+                            await interaction.editReply("An error occured!")
+                            setTimeout(async function () {
+                                await interaction.deleteReply();
+                            }, 3000)
+                        }
+                    })
+                })
+                
+            } catch {
+                await interaction.editReply("An error occured!")
+                setTimeout(async function () {
+                    await interaction.deleteReply();
+                }, 3000)
+            }
+            
+        } else if ((interaction.options.getSubcommand() === 'misc-item')) {
+            
+            try {
+                https.get(`https://api.nookipedia.com/nh/items/${interaction.options.getString('misc-name').toLowerCase()}`, options, (response) => {
+                    
+                    var result = ''
+                    response.on('data', function (chunk) {
+                        result += chunk;
+                    });
+                    
+                    response.on('end', async function () {
+                        FinalJSON = JSON.parse(result);
+                        if (FinalJSON) {
+                            
+                        } else {
+                            await interaction.editReply("An error occured!")
+                            setTimeout(async function () {
+                                await interaction.deleteReply();
+                            }, 3000)
+                        }
                     })
                 })
                 
