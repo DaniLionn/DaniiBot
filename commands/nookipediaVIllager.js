@@ -221,10 +221,7 @@ module.exports = {
                                 }, {
                                     name: 'Shadow Size',
                                     value: FinalJSON["shadow_size"],
-                                }, {
-                                    name: 'Rarity',
-                                    value: FinalJSON["rarity"],
-                                }, {
+                                },  {
                                     name: 'Catches needed to unlock',
                                     value: FinalJSON["total_catch"],
                                 }, {
@@ -233,6 +230,9 @@ module.exports = {
                                 }, {
                                     name: '"Catch"phrase',
                                     value: FinalJSON["catchphrases"][0],
+                                },{
+                                    name: 'Avaliability',
+                                    value: `Northern Hemisphere: ${FinalJSON["north"]["months"]}\nSouthern Hemisphere: ${FinalJSON["south"]["months"]}`,
                                 },)
                             
                             await interaction.editReply({
