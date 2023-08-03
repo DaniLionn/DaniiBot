@@ -102,8 +102,12 @@ module.exports = {
             .addStringOption(option => option.setName('tool-name').setDescription('The tool you want info about').setRequired(true)))
         .addSubcommand(subcommand =>
             subcommand
-            .setName('events-today')
-            .setDescription('events happening in game right now')),
+            .setName('events')
+            .setDescription('info about events')
+            .addSubcommand(subcommand =>
+                subcommand
+                .setName('today')
+                .setDescription('info about events happening in game today'))),
     async execute(interaction) {
         //give the bot time to think! we need to make sure we get all the data
         //console.log(appDir)
@@ -241,7 +245,7 @@ module.exports = {
                     await interaction.editReply("Not implemented yet")
                 })
             })
-        } else if ((interaction.options.getSubcommand() === 'events-today')) {
+        } else if ((interaction.options.getSubcommand() === 'today')) {
             let date = new Date().toLocaleDateString('en-US', {
                 timeZone: 'America/Edmonton'
             })
