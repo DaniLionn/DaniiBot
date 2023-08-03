@@ -405,9 +405,6 @@ module.exports = {
                                     name: 'Number',
                                     value: FinalJSON["number"].toString()
                                 }, {
-                                    name: 'Location',
-                                    value: FinalJSON["location"]
-                                }, {
                                     name: 'Shadow Size',
                                     value: FinalJSON["shadow_size"],
                                 },{
