@@ -749,7 +749,7 @@ module.exports = {
         } else if ((interaction.options.getSubcommand() === 'artwork')) {
             
             try {
-                https.get(`https://api.nookipedia.com/nh/art/${interaction.options.getString('artwork-name').toLowerCase()}`, options, (response) => {
+                https.get(`https://api.nookipedia.com/nh/art/${interaction.options.getString('art-name').toLowerCase()}`, options, (response) => {
                     
                     var result = ''
                     response.on('data', function (chunk) {
