@@ -56,7 +56,7 @@ module.exports = {
                 subcommand
                 .setName('villager')
                 .setDescription('info about a villager')
-                .addStringOption(option => option.setName('name').setDescription('The villager you want info about'))),
+                .addStringOption(option => option.setName('name').setDescription('The villager you want info about').setRequired(true))),
         async execute(interaction) {
             //give the bot time to think! we need to make sure we get all the data
             //console.log(appDir)
