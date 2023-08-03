@@ -19,6 +19,8 @@ const options = {
     }
 }
 
+const defaultEmbedColour = 0x91EC7D
+
 function GetGameString(code) {
     
     if (code === "DNM") {
@@ -256,8 +258,9 @@ module.exports = {
                     let max = 25
                     
                     console.log(FinalJSON)
-                    
+                    //mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm wet diaper sludge
                     const embed = new EmbedBuilder()
+                        .setColor(defaultEmbedColour)
                         .setTitle(`Events for ${formatDate(date)}`)
                     
                     for (var i = 0; i < FinalJSON.length; i++) {
