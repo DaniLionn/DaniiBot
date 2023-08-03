@@ -626,9 +626,9 @@ module.exports = {
                 }, 3000)
             }
         } else if ((interaction.options.getSubcommand() === 'events-today')) {
-            // let date = new Date().toLocaleDateString('en-US', {
-            //     timeZone: 'America/Edmonton'
-            // })
+            let date = new Date().toLocaleDateString('en-US', {
+                timeZone: 'America/Edmonton'
+            })
             //console.log(formatDate(date));
             
             try {
