@@ -294,7 +294,7 @@ module.exports = {
                     })
                 })
             })
-        }else if ((interaction.options.getSubcommand() === 'events-YYYY-MM-DD')) {
+        }else if ((interaction.options.getSubcommand() === 'events')) {
             let date = new Date().toLocaleDateString('en-US', {
                 timeZone: 'America/Edmonton'
             })
