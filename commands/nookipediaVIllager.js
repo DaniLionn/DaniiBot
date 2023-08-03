@@ -13,7 +13,7 @@ const {
 //const { abort } = require('node:process');
 const appDir = dirname(require.main.filename);
 
-const VillagerOptions = {
+const options = {
     headers: {
         'x-api-key': NookipediaAPIKey
     }
@@ -66,7 +66,7 @@ module.exports = {
             let appearances = ""
             
             if (interaction.options.getSubcommand() === 'villager') {
-                https.get(`https://api.nookipedia.com/villagers?name=${interaction.options.getString('name').toLowerCase()}`, VillagerOptions, (response) => {
+                https.get(`https://api.nookipedia.com/villagers?name=${interaction.options.getString('name').toLowerCase()}`, options, (response) => {
                         
                         var result = ''
                         response.on('data', function (chunk) {
@@ -78,7 +78,7 @@ module.exports = {
                                 FinalJSON = JSON.parse(result)[0];
                                 
                                 console.log(FinalJSON, FinalJSON["appearances"])
-
+                            if (FinalJSON) {
                                 for (var i = 0; i < FinalJSON["appearances"].length; i++) {
                                     appearances = appearances + `\n${GetGameString(FinalJSON["appearances"][i])},`
                                 }
@@ -120,6 +120,9 @@ module.exports = {
                                     await interaction.editReply({
                                         embeds: [embed]
                                     })
+                                } else {
+                                    await interaction.editReply("No info for that villager was found!")
+                                }
                                 });
                             
                         });
