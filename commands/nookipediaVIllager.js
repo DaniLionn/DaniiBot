@@ -102,12 +102,13 @@ module.exports = {
             .addStringOption(option => option.setName('tool-name').setDescription('The tool you want info about').setRequired(true)))
         .addSubcommand(subcommand =>
             subcommand
-            .setName('events')
-            .setDescription('info about events')
-            .addSubcommand(subcommand =>
-                subcommand
-                .setName('today')
-                .setDescription('info about events happening in game today'))),
+            .setName('events-today')
+            .setDescription('events happening in game right now'))
+        .addSubcommand(subcommand =>
+            subcommand
+            .setName('events-YYYY-MM-DD')
+            .setDescription('events happening in game right now')
+            .addStringOption(option => option.setName('date').setDescription('The date you want event info about (MUST BE FORMATTED AS YYYY-MM-DD)').setRequired(true))),
     async execute(interaction) {
         //give the bot time to think! we need to make sure we get all the data
         //console.log(appDir)
@@ -245,12 +246,60 @@ module.exports = {
                     await interaction.editReply("Not implemented yet")
                 })
             })
-        } else if ((interaction.options.getSubcommand() === 'today')) {
+        } else if ((interaction.options.getSubcommand() === 'events-today')) {
+            // let date = new Date().toLocaleDateString('en-US', {
+            //     timeZone: 'America/Edmonton'
+            // })
+            console.log(formatDate(date));
+            https.get(`https://api.nookipedia.com/nh/events?today`, options, (response) => {
+                
+                var result = ''
+                response.on('data', function (chunk) {
+                    result += chunk;
+                });
+                
+                response.on('end', async function () {
+                    FinalJSON = JSON.parse(result);
+                    
+                    let total = 0
+                    
+                    let max = 25
+                    
+                    console.log(FinalJSON)
+                    //mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm wet diaper sludge
+                    const embed = new EmbedBuilder()
+                        .setColor(defaultEmbedColour)
+                        .setTitle(`Events for ${formatDate(date)}`)
+                    
+                    for (var i = 0; i < FinalJSON.length; i++) {
+                        total += 3
+                        
+                        if (total <= max) {
+                            embed.addFields({
+                                name: 'Event Name',
+                                value: FinalJSON[i]["event"]
+                            }, {
+                                name: 'Date',
+                                value: FinalJSON[i]["date"]
+                            }, {
+                                name: 'Type',
+                                value: FinalJSON[i]["type"],
+                            })
+                        }
+                        
+                    }
+                    
+                    await interaction.editReply({
+                        embeds: [embed]
+                    })
+                })
+            })
+        }else if ((interaction.options.getSubcommand() === 'events-YYYY-MM-DD')) {
             let date = new Date().toLocaleDateString('en-US', {
                 timeZone: 'America/Edmonton'
             })
             console.log(formatDate(date));
-            https.get(`https://api.nookipedia.com/nh/events?date=${formatDate(date)}`, options, (response) => {
+            https.get(`https://api.nookipedia.com/nh/events?date=${interaction.options.getString('date')}`, options, (response) => {
                 
                 var result = ''
                 response.on('data', function (chunk) {
