@@ -137,7 +137,7 @@ module.exports = {
                             .setThumbnail(FinalJSON["image_url"])
                             .addFields({
                                 name: 'Species',
-                                value: FinalJSON["species"]
+                                value: `${FinalJSON["species"]} (${FinalJSON["id"]})`
                             }, {
                                 name: 'Personality',
                                 value: FinalJSON["personality"]
