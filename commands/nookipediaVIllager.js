@@ -259,25 +259,7 @@ module.exports = {
                         }, {
                             name: 'Type',
                             value: FinalJSON["type"],
-                        }, {
-                            name: 'Birthday',
-                            value: `${FinalJSON["birthday_month"]} ${FinalJSON["birthday_day"]}`,
-                        }, {
-                            name: 'Star Sign',
-                            value: FinalJSON["sign"],
-                        }, {
-                            name: 'Quote',
-                            value: `"${FinalJSON["quote"]}"`,
-                        }, {
-                            name: 'Clothing',
-                            value: FinalJSON["clothing"],
-                        }, {
-                            name: 'Debut Game',
-                            value: GetGameString(FinalJSON["debut"]),
-                        }, {
-                            name: 'Appearances',
-                            value: appearances,
-                        })
+                })
                     
                     await interaction.editReply({
                         embeds: [embed]
