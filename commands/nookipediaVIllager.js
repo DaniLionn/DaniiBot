@@ -46,20 +46,21 @@ function GetGameString(code) {
     }
     
 }
+
 function formatDate(date) {
     var d = new Date(date),
         month = '' + (d.getMonth() + 1),
         day = '' + d.getDate(),
         year = d.getFullYear();
-
-    if (month.length < 2) 
+    
+    if (month.length < 2)
         month = '0' + month;
-    if (day.length < 2) 
+    if (day.length < 2)
         day = '0' + day;
-
+    
     return [year, month, day].join('-');
 }
- let date = new Date().toLocaleDateString()
+let date = new Date().toLocaleDateString()
 console.log(formatDate(date));
 
 //const { compare } = require('libsodium-wrappers');
@@ -211,7 +212,7 @@ module.exports = {
             
         } else if ((interaction.options.getSubcommand() === 'clothing')) {
             
-            https.get(`https://api.nookipedia.com/nh/clothing/${interaction.options.getString('name').toLowerCase()}`, options, (response) => {
+            https.get(`https://api.nookipedia.com/nh/clothing/${interaction.options.getString('clothing-name').toLowerCase()}`, options, (response) => {
                 
                 var result = ''
                 response.on('data', function (chunk) {
@@ -224,7 +225,7 @@ module.exports = {
             })
             
         } else if ((interaction.options.getSubcommand() === 'tool')) {
-            https.get(`https://api.nookipedia.com/nh/tools/${interaction.options.getString('name').toLowerCase()}`, options, (response) => {
+            https.get(`https://api.nookipedia.com/nh/tools/${interaction.options.getString('tool-name').toLowerCase()}`, options, (response) => {
                 
                 var result = ''
                 response.on('data', function (chunk) {
@@ -236,7 +237,9 @@ module.exports = {
                 })
             })
         } else if ((interaction.options.getSubcommand() === 'events-today')) {
-            let date = new Date().toLocaleDateString()
+            let date = new Date().toLocaleDateString('en-US', {
+                timeZone: 'America/Edmonton'
+            })
             console.log(formatDate(date));
             https.get(`https://api.nookipedia.com/nh/events?date=${formatDate(date)}`, options, (response) => {
                 
@@ -246,20 +249,34 @@ module.exports = {
                 });
                 
                 response.on('end', async function () {
-                    FinalJSON = JSON.parse(result)[0];
+                    FinalJSON = JSON.parse(result);
+                    
+                    let total = 0
+                    
+                    let max = 25
                     
                     console.log(FinalJSON)
                     
                     const embed = new EmbedBuilder()
-                        .setTitle(FinalJSON["event"])
-                        .setURL(FinalJSON["url"])
-                        .addFields( {
-                            name: 'Date',
-                            value: FinalJSON["date"]
-                        }, {
-                            name: 'Type',
-                            value: FinalJSON["type"],
-                })
+                        .setTitle(`Events for ${formatDate(date)}`)
+                    
+                    for (var i = 0; i < FinalJSON.length; i++) {
+                        total += 3
+                        
+                        if (total <= max) {
+                            embed.addFields({
+                                name: 'Event Name',
+                                value: FinalJSON[i]["event"]
+                            }, {
+                                name: 'Date',
+                                value: FinalJSON[i]["date"]
+                            }, {
+                                name: 'Type',
+                                value: FinalJSON[i]["type"],
+                            })
+                        }
+                        
+                    }
                     
                     await interaction.editReply({
                         embeds: [embed]
