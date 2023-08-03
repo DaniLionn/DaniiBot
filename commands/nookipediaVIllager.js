@@ -295,9 +295,6 @@ module.exports = {
                 })
             })
         }else if ((interaction.options.getSubcommand() === 'events')) {
-            let date = new Date().toLocaleDateString('en-US', {
-                timeZone: 'America/Edmonton'
-            })
             console.log(formatDate(date));
             https.get(`https://api.nookipedia.com/nh/events?date=${interaction.options.getString('date')}`, options, (response) => {
                 
@@ -314,10 +311,9 @@ module.exports = {
                     let max = 25
                     
                     console.log(FinalJSON)
-                    //mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm wet diaper sludge
                     const embed = new EmbedBuilder()
                         .setColor(defaultEmbedColour)
-                        .setTitle(`Events for ${formatDate(date)}`)
+                        .setTitle(`Events for ${interaction.options.getString('date')}`)
                     
                     for (var i = 0; i < FinalJSON.length; i++) {
                         total += 3
