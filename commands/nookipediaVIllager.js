@@ -20,7 +20,9 @@ const options = {
 }
 
 const defaultEmbedColour = 0x91EC7D
-
+const fishEmbedColour = 0x4ABBD7 
+const bugEmbedColour = 0x51D74A
+const deepSeaColour = 0x1A2693  
 function FormatKey(code) {
     
     if (code === "DNM") {
@@ -268,7 +270,7 @@ module.exports = {
                         console.log(FinalJSON)
                         
                         const embed = new EmbedBuilder()
-                            .setColor(defaultEmbedColour)
+                            .setColor(fishEmbedColour)
                             .setTitle(FinalJSON["name"])
                             .setURL(FinalJSON["url"])
                             .setThumbnail(FinalJSON["image_url"])
@@ -324,7 +326,7 @@ module.exports = {
                     response.on('end', async function () {
                         FinalJSON = JSON.parse(result);
                         const embed = new EmbedBuilder()
-                            .setColor(defaultEmbedColour)
+                            .setColor(bugEmbedColour)
                             .setTitle(FinalJSON["name"])
                             .setURL(FinalJSON["url"])
                             .setThumbnail(FinalJSON["image_url"])
@@ -375,7 +377,37 @@ module.exports = {
                     
                     response.on('end', async function () {
                         FinalJSON = JSON.parse(result);
-                        await interaction.editReply("Not implemented yet")
+                        const embed = new EmbedBuilder()
+                        .setColor(deepSeaColour)
+                        .setTitle(FinalJSON["name"])
+                        .setURL(FinalJSON["url"])
+                        .setThumbnail(FinalJSON["image_url"])
+                        .addFields({
+                            name: 'Number',
+                            value: FinalJSON["number"].toString()
+                        }, {
+                            name: 'Location',
+                            value: FinalJSON["location"]
+                        },{
+                            name: 'Catches needed to unlock',
+                            value: FinalJSON["total_catch"].toString(),
+                        }, {
+                            name: 'Sell Price',
+                            value: `Regular: ${FinalJSON["sell_nook"].toString()}\nFlick: ${FinalJSON["sell_flick"].toString()}`,
+                        }, {
+                            name: '"Catch" phrase',
+                            value: `"${FinalJSON["catchphrases"][0]}"`,
+                        }, {
+                            name: 'Avaliability',
+                            value: `Northern Hemisphere: ${FinalJSON["north"]["months"]}\nSouthern Hemisphere: ${FinalJSON["south"]["months"]}`,
+                        },{
+                            name: 'Times',
+                            value: `*Northern Hemisphere:* \nJanuary: ${FinalJSON["north"]["times_by_month"]["1"]}\nFeburary: ${FinalJSON["north"]["times_by_month"]["2"]}\nMarch: ${FinalJSON["north"]["times_by_month"]["3"]}\nApril: ${FinalJSON["north"]["times_by_month"]["4"]}\nMay: ${FinalJSON["north"]["times_by_month"]["5"]}\nJune: ${FinalJSON["north"]["times_by_month"]["6"]}\nJuly: ${FinalJSON["north"]["times_by_month"]["7"]}\nAugust: ${FinalJSON["north"]["times_by_month"]["8"]}\nSeptember: ${FinalJSON["north"]["times_by_month"]["9"]}\nOctober: ${FinalJSON["north"]["times_by_month"]["10"]}\nNovember: ${FinalJSON["north"]["times_by_month"]["11"]}\nDecember: ${FinalJSON["north"]["times_by_month"]["12"]}\n\n*Southern Hemisphere:* \nJanuary: ${FinalJSON["south"]["times_by_month"]["1"]}\nFeburary: ${FinalJSON["south"]["times_by_month"]["2"]}\nMarch: ${FinalJSON["south"]["times_by_month"]["3"]}\nApril: ${FinalJSON["south"]["times_by_month"]["4"]}\nMay: ${FinalJSON["south"]["times_by_month"]["5"]}\nJune: ${FinalJSON["south"]["times_by_month"]["6"]}\nJuly: ${FinalJSON["south"]["times_by_month"]["7"]}\nAugust: ${FinalJSON["south"]["times_by_month"]["8"]}\nSeptember: ${FinalJSON["south"]["times_by_month"]["9"]}\nOctober: ${FinalJSON["south"]["times_by_month"]["10"]}\nNovember: ${FinalJSON["south"]["times_by_month"]["11"]}\nDecember: ${FinalJSON["south"]["times_by_month"]["12"]}`,
+                        })
+                    
+                    await interaction.editReply({
+                        embeds: [embed]
+                    })
                     })
                 })
                 
