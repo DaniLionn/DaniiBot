@@ -20,6 +20,10 @@ const { finished } = require('node:stream/promises');
 //const { abort } = require('node:process');
 const appDir = dirname(require.main.filename);
 
+const {
+    request
+} = require('undici');
+
 const options = {
     headers: {
         'x-api-key': NookipediaAPIKey
@@ -108,9 +112,7 @@ async function createArtGuide(realURL, fakeURL) {
     //const stamp = getTimestamp()
     
     const fileName = `artguide.png`
-    
-    console.log(`Creating avatar card for ${member.displayName} (${user.username}) with message ${message} in server ${guildID} channel ${channelID}`)
-    
+     
     const canvas = createCanvas(700, 250);
     const context = canvas.getContext('2d');
     
