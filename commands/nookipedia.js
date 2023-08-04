@@ -752,71 +752,72 @@ module.exports = {
                                 })
                             
                             if (FinalJSON["has_fake"] === true) {
-                                
+                                //some artworks are always real, so check if the art can be fake 
+                                //before making the real vs fake image.
                                 const canvas = createCanvas(750, 500);
                                 const context = canvas.getContext('2d');
                                 
-                                if(FinalJSON["art_type"] === "Painting") {
-                                    //paintings have slightly different data compared to statues
-                                    //we download the texture of the painting for the real vs fake image
+                                if (FinalJSON["art_type"] === "Painting") {
+                                    //paintings have slightly different data compared to statues.
+                                    //we download the texture of the painting for the real vs fake image.
                                     download(FinalJSON["real_info"]["texture_url"], "real.png")
                                     download(FinalJSON["fake_info"]["texture_url"], "fake.png")
                                 } else {
                                     //statues don't have a texture image, it's just a render of the model used
-                                    //for the statue. we download that image for the real vs fake image instead
+                                    //for the statue. we download that image for the real vs fake image instead.
                                     download(FinalJSON["real_info"]["image_url"], "real.png")
                                     download(FinalJSON["fake_info"]["image_url"], "fake.png")
-                                } 
-                               setTimeout(async () => {
-
-                                //console.log(realImage, fakeImage)
-
-                                const realImage =await readFile("./real.png");
-                                const fakeImage =await readFile("./fake.png")
-                                const real = new Image();
-                                real.src = realImage
-                                context.drawImage(real, 0, 0, canvas.width / 2, canvas.height);
+                                }
                                 
-                                const fake = new Image();
-                                fake.src = fakeImage;
-                                context.drawImage(fake, canvas.width / 2, 0, canvas.width / 2, canvas.height);
-                                
-                                context.font = "32px Courier New";
-                                context.fillStyle = '#ffffff';
-                                context.strokeStyle = 'black';
-                                context.lineWidth = 6;
-                                context.strokeText("REAL", ((canvas.width / 2) / 2) / 2, (canvas.height - 10));
-                                context.fillText("REAL", ((canvas.width / 2) / 2) / 2, (canvas.height - 10));
-                                
-                                context.font = "32px Courier New";
-                                context.fillStyle = '#ffffff';
-                                context.strokeStyle = 'black';
-                                context.lineWidth = 6;
-                                context.strokeText("FAKE", canvas.width / 2 + (((canvas.width / 2) / 2) / 2), (canvas.height - 10));
-                                context.fillText("FAKE", canvas.width / 2 + (((canvas.width / 2) / 2) / 2), (canvas.height - 10));
-                                
-                                const attachment = new AttachmentBuilder(canvas.toBuffer('image/png'), {
-                                    name: 'artguide.png'
-                                });
-
-                                embed.addFields({
-                                    name: 'Fake difference',
-                                    value: FinalJSON["fake_info"]["description"]
-                                })
-                                embed.setImage("attachment://artguide.png")
-  
-                                await interaction.editReply({
-                                    embeds: [embed],
-                                    files: [attachment]
-                                })
-
-                               }, 750)
+                                setTimeout(async () => {
+                                    //timeout delay because i couldn't find another way to asynchronously
+                                    //run the image loading code after images get downloaded
+                                    const realImage = await readFile("./real.png");
+                                    const fakeImage = await readFile("./fake.png")
+                                    const real = new Image();
+                                    real.src = realImage
+                                    context.drawImage(real, 0, 0, canvas.width / 2, canvas.height);
+                                    
+                                    const fake = new Image();
+                                    fake.src = fakeImage;
+                                    context.drawImage(fake, canvas.width / 2, 0, canvas.width / 2, canvas.height);
+                                    
+                                    context.font = "32px Courier New";
+                                    context.fillStyle = '#ffffff';
+                                    context.strokeStyle = 'black';
+                                    context.lineWidth = 6;
+                                    context.strokeText("REAL", ((canvas.width / 2) / 2) / 2, (canvas.height - 10));
+                                    context.fillText("REAL", ((canvas.width / 2) / 2) / 2, (canvas.height - 10));
+                                    
+                                    context.font = "32px Courier New";
+                                    context.fillStyle = '#ffffff';
+                                    context.strokeStyle = 'black';
+                                    context.lineWidth = 6;
+                                    context.strokeText("FAKE", canvas.width / 2 + (((canvas.width / 2) / 2) / 2), (canvas.height - 10));
+                                    context.fillText("FAKE", canvas.width / 2 + (((canvas.width / 2) / 2) / 2), (canvas.height - 10));
+                                    
+                                    const attachment = new AttachmentBuilder(canvas.toBuffer('image/png'), {
+                                        name: 'artguide.png'
+                                    });
+                                    
+                                    embed.addFields({
+                                        name: 'Fake difference',
+                                        value: FinalJSON["fake_info"]["description"]
+                                    })
+                                    embed.setImage("attachment://artguide.png")
+                                    
+                                    await interaction.editReply({
+                                        embeds: [embed],
+                                        files: [attachment]
+                                    })
+                                    
+                                }, 750)
                             } else {
                                 embed.addFields({
                                     name: 'Fake difference',
                                     value: "This artwork is always genuine."
                                 })
-
+                                
                                 embed.setImage(["real_info"]["texture_url"])
                                 await interaction.editReply({
                                     embeds: [embed]
