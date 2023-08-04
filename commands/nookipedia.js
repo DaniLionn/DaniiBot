@@ -12,6 +12,7 @@ const {
     dirname
 } = require('path');
 const {
+    loadImage,
     createCanvas,
     Image,
     GlobalFonts
@@ -107,6 +108,31 @@ function formatDate(date) {
     return [year, month, day].join('-');
 }
 
+function download(url, name) {
+    let path
+    
+    const file = fs.createWriteStream(name);
+    const request = https.get(url, function (response) {
+        
+        response.pipe(file);
+        
+        // after download completed close filestream
+        file.on("finish", async () => {
+            
+            console.log("downloaded")
+            
+            path = file.path
+            
+            file.close(); // close() is async, call cb after close completes.
+            
+            return path
+            
+        })
+        
+    })
+    
+}
+
 async function createArtGuide(realURL, fakeURL) {
 
     //const stamp = getTimestamp()
@@ -116,24 +142,14 @@ async function createArtGuide(realURL, fakeURL) {
     const canvas = createCanvas(700, 250);
     const context = canvas.getContext('2d');
 
-    const real = {
-        body
-    } = await request(realURL({
-        format: 'jpg'
-    }));
+    // const realImage = download(realURL, "real.png")
+    // const fakeImage = download(fakeURL, "fake.png")
 
-    const fake = {
-        body
-    } = await request(fakeURL({
-        format: 'jpg'
-    }));
-    const realImage = new Image();
-    realImage.src = Buffer.from(await real.body.arrayBuffer());
-    context.drawImage(realImage, 0, 0, 350, 250);
+    const image1 = loadImage(realURL)
+    context.drawImage(image1, 0, 0, 350, 250);
 
-    const fakeimage = new Image();
-    fakeimage.src = Buffer.from(await fake.body.arrayBuffer());
-    context.drawImage(fakeimage, 0, 0, 350, 250);
+    const image2 = loadImage(fakeURL)
+    context.drawImage(image2, 0, 0, 350, 250);
 
     context.font = "32px Courier New";
     context.fillStyle = '#ffffff';
