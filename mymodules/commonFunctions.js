@@ -1,7 +1,6 @@
 //module i made to store some simple functions
 const fs = require('node:fs');
 const https = require('https');
-const { exists } = require('fs-extra');
 
 exports.download = function(name, url) {
     const file = fs.createWriteStream(name);
