@@ -132,11 +132,7 @@ module.exports = {
 			.setDescription('info about a diy recipe ')
 			.addStringOption(option => option.setName('diy-name').setDescription('The diy recipe you want info about').setRequired(true)))
 		.addSubcommand(subcommand =>
-			subcommand.addSubcommand(subcommand =>
 			subcommand
-			.setName('sea-creature')
-			.setDescription('info about a sea creature')
-			.addStringOption(option => option.setName('sea-creature-name').setDescription('The sea creature you want info about').setRequired(true)))
 			.setName('tool')
 			.setDescription('info about a tool')
 			.addStringOption(option => option.setName('tool-name').setDescription('The tool you want info about').setRequired(true)))
