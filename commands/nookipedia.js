@@ -736,7 +736,7 @@ module.exports = {
                                 .setColor(EmbedColours["Artwork"])
                                 .setTitle(FinalJSON["name"])
                                 .setURL(FinalJSON["url"])
-                                .setThumbnail(FinalJSON["real_info"]["texture_url"])
+                                .setThumbnail(FinalJSON["real_info"]["image_url"])
                                 .addFields({
                                     name: 'Real Name',
                                     value: FinalJSON["art_name"]
@@ -808,6 +808,7 @@ module.exports = {
                                     name: 'Fake difference',
                                     value: "This artwork is always genuine."
                                 })
+
                                 embed.setImage(["real_info"]["texture_url"])
                                 await interaction.editReply({
                                     embeds: [embed]
