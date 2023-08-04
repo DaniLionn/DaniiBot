@@ -804,6 +804,11 @@ module.exports = {
 
                                }, 750)
                             } else {
+                                embed.addFields({
+                                    name: 'Fake difference',
+                                    value: "This artwork is always genuine."
+                                })
+                                embed.setImage(["real_info"]["texture_url"])
                                 await interaction.editReply({
                                     embeds: [embed]
                                 })
