@@ -153,11 +153,11 @@ async function createArtGuide(realURL, fakeURL) {
     console.log(realImage, fakeImage)
 
     const real = new Image();
-    real.src = await readFile(realImage);
+    real.src = await readFile("./real.png");
     context.drawImage(real, 0, 0, 350, 250);
 
     const fake = new Image();
-    fake.src = await readFile(fakeImage);
+    fake.src = await readFile("./fake.png");
     context.drawImage(fake, 0, 0, 350, 250);
 
     context.font = "32px Courier New";
