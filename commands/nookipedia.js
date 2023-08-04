@@ -753,7 +753,7 @@ module.exports = {
                             
                             if (FinalJSON["has_fake"] === true) {
                                 
-                                const canvas = createCanvas(700, 250);
+                                const canvas = createCanvas(400, 500);
                                 const context = canvas.getContext('2d');
                                 
                                 download(FinalJSON["real_info"]["texture_url"], "real.png")
@@ -767,25 +767,25 @@ module.exports = {
                                 const fakeImage =await readFile("./fake.png")
                                 const real = new Image();
                                 real.src = realImage
-                                context.drawImage(real, 0, 0, 350, canvas.height);
+                                context.drawImage(real, 0, 0, 200, canvas.height);
                                 
                                 const fake = new Image();
                                 fake.src = fakeImage;
-                                context.drawImage(fake, 350, 0, 350, canvas.height);
+                                context.drawImage(fake, 200, 0, 200, canvas.height);
                                 
                                 context.font = "32px Courier New";
                                 context.fillStyle = '#ffffff';
                                 context.strokeStyle = 'black';
                                 context.lineWidth = 6;
-                                context.strokeText("REAL", 50, 150);
-                                context.fillText("REAL", 50, 150);
+                                context.strokeText("REAL", 50, (500 - 32));
+                                context.fillText("REAL", 50, (500 - 32));
                                 
                                 context.font = "32px Courier New";
                                 context.fillStyle = '#ffffff';
                                 context.strokeStyle = 'black';
                                 context.lineWidth = 6;
-                                context.strokeText("FAKE", 400, 200);
-                                context.fillText("FAKE", 400, 200);
+                                context.strokeText("FAKE", 400, (500 - 32));
+                                context.fillText("FAKE", 400, (500 - 32));
                                 
                                 const attachment = new AttachmentBuilder(canvas.toBuffer('image/png'), {
                                     name: 'artguide.png'
