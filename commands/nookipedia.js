@@ -802,7 +802,7 @@ module.exports = {
                                     files: [attachment]
                                 })
 
-                               }, 3000)
+                               }, 750)
                             } else {
                                 await interaction.editReply({
                                     embeds: [embed]
