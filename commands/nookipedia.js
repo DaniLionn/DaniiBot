@@ -57,7 +57,36 @@ function FormatKey(key) {
 	}
 }
 
-function formatDate(date) {
+function getLocaleString(tz, type) {
+
+    if (tz != undefined) {
+        if (type === "localeDate") {
+            return new Date().toLocaleDateString('en-US', {
+                timeZone: tz
+            })
+        } else if (type === "localeTime") {
+            return new Date().toLocaleTimeString('en-US', {
+                timeZone: tz
+            })
+        } else {
+            return new Date().toLocaleString('en-US', {
+                timeZone: tz
+            })
+        }
+    } else {
+        if (type === "localeDate") {
+            return new Date().toLocaleDateString()
+        } else if (type === "localeTime") {
+            return new Date().toLocaleTimeString()
+        } else {
+            return new Date().toLocaleString()
+        }
+    }
+
+
+}
+
+function formatDate_YYYY_MM_DD(date) {
 	var d = new Date(date),
 		month = '' + (d.getMonth() + 1),
 		day = '' + d.getDate(),
@@ -520,10 +549,7 @@ module.exports = {
 				}, 3000)
 			}
 		} else if ((interaction.options.getSubcommand() === 'events-today')) {
-			let date = new Date().toLocaleDateString('en-US', {
-				timeZone: 'America/Edmonton'
-			})
-			//console.log(formatDate(date));
+			let date = getLocaleString('America/Edmonton', 'localeDate')
 
 			try {
 				https.get(`https://api.nookipedia.com/nh/events?date=today`, options, (response) => {
@@ -544,7 +570,7 @@ module.exports = {
 						//mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm wet diaper sludge
 						const embed = new EmbedBuilder()
 							.setColor(EmbedColours["Default"])
-							.setTitle(`Events for ${formatDate(date)}`)
+							.setTitle(`Events for ${formatDate_YYYY_MM_DD(date)}`)
 
 						for (var i = 0; i < FinalJSON.length; i++) {
 							total += 3
@@ -578,7 +604,7 @@ module.exports = {
 			}
 
 		} else if ((interaction.options.getSubcommand() === 'events')) {
-			console.log(formatDate(date));
+
 
 			try {
 
