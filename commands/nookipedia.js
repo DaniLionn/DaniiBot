@@ -142,13 +142,13 @@ async function createArtGuide(realURL, fakeURL) {
     const canvas = createCanvas(700, 250);
     const context = canvas.getContext('2d');
 
-    // const realImage = download(realURL, "real.png")
-    // const fakeImage = download(fakeURL, "fake.png")
+    const realImage = download(realURL, "real.png")
+    const fakeImage = download(fakeURL, "fake.png")
 
-    const image1 = loadImage(realURL)
+    const image1 = loadImage(realImage)
     context.drawImage(image1, 0, 0, 350, 250);
 
-    const image2 = loadImage(fakeURL)
+    const image2 = loadImage(fakeImage)
     context.drawImage(image2, 0, 0, 350, 250);
 
     context.font = "32px Courier New";
