@@ -504,7 +504,7 @@ module.exports = {
 				}, 3000)
 			}
 		} else if ((interaction.options.getSubcommand() === 'events-today')) {
-			let date = getLocaleString('America/Edmonton', 'localeDate')
+			let date = commonFunc.getLocaleString('America/Edmonton', 'localeDate')
 
 			try {
 				https.get(`https://api.nookipedia.com/nh/events?date=today`, options, (response) => {
