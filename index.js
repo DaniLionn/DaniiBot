@@ -107,6 +107,7 @@ const client = new Client({
 });
 
 // Log in to Discord with your client's token
+
 client.login(token);
 
 client.commands = new Collection();
