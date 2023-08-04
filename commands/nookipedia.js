@@ -790,8 +790,13 @@ module.exports = {
                                 const attachment = new AttachmentBuilder(canvas.toBuffer('image/png'), {
                                     name: 'artguide.png'
                                 });
-                                
+
+                                embed.addFields({
+                                    name: 'Fake difference',
+                                    value: FinalJSON["description"]
+                                })
                                 embed.setImage("attachment://artguide.png")
+  
                                 await interaction.editReply({
                                     embeds: [embed],
                                     files: [attachment]
