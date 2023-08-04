@@ -30,6 +30,7 @@ const EmbedColours = {
 	["Fish"]: 0x4ABBD7,
 	["Bug"]: 0x51D74A,
 	["DeepSeaCreature"]: 0x1A2693,
+    ["Fossil"]: 0x5955CF,
 	["Artwork"]: 0xFAFDAB,
 }
 
@@ -90,6 +91,11 @@ module.exports = {
 			.setName('sea-creature')
 			.setDescription('info about a sea creature')
 			.addStringOption(option => option.setName('sea-creature-name').setDescription('The sea creature you want info about').setRequired(true)))
+        .addSubcommand(subcommand =>
+            subcommand
+            .setName('fossil')
+            .setDescription('info about a fossil')
+            .addStringOption(option => option.setName('fossil-name').setDescription('The fossil you want info about').setRequired(true)))
 		.addSubcommand(subcommand =>
 			subcommand
 			.setName('artwork')
@@ -126,7 +132,11 @@ module.exports = {
 			.setDescription('info about a diy recipe ')
 			.addStringOption(option => option.setName('diy-name').setDescription('The diy recipe you want info about').setRequired(true)))
 		.addSubcommand(subcommand =>
+			subcommand.addSubcommand(subcommand =>
 			subcommand
+			.setName('sea-creature')
+			.setDescription('info about a sea creature')
+			.addStringOption(option => option.setName('sea-creature-name').setDescription('The sea creature you want info about').setRequired(true)))
 			.setName('tool')
 			.setDescription('info about a tool')
 			.addStringOption(option => option.setName('tool-name').setDescription('The tool you want info about').setRequired(true)))
@@ -203,7 +213,7 @@ module.exports = {
 									name: 'Appearances',
 									value: appearances,
 								})
-
+                                .setFooter({text: `Source: ${FinalJSON["url"]}`})
 							await interaction.editReply({
 								embeds: [embed]
 							})
@@ -269,7 +279,7 @@ module.exports = {
 									name: 'Times',
 									value: `*Northern Hemisphere:* \nJanuary: ${FinalJSON["north"]["times_by_month"]["1"]}\nFeburary: ${FinalJSON["north"]["times_by_month"]["2"]}\nMarch: ${FinalJSON["north"]["times_by_month"]["3"]}\nApril: ${FinalJSON["north"]["times_by_month"]["4"]}\nMay: ${FinalJSON["north"]["times_by_month"]["5"]}\nJune: ${FinalJSON["north"]["times_by_month"]["6"]}\nJuly: ${FinalJSON["north"]["times_by_month"]["7"]}\nAugust: ${FinalJSON["north"]["times_by_month"]["8"]}\nSeptember: ${FinalJSON["north"]["times_by_month"]["9"]}\nOctober: ${FinalJSON["north"]["times_by_month"]["10"]}\nNovember: ${FinalJSON["north"]["times_by_month"]["11"]}\nDecember: ${FinalJSON["north"]["times_by_month"]["12"]}\n\n*Southern Hemisphere:* \nJanuary: ${FinalJSON["south"]["times_by_month"]["1"]}\nFeburary: ${FinalJSON["south"]["times_by_month"]["2"]}\nMarch: ${FinalJSON["south"]["times_by_month"]["3"]}\nApril: ${FinalJSON["south"]["times_by_month"]["4"]}\nMay: ${FinalJSON["south"]["times_by_month"]["5"]}\nJune: ${FinalJSON["south"]["times_by_month"]["6"]}\nJuly: ${FinalJSON["south"]["times_by_month"]["7"]}\nAugust: ${FinalJSON["south"]["times_by_month"]["8"]}\nSeptember: ${FinalJSON["south"]["times_by_month"]["9"]}\nOctober: ${FinalJSON["south"]["times_by_month"]["10"]}\nNovember: ${FinalJSON["south"]["times_by_month"]["11"]}\nDecember: ${FinalJSON["south"]["times_by_month"]["12"]}`,
 								})
-
+                                .setFooter({text: `Source: ${FinalJSON["url"]}`})
 							await interaction.editReply({
 								embeds: [embed]
 							})
@@ -330,7 +340,7 @@ module.exports = {
 									name: 'Times',
 									value: `*Northern Hemisphere:* \nJanuary: ${FinalJSON["north"]["times_by_month"]["1"]}\nFeburary: ${FinalJSON["north"]["times_by_month"]["2"]}\nMarch: ${FinalJSON["north"]["times_by_month"]["3"]}\nApril: ${FinalJSON["north"]["times_by_month"]["4"]}\nMay: ${FinalJSON["north"]["times_by_month"]["5"]}\nJune: ${FinalJSON["north"]["times_by_month"]["6"]}\nJuly: ${FinalJSON["north"]["times_by_month"]["7"]}\nAugust: ${FinalJSON["north"]["times_by_month"]["8"]}\nSeptember: ${FinalJSON["north"]["times_by_month"]["9"]}\nOctober: ${FinalJSON["north"]["times_by_month"]["10"]}\nNovember: ${FinalJSON["north"]["times_by_month"]["11"]}\nDecember: ${FinalJSON["north"]["times_by_month"]["12"]}\n\n*Southern Hemisphere:* \nJanuary: ${FinalJSON["south"]["times_by_month"]["1"]}\nFeburary: ${FinalJSON["south"]["times_by_month"]["2"]}\nMarch: ${FinalJSON["south"]["times_by_month"]["3"]}\nApril: ${FinalJSON["south"]["times_by_month"]["4"]}\nMay: ${FinalJSON["south"]["times_by_month"]["5"]}\nJune: ${FinalJSON["south"]["times_by_month"]["6"]}\nJuly: ${FinalJSON["south"]["times_by_month"]["7"]}\nAugust: ${FinalJSON["south"]["times_by_month"]["8"]}\nSeptember: ${FinalJSON["south"]["times_by_month"]["9"]}\nOctober: ${FinalJSON["south"]["times_by_month"]["10"]}\nNovember: ${FinalJSON["south"]["times_by_month"]["11"]}\nDecember: ${FinalJSON["south"]["times_by_month"]["12"]}`,
 								})
-
+                                .setFooter({text: `Source: ${FinalJSON["url"]}`})
 							await interaction.editReply({
 								embeds: [embed]
 							})
@@ -398,7 +408,76 @@ module.exports = {
 									name: 'Times',
 									value: `*Northern Hemisphere:* \nJanuary: ${FinalJSON["north"]["times_by_month"]["1"]}\nFeburary: ${FinalJSON["north"]["times_by_month"]["2"]}\nMarch: ${FinalJSON["north"]["times_by_month"]["3"]}\nApril: ${FinalJSON["north"]["times_by_month"]["4"]}\nMay: ${FinalJSON["north"]["times_by_month"]["5"]}\nJune: ${FinalJSON["north"]["times_by_month"]["6"]}\nJuly: ${FinalJSON["north"]["times_by_month"]["7"]}\nAugust: ${FinalJSON["north"]["times_by_month"]["8"]}\nSeptember: ${FinalJSON["north"]["times_by_month"]["9"]}\nOctober: ${FinalJSON["north"]["times_by_month"]["10"]}\nNovember: ${FinalJSON["north"]["times_by_month"]["11"]}\nDecember: ${FinalJSON["north"]["times_by_month"]["12"]}\n\n*Southern Hemisphere:* \nJanuary: ${FinalJSON["south"]["times_by_month"]["1"]}\nFeburary: ${FinalJSON["south"]["times_by_month"]["2"]}\nMarch: ${FinalJSON["south"]["times_by_month"]["3"]}\nApril: ${FinalJSON["south"]["times_by_month"]["4"]}\nMay: ${FinalJSON["south"]["times_by_month"]["5"]}\nJune: ${FinalJSON["south"]["times_by_month"]["6"]}\nJuly: ${FinalJSON["south"]["times_by_month"]["7"]}\nAugust: ${FinalJSON["south"]["times_by_month"]["8"]}\nSeptember: ${FinalJSON["south"]["times_by_month"]["9"]}\nOctober: ${FinalJSON["south"]["times_by_month"]["10"]}\nNovember: ${FinalJSON["south"]["times_by_month"]["11"]}\nDecember: ${FinalJSON["south"]["times_by_month"]["12"]}`,
 								})
+                                .setFooter({text: `Source: ${FinalJSON["url"]}`})
+							await interaction.editReply({
+								embeds: [embed]
+							})
+						} else {
+							await interaction.editReply("An error occured!")
+							setTimeout(async function() {
+								await interaction.deleteReply();
+							}, 3000)
+						}
+					})
+				})
 
+			} catch (err) {
+				console.log(err)
+				await interaction.editReply("An error occured!")
+				setTimeout(async function() {
+					await interaction.deleteReply();
+				}, 3000)
+			}
+
+		}else if ((interaction.options.getSubcommand() === 'fossil')) {
+
+			try {
+				https.get(`https://api.nookipedia.com/nh/fossils/individuals/${interaction.options.getString('fossil-name').toLowerCase()}`, options, (response) => {
+
+					var result = ''
+					response.on('data', function(chunk) {
+						result += chunk;
+					});
+
+					response.on('end', async function() {
+
+                        let colours = ''
+
+						FinalJSON = JSON.parse(result);
+
+						console.log(FinalJSON)
+
+                        for (const c in FinalJSON["colours"]) {
+                            colours = colours + `\n${c}`
+                        }
+
+						if (!FinalJSON["title"] || !FinalJSON === '') {
+
+							const embed = new EmbedBuilder()
+								.setColor(EmbedColours["Fossil"])
+								.setTitle(FinalJSON["name"])
+								.setURL(FinalJSON["url"])
+								.setThumbnail(FinalJSON["image_url"])
+								.addFields({
+									name: 'Fossil Group',
+									value: FinalJSON["fossil_group"]
+								}, {
+									name: 'Sell Price',
+									value: `${FormatCurrency(FinalJSON["sell"], "Bells")}`,
+								},{
+									name: 'Interactable',
+									value: FinalJSON["interactable"],
+								}, {
+									name: 'HHA Base Points',
+									value: FinalJSON["hha_base"],
+								}, {
+									name: 'Size',
+									value: `${FinalJSON["width"]}x${FinalJSON["height"]} tiles`,
+								},{
+                                    name: 'Colours',
+                                    value: colours,
+                                },  )
+                                .setFooter({text: `Source: ${FinalJSON["url"]}`})
 							await interaction.editReply({
 								embeds: [embed]
 							})
@@ -655,7 +734,7 @@ module.exports = {
 									name: 'Prices',
 									value: `*Buy*\n${FormatCurrency(FinalJSON["buy"], "Bells")}\n\n*Sell*\n${FormatCurrency(FinalJSON["sell"], "Bells")}`
 								})
-
+                                .setFooter({text: `Source: ${FinalJSON["url"]}`})
 							if (FinalJSON["has_fake"] === true) {
 								//some artworks are always real, so check if the art can be fake 
 								//before making the real vs fake image.
@@ -771,7 +850,7 @@ module.exports = {
 									name: 'Number',
 									value: FinalJSON["number"].toString()
 								}, )
-
+                                .setFooter({text: `Source: ${FinalJSON["url"]}`})
 							await interaction.editReply({
 								embeds: [embed]
 							})
@@ -814,7 +893,7 @@ module.exports = {
 									name: 'Number',
 									value: FinalJSON["number"].toString()
 								}, )
-
+                                .setFooter({text: `Source: ${FinalJSON["url"]}`})
 							await interaction.editReply({
 								embeds: [embed]
 							})
@@ -857,7 +936,7 @@ module.exports = {
 									name: 'Number',
 									value: FinalJSON["number"].toString()
 								}, )
-
+                                .setFooter({text: `Source: ${FinalJSON["url"]}`})
 							await interaction.editReply({
 								embeds: [embed]
 							})
@@ -900,7 +979,7 @@ module.exports = {
 									name: 'Number',
 									value: FinalJSON["number"].toString()
 								}, )
-
+                                .setFooter({text: `Source: ${FinalJSON["url"]}`})
 							await interaction.editReply({
 								embeds: [embed]
 							})
