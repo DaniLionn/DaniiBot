@@ -476,7 +476,7 @@ module.exports = {
 									value: FinalJSON["hha_base"].toString(),
 								}, {
 									name: 'Size',
-									value: `${FinalJSON["width"]}x${FinalJSON["height"]} tiles`,
+									value: `${FinalJSON["width"]}x${FinalJSON["length"]} tiles`,
 								},{
                                     name: 'Colours',
                                     value: colours,
