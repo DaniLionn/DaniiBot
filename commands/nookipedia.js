@@ -759,6 +759,8 @@ module.exports = {
                                 download(FinalJSON["real_info"]["texture_url"], "real.png")
                                 download(FinalJSON["fake_info"]["texture_url"], "fake.png")
                                 
+                               setTimeout(async () => {
+
                                 console.log(realImage, fakeImage)
 
                                 const realImage =await readFile("./real.png");
@@ -794,6 +796,8 @@ module.exports = {
                                     embeds: [embed],
                                     files: [attachment]
                                 })
+
+                               }, 3000)
                             } else {
                                 await interaction.editReply({
                                     embeds: [embed]
