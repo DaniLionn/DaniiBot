@@ -650,7 +650,7 @@ module.exports = {
 									value: FinalJSON["art_type"]
 								}, {
 									name: 'Art Info',
-									value: `*Artist*\n${FinalJSON["author"]}\n\n*Year*\n${FinalJSON["year"]}\n\n*Method used*\n${FinalJSON["art_style"]}`
+									value: `*Artist*\n${FinalJSON["author"]}\n\n*Year*\n${FinalJSON["year"]}\n\n*Method used*\n${FinalJSON["art_style"]}\n\n*Description*\n${FinalJSON["real_info"]["description"]}`
 								}, {
 									name: 'Prices',
 									value: `*Buy*\n${FormatCurrency(FinalJSON["buy"], "Bells")}\n\n*Sell*\n${FormatCurrency(FinalJSON["sell"], "Bells")}`
