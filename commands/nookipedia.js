@@ -793,7 +793,7 @@ module.exports = {
 
                                 embed.addFields({
                                     name: 'Fake difference',
-                                    value: FinalJSON["description"]
+                                    value: FinalJSON["fake_info"]["description"]
                                 })
                                 embed.setImage("attachment://artguide.png")
   
