@@ -782,8 +782,8 @@ module.exports = {
                                 context.fillStyle = '#ffffff';
                                 context.strokeStyle = 'black';
                                 context.lineWidth = 6;
-                                context.strokeText("FAKE", 400, 150);
-                                context.fillText("FAKE", 400, 150);
+                                context.strokeText("FAKE", 400, 200);
+                                context.fillText("FAKE", 400, 200);
                                 
                                 const attachment = new AttachmentBuilder(canvas.toBuffer('image/png'), {
                                     name: 'artguide.png'
