@@ -449,6 +449,14 @@ module.exports = {
 
 						if (!FinalJSON["title"] || !FinalJSON === '') {
 
+                            let i = ""
+
+                            if (FinalJSON["interactable"] == true) {
+                                i = "Yes"
+                            } else {
+                                i = "No"
+                            }
+
 							const embed = new EmbedBuilder()
 								.setColor(EmbedColours["Fossil"])
 								.setTitle(FinalJSON["name"])
@@ -462,13 +470,13 @@ module.exports = {
 									value: `${FormatCurrency(FinalJSON["sell"], "Bells")}`,
 								},{
 									name: 'Interactable',
-									value: FinalJSON["interactable"],
+									value: i,
 								}, {
 									name: 'HHA Base Points',
-									value: FinalJSON["hha_base"],
+									value: FinalJSON["hha_base"].toString(),
 								}, {
 									name: 'Size',
-									value: `${FinalJSON["width"]}x${FinalJSON["height"]} tiles`,
+									value: `${FinalJSON["width"].toString()}x${FinalJSON["height"].toString()} tiles`,
 								},{
                                     name: 'Colours',
                                     value: colours,
