@@ -178,6 +178,9 @@ async function createArtGuide(realURL, fakeURL) {
         name: fileName
     });
 
+
+    return attachment
+
     
 }
 
