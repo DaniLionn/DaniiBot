@@ -4,6 +4,9 @@ const {
     AttachmentBuilder,
 } = require('discord.js');
 const fs = require('node:fs');
+const {
+    readFile
+} = require('fs/promises');
 const https = require('https');
 const {
     NookipediaAPIKey
@@ -142,15 +145,19 @@ async function createArtGuide(realURL, fakeURL) {
     const canvas = createCanvas(700, 250);
     const context = canvas.getContext('2d');
 
+
+    
     const realImage = download(realURL, "real.png")
     const fakeImage = download(fakeURL, "fake.png")
 
+    console.log(realImage, fakeImage)
+
     const real = new Image();
-    real.src = realImage;
+    real.src = await readFile(realImage);
     context.drawImage(real, 0, 0, 350, 250);
 
     const fake = new Image();
-    fake.src = fakeImage;
+    fake.src = await readFile(fakeImage);
     context.drawImage(fake, 0, 0, 350, 250);
 
     context.font = "32px Courier New";
