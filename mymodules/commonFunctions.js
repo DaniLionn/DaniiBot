@@ -2,7 +2,7 @@
 const fs = require('node:fs');
 const https = require('https');
 
-exports.download = function(name, url) {
+exports.download = function(url, name) {
     const file = fs.createWriteStream(name);
     const request = https.get(url, function (response) {
         
