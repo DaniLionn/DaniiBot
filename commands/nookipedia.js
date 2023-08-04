@@ -761,7 +761,7 @@ module.exports = {
                                 
                                setTimeout(async () => {
 
-                                console.log(realImage, fakeImage)
+                                //console.log(realImage, fakeImage)
 
                                 const realImage =await readFile("./real.png");
                                 const fakeImage =await readFile("./fake.png")
