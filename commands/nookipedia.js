@@ -756,11 +756,14 @@ module.exports = {
                                 const canvas = createCanvas(750, 500);
                                 const context = canvas.getContext('2d');
                                 
-                                if(FinalJSON[art_type] === "Painting") {
-
-                                download(FinalJSON["real_info"]["texture_url"], "real.png")
-                                download(FinalJSON["fake_info"]["texture_url"], "fake.png")
+                                if(FinalJSON["art_type"] === "Painting") {
+                                    //paintings have slightly different data compared to statues
+                                    //we download the texture of the painting for the real vs fake image
+                                    download(FinalJSON["real_info"]["texture_url"], "real.png")
+                                    download(FinalJSON["fake_info"]["texture_url"], "fake.png")
                                 } else {
+                                    //statues don't have a texture image, it's just a render of the model used
+                                    //for the statue. we download that image for the real vs fake image instead
                                     download(FinalJSON["real_info"]["image_url"], "real.png")
                                     download(FinalJSON["fake_info"]["image_url"], "fake.png")
                                 } 
