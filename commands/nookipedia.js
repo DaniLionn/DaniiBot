@@ -16,6 +16,8 @@ const {
 const fs = require('node:fs');
 const https = require('https');
 
+const commonFunc = require('../mymodules/commonFunctions.js');
+
 const options = {
 	headers: {
 		'x-api-key': NookipediaAPIKey
@@ -57,56 +59,9 @@ function FormatKey(key) {
 	}
 }
 
-function getLocaleString(tz, type) {
-
-    if (tz != undefined) {
-        if (type === "localeDate") {
-            return new Date().toLocaleDateString('en-US', {
-                timeZone: tz
-            })
-        } else if (type === "localeTime") {
-            return new Date().toLocaleTimeString('en-US', {
-                timeZone: tz
-            })
-        } else {
-            return new Date().toLocaleString('en-US', {
-                timeZone: tz
-            })
-        }
-    } else {
-        if (type === "localeDate") {
-            return new Date().toLocaleDateString()
-        } else if (type === "localeTime") {
-            return new Date().toLocaleTimeString()
-        } else {
-            return new Date().toLocaleString()
-        }
-    }
-
-
-}
-
-function formatDate_YYYY_MM_DD(date) {
-	var d = new Date(date),
-		month = '' + (d.getMonth() + 1),
-		day = '' + d.getDate(),
-		year = d.getFullYear();
-
-	if (month.length < 2)
-		month = '0' + month;
-	if (day.length < 2)
-		day = '0' + day;
-
-	return [year, month, day].join('-');
-}
-
-function formatNumber(num) {
-	return num.toLocaleString("en-US")
-}
-
 function FormatCurrency(num, currency) {
 
-	let formatted = formatNumber(num)
+	let formatted = commonFunc.formatNumberWithCommas(num)
 
 	return formatted + ` ${currency}`
 }
@@ -710,13 +665,13 @@ module.exports = {
 								if (FinalJSON["art_type"] === "Painting") {
 									//paintings have slightly different data compared to statues.
 									//we download the texture of the painting for the real vs fake image.
-									download(FinalJSON["real_info"]["texture_url"], "real.png")
-									download(FinalJSON["fake_info"]["texture_url"], "fake.png")
+									commonFunc.download(FinalJSON["real_info"]["texture_url"], "real.png")
+									commonFunc.download(FinalJSON["fake_info"]["texture_url"], "fake.png")
 								} else {
 									//statues don't have a texture image, it's just a render of the model used
 									//for the statue. we download that image for the real vs fake image instead.
-									download(FinalJSON["real_info"]["image_url"], "real.png")
-									download(FinalJSON["fake_info"]["image_url"], "fake.png")
+									commonFunc.download(FinalJSON["real_info"]["image_url"], "real.png")
+									commonFunc.download(FinalJSON["fake_info"]["image_url"], "fake.png")
 								}
 
 								setTimeout(async () => {
@@ -762,6 +717,9 @@ module.exports = {
 									})
 
 								}, 750)
+                                setInterval(() => {
+                                    commonFunc.del(["./real.png", "./fake.png"])
+                                }, 1000)
 							} else {
 								embed.addFields({
 									name: 'Fake difference',
