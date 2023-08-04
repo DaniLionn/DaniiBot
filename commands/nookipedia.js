@@ -128,12 +128,12 @@ function download(url, name, callback) {
 
       path = file.path
 
-      file.close(); // close() is async, call cb after close completes.
-      return path
+      file.close(function () {
+        return path
+      }); // close() is async, call cb after close completes.
 
       
-     
-
+    
     })
 
   })
@@ -183,7 +183,7 @@ async function createArtGuide(realURL, fakeURL) {
   });
 
 
-  return attachment
+  return attachment.attachment
 
 
 }
