@@ -2,7 +2,7 @@ const { EmbedBuilder } = require('discord.js');
 
 module.exports({
 
-    buildEmbed(colour, title, URL, author, description, thumbnail, fields, image, footer, addTimestamp) {
+    data: function buildEmbed(colour, title, URL, author, description, thumbnail, fields, image, footer, addTimestamp) {
 
         const NewEmbed = new EmbedBuilder()
 

@@ -16,8 +16,7 @@ const {
     Image,
     GlobalFonts
 } = require('@napi-rs/canvas');
-const { finished } = require('node:stream/promises');
-const buildEmbed = require("./mymodules/CreateEmbed.js")
+//const buildEmbed = require("./mymodules/CreateEmbed.js")
 //const { abort } = require('node:process');
 const appDir = dirname(require.main.filename);
 
