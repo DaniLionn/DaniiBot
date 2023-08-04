@@ -115,26 +115,7 @@ async function createArtGuide(realURL, fakeURL) {
      
     const canvas = createCanvas(700, 250);
     const context = canvas.getContext('2d');
-    
-    let background;
-    let main;
-    
-    
-    // context.font = "32px Courier New";
-    // context.fillStyle = '#ffffff';
-    // context.strokeStyle = 'black';
-    // context.lineWidth = 6;
-    // context.strokeText("REAL", canvas.width / 2.5, canvas.height / 3.5);
-    // context.fillText("REAL", canvas.width / 2.5, canvas.height / 3.5);
-    
-    // context.font = applyText(canvas, `${member.displayName}`);
-    // context.fillStyle = main;
-    // context.strokeStyle = 'black';
-    // context.lineWidth = 6;
-    // context.strokeText(`${member.displayName}`, canvas.width / 2.5, canvas.height / 1.8);
-    // context.fillText(`${member.displayName}`, canvas.width / 2.5, canvas.height / 1.8);
-    
-    
+
     const real = {
         body
     } = await request(realURL({
