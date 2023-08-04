@@ -777,15 +777,15 @@ module.exports = {
                                 context.fillStyle = '#ffffff';
                                 context.strokeStyle = 'black';
                                 context.lineWidth = 6;
-                                context.strokeText("REAL", (canvas.width / 2) / 2, (500 - 32));
-                                context.fillText("REAL", (canvas.width / 2) / 2, (500 - 32));
+                                context.strokeText("REAL", ((canvas.width / 2) / 2) / 2, (canvas.height - 10));
+                                context.fillText("REAL", ((canvas.width / 2) / 2) / 2, (canvas.height - 10));
                                 
                                 context.font = "32px Courier New";
                                 context.fillStyle = '#ffffff';
                                 context.strokeStyle = 'black';
                                 context.lineWidth = 6;
-                                context.strokeText("FAKE", canvas.width / 2 + ((canvas.width / 2) / 2), (canvas.height - 32));
-                                context.fillText("FAKE", canvas.width / 2 + ((canvas.width / 2) / 2), (canvas.height - 32));
+                                context.strokeText("FAKE", canvas.width / 2 + (((canvas.width / 2) / 2) / 2), (canvas.height - 10));
+                                context.fillText("FAKE", canvas.width / 2 + (((canvas.width / 2) / 2) / 2), (canvas.height - 10));
                                 
                                 const attachment = new AttachmentBuilder(canvas.toBuffer('image/png'), {
                                     name: 'artguide.png'
