@@ -784,7 +784,7 @@ module.exports = {
                                 context.fillText("FAKE", 400, 550);
                                 
                                 const attachment = new AttachmentBuilder(canvas.toBuffer('image/png'), {
-                                    name: fileName
+                                    name: 'artguide.png'
                                 });
                                 
                                 embed.setImage("attachment://artguide.png")
