@@ -443,7 +443,7 @@ module.exports = {
 
 						console.log(FinalJSON)
 
-                        for (const c in FinalJSON["colours"]) {
+                        for (const c in FinalJSON["colors"]) {
                             colours = colours + `\n${c}`
                         }
 
