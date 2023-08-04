@@ -756,9 +756,14 @@ module.exports = {
                                 const canvas = createCanvas(750, 500);
                                 const context = canvas.getContext('2d');
                                 
+                                if(FinalJSON[art_type] === "Painting") {
+
                                 download(FinalJSON["real_info"]["texture_url"], "real.png")
                                 download(FinalJSON["fake_info"]["texture_url"], "fake.png")
-                                
+                                } else {
+                                    download(FinalJSON["real_info"]["image_url"], "real.png")
+                                    download(FinalJSON["fake_info"]["image_url"], "fake.png")
+                                } 
                                setTimeout(async () => {
 
                                 //console.log(realImage, fakeImage)
