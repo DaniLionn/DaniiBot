@@ -525,7 +525,7 @@ module.exports = {
 						//mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm wet diaper sludge
 						const embed = new EmbedBuilder()
 							.setColor(EmbedColours["Default"])
-							.setTitle(`Events for ${formatDate_YYYY_MM_DD(date)}`)
+							.setTitle(`Events for ${commonFunc.formatDate_YYYY_MM_DD(date)}`)
 
 						for (var i = 0; i < FinalJSON.length; i++) {
 							total += 3
