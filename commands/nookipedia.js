@@ -598,19 +598,14 @@ module.exports = {
 
                                         offset += canvas.width / FinalJSON["variations"].length
                                     }
-                                    const attachment = new AttachmentBuilder(canvas.toBuffer('image/png'), {
+                                    const file = new AttachmentBuilder(canvas.toBuffer('image/png'), {
 										name: 'variations.png'
 									});
-
-									embed.addFields({
-										name: 'Variations',
-										value: '\u200B'
-									})
 									embed.setImage("attachment://variations.png")
 
                                     
                                     await interaction.editReply({
-                                        embeds: [embed], files: [attachment]
+                                        embeds: [embed], files: [file]
                                     })
                                 }
                               } 
