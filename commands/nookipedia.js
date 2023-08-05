@@ -566,7 +566,7 @@ module.exports = {
 									value: villagersEquip
 								},{
 									name: 'Obtained from',
-									value: FinalJSON["avaliability"][0]["from"]
+									value: FinalJSON["avaliability"]["from"]
 								},{
 									name: 'Styles',
 									value: styles
