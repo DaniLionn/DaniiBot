@@ -462,10 +462,20 @@ module.exports = {
 								.setTitle(FinalJSON["name"])
 								.setURL(FinalJSON["url"])
 								.setThumbnail(FinalJSON["image_url"])
-								.addFields({
-									name: 'Fossil Group',
-									value: FinalJSON["fossil_group"]
-								}, {
+
+                                if (!FinalJSON["fossil_group"] === '') {
+                                    embed.addFields({
+                                        name: 'Fossil Group',
+                                        value: FinalJSON["fossil_group"]
+                                    },)
+                                } else {
+                                    embed.addFields({
+                                        name: 'Fossil Group',
+                                        value: "None"
+                                    },)
+                                }
+
+								embed.addFields( {
 									name: 'Sell Price',
 									value: `${FormatCurrency(FinalJSON["sell"], "Bells")}`,
 								},{
@@ -508,26 +518,101 @@ module.exports = {
 				https.get(`https://api.nookipedia.com/nh/clothing/${interaction.options.getString('clothing-name').toLowerCase()}`, options, (response) => {
 
 					var result = ''
+                    let styles = ''
+                    let themes = ''
 					response.on('data', function(chunk) {
 						result += chunk;
 					});
 
 					response.on('end', async function() {
 
+                        let villagersEquip = ""
+
 						FinalJSON = JSON.parse(result);
+
+                        console.log(FinalJSON)
+
+                        for (let i = 0; i < FinalJSON["styles"].length; i++) {
+                            styles += `${FinalJSON["styles"][i]},\n`;
+                          } 
+
+                          for (let i = 0; i < FinalJSON["label_themes"].length; i++) {
+                            themes += `${FinalJSON["label_themes"][i]},\n`;
+                          } 
+
+                        if (FinalJSON["vill_equip"] == true) {
+                            villagersEquip = "Yes"
+                        } else {
+                            villagersEquip = "No"
+                        }
+
 						if (!FinalJSON["title"] || !FinalJSON === '') {
 							const embed = new EmbedBuilder()
 								.setColor(EmbedColours["Default"])
 								.setTitle(FinalJSON["name"])
 								.setURL(FinalJSON["url"])
-								.setThumbnail(FinalJSON["image_url"])
+								.setThumbnail(FinalJSON["variations"][0]["image_url"])
 								.addFields({
-									name: 'Number',
-									value: FinalJSON["number"].toString()
-								}, )
+									name: 'Category',
+									value: FinalJSON["category"]
+								},{
+									name: 'Pricing',
+									value: `*Buy: *\n${FormatCurrency(FinalJSON["buy"][0]["price"], FinalJSON["buy"][0]["currency"])}\n\n*Sell: *\n${FormatCurrency(FinalJSON["sell"], "Bells")}`
+								}, {
+									name: 'Version Added',
+									value: FinalJSON["version_added"]
+								},{
+									name: 'Can villigers wear',
+									value: villagersEquip
+								},{
+									name: 'Obtained from',
+									value: FinalJSON["avaliability"][0]["from"]
+								},{
+									name: 'Styles',
+									value: styles
+								},{
+									name: 'Labelle Themes',
+									value: themes
+								},)
+
+                            let images = []
+
+                            let downloaded = 0
+                            let offset = 0
+                            let attachment
+                            const canvas = createCanvas(1250, 500);
+                            const context = canvas.getContext('2d');
+
+                            for (let i = 0; i < FinalJSON["variations"].length; i++) {
+                                commonFunc.download(FinalJSON["variations"][i]["image_url"], `variation${i}.png`)
+                                setInterval(() => {
+                                    images.push(`variation${i}.png`)
+                                    downloaded++
+                                }, 600)
+
+                                if (downloaded === FinalJSON["variations"].length) {
+                                    for (let i = 0; i < images.length; i++) {
+                                        let read = await readFile(images[i])
+                                        const img = new Image();
+									    img.src = read
+									    context.drawImage(img, offset, 0, canvas.width / FinalJSON["variations"].length, canvas.height);
+
+                                        offset += canvas.width / FinalJSON["variations"].length
+                                    }
+                                     attachment = new AttachmentBuilder(canvas.toBuffer('image/png'), {
+										name: 'variations.png'
+									});
+
+									embed.addFields({
+										name: 'Variations',
+										value: '\u200B'
+									})
+									embed.setImage("attachment://variations.png")
+                                }
+                              } 
 
 							await interaction.editReply({
-								embeds: [embed]
+								embeds: [embed], files: [attachment]
 							})
 
 						} else {
