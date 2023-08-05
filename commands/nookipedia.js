@@ -592,7 +592,7 @@ module.exports = {
                                     console.log(downloaded)
                                 }, 400)
                                 
-                                if (downloaded >= FinalJSON["variations"].length) {
+                                if (downloaded === FinalJSON["variations"].length) {
                                     console.log("all downloaded")
                                     console.log('making image')
                                     for (let i = 0; i < images.length; i++) {
