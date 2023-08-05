@@ -579,7 +579,6 @@ module.exports = {
 
                             let downloaded = 0
                             let offset = 0
-                            let attachment
                             const canvas = createCanvas(1250, 500);
                             const context = canvas.getContext('2d');
 
@@ -599,7 +598,7 @@ module.exports = {
 
                                         offset += canvas.width / FinalJSON["variations"].length
                                     }
-                                     attachment = new AttachmentBuilder(canvas.toBuffer('image/png'), {
+                                    const attachment = new AttachmentBuilder(canvas.toBuffer('image/png'), {
 										name: 'variations.png'
 									});
 
@@ -608,12 +607,14 @@ module.exports = {
 										value: '\u200B'
 									})
 									embed.setImage("attachment://variations.png")
+
+                                    
+                                    await interaction.editReply({
+                                        embeds: [embed], files: [attachment]
+                                    })
                                 }
                               } 
 
-							await interaction.editReply({
-								embeds: [embed], files: [attachment]
-							})
 
 						} else {
 							await interaction.editReply("An error occured!")
