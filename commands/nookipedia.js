@@ -579,6 +579,7 @@ module.exports = {
 
                             let downloaded = 0
                             let offset = 0
+                            console.log(FinalJSON["variations"].length)
                             const canvas = createCanvas(1250, 500);
                             const context = canvas.getContext('2d');
 
@@ -588,6 +589,7 @@ module.exports = {
                                     images.push(`variation${i}.png`)
                                     downloaded++
                                     console.log("downloaded")
+                                    console.log(downloaded)
                                 }, 400)
                                 
                                 if (downloaded >= FinalJSON["variations"].length) {
