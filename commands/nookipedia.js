@@ -530,7 +530,7 @@ module.exports = {
 
 						FinalJSON = JSON.parse(result);
 
-                        console.log(FinalJSON)
+                        console.log(FinalJSON, FinalJSON["availability"])
 
                         for (let i = 0; i < FinalJSON["styles"].length; i++) {
                             styles += `${FinalJSON["styles"][i]},\n`;
@@ -566,7 +566,7 @@ module.exports = {
 									value: villagersEquip
 								},{
 									name: 'Obtained from',
-									value: FinalJSON["avaliability"][0]["from"]
+									value: FinalJSON["availability"][0]["from"]
 								},{
 									name: 'Styles',
 									value: styles
