@@ -530,7 +530,7 @@ module.exports = {
 
 						FinalJSON = JSON.parse(result);
 
-                        console.log(FinalJSON, FinalJSON["availability"])
+                        console.log(FinalJSON, FinalJSON["availability"][0])
 
                         for (let i = 0; i < FinalJSON["styles"].length; i++) {
                             styles += `${FinalJSON["styles"][i]},\n`;
