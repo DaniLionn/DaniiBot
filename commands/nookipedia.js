@@ -584,13 +584,14 @@ module.exports = {
 
                             for (let i = 0; i < FinalJSON["variations"].length; i++) {
                                 commonFunc.download(FinalJSON["variations"][i]["image_url"], `variation${i}.png`)
-                                setInterval(() => {
+                                setTimeout(() => {
                                     images.push(`variation${i}.png`)
                                     downloaded++
                                     console.log("downloaded")
                                 }, 400)
-                                console.log("all downloaded")
+                                
                                 if (downloaded >= FinalJSON["variations"].length) {
+                                    console.log("all downloaded")
                                     console.log('making image')
                                     for (let i = 0; i < images.length; i++) {
                                         let read = await readFile(images[i])
