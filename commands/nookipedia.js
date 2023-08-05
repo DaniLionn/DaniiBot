@@ -587,9 +587,11 @@ module.exports = {
                                 setInterval(() => {
                                     images.push(`variation${i}.png`)
                                     downloaded++
-                                }, 600)
-
+                                    console.log("downloaded")
+                                }, 400)
+                                console.log("all downloaded")
                                 if (downloaded >= FinalJSON["variations"].length) {
+                                    console.log('making image')
                                     for (let i = 0; i < images.length; i++) {
                                         let read = await readFile(images[i])
                                         const img = new Image();
