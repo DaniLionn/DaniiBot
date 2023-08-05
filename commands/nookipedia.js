@@ -589,7 +589,7 @@ module.exports = {
                                     downloaded++
                                 }, 600)
 
-                                if (downloaded === FinalJSON["variations"].length) {
+                                if (downloaded >= FinalJSON["variations"].length) {
                                     for (let i = 0; i < images.length; i++) {
                                         let read = await readFile(images[i])
                                         const img = new Image();
