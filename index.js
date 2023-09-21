@@ -1857,6 +1857,8 @@ function getThumbnail(placeID) {
   
 }
 
+getThumbnail(11138886508)
+
 var inviteLink = ""
   
 app.get('/openGV', function (req, res) {
