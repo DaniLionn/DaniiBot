@@ -1847,7 +1847,7 @@ function getThumbnail(placeID) {
       
         res.on('end', () => {
           console.log('Response ended: ');
-          const parsed = JSON.parse(Buffer.concat(data).toString());
+          const parsed = JSON.parse(data);
           console.log(parsed)
           let thumb = parsed["data"]["imageUrl"]
 
