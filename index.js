@@ -114,7 +114,7 @@ client.commands = new Collection();
 const KoTFGeneral = client.channels.cache.get('1032095616836325398');
 const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath)
-    .filter(file => file.endsWith('.js'));
+	.filter(file => file.endsWith('.js'));
 
 const emotes = (str) => str.match(/<a?:.+?:\d{18}>|\p{Extended_Pictographic}/gu)
 
@@ -1838,7 +1838,22 @@ app.post('/SendMessage', (request, response) => {
 
 function getThumbnail(placeID) {
 
-  
+    https.get(`https://thumbnails.roblox.com/v1/assets?assetIds=${placeID}&returnPolicy=PlaceHolder&size=150x150&format=Png&isCircular=false`, res => {
+        let data = [];
+
+        res.on('data', chunk => {
+          data.push(chunk);
+        });
+      
+        res.on('end', () => {
+          console.log('Response ended: ');
+          const parsed = JSON.parse(Buffer.concat(data).toString());
+        console.log(parsed)
+
+        });
+      }).on('error', err => {
+        console.log('Error: ', err.message);
+      });
   
 }
 
