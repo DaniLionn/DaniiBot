@@ -1867,6 +1867,7 @@ app.post('postInvite', (request, response) => {
       }
     }
   ]
+})
 });
 
 app.get("/test", function (Request, Res) {

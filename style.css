@@ -1,0 +1,65 @@
+body {
+    background-color: rgb(29, 29, 29);
+
+  }
+  
+.customCursor{
+  cursor: url(http://www.rw-designer.com/cursor-extern.php?id=15599),auto;
+}
+
+.customCursorHover{
+  cursor: url(http://www.rw-designer.com/cursor-extern.php?id=15605),auto;
+}
+
+  h1 {
+    color: white;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+  }
+
+  h4 {
+    color: rgb(144, 132, 250);
+    text-align: right;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 22px;
+  }
+
+  a {
+    color: rgb(144, 132, 250);
+  }
+  
+  p {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+  }
+
+  button {
+    text-align: center;
+  }
+
+  button.hidden {
+    background-color: rgb(29, 29, 29);
+  }
+
+
+  hr.dotted {
+    border-top: 3px dotted #1a1919;
+  }
+
+  div.container {
+    height: 10px;
+    position: relative;
+    border: 3px solid rgb(29, 29, 29);
+  }
+  
+  div.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
