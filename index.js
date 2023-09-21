@@ -1848,11 +1848,17 @@ function getThumbnail(placeID) {
         res.on('end', () => {
           console.log('Response ended: ');
           const parsed = JSON.parse(Buffer.concat(data).toString());
-        console.log(parsed)
+          
+          let thumb = parsed["data"]["imageUrl"]
+
+          console.log(thumb)
+
+          return true, thumb
 
         });
       }).on('error', err => {
         console.log('Error: ', err.message);
+        return false, ""
       });
   
 }
