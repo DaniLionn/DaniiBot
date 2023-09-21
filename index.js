@@ -142,7 +142,7 @@ const Reactions = ['😭', '🥺', '🏳‍🌈', '😒', '😡', '🤦‍♀️
 const busyMessages = ["napping", "waiting to execute commands", "taking *bytes* of a digital sandwich", "being cool", "doing things"]
 const PingMessages = ["yes hello that's my name", "what do you want", "danibot danibot", "hello", "be quiet, i'm busy taking over the worl- i mean i'm busy %s", "We're no strangers to love\nYou know the rules, and so do I"]
 const Insults = [" your feet stink", " you look like a wall", " you look like a floor", "you made me wet my pants", " you are a mild inconvienece", " i slightly dislike you", " you look like an empty pop can", " yo mama so fat her belly button gets home 60 minutes before she does", " yo mama so stupid she thought twitter was social media", " YO MAMA SO FAT SHE TRIED TO EAT THE SUPERBOWL", " you remind me of a wet sock", " you're as dry as the 2 week old poo stain in the bathroom", " you look like a rubber ball", " you're as clean as the mcdonalds fry maker", " you stink (slightly)", " you smell like chiken wing", " you look like microwave", " you're about as useful as a shattered light bulb", "you smell as good as a wet napkin", "you are a fire truckS"]
-const COmplimens = ["you smell slightly better than usual", "you're as clean as my fresh load of laundry", "your personality is so wet! (thanks duck)", "you look more human than usual", "you remind me of canned beans", "you're not as dumb as you look", "you have really nice veins 🥰", "you're so charming when you make an effort.", "you're pretty…\non the inside.", "i don't care what others say about you.\nyou're alright in my book.", "i love how you just don't care what anyone thinks of you.", "you smell as good as this cupcake i ate last week", "your hair smells good"]
+const COmplimens = ["you smell slightly better than usual", "you're as clean as my fresh load of laundry", "your personality is so wet! (thanks duck)", "you look more human than usual", "you remind me of canned beans", "you're not as dumb as you look", "you have really nice veins 🥰", "you're so charming when you make an effort.", "you're pretty…\non the inside.", "i don't care what others say about you.\nyou're alright in my book.", "i love how you just don't care what anyone thinks of you.", "you smell as good as this cupcake i ate last week", "your hair smells good", "you're disgusting in a cute way 🥰"]
 const crayonColours = ["orange", "green", "purple", "pink", "brown", "black", "white"]
 const MariMessages = [" is my best friend we watch my little pony together and colour in colouring books", " you're my best friend :blush:", " i ate all the %c crayons"]
 const reply = ["hello", "yo", " hey how are you doing", "heyy", "i am dani bot", "😱", "😀", "yo yo waffle stick i really think you smell like wooden flooring with cheese involved", "afosdklfbmdskjlfvkjnmakjwlfsdvnmdjlk;fdvjnm,zjldk;vjnm zdkjlkvnmc,m", "Unfortunately you'd better stop with that popcorn mess of the butter, so that you could have it for a movie theater actually, so that you could drink a soda and then eat a candy and then-- burp Excuse me. Eat popcorn. So- grunt I was in a movie theater and I eat popcorn with a- seasoning cheese- and then, I drink a cherry sprite in the movie theater. And that was ago when I was actually well about that. Plus I would rather- eat chocolate, as well. So, that butter mess; clean it up please. So, I don't wanna cause any more troublemakers.", "hi"]
@@ -1834,6 +1834,41 @@ app.post('/SendMessage', (request, response) => {
     
     client.channels.cache.get(ChannelId)
         .send(message);
+})
+
+app.post('postInvite', (request, response) => {
+    client.channels.cashe.get("1059267554025152514").send({
+
+  "content": `<@1130288851521392750> join me pls`,
+  "tts": false,
+  "components": [
+    {
+      "type": 1,
+      "components": [
+        {
+          "style": 1,
+          "label": `join`,
+          "custom_id": `row_0_button_0`,
+          "disabled": false,
+          "type": 2
+        }
+      ] 
+    }
+  ],
+  "embeds": [
+    {
+      "type": "rich",
+      "title": "",
+      "description": "",
+      "color": 0x580b6c,
+      "image": {
+        "url": `https://tr.rbxcdn.com/7a8f2e1bbf2a30a996a2656176ad6350/150/150/Image/Png`,
+        "height": 0,
+        "width": 0
+      }
+    }
+  ]
+});
 })
 
 app.get("/test", function (Request, Res) {
