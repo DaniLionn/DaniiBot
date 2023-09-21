@@ -7,8 +7,17 @@ module.exports = {
 
 	async execute(interaction) {
 		const channel = interaction.channel.id
+		await interaction.deferReply({ephemeral: true})
 
-		https.get(`https://daniibot.dani-lionn.repl.co/postInvite?channelID=${channel}&placeID=11138886508&message=<@1130288851521392750>%20wanna%20play?`)
+		https.get(`https://daniibot.dani-lionn.repl.co/postInvite?channelID=${channel}&placeID=11138886508&message=<@1130288851521392750>%20wanna%20play?`, res => {
+			res.on("end", async () => {
+				await interaction.deleteReply()
+			})
+
+			res.on("error", async () => {
+				await interaction.editReply("An error occured whilst sending the invite!")
+			})
+		})
 		
 	},
 };
