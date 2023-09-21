@@ -1836,8 +1836,24 @@ app.post('/SendMessage', (request, response) => {
         .send(message);
 })
 
-app.post('postInvite', (request, response) => {
-    client.channels.cashe.get("1059267554025152514").send({
+function getThumbnail(placeID) {
+
+  
+  
+}
+
+var inviteLink = ""
+  
+app.get('/openGV', function (req, res) {
+  res.redirect("roblox://experiences/start?placeId=11138886508")
+})
+
+app.get('/openGame', function (req, res) {
+  res.redirect(inviteLink)
+})
+
+app.get('/postGVInvite', async function(Request, Res) {
+   await client.channels.cache.get("1059267554025152514").send({
   "content": `<@1130288851521392750> join me pls`,
   "tts": false,
   "components": [
@@ -1847,7 +1863,7 @@ app.post('postInvite', (request, response) => {
         {
           "style": 5,
           "label": `join`,
-          "url": `roblox://experiences/start?placeId=11138886508`,
+          "url": `https://daniibot.dani-lionn.repl.co/openGV`,
           "disabled": false,
           "type": 2
         }
@@ -1868,7 +1884,60 @@ app.post('postInvite', (request, response) => {
     }
   ]
 })
+
+Res.send('Sent');
+  
 });
+
+app.get('/postInvite',async function (req, res) {
+    const channelID = req.query.channelID
+    const placeID = req.query.gameID
+    const message = req.query.message
+
+  inviteLink = `roblox://experiences/start?placeId=${placeID}`
+  
+  client.channels.cache.get(channelID).send({
+  "content": message,
+  "tts": false,
+  "components": [
+    {
+      "type": 1,
+      "components": [
+        {
+          "style": 5,
+          "label": `join`,
+          "url": `https://daniibot.dani-lionn.repl.co/openGame`,
+          "disabled": false,
+          "type": 2
+        }
+      ]
+    }
+  ],
+  "embeds": [
+    {
+      "type": "rich",
+      "title": "",
+      "description": "",
+      "color": 0x580b6c,
+      "image": {
+        "url": `https://tr.rbxcdn.com/7a8f2e1bbf2a30a996a2656176ad6350/150/150/Image/Png`,
+        "height": 0,
+        "width": 0
+      }
+    }
+  ]
+})
+
+Res.send('Sent');
+  
+});
+
+
+  
+  
+
+
+
 
 app.get("/test", function (Request, Res) {
     
