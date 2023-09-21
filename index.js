@@ -1836,37 +1836,9 @@ app.post('/SendMessage', (request, response) => {
         .send(message);
 })
 
-function getThumbnail(placeID) {
-
-    https.get(`https://thumbnails.roblox.com/v1/assets?assetIds=${placeID}&returnPolicy=PlaceHolder&size=150x150&format=Png&isCircular=false`, res => {
-        let data = [];
-
-        res.on('data', chunk => {
-          data.push(chunk);
-        });
-      
-        res.on('end', () => {
-         // console.log('Response ended: ');
-          const parsed = JSON.parse(Buffer.concat(data).toString());
-          
-          //console.log(parsed)
-          let thumb = parsed["data"][0]["imageUrl"]
 
 
 
-          //console.log(thumb)
-
-          return true, thumb
-
-        });
-      }).on('error', err => {
-        console.log('Error: ', err.message);
-        return false, ""
-      });
-  
-}
-
-getThumbnail(11138886508)
 
 var inviteLink = ""
   
@@ -1915,18 +1887,35 @@ Res.send('Sent');
   
 });
 
-app.get('/postInvite',async function (req, res) {
+app.get('/postInvite',async function (req, resp) {
     const channelID = req.query.channelID
-    const placeID = req.query.gameID
+    const placeID = req.query.placeID
+    
+    const name = req.query.name
     const message = req.query.message
+
+  console.log(channelID,placeID,message)
 
   inviteLink = `roblox://experiences/start?placeId=${placeID}`
 
-  const thumb = getThumbnail(placeID)
-  
-    console.log(thumb)
 
-  client.channels.cache.get(channelID).send({
+
+  https.get(`https://thumbnails.roblox.com/v1/assets?assetIds=${placeID}&returnPolicy=PlaceHolder&size=512x512&format=Png&isCircular=false`, res => {
+        let data = [];
+
+        res.on('data', chunk => {
+          data.push(chunk);
+        });
+      
+        res.on('end', () => {
+         // console.log('Response ended: ');
+          const parsed = JSON.parse(Buffer.concat(data).toString());
+          
+          console.log(parsed)
+          const thumb = parsed["data"][0]["imageUrl"]
+          console.log(thumb)
+
+ client.channels.cache.get(channelID).send({
   "content": message,
   "tts": false,
   "components": [
@@ -1946,19 +1935,28 @@ app.get('/postInvite',async function (req, res) {
   "embeds": [
     {
       "type": "rich",
-      "title": "",
+      "title": name,
       "description": "",
       "color": 0x580b6c,
       "image": {
         "url": thumb,
-        "height": 0,
-        "width": 0
+        "height": 512,
+        "width": 512
       }
     }
   ]
 })
 
-res.send('Sent');
+resp.send('Sent');
+
+        });
+      }).on('error', err => {
+        console.log('Error: ', err.message);
+        resp.send('error');
+      });
+    
+
+ 
   
 });
 
