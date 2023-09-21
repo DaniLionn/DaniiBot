@@ -1838,7 +1838,6 @@ app.post('/SendMessage', (request, response) => {
 
 app.post('postInvite', (request, response) => {
     client.channels.cashe.get("1059267554025152514").send({
-
   "content": `<@1130288851521392750> join me pls`,
   "tts": false,
   "components": [
@@ -1846,13 +1845,13 @@ app.post('postInvite', (request, response) => {
       "type": 1,
       "components": [
         {
-          "style": 1,
+          "style": 5,
           "label": `join`,
-          "custom_id": `row_0_button_0`,
+          "url": `roblox://experiences/start?placeId=11138886508`,
           "disabled": false,
           "type": 2
         }
-      ] 
+      ]
     }
   ],
   "embeds": [
@@ -1869,7 +1868,6 @@ app.post('postInvite', (request, response) => {
     }
   ]
 });
-})
 
 app.get("/test", function (Request, Res) {
     
