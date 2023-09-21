@@ -1846,15 +1846,15 @@ function getThumbnail(placeID) {
         });
       
         res.on('end', () => {
-          console.log('Response ended: ');
+         // console.log('Response ended: ');
           const parsed = JSON.parse(Buffer.concat(data).toString());
           
-          console.log(parsed)
+          //console.log(parsed)
           let thumb = parsed["data"][0]["imageUrl"]
 
 
 
-          console.log(thumb)
+          //console.log(thumb)
 
           return true, thumb
 
@@ -1921,7 +1921,11 @@ app.get('/postInvite',async function (req, res) {
     const message = req.query.message
 
   inviteLink = `roblox://experiences/start?placeId=${placeID}`
+
+  const thumb = getThumbnail(placeID)
   
+    console.log(thumb)
+
   client.channels.cache.get(channelID).send({
   "content": message,
   "tts": false,
@@ -1946,7 +1950,7 @@ app.get('/postInvite',async function (req, res) {
       "description": "",
       "color": 0x580b6c,
       "image": {
-        "url": `https://tr.rbxcdn.com/7a8f2e1bbf2a30a996a2656176ad6350/150/150/Image/Png`,
+        "url": thumb,
         "height": 0,
         "width": 0
       }
@@ -1954,7 +1958,7 @@ app.get('/postInvite',async function (req, res) {
   ]
 })
 
-Res.send('Sent');
+res.send('Sent');
   
 });
 
