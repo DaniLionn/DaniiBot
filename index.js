@@ -1890,7 +1890,6 @@ Res.send('Sent');
 app.get('/postInvite',async function (req, resp) {
     const channelID = req.query.channelID
     const placeID = req.query.placeID
-    
     const name = req.query.name
     const message = req.query.message
 
