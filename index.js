@@ -31,7 +31,7 @@ function writeCOmmandsLog(interaction) {
             console.log(err)
         }
     })
-    const command = interaction.commandName;
+    const command = interaction.commandName
     
     const data = `${read}\n${s}: Command ${command} used by ${interaction.user.tag}!`
     //console.log(data)
@@ -1173,6 +1173,8 @@ client.on(Events.InteractionCreate, async interaction => {
         // 	interaction.reply("Disconnected from the voice channel")
         
         // }
+
+        
         
         if (interaction.commandName === 'change-status')
         {
