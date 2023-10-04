@@ -1886,7 +1886,7 @@ send.perform();
 
 app.get('/getData', function (req, res) {
 
-  let key = `${req.query.UserId}#Data`
+  let key = `${req.query.UserId}%23Data`
 
   console.log(key)
     const send = new Curl();
