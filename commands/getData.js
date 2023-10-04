@@ -5,14 +5,14 @@ module.exports = {
 		.setName('get-generic-vibe-data')
 		.setDescription("gets player data from generic vibe")
 		.addStringOption(option =>
-			option.setName('UserId')
+			option.setName('user-id')
 				.setDescription('the userid of the player whose data you want')
 				.setRequired(true)),
 		
 	async execute(interaction) {
 		
 
-		https.get(`https://daniibot.dani-lionn.repl.co/getData?UserId=${interaction.options.getString('UserId')}`, options, (response) => {
+		https.get(`https://daniibot.dani-lionn.repl.co/getData?UserId=${interaction.options.getString('user-id')}`, options, (response) => {
 
 		var result = ''
 		response.on('data', function(chunk) {
