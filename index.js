@@ -1888,7 +1888,7 @@ app.get('/getData', function (req, res) {
 
   let key = `${req.query.UserId}%23Data`
 
-  console.log(key)
+  //console.log(key)
     const send = new Curl();
 
 send.setOpt(Curl.option.URL, `https://apis.roblox.com/datastores/v1/universes/3984205042/standard-datastores/datastore/entries/entry?datastoreName=PlayerData&entryKey=${key}`);
