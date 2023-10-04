@@ -74,6 +74,7 @@ const {
     clientId,
     guildId,
     DaniLionnId,
+  DatastoresAPIKey
 } = require('./configure.json');
 
 const path = require('node:path');
@@ -1844,34 +1845,73 @@ app.post('/SendMessage', (request, response) => {
 
 var inviteLink = ""
   
-const options = {
+const listOptions = {
+  	params: {
+		'prefix': '',
+    'limit': '10',
+	},
 	headers: {
-		'x-api-key': "lQ139ioN/02ifJanN45th94jrw4r0LE53Kp+KpPzpOdE54hA"
+		'x-api-key': DatastoresAPIKey
 	}
 }
 
-app.get('/openGV', function (req, res) {
-  res.redirect("roblox://experiences/start?placeId=11138886508")
+
+
+const querystring = require("querystring");
+const { Curl } = require("node-libcurl");
+//const terminate = send.close.bind(curlTest);
+
+app.get('/list', function (req, res) {
+
+
+    const send = new Curl();
+
+send.setOpt(Curl.option.URL, `https://apis.roblox.com/datastores/v1/universes/3984205042/standard-datastores?limit=50`);
+send.setOpt(Curl.option.HTTPGET, true);
+send.setOpt(Curl.option.HTTPHEADER,
+  [`x-api-key: ${DatastoresAPIKey}`])
+
+send.on('end', function (statusCode, data, headers) {
+
+  let finalJSON = JSON.parse(data)
+  res.send(finalJSON)
+  
+  this.close();
+});
+
+send.on('error', send.close.bind(send));
+send.perform();
+  
 })
 
-app.get('/listExperiences', function (req, res) {
-    https.get(`https://apis.roblox.com/datastores/v1/universes/3984205042/standard-datastores`, options, (response) => {
+app.get('/getData', function (req, res) {
 
-    var result = ''
-    response.on('data', function(chunk) {
-        result += chunk;
-    });
+  let key = `${req.query.UserId}#Data`
 
-    response.on('end', async function() {
-        FinalJSON = JSON.parse(result);
+  console.log(key)
+    const send = new Curl();
 
-        console.log(FinalJSON)
-            })
+send.setOpt(Curl.option.URL, `https://apis.roblox.com/datastores/v1/universes/3984205042/standard-datastores/datastore/entries/entry?datastoreName=PlayerData&entryKey=${key}`);
+send.setOpt(Curl.option.HTTPGET, true);
+send.setOpt(Curl.option.HTTPHEADER,
+  [`x-api-key: ${DatastoresAPIKey}`])
+
+send.on('end', function (statusCode, data, headers) {
+
+  let finalJSON = JSON.parse(data)
+  res.send(finalJSON)
+  
+  this.close();
+});
+
+send.on('error', send.close.bind(send));
+send.perform();
+  
 })
 app.get('/openGame', function (req, res) {
   res.redirect(inviteLink)
 })
-    }) 
+    
 app.get('/postGVInvite', async function(Request, Res) {
    await client.channels.cache.get("1059267554025152514").send({
   "content": `<@1130288851521392750> join me pls`,
