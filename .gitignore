@@ -6,6 +6,7 @@ ErrorLog.txt
 ffmpeg.exe
 tempcat.png
 commands/ffmpeg.exe
+.tmp.driveupload
 .space/README
 .space/meta
 danibot/
