@@ -1,6 +1,17 @@
 const { SlashCommandBuilder } = require('discord.js');
 var fs = require("fs");
 const https = require('https');
+const { Curl } = require("node-libcurl");
+const {
+
+  DatastoresAPIKey
+} = require('../configure.json');
+
+const options = {
+	headers: {
+		'x-api-key': DatastoresAPIKey
+	}
+}
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('get-generic-vibe-data')
@@ -13,36 +24,34 @@ module.exports = {
 	async execute(interaction) {
 		await interaction.deferReply()
 
-		https.get(`https://daniibot.dani-lionn.repl.co/getData?UserId=${interaction.options.getString('user-id')}`, (response) => {
+		     https.get(`https://apis.roblox.com/datastores/v1/universes/3984205042/standard-datastores/datastore/entries/entry?datastoreName=PlayerData&entryKey=${interaction.options.getString('user-id')}%23Data`, options, res => {
+        let data = [];
 
-		var result = ''
-		response.on('data', function(chunk) {
-			result += chunk;
-		});
+        res.on('data', chunk => {
+          data.push(chunk);
+        });
+      
+        res.on('end', async () => {
+console.log("finished")
 
-		request.on('error', async function(e) {
+  let FinalJSON = JSON.parse(data)
 
-			console.log(e);
+  console.log(FinalJSON)
 
-			await interaction.channel.editReply("There was an error whilst executing this command!");
-		  });
-	
-		response.on('end', async function() {
-			FinalJSON = JSON.parse(result);
-	
-			var createStream = fs.createWriteStream("data.json");
-			createStream.end();
+  var writeStream = fs.createWriteStream("data.json");
 			writeStream.write(FinalJSON);
-
+    console.log("written")
 			writeStream.end();
 
 			await interaction.channel.editReply({
 				files: ['./data.json']
 			});
-			
-				})
-	})}
-};
+});
+
+
+
+})
+}}
 
 process.on('unhandledRejection', error =>
 {
