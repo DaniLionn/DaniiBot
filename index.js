@@ -1874,7 +1874,7 @@ send.setOpt(Curl.option.HTTPHEADER,
 send.on('end', function (statusCode, data, headers) {
 
   let finalJSON = JSON.parse(data)
-  res.send(finalJSON)
+  res.send(data)
   
   this.close();
 });
