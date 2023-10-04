@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require('discord.js');
 var fs = require("fs");
+const https = require('https');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('get-generic-vibe-data')
