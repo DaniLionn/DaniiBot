@@ -35,7 +35,7 @@ module.exports = {
 				})
 	})}
 };
-const fs = require('node:fs');
+
 process.on('unhandledRejection', error =>
 {
 	console.log("Error detected! Saving to error log...")
