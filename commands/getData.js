@@ -13,7 +13,7 @@ module.exports = {
 	async execute(interaction) {
 		await interaction.deferReply()
 
-		https.get(`https://daniibot.dani-lionn.repl.co/getData?UserId=${interaction.options.getString('user-id')}`, options, (response) => {
+		https.get(`https://daniibot.dani-lionn.repl.co/getData?UserId=${interaction.options.getString('user-id')}`, (response) => {
 
 		var result = ''
 		response.on('data', function(chunk) {
