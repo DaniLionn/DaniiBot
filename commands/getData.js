@@ -11,7 +11,7 @@ module.exports = {
 				.setRequired(true)),
 		
 	async execute(interaction) {
-		
+		await interaction.deferReply()
 
 		https.get(`https://daniibot.dani-lionn.repl.co/getData?UserId=${interaction.options.getString('user-id')}`, options, (response) => {
 
@@ -19,6 +19,13 @@ module.exports = {
 		response.on('data', function(chunk) {
 			result += chunk;
 		});
+
+		request.on('error', async function(e) {
+
+			console.log(e);
+
+			await interaction.channel.editReply("There was an error whilst executing this command!");
+		  });
 	
 		response.on('end', async function() {
 			FinalJSON = JSON.parse(result);
@@ -29,7 +36,7 @@ module.exports = {
 
 			writeStream.end();
 
-			await interaction.channel.send({
+			await interaction.channel.editReply({
 				files: ['./data.json']
 			});
 			
