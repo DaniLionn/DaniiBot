@@ -9,6 +9,7 @@ commands/ffmpeg.exe
 .tmp.driveupload
 .space/README
 .space/meta
+DanibotTempFolder
 danibot/
 ignore/
 real.png

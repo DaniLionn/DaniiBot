@@ -58,7 +58,7 @@ module.exports = {
 
         const userId = interaction.options.getString('user-id')
 
-        const fileName = `./${userId}_saveData.json`
+        const fileName = `./DanibotTempFolder/${userId}_saveData.json`
 
         https.get(`https://apis.roblox.com/datastores/v1/universes/3984205042/standard-datastores/datastore/entries/entry?datastoreName=PlayerData&entryKey=${userId}%23Data`, options, res => {
             let data = '';
