@@ -79,17 +79,16 @@ module.exports = {
                         userId: parseInt(userId),
                         dataSize: Size
                     },
-                    data: JSON.parse(data)
+                    saveData: JSON.parse(data)
                 }
 
                 createFile(fileName)
 
                 writeFile(fileName, JSON.stringify(FinalJSON, null, 4))
-
                 await interaction.editReply({
                     files: [fileName]
                 });
-                deleteFile(fileName)
+                deleteFile(fileName); //delete file because we don't need it anymore after sending
             });
 
         })
