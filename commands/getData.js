@@ -68,16 +68,11 @@ module.exports = {
             });
 
             res.on('end', async () => {
-                console.log("finished")
-
-                let pureData = JSON.stringify(data)
-
-                let Size = round(pureData.length / 1000).toString() + " KB"
                 let FinalJSON = {
                     extraInfo: {
                         httpStatus: res.statusCode,
                         userId: parseInt(userId),
-                        dataSize: Size
+                        dataSize: round(JSON.stringify(data).length / 1000).toString() + " KB"
                     },
                     saveData: JSON.parse(data)
                 }
