@@ -16,6 +16,34 @@ const options = {
         'x-api-key': DatastoresAPIKey
     }
 }
+
+function round(num) {
+    return Math.ceil(num * 100) / 100;
+}
+
+function createFile(name) {
+
+    fs.open(name, 'w', function(err) {
+        if (err) console.log(err);
+
+    });
+
+}
+
+function writeFile(name, content) {
+
+    fs.writeFile(name, content, function(err) {
+        if (err) console.log(err);
+    });
+
+}
+
+function deleteFile(name) {
+    fs.unlink(name, function(err) {
+        if (err) console.log(err);
+    });
+}
+
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('get-generic-vibe-data')
@@ -28,7 +56,11 @@ module.exports = {
     async execute(interaction) {
         await interaction.deferReply()
 
-        https.get(`https://apis.roblox.com/datastores/v1/universes/3984205042/standard-datastores/datastore/entries/entry?datastoreName=PlayerData&entryKey=${interaction.options.getString('user-id')}%23Data`, options, res => {
+        const userId = interaction.options.getString('user-id')
+
+        const fileName = `./${userId}_saveData.json`
+
+        https.get(`https://apis.roblox.com/datastores/v1/universes/3984205042/standard-datastores/datastore/entries/entry?datastoreName=PlayerData&entryKey=${userId}%23Data`, options, res => {
             let data = '';
 
             res.on('data', chunk => {
@@ -38,23 +70,26 @@ module.exports = {
             res.on('end', async () => {
                 console.log("finished")
 
+                let pureData = JSON.stringify(data)
+
+                let Size = round(pureData.length / 1000).toString() + " KB"
                 let FinalJSON = {
                     extraInfo: {
-                        status: res.statusCode,
-                        userId: parseInt(interaction.options.getString('user-id')),
+                        httpStatus: res.statusCode,
+                        userId: parseInt(userId),
+                        dataSize: Size
                     },
                     data: JSON.parse(data)
                 }
 
-                var writeStream = fs.createWriteStream("./data.json");
-                writeStream.write(JSON.stringify(FinalJSON, null, 4));
+                createFile(fileName)
 
-                writeStream.end();
-                console.log("written")
+                writeFile(fileName, JSON.stringify(FinalJSON, null, 4))
+
                 await interaction.editReply({
-                    files: ['./data.json']
+                    files: [fileName]
                 });
-
+                deleteFile(fileName)
             });
 
         })
