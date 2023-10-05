@@ -34,6 +34,7 @@ function writeFile(name, content) {
 
     fs.writeFile(name, content, function(err) {
         if (err) console.log(err);
+
     });
 
 }
@@ -42,10 +43,6 @@ function deleteFile(name) {
     fs.unlink(name, function(err) {
         if (err) console.log(err);
     });
-}
-
-function getFileStats(name) {
-    return fs.statSync(name)
 }
 
 module.exports = {
@@ -72,31 +69,37 @@ module.exports = {
             });
 
             res.on('end', async () => {
+                fs.open("./DanibotTempFolder/temp.json", 'w', function(err) {
+                    if (err) console.log(err);
 
-                createFile("./DanibotTempFolder/temp.json")
-                writeFile("./DanibotTempFolder/temp.json", JSON.stringify(data))
+                    fs.writeFile("./DanibotTempFolder/temp.json", JSON.stringify(data), async function(err) {
+                        if (err) console.log(err);
 
-                let size = getFileStats("./DanibotTempFolder/temp.json").size
-                deleteFile("./DanibotTempFolder/temp.json");
-                let FinalJSON = {
-                    extraInfo: {
-                        httpStatus: res.statusCode,
-                        userId: parseInt(userId),
-                        dataSize: round(size / 1000).toString() + " KB"
-                    },
-                    saveData: JSON.parse(data)
-                }
+                        const stats = fs.statSync("./DanibotTempFolder/temp.json")
 
-                createFile(fileName)
+                        let FinalJSON = {
+                            extraInfo: {
+                                httpStatus: res.statusCode,
+                                userId: parseInt(userId),
+                                dataSize: round(stats.size / 1000).toString() + " KB"
+                            },
+                            saveData: JSON.parse(data)
+                        }
 
-                writeFile(fileName, JSON.stringify(FinalJSON, null, 4))
-                await interaction.editReply({
-                    files: [fileName]
-                });
-                deleteFile(fileName); //delete file because we don't need it anymore after sending
-            });
+                        createFile(fileName)
 
-        })
+                        writeFile(fileName, JSON.stringify(FinalJSON, null, 4))
+                        await interaction.editReply({
+                            files: [fileName]
+                        });
+                        deleteFile(fileName); //delete file because we don't need it anymore after sending
+                        deleteFile("./DanibotTempFolder/temp.json");
+                    });
+
+                })
+            })
+        });
+
     }
 }
 
