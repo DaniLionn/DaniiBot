@@ -44,6 +44,10 @@ function deleteFile(name) {
     });
 }
 
+function getFileStats(name) {
+    return fs.statSync(name)
+}
+
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('get-generic-vibe-data')
@@ -68,11 +72,17 @@ module.exports = {
             });
 
             res.on('end', async () => {
+
+                createFile("./DanibotTempFolder/temp.json")
+                writeFile("./DanibotTempFolder/temp.json", JSON.stringify(data))
+
+                let size = getFileStats("./DanibotTempFolder/temp.json").size
+                deleteFile("./DanibotTempFolder/temp.json");
                 let FinalJSON = {
                     extraInfo: {
                         httpStatus: res.statusCode,
                         userId: parseInt(userId),
-                        dataSize: round(JSON.stringify(data).length / 1000).toString() + " KB"
+                        dataSize: round(size / 1000).toString() + " KB"
                     },
                     saveData: JSON.parse(data)
                 }
