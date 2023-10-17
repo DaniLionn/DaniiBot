@@ -850,7 +850,11 @@ client.on("messageCreate", async (message) => {
     
     //updateDatastore(3984205042, message.content, message.author.username, message.channel.name, message.channel.id, message.guild.name, message.guild.id)
 
-  if (message.content)
+  if (message.content.includes("https://cdn.discordapp.com/attachments/1032095616836325398/1163679405948801034/IMG_8016.gif?ex=654073e6&is=652dfee6&hm=b1ef39884c446fe6bd2b706af0b730852953a68ff0bdb7d0fb53a480c0ada5f8&")) {
+    
+
+  message.delete()
+  }
     
     if (message.channelId == "946797124824203307") {
         
