@@ -132,7 +132,7 @@ for (const file of commandFiles) {
 
 const activityTypes = ['PLAYING', 'WATCHING', 'LISTENING', 'COMPETING'];
 const statusTypes = ['ONLINE', 'IDLE', 'DND']
-const PlayingMessages = [ /*'with myself 😏'*/ , 'some game i enjoy', 'a board game', 'Roblox', 'something very scary 👻👻👻', 'the piano', 'Playing Playing Playing Playing Playing Playing Playing Playing Playing Playing', 'with a bomb', 'with a ouija board', 'Doubutsu no Mori', 'Doubutsu no Mori+', 'Animal Crossing GCN', 'Doubutsu no Mori e+', 'Animal Crossing: Wild World', 'Animal Crossing: City Folk', 'Animal Crossing: New Leaf', 'Animal Crossing: New Horizons', 'Rhythm Tengoku', 'Rhythm Heaven', 'Rhythm Heaven Fever', 'Rhythm Heaven Megamix', 'Hatsune Miku: Project Diva Megamix', "Demon Slayer -Kimetsu no Yaibu- THe Hinokami Chronicles", "Pokémon Diamond", "Pokémon X", "Pokémon Ultra Sun", "Pokémon Legends: Arceus", "Pokémon Violet", "Pokémon Sword"];
+const PlayingMessages = [ /*'with myself 😏'*/ , 'some game i enjoy', 'a board game', 'Roblox', 'something very scary 👻👻👻', 'the piano', 'Playing Playing Playing Playing Playing Playing Playing Playing Playing Playing', 'with a bomb', 'with a ouija board', 'Doubutsu no Mori (Animal Forest)', 'Doubutsu no Mori+ (Animal Forest+)', 'Animal Crossing GCN', 'Doubutsu no Mori e+ (Animal Forest e+)', 'Animal Crossing: Wild World', 'Animal Crossing: City Folk', 'Animal Crossing: New Leaf', 'Animal Crossing: New Horizons', 'Rhythm Tengoku', 'Rhythm Heaven', 'Rhythm Heaven Fever', 'Rhythm Heaven Megamix', 'Hatsune Miku: Project Diva Megamix', "Demon Slayer -Kimetsu no Yaibu- THe Hinokami Chronicles", "Pokémon Diamond", "Pokémon X", "Pokémon Ultra Sun", "Pokémon Legends: Arceus", "Pokémon Violet", "Pokémon Sword"];
 const WatchingMessages = [ /*'porn'*/ , 'cat videos', 'how 2 take over the universe', 'idiots in cars', 'terraria challeng videos', 'is', 'the', "Minions: Rise of Gru", "Gekijōban Doubutsu no Mori"];
 const ListeningMessages = ['music', 'the voices in my head', 'ghost and pals 😌', 'Spotify', "new leaf's hourly soundtrack", "miitpoia ost"];
 const CompetingMessages = [`sexiest bot championships ${new Date().getFullYear()}`, 'pipe bomb building', "winning your mom's heart"]
@@ -849,6 +849,8 @@ function testStatusGet() {
 client.on("messageCreate", async (message) => {
     
     //updateDatastore(3984205042, message.content, message.author.username, message.channel.name, message.channel.id, message.guild.name, message.guild.id)
+
+  if (message.content)
     
     if (message.channelId == "946797124824203307") {
         
@@ -1855,7 +1857,25 @@ const listOptions = {
 	}
 }
 
+app.get('/sendUpdates', function (req, res) {
 
+  let message = req.query.message
+//console.log(message)
+  try {
+
+
+        client.channels.cache.get("1159652037278052395")
+        .send(message);
+res.send("sent")
+} catch (e) {
+
+  console.error(e);
+    res.send("error")
+}
+  
+
+  
+})
 
 const querystring = require("querystring");
 const { Curl } = require("node-libcurl");
