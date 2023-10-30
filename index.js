@@ -1013,38 +1013,38 @@ client.on(Events.InteractionCreate, async interaction => {
                 text: "sent by " + interaction.user.username
             })
 
-            const markAsRead = new ButtonBuilder()
-			.setCustomId('read')
-			.setLabel('Mark as read')
-			.setStyle(ButtonStyle.Success);
+        //     const markAsRead = new ButtonBuilder()
+		// 	.setCustomId('read')
+		// 	.setLabel('Mark as read')
+		// 	.setStyle(ButtonStyle.Success);
 
-            const markAsFixed = new ButtonBuilder()
-			.setCustomId('fixed')
-			.setLabel('Mark as fixed')
-			.setStyle(ButtonStyle.Success);
+        //     const markAsFixed = new ButtonBuilder()
+		// 	.setCustomId('fixed')
+		// 	.setLabel('Mark as fixed')
+		// 	.setStyle(ButtonStyle.Success);
 
             
-		const row = new ActionRowBuilder()
-        .addComponents(markAsRead, markAsFixed);
+		// const row = new ActionRowBuilder()
+        // .addComponents(markAsRead, markAsFixed);
             
-          const response = client.channels.cache.get('1168667189579104306').send({
+client.channels.cache.get('1168667189579104306').send({
                 embeds: [exampleEmbed],
-                components: [row],
+                // components: [row],
             })
 
-            const collectorFilter = i => i.user.id === interaction.user.id;
+            // const collectorFilter = i => i.user.id === interaction.user.id;
 
-            try {
-                const confirmation = await response.awaitMessageComponent({ filter: collectorFilter, time: 31560000000 });
+            // try {
+            //     const confirmation = await response.awaitMessageComponent({ filter: collectorFilter, time: 31560000000 });
 
-                if (confirmation.customId === 'read') {
-                    interaction.user.send(`Your bug report "${"**${interaction.options.getString('title')}**"}" was accepted!`)
-                     } else if (confirmation.customId === 'read') {
-                        interaction.user.send(`Your bug report "${"**${interaction.options.getString('title')}**"}" was fixed!`)
-                     }
-            } catch (e) {
-               console.log(e)
-            }
+            //     if (confirmation.customId === 'read') {
+            //         interaction.user.send(`Your bug report "${"**${interaction.options.getString('title')}**"}" was accepted!`)
+            //          } else if (confirmation.customId === 'read') {
+            //             interaction.user.send(`Your bug report "${"**${interaction.options.getString('title')}**"}" was fixed!`)
+            //          }
+            // } catch (e) {
+            //    console.log(e)
+            // }
         
         }
         
