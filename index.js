@@ -58,7 +58,10 @@ const {
     GatewayIntentBits,
     ActivityType,
     DiscordAPIError,
-    EmbedBuilder
+    EmbedBuilder,
+    ButtonBuilder, 
+    ButtonStyle,
+    ActionRowBuilder,
 } = require('discord.js');
 // const
 // {
@@ -985,6 +988,9 @@ async function insult() {
 }
 
 client.on(Events.InteractionCreate, async interaction => {
+
+
+
     if (!interaction.isChatInputCommand()) return;
     if (canPing === true) {
         
@@ -1006,10 +1012,43 @@ client.on(Events.InteractionCreate, async interaction => {
             .setFooter({
                 text: "sent by " + interaction.user.username
             })
+
+            const markAsRead = new ButtonBuilder()
+			.setCustomId('read')
+			.setLabel('Mark as read')
+			.setStyle(ButtonStyle.Success);
+
+            const markAsFixed = new ButtonBuilder()
+			.setCustomId('fixed')
+			.setLabel('Mark as fixed')
+			.setStyle(ButtonStyle.Success);
+
+            
+		const row = new ActionRowBuilder()
+        .addComponents(markAsRead, markAsFixed);
             
             client.channels.cache.get('1168667189579104306').send({
-                embeds: [exampleEmbed]
+                embeds: [exampleEmbed],
+                components: [row],
             })
+
+            const collectorFilter = i => i.user.id === interaction.user.id;
+
+           async function listen() {
+                try {
+                    const confirmation = await response.awaitMessageComponent({ filter: collectorFilter, time: 60_000 });
+
+                    if (confirmation.customId === 'read') {
+                        interaction.user.send(`Your bug report "${"**${interaction.options.getString('title')}**"}" was accepted!`)
+                         } else if (confirmation.customId === 'read') {
+                            interaction.user.send(`Your bug report "${"**${interaction.options.getString('title')}**"}" was fixed!`)
+                         }
+                } catch (e) {
+                   listen()
+                }
+            }
+
+            listen()
         }
         
         if (interaction.commandName === 'avatar-card') {
