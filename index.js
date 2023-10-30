@@ -1001,7 +1001,9 @@ client.on(Events.InteractionCreate, async interaction => {
             const exampleEmbed = new EmbedBuilder()
             .setTitle(`**${interaction.options.getString('title')}**`)
             .setDescription(interaction.options.getString('report'))
-            .setFooter("sent by " + interaction.user.username)
+            .setFooter({
+                text: "sent by " + interaction.user.username
+            })
             
             client.channels.cache.get('1168667189579104306').send({
                 embeds: [exampleEmbed]
