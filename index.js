@@ -74,7 +74,8 @@ const {
     clientId,
     guildId,
     DaniLionnId,
-  DatastoresAPIKey
+  DatastoresAPIKey,
+  UnderDevelopment
 } = require('./configure.json');
 
 const path = require('node:path');
@@ -326,8 +327,15 @@ client.once(Events.ClientReady, c => {
     // Startup stuff
     
     const deploy = require('./deploy-commands')
-    
-    setBotStatus(); // Call random status function
+
+    if (UnderDevelopment === false) {
+      setBotStatus();
+    } else {
+      client.user.setActivity("🔨 Bot currently under development. Commands might not be executed due to frequent restarting.", {
+          type: ActivityType.Playing
+      });
+    }
+     // Call random status function
     // 	let s = new Date().toLocaleString();
     // 	console.log(s)
     
@@ -511,8 +519,11 @@ client.once(Events.ClientReady, c => {
         }
         
     }, 180000)
-    
+
+  if (UnderDevelopment === false) {
     setInterval(setBotStatus, 420000); // Calls setBotStatus() every 7 minutes
+  }
+
     
     // const comamnds = deploy.prep()
     console.log(deploy.success)
