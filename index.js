@@ -1034,21 +1034,18 @@ client.on(Events.InteractionCreate, async interaction => {
 
             const collectorFilter = i => i.user.id === interaction.user.id;
 
-           async function listen() {
-                try {
-                    const confirmation = await response.awaitMessageComponent({ filter: collectorFilter, time: 60_000 });
+            try {
+                const confirmation = await response.awaitMessageComponent({ filter: collectorFilter, time: 31560000000 });
 
-                    if (confirmation.customId === 'read') {
-                        interaction.user.send(`Your bug report "${"**${interaction.options.getString('title')}**"}" was accepted!`)
-                         } else if (confirmation.customId === 'read') {
-                            interaction.user.send(`Your bug report "${"**${interaction.options.getString('title')}**"}" was fixed!`)
-                         }
-                } catch (e) {
-                   listen()
-                }
+                if (confirmation.customId === 'read') {
+                    interaction.user.send(`Your bug report "${"**${interaction.options.getString('title')}**"}" was accepted!`)
+                     } else if (confirmation.customId === 'read') {
+                        interaction.user.send(`Your bug report "${"**${interaction.options.getString('title')}**"}" was fixed!`)
+                     }
+            } catch (e) {
+               console.log(e)
             }
-
-            listen()
+        
         }
         
         if (interaction.commandName === 'avatar-card') {
