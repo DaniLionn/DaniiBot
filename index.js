@@ -503,7 +503,7 @@ client.once(Events.ClientReady, c => {
                                 },
                             )
                         
-                        client.channels.cache.get("1133569909339721788")
+                        client.channels.cache.get("1168669731482521671")
                             .send({
                                 embeds: [StatusEmbed]
                             })

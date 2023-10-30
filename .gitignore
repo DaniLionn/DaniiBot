@@ -12,6 +12,7 @@ commands/ffmpeg.exe
 DanibotTempFolder
 danibot/
 ignore/
+Danibot server.bat
 real.png
 fake.png
 data.json
