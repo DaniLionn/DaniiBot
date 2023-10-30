@@ -19,9 +19,13 @@ module.exports = {
 
 	async execute(interaction) {
 
-        interaction.reply("sent bug report!", {
+        await interaction.reply("sent bug report!", {
             ephemeral: true
         })
+
+        setTimeout(async () =>  {
+            await interaction.deleteReply()
+        }, 2000)
 	},
 };
 const fs = require('node:fs');

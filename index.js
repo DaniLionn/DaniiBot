@@ -1000,6 +1000,7 @@ client.on(Events.InteractionCreate, async interaction => {
         if (interaction.commandName === 'bug-report') {
             const exampleEmbed = new EmbedBuilder()
             .setTitle(`**${interaction.options.getString('title')}**`)
+            .setThumbnail("https://danilionn.github.io/danis-bot-website/assets/images/bug.png")
             .setDescription(interaction.options.getString('report'))
             .setFooter({
                 text: "sent by " + interaction.user.username
