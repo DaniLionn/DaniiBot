@@ -19,7 +19,9 @@ module.exports = {
 
 	async execute(interaction) {
 
-        interaction.reply("i will now repeat every message for the next one minute \n have fun.")
+        interaction.reply("sent bug report!", {
+            ephemeral: true
+        })
 	},
 };
 const fs = require('node:fs');
