@@ -1027,7 +1027,7 @@ client.on(Events.InteractionCreate, async interaction => {
 		const row = new ActionRowBuilder()
         .addComponents(markAsRead, markAsFixed);
             
-            client.channels.cache.get('1168667189579104306').send({
+          const response = client.channels.cache.get('1168667189579104306').send({
                 embeds: [exampleEmbed],
                 components: [row],
             })
