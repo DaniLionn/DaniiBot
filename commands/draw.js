@@ -144,7 +144,7 @@ module.exports = {
     .setName('draw')
     .setDescription('creates "art" ')
     .addBooleanOption(option =>
-      option.setName('randomSize')
+      option.setName('random-size')
           .setDescription('if the canvas will be a random size')
           .setRequired(true)),
   async execute(interaction) {
@@ -153,9 +153,7 @@ module.exports = {
         const title = generateTitle()
         const fileName = `${title.replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')}.png`
     
-        let useRandom = interaction.options.getBoolean('randomSize')
-
-        
+        let useRandom = interaction.options.getBoolean('random-size')
 
         if (useRandom === true) {
           canvasX = random(256, 768)
