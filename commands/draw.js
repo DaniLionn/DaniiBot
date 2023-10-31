@@ -125,15 +125,12 @@ function generateTitle() {
       ctx.fillStyle = randomHex()
       ctx.strokeStyle = randomHex()
 
-      ctx.strokeRect(x, y, w, h)
-      ctx.fillRect(x, y, w, h)
-
       ctx.beginPath();
-      ctx.arc(x, y, s, 0, Math.PI * 2, true); // Outer circle
+      ctx.arc(x, y, s, 0, Math.PI * 2, true); 
       ctx.fill()
 
       ctx.beginPath();
-      ctx.arc(x, y, s + 1, 0, Math.PI * 2, true); // Outer circle
+      ctx.arc(x, y, s + 1, 0, Math.PI * 2, true); 
       ctx.stroke()
       ctx.closePath()
 
@@ -157,24 +154,11 @@ module.exports = {
         ctx.fillRect(0,0,512,512)
         ctx.lineWidth = 3
 
-       
+        triangles(ctx)
 
-        for (let index = 0; index < 3; index++) {
-          
-          let pick = Math.floor(Math.random() * 3)
-          
-          console.log(pick)
+        rectangles(ctx)
 
-          if (pick === 0) {
-            triangles()
-          } else if (pick === 1) {
-            circles()
-          } else if (pick === 2) {
-            triangles()
-          }
-          
-        } 
-
+        circles(ctx)
 
 
           const pngData = await canvas.encode('png') 
