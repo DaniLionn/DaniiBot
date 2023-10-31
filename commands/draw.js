@@ -1,5 +1,5 @@
 const { AttachmentBuilder, SlashCommandBuilder } = require('discord.js');
-
+const fs = require('node:fs');
 const {
     createCanvas,
 } = require('@napi-rs/canvas');
@@ -86,16 +86,21 @@ module.exports = {
             
           } 
 
-          const attachment = new AttachmentBuilder(canvas.toBuffer('image/png'), {
-            name: fileName
-        });
+          const pngData = await canvas.encode('png') 
+            fs.writeFile(join(__dirname, fileName), pngData)
+
+        //   const attachment = new AttachmentBuilder(canvas.toBuffer('image/png'), {
+        //     name: fileName
+        // });
         
           await  interaction.editReply(`Here's your drawing! I call it "${title}".`,{
-                files: [attachment]
+                files: [join(__dirname, fileName)]
             });
+
+            setTimeout(() => {fs.unlink(join(__dirname, fileName))}, 1000)
 	},
 };
-const fs = require('node:fs');
+
 process.on('unhandledRejection', error =>
 {
 	console.log("Error detected! Saving to error log...")
