@@ -193,7 +193,7 @@ module.exports = {
         const ctx = canvas.getContext('2d')
 
         ctx.fillStyle = randomHex()
-        ctx.fillRect(0,0,canvasX, canvasX)
+        ctx.fillRect(0,0,canvasX, canvasY)
         ctx.lineWidth = 3
 
         triangles(ctx)
