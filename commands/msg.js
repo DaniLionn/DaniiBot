@@ -11,6 +11,7 @@ module.exports = {
                 .setRequired(true)),
 
 		async execute(interaction) {
+            await interaction.deferReply()
             await interaction.deleteReply()
             const target = interaction.options.getUser('messagee');
             target.send(interaction.options.getString('message'))
