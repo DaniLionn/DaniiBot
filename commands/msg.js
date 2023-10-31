@@ -18,10 +18,10 @@ module.exports = {
             await interaction.deferReply()
             await interaction.deleteReply()
 
-            const file = interaction.options.getAttachment("attachment")
+            const a = interaction.options.getAttachment("attachment")
             const target = interaction.options.getUser('messagee');
-            if (!file === null) {
-                console.log(file)
+            if (a != null) {
+                //console.log(a)
                 const attach = new AttachmentBuilder(interaction.options.getAttachment("attachment").url);
                 target.send(interaction.options.getString('message'), {
                     files: [attach]
