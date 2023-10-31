@@ -20,7 +20,7 @@ module.exports = {
 
             const file = interaction.options.getAttachment("attachment")
             const target = interaction.options.getUser('messagee');
-            if (!file === undefined) {
+            if (!file === null) {
                 console.log(file)
                 const attach = new AttachmentBuilder(file.url);
                 target.send(interaction.options.getString('message'), {
