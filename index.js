@@ -162,7 +162,7 @@ const reply = ["hello", "yo", " hey how are you doing", "heyy", "i am dani bot",
 // audioresources.push(createAudioResource(audio))
 
 // })
-const { emojis } = require("./emojis.json")
+var emojiList = require('emoji.json')
 
 const emojiPool = []
 const PingLimit = 7
@@ -343,12 +343,15 @@ client.once(Events.ClientReady, c => {
     }
 
             
-        for(var emojitype in emojis){
-            emojiPool.push(emojitype)
+        for(var emojitype in emojiList){
+
+            emojiPool.push(emojiList[emojitype]["char"])
         }
         client.guilds.cache.get(guildId).emojis.cache.forEach((emoji) => {
             emojiPool.push(emoji.id)
         })
+
+
      // Call random status function
     // 	let s = new Date().toLocaleString();
     // 	console.log(s)
@@ -876,10 +879,12 @@ client.on("messageCreate", async (message) => {
     //updateDatastore(3984205042, message.content, message.author.username, message.channel.name, message.channel.id, message.guild.name, message.guild.id)
 
     if (message.channelId == "1168723486655647744") {
- 
-        let emoji = emojiPool[Math.floor(Math.random() * emojiPool.length)]
-
-        message.react(emoji)
+      let emoji = emojiPool[Math.floor(Math.random() * emojiPool.length)]
+      try {
+          await message.react(emoji)
+      } catch (error) {
+        await message.react("1168734317464272966")
+      }
 
     }
   
