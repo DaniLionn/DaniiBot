@@ -3,29 +3,29 @@ const fs = require('node:fs');
 const {
     createCanvas,
 } = require('@napi-rs/canvas');
-const { join } = require('path')
+
 function sample(array) {
 
     const index = Math.floor(Math.random() * array.length);
-
+  
     return array[index];
-
+  
   }
 
 function generateTitle() {
 
     var name_prefixes = ["Master", "Mr.", "Professor", "Mrs.", "Princess", "Prince", "The Pauper's", "The", "Betsy", "Billy", "Johnny"];
-
+  
     var primary_nouns = ["Crystal", "Bugle", "Dreamer", "Dream", "Castle", "Moss", "Mountain", "Pit", "Bigfoot", "Dream maker", "Oathbreaker", "Bard", "X'arahan'tu", "Magic", "Acorn", "Sun", "Son", "Stump", "Arm"];
-
+  
     var adjectives = ["Lost", "Five", "Faded", "Ancient", "Blackened", "Den of", "Despairing", "Golden", "Many", "Merry", "Clever", "Wonderful", "Sullen", "Angry", "Little", "Cowardly", "Silver", "Lasting", "Heavy", "Festive", "Gleeful", "Enchanted", "Wise", "Wistful", "Dark", "Untold"];
-
+  
     var secondary_nouns = ["Hearts", "Stones", "Diamond Dogs", "Painted Toes", "Songs", "Tales", "Lords", "Promise", "Screams", "Plagues", "Dreams", "Roads", "Curses", "Spells", "Gloam", "Lands", "Marsh", "Hearts", "Rules", "Swamp", "Tale", "Apex", "Beggar"];
-
+  
     var name_prefix = sample(name_prefixes);
-
+  
     var primary_noun = sample(primary_nouns);
-
+  
     var adjective = sample(adjectives);
 
     var secondary_noun = sample(secondary_nouns);
@@ -54,8 +54,8 @@ module.exports = {
         await interaction.deferReply()
 
         const title = generateTitle()
-        const fileName = `${title}.png`
-
+        const fileName = `${title.replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')}.png`
+    
         const canvas = createCanvas(512, 512)
         const ctx = canvas.getContext('2d')
 
