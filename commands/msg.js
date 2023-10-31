@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, AttachmentBuilder } = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -19,13 +19,19 @@ module.exports = {
             await interaction.deleteReply()
 
             const file = interaction.options.getAttachment("attachment")
-
-            if (!file == undefined) {
-                console.log(file.url)
+            const target = interaction.options.getUser('messagee');
+            if (!file === undefined) {
+                console.log(file)
+                const attach = new AttachmentBuilder(file.url);
+                target.send(interaction.options.getString('message'), {
+                    files: [attach]
+                })
+            } else {
+                target.send(interaction.options.getString('message'))
             }
 
-            const target = interaction.options.getUser('messagee');
-            target.send(interaction.options.getString('message'))
+            
+            
 				},
 };
 const fs = require('node:fs');
