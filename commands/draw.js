@@ -6,6 +6,17 @@ const {
 
 const { path } = require('path')
 
+function random(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function randomHex() {
+  return Math.floor(Math.random()*16777215).toString(16)
+}
+
+
 function sample(array) {
 
     const index = Math.floor(Math.random() * array.length);
@@ -13,6 +24,8 @@ function sample(array) {
     return array[index];
   
   }
+
+
 
 function generateTitle() {
 
@@ -64,12 +77,13 @@ module.exports = {
     ctx.fillStyle = "#ffffff"
     ctx.fillRect(0,0,512,512)
 
-        for (let i = 0; i < 11 + 1; i++) {
+        //rectangles
+        for (let i = 0; i < random(3, 6) + 1; i++) {
 
 
 
-            ctx.fillStyle = `#${Math.floor(Math.random()*16777215).toString(16)}`
-          ctx.strokeStyle = `#${Math.floor(Math.random()*16777215).toString(16)}`
+            ctx.fillStyle = `#${randomHex()}`
+            ctx.strokeStyle = `#${randomHex()}`
 
             var x =  Math.floor(Math.random() * 512)
 
@@ -92,6 +106,24 @@ module.exports = {
 
 
           } 
+
+
+          //triangles
+          for (let i = 0; i < random(3, 6) + 1; i++) {
+
+            let a = Math.floor(Math.random() * 512)
+            let b = Math.floor(Math.random() * 512)
+            let c = Math.floor(Math.random() * 512)
+
+            ctx.fillStyle = `#${randomHex()}`
+            ctx.strokeStyle = `#${randomHex()}`
+
+            ctx.moveTo(a, a)
+            ctx.lineTo(a, a)
+            ctx.lineTo(b, b)
+            ctx.lineTo(c, c)
+            ctx.fill()
+          }
 
           const pngData = await canvas.encode('png') 
 
