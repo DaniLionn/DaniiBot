@@ -1268,7 +1268,6 @@ client.channels.cache.get('1168667189579104306').send({
         // }
 
         
-        
         if (interaction.commandName === 'change-status')
         {
         

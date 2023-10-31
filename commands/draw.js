@@ -6,6 +6,8 @@ const {
 
 const { path } = require('path')
 
+let canvasX, canvasY
+
 function random(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -65,9 +67,9 @@ function generateTitle() {
      //triangles
      for (let i = 0; i < random(3, 6); i++) {
 
-      let a = Math.floor(Math.random() * 512)
-      let b = Math.floor(Math.random() * 512)
-      let c = Math.floor(Math.random() * 512)
+      let a = Math.floor(Math.random() * canvasX)
+      let b = Math.floor(Math.random() * canvasY)
+      let c = Math.floor(Math.random() * canvasX)
 
       ctx.fillStyle = randomHex()
       ctx.strokeStyle = randomHex()
@@ -91,10 +93,10 @@ function generateTitle() {
   function rectangles(ctx) {
     //rectangles
     for (let i = 0; i < random(3, 6); i++) {
-      var x =  Math.floor(Math.random() * 512)
-      var y = Math.floor(Math.random() * 512)
-      var w = Math.floor(Math.random() * 512)
-      var h = Math.floor(Math.random() * 512)
+      var x =  Math.floor(Math.random() * canvasX)
+      var y = Math.floor(Math.random() * canvasY)
+      var w = Math.floor(Math.random() * canvasX)
+      var h = Math.floor(Math.random() * canvasY)
 
       if (w > x) {
           w = w - x
@@ -116,8 +118,8 @@ function generateTitle() {
 
   function circles(ctx) {
     for (let i = 0; i < random(3, 6); i++) {
-      var x =  Math.floor(Math.random() * 512)
-      var y = Math.floor(Math.random() * 512)
+      var x =  Math.floor(Math.random() * canvasX)
+      var y = Math.floor(Math.random() * canvasY)
       var s = Math.floor(Math.random() * 100)
 
 
@@ -140,18 +142,34 @@ function generateTitle() {
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('draw')
-    .setDescription('creates "art" '),
+    .setDescription('creates "art" ')
+    .addBooleanOption(option =>
+      option.setName('randomSize')
+          .setDescription('if the canvas will be a random size')
+          .setRequired(true)),
   async execute(interaction) {
         await interaction.deferReply()
 
         const title = generateTitle()
         const fileName = `${title.replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')}.png`
     
-        const canvas = createCanvas(512, 512)
+        let useRandom = interaction.options.getBoolean('randomSize')
+
+        
+
+        if (useRandom === true) {
+          canvasX = random(256, 768)
+          canvasY = random(256, 768)
+        } else {
+          canvasX = 512
+          canvasY = 512
+        }
+
+        const canvas = createCanvas(canvasX, canvasX)
         const ctx = canvas.getContext('2d')
 
         ctx.fillStyle = randomHex()
-        ctx.fillRect(0,0,512,512)
+        ctx.fillRect(0,0,canvasX, canvasX)
         ctx.lineWidth = 3
 
         triangles(ctx)
