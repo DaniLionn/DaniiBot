@@ -20,7 +20,7 @@ module.exports = {
             await interaction.deleteReply()
 
             // const a = interaction.options.getAttachment("attachment")
-            // const target = interaction.options.getUser('messagee');
+            const target = interaction.options.getUser('messagee');
             // if (a != null) {
             //     console.log("file detected")
        
