@@ -74,23 +74,15 @@ module.exports = {
         const canvas = createCanvas(512, 512)
         const ctx = canvas.getContext('2d')
 
-    ctx.fillStyle = randomHex()
-    ctx.fillRect(0,0,512,512)
+        ctx.fillStyle = randomHex()
+        ctx.fillRect(0,0,512,512)
+        ctx.lineWidth = 3
 
         //rectangles
         for (let i = 0; i < random(3, 6) + 1; i++) {
-
-
-
-            ctx.fillStyle = randomHex()
-            ctx.strokeStyle = randomHex()
-
             var x =  Math.floor(Math.random() * 512)
-
             var y = Math.floor(Math.random() * 512)
-
             var w = Math.floor(Math.random() * 512)
-
             var h = Math.floor(Math.random() * 512)
 
             if (w > x) {
@@ -101,12 +93,14 @@ module.exports = {
                 h = h - y
             }
 
+            ctx.fillStyle = randomHex()
+            ctx.strokeStyle = randomHex()
+
             ctx.strokeRect(x, y, w, h)
             ctx.fillRect(x, y, w, h)
 
 
           } 
-
 
           //triangles
           for (let i = 0; i < random(3, 6) + 1; i++) {
@@ -117,6 +111,8 @@ module.exports = {
 
             ctx.fillStyle = randomHex()
             ctx.strokeStyle = randomHex()
+           
+
 
             ctx.moveTo(a, a)
             ctx.lineTo(a, a)
