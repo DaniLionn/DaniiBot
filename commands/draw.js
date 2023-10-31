@@ -78,6 +78,25 @@ module.exports = {
         ctx.fillRect(0,0,512,512)
         ctx.lineWidth = 3
 
+        //triangles
+        for (let i = 0; i < random(3, 6) + 1; i++) {
+
+          let a = Math.floor(Math.random() * 512)
+          let b = Math.floor(Math.random() * 512)
+          let c = Math.floor(Math.random() * 512)
+
+          ctx.fillStyle = randomHex()
+          ctx.strokeStyle = randomHex()
+
+          ctx.beginPath()
+          ctx.moveTo(a, b)
+          ctx.lineTo(b, c)
+          ctx.lineTo(c, a)
+          ctx.fill()
+
+
+        }
+
         //rectangles
         for (let i = 0; i < random(3, 6) + 1; i++) {
             var x =  Math.floor(Math.random() * 512)
@@ -102,24 +121,7 @@ module.exports = {
 
           } 
 
-          //triangles
-          for (let i = 0; i < random(3, 6) + 1; i++) {
 
-            let a = Math.floor(Math.random() * 512)
-            let b = Math.floor(Math.random() * 512)
-            let c = Math.floor(Math.random() * 512)
-
-            ctx.fillStyle = randomHex()
-            ctx.strokeStyle = randomHex()
-           
-
-
-            ctx.moveTo(a, a)
-            ctx.lineTo(a, a)
-            ctx.lineTo(b, b)
-            ctx.lineTo(c, c)
-            ctx.fill()
-          }
 
           const pngData = await canvas.encode('png') 
 
