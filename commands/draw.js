@@ -4,6 +4,8 @@ const {
     createCanvas,
 } = require('@napi-rs/canvas');
 
+const { path } = require('path')
+
 function sample(array) {
 
     const index = Math.floor(Math.random() * array.length);
