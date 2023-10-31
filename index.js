@@ -164,7 +164,7 @@ const reply = ["hello", "yo", " hey how are you doing", "heyy", "i am dani bot",
 // })
 const { emojis } = require("./emojis.json")
 
-
+const emojiPool = []
 const PingLimit = 7
 var pingNumber = 0
 const PingCooldown = 15 * 1000
@@ -342,7 +342,7 @@ client.once(Events.ClientReady, c => {
       });
     }
 
-            const emojiPool = []
+            
         for(var emojitype in emojis){
             emojiPool.push(emojitype)
         }
