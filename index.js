@@ -164,13 +164,7 @@ const reply = ["hello", "yo", " hey how are you doing", "heyy", "i am dani bot",
 // })
 const { emojis } = require("./emojis.json")
 
-const emojiPool = []
-for(var emojitype in emojis){
-    emojiPool.push(emojitype)
-}
-message.guild.emojis.cache.forEach((emoji) => {
-    emojiPool.push(emoji.id)
-})
+
 const PingLimit = 7
 var pingNumber = 0
 const PingCooldown = 15 * 1000
@@ -347,6 +341,14 @@ client.once(Events.ClientReady, c => {
           type: ActivityType.Playing
       });
     }
+
+            const emojiPool = []
+        for(var emojitype in emojis){
+            emojiPool.push(emojitype)
+        }
+        client.guilds.cache.get(guildId).emojis.cache.forEach((emoji) => {
+            emojiPool.push(emoji.id)
+        })
      // Call random status function
     // 	let s = new Date().toLocaleString();
     // 	console.log(s)
