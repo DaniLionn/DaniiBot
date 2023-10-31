@@ -22,7 +22,7 @@ module.exports = {
             const target = interaction.options.getUser('messagee');
             if (a != null) {
                 console.log("file detected")
-                //console.log(a)
+                console.log(a.url)
                 const attach = new AttachmentBuilder(interaction.options.getAttachment("attachment").url);
                 target.send(interaction.options.getString('message'), {
                     files: [attach]
