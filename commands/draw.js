@@ -4,6 +4,14 @@ const {
     createCanvas,
 } = require('@napi-rs/canvas');
 
+function sample(array) {
+
+    const index = Math.floor(Math.random() * array.length);
+  
+    return array[index];
+  
+  }
+
 function generateTitle() {
 
     var name_prefixes = ["Master", "Mr.", "Professor", "Mrs.", "Princess", "Prince", "The Pauper's", "The", "Betsy", "Billy", "Johnny"];
