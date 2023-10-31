@@ -62,6 +62,7 @@ const {
     ButtonBuilder, 
     ButtonStyle,
     ActionRowBuilder,
+    Attachment,
 } = require('discord.js');
 // const
 // {
@@ -1634,6 +1635,8 @@ client.channels.cache.get('1168667189579104306').send({
             await interaction.channel.send(`*danibot ${msg}*`);
             
         }
+
+        
         
         if (interaction.commandName === 'insult') {
             await interaction.deferReply({
@@ -1641,6 +1644,7 @@ client.channels.cache.get('1168667189579104306').send({
             });
             
             const target = interaction.options.getUser('insultee');
+            
             /* if (target.id == MariID)
             {
 
