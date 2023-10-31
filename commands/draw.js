@@ -82,7 +82,7 @@ module.exports = {
             name: fileName
         });
         
-            interaction.editReply(`Here's your drawing! I call it "${title}".`,{
+          await  interaction.editReply(`Here's your drawing! I call it "${title}".`,{
                 files: [attachment]
             });
 	},
