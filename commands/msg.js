@@ -22,11 +22,25 @@ module.exports = {
             const target = interaction.options.getUser('messagee');
             if (a != null) {
                 console.log("file detected")
-                console.log(a.url)
-                const attach = new AttachmentBuilder(interaction.options.getAttachment("attachment").url);
-                target.send(interaction.options.getString('message'), {
-                    files: [attach]
+       
+                const file = fs.createWriteStream(a.name);
+                const request = https.get(a.url, function (response) {
+                    
+                    response.pipe(file);
+                    
+                    // after download completed close filestream
+                    file.on("finish", async () => {
+                        const attach = new AttachmentBuilder(file);
+                        target.send(interaction.options.getString('message'), {
+                            files: [attach]
+                        })
+                        file.close(); // close() is async, call cb after close completes.
+                                  
+                    })
+                    
                 })
+
+
             } else {
                 target.send(interaction.options.getString('message'))
             }
