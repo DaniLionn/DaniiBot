@@ -13,7 +13,7 @@ function random(min, max) {
 }
 
 function randomHex() {
-  return Math.floor(Math.random()*16777215).toString(16)
+  return `#${Math.floor(Math.random()*16777215).toString(16)}`
 }
 
 
@@ -74,7 +74,7 @@ module.exports = {
         const canvas = createCanvas(512, 512)
         const ctx = canvas.getContext('2d')
 
-    ctx.fillStyle = "#ffffff"
+    ctx.fillStyle = randomHex()
     ctx.fillRect(0,0,512,512)
 
         //rectangles
@@ -82,8 +82,8 @@ module.exports = {
 
 
 
-            ctx.fillStyle = `#${randomHex()}`
-            ctx.strokeStyle = `#${randomHex()}`
+            ctx.fillStyle = randomHex()
+            ctx.strokeStyle = randomHex()
 
             var x =  Math.floor(Math.random() * 512)
 
@@ -115,8 +115,8 @@ module.exports = {
             let b = Math.floor(Math.random() * 512)
             let c = Math.floor(Math.random() * 512)
 
-            ctx.fillStyle = `#${randomHex()}`
-            ctx.strokeStyle = `#${randomHex()}`
+            ctx.fillStyle = randomHex()
+            ctx.strokeStyle = randomHex()
 
             ctx.moveTo(a, a)
             ctx.lineTo(a, a)
