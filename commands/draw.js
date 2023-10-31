@@ -162,6 +162,8 @@ module.exports = {
         for (let index = 0; index < 3; index++) {
           
           let pick = Math.floor(Math.random() * 3)
+          
+          console.log(pick)
 
           if (pick === 0) {
             triangles()
