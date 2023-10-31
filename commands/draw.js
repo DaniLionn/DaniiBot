@@ -59,8 +59,87 @@ function generateTitle() {
 
     return title;
 
+}
+
+  function triangles(ctx) {
+     //triangles
+     for (let i = 0; i < random(3, 6); i++) {
+
+      let a = Math.floor(Math.random() * 512)
+      let b = Math.floor(Math.random() * 512)
+      let c = Math.floor(Math.random() * 512)
+
+      ctx.fillStyle = randomHex()
+      ctx.strokeStyle = randomHex()
+
+      ctx.beginPath()
+      ctx.moveTo(a, b)
+      ctx.lineTo(b, c)
+      ctx.lineTo(c, a)
+      ctx.fill()
+
+      ctx.beginPath()
+      ctx.moveTo(a+1, b+1)
+      ctx.lineTo(b+1, c+1)
+      ctx.lineTo(c+1, a+1)
+      ctx.stroke()
+      ctx.closePath()
+
+    }
   }
 
+  function rectangles(ctx) {
+    //rectangles
+    for (let i = 0; i < random(3, 6); i++) {
+      var x =  Math.floor(Math.random() * 512)
+      var y = Math.floor(Math.random() * 512)
+      var w = Math.floor(Math.random() * 512)
+      var h = Math.floor(Math.random() * 512)
+
+      if (w > x) {
+          w = w - x
+      }
+
+      if (h > y) {
+          h = h - y
+      }
+
+      ctx.fillStyle = randomHex()
+      ctx.strokeStyle = randomHex()
+
+      ctx.strokeRect(x, y, w, h)
+      ctx.fillRect(x, y, w, h)
+
+
+    } 
+  }
+
+  function circles(ctx) {
+    for (let i = 0; i < random(3, 6); i++) {
+      var x =  Math.floor(Math.random() * 512)
+      var y = Math.floor(Math.random() * 512)
+      var s = Math.floor(Math.random() * 100)
+
+
+
+      ctx.fillStyle = randomHex()
+      ctx.strokeStyle = randomHex()
+
+      ctx.strokeRect(x, y, w, h)
+      ctx.fillRect(x, y, w, h)
+
+      ctx.beginPath();
+      ctx.arc(x, y, s, 0, Math.PI * 2, true); // Outer circle
+      ctx.fill()
+
+      ctx.beginPath();
+      ctx.arc(x, y, s + 1, 0, Math.PI * 2, true); // Outer circle
+      ctx.stroke()
+      ctx.closePath()
+
+    } 
+  }
+ 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('draw')
@@ -78,48 +157,21 @@ module.exports = {
         ctx.fillRect(0,0,512,512)
         ctx.lineWidth = 3
 
-        //triangles
-        for (let i = 0; i < random(3, 6) + 1; i++) {
+       
 
-          let a = Math.floor(Math.random() * 512)
-          let b = Math.floor(Math.random() * 512)
-          let c = Math.floor(Math.random() * 512)
+        for (let index = 0; index < 3; index++) {
+          
+          let pick = Math.floor(Math.random() * 3)
 
-          ctx.fillStyle = randomHex()
-          ctx.strokeStyle = randomHex()
-
-          ctx.beginPath()
-          ctx.moveTo(a, b)
-          ctx.lineTo(b, c)
-          ctx.lineTo(c, a)
-          ctx.fill()
-
-
-        }
-
-        //rectangles
-        for (let i = 0; i < random(3, 6) + 1; i++) {
-            var x =  Math.floor(Math.random() * 512)
-            var y = Math.floor(Math.random() * 512)
-            var w = Math.floor(Math.random() * 512)
-            var h = Math.floor(Math.random() * 512)
-
-            if (w > x) {
-                w = w - x
-            }
-
-            if (h > y) {
-                h = h - y
-            }
-
-            ctx.fillStyle = randomHex()
-            ctx.strokeStyle = randomHex()
-
-            ctx.strokeRect(x, y, w, h)
-            ctx.fillRect(x, y, w, h)
-
-
-          } 
+          if (pick === 0) {
+            triangles()
+          } else if (pick === 1) {
+            circles()
+          } else if (pick === 2) {
+            triangles()
+          }
+          
+        } 
 
 
 
