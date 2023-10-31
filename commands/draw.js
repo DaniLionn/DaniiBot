@@ -67,9 +67,33 @@ function generateTitle() {
      //triangles
      for (let i = 0; i < random(3, 6); i++) {
 
-      let a = Math.floor(Math.random() * canvasX)
-      let b = Math.floor(Math.random() * canvasY)
-      let c = Math.floor(Math.random() * canvasX)
+       let a 
+       let b
+       let c 
+
+       let r = Math.random()
+
+       if (r > 0.5) {
+         a = Math.floor(Math.random() * canvasX)
+       } else {
+         a = Math.floor(Math.random() * canvasY)
+       }
+
+       r = Math.random()
+
+       if (r > 0.5) {
+         b = Math.floor(Math.random() * canvasX)
+       } else {
+         b = Math.floor(Math.random() * canvasY)
+       }
+
+       r = Math.random()
+
+       if (r > 0.5) {
+         c = Math.floor(Math.random() * canvasX)
+       } else {
+         c = Math.floor(Math.random() * canvasY)
+       }
 
       ctx.fillStyle = randomHex()
       ctx.strokeStyle = randomHex()
@@ -155,6 +179,8 @@ module.exports = {
     
         let useRandom = interaction.options.getBoolean('random-size')
 
+    console.log(useRandom)
+
         if (useRandom === true) {
           canvasX = random(256, 768)
           canvasY = random(256, 768)
@@ -163,7 +189,7 @@ module.exports = {
           canvasY = 512
         }
 
-        const canvas = createCanvas(canvasX, canvasX)
+        const canvas = createCanvas(canvasX, canvasY)
         const ctx = canvas.getContext('2d')
 
         ctx.fillStyle = randomHex()
