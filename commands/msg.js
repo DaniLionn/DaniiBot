@@ -8,11 +8,22 @@ module.exports = {
         .addStringOption(option =>
             option.setName('message')
                 .setDescription('what to send')
-                .setRequired(true)),
+                .setRequired(true))
+                .addAttachmentOption(option =>
+                    option.setName('attachment')
+                        .setDescription('optional attachment to send')
+                        .setRequired(false)),
 
 		async execute(interaction) {
             await interaction.deferReply()
             await interaction.deleteReply()
+
+            const file = interaction.options.getAttachment("attachment")
+
+            if (!file == undefined) {
+                console.log(file.url)
+            }
+
             const target = interaction.options.getUser('messagee');
             target.send(interaction.options.getString('message'))
 				},
