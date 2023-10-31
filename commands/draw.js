@@ -127,22 +127,19 @@ module.exports = {
 
           const pngData = await canvas.encode('png') 
 
-    fs.writeFile(join(__dirname, fileName), pngData, async function(err) {
+    fs.writeFile(`./DanibotTempFolder/${fileName}`, pngData, async function(err) {
         if(err) {
             return console.log(err);
         }
       
-      console.log("The file was saved!");
-      console.log(`./${fileName}`)
-      await interaction.deleteReply()
-        await  interaction.channel.send(`Here's your drawing! I call it "${title}".`,{
-          files: [`join(__dirname, fileName)`]
-      });
+        await interaction.editReply({
+          content: `Here's your drawing! I call it "${title}".`,
+          files: [`./DanibotTempFolder/${fileName}`] 
+        })
 
       setTimeout(() => {
-        fs.unlink(join(__dirname, fileName), function (err) {
+        fs.unlink(`./DanibotTempFolder/${fileName}`, function (err) {
           if (err) throw err;
-          console.log('File deleted!');
         });
 
       }, 1000)
