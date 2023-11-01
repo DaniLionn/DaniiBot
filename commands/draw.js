@@ -193,10 +193,6 @@ module.exports = {
 
         }
 
-    console.log(useRandom)
-
-
-
         if (times === 1) {
           const title = generateTitle()
           const fileName = `${title.replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')}.png`
