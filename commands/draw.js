@@ -195,7 +195,7 @@ module.exports = {
 
         if (times === 1) {
           const title = generateTitle()
-          const fileName = `${title.replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')}.png`
+          const fileName = `${title}.png`//`${title.replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')}.png`
           if (useRandom === true) {
             canvasX = random(256, 768)
             canvasY = random(256, 768)
