@@ -170,60 +170,137 @@ module.exports = {
     .addBooleanOption(option =>
       option.setName('random-size')
           .setDescription('if the canvas will be a random size')
-          .setRequired(true)),
+          .setRequired(true))
+          
+          .addIntegerOption(option =>
+            option.setName('amount')
+                .setDescription('how many images to generate')
+                .setRequired(false)),
   async execute(interaction) {
         await interaction.deferReply()
 
-        const title = generateTitle()
-        const fileName = `${title.replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')}.png`
+
     
         let useRandom = interaction.options.getBoolean('random-size')
+        let numberOfImages = interaction.options.getInteger('amount') 
+        let times = 1
+        if (numberOfImages != undefined) {
+          if (numberOfImages > 10) {
+            numberOfImages = 10
+          }
+
+          times = numberOfImages
+
+        }
 
     console.log(useRandom)
 
-        if (useRandom === true) {
-          canvasX = random(256, 768)
-          canvasY = random(256, 768)
+
+
+        if (times === 1) {
+          const title = generateTitle()
+          const fileName = `${title.replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')}.png`
+          if (useRandom === true) {
+            canvasX = random(256, 768)
+            canvasY = random(256, 768)
+          } else {
+            canvasX = 512
+            canvasY = 512
+          }
+  
+          const canvas = createCanvas(canvasX, canvasY)
+          const ctx = canvas.getContext('2d')
+  
+          ctx.fillStyle = randomHex()
+          ctx.fillRect(0,0,canvasX, canvasY)
+          ctx.lineWidth = 3
+  
+          triangles(ctx)
+  
+          rectangles(ctx)
+  
+          circles(ctx)
+  
+  
+            const pngData = await canvas.encode('png') 
+  
+      fs.writeFile(`./DanibotTempFolder/${fileName}`, pngData, async function(err) {
+          if(err) {
+              return console.log(err);
+          }
+        
+          await interaction.editReply({
+            content: `Here's your drawing! I call it "${title}".`,
+            files: [`./DanibotTempFolder/${fileName}`] 
+          })
+  
+        setTimeout(() => {
+          fs.unlink(`./DanibotTempFolder/${fileName}`, function (err) {
+            if (err) throw err;
+          });
+  
+        }, 1000) })
         } else {
-          canvasX = 512
-          canvasY = 512
+          var stuff = []
+          var msg = "Here are your drawings! I call them\n"
+
+          for (let index = 0; index < times; index++) {
+            var title = generateTitle()
+            var fileName = `${title.replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')}.png`
+            
+            if (useRandom === true) {
+              canvasX = random(256, 768)
+              canvasY = random(256, 768)
+            } else {
+              canvasX = 512
+              canvasY = 512
+            }
+    
+            var canvas = createCanvas(canvasX, canvasY)
+            var ctx = canvas.getContext('2d')
+    
+            ctx.fillStyle = randomHex()
+            ctx.fillRect(0,0,canvasX, canvasY)
+            ctx.lineWidth = 3
+    
+            triangles(ctx)
+    
+            rectangles(ctx)
+    
+            circles(ctx)
+    
+    
+              var pngData = await canvas.encode('png') 
+    
+        fs.writeFile(`./DanibotTempFolder/${fileName}`, pngData, async function(err) {
+            if(err) {
+                return console.log(err);
+            }
+
+          })
+
+          stuff.push(`./DanibotTempFolder/${fileName}`)
+          msg = msg + `\n${index}. ${title}`
         }
-
-        const canvas = createCanvas(canvasX, canvasY)
-        const ctx = canvas.getContext('2d')
-
-        ctx.fillStyle = randomHex()
-        ctx.fillRect(0,0,canvasX, canvasY)
-        ctx.lineWidth = 3
-
-        triangles(ctx)
-
-        rectangles(ctx)
-
-        circles(ctx)
-
-
-          const pngData = await canvas.encode('png') 
-
-    fs.writeFile(`./DanibotTempFolder/${fileName}`, pngData, async function(err) {
-        if(err) {
-            return console.log(err);
-        }
-      
         await interaction.editReply({
-          content: `Here's your drawing! I call it "${title}".`,
-          files: [`./DanibotTempFolder/${fileName}`] 
+          content: msg,
+          files: stuff
         })
 
-      setTimeout(() => {
-        fs.unlink(`./DanibotTempFolder/${fileName}`, function (err) {
-          if (err) throw err;
-        });
+        setTimeout(() => {
+          for (let index = 0; index < stuff.length; index++) {
+            fs.unlink(stuff[index], function (err) {
+              if (err) throw err;
+            });
+            
+          }
+        }, 1000);
 
-      }, 1000)
+        }
+
 
         
-  })
+  }
 
 
 
@@ -233,7 +310,7 @@ module.exports = {
         
 
 
-    }};
+    };
 
 process.on('unhandledRejection', error =>
 {
