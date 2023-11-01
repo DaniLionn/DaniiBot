@@ -242,7 +242,7 @@ module.exports = {
         }, 1000) })
         } else {
           var stuff = []
-          var msg = "Here are your drawings! I call them\n"
+          var msg = "Here are your drawings! I call them:\n"
 
           for (let index = 0; index < times; index++) {
             var title = generateTitle()
