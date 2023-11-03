@@ -8,7 +8,16 @@ module.exports = {
  
         let roleID = '1170036686722441236';
         let memberCount = interaction.guild.roles.cache.get(roleID).members.size
-        await interaction.reply(memberCount + " people are in the Neon Green Squad.");
+
+			let message = memberCount + " people are in the Neon Green Squad.\n\n"
+
+			interaction.guild.roles.cache.get(roleID).members.forEach((member) => {
+				let user = member.user.username
+				
+				message = message + "\n1. " + user 
+			})
+
+        await interaction.reply(message);
 	},
 };
 const fs = require('node:fs');
