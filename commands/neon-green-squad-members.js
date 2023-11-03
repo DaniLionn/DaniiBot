@@ -5,7 +5,7 @@ module.exports = {
 		.setName('neon-green-squad-members')
 		.setDescription("lists members in the neon green squad"),
 	async execute(interaction) {
-        let guild = await interaction.guild.fetchMembers();
+        let guild = await interaction.guild
         let roleID = '1170036686722441236';
         let memberCount = guild.roles.get(roleID).members.size;
         await interaction.reply(memberCount + " people are in the Neon Green Squad.");

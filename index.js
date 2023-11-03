@@ -322,6 +322,7 @@ function setBotStatus2(KEY) { // Function that gives the bot a random status bas
     };
     
 }
+
 // Create a new client instance
 
 // When the client is ready, run this code (only once)
