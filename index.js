@@ -1013,7 +1013,6 @@ async function insult() {
 client.on(Events.InteractionCreate, async interaction => {
 
 
-
     if (!interaction.isChatInputCommand()) return;
     if (canPing === true) {
         

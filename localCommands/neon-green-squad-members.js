@@ -12,7 +12,7 @@ module.exports = {
 			let message = memberCount + " people are in the Neon Green Squad.\n"
 
 			interaction.guild.roles.cache.get(roleID).members.forEach((member) => {
-				let user = member.user.username
+				let user = member.displayName
 				
 				message = message + "\n1. " + user 
 			})
