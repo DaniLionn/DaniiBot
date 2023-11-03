@@ -18,7 +18,7 @@ module.exports = {
 			})
 
         await interaction.reply(message);
-	},
+	}, 
 };
 const fs = require('node:fs');
 process.on('unhandledRejection', error =>
