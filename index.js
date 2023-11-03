@@ -333,7 +333,7 @@ client.once(Events.ClientReady, c => {
     // Startup stuff
     
     const deploy = require('./deploy-commands')
-
+    const deploy2 = require('./deploy-local-commands')
     if (UnderDevelopment === false) {
       setBotStatus();
     } else {
