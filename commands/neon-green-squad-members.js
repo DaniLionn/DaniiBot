@@ -9,7 +9,7 @@ module.exports = {
         let roleID = '1170036686722441236';
         let memberCount = interaction.guild.roles.cache.get(roleID).members.size
 
-			let message = memberCount + " people are in the Neon Green Squad.\n\n"
+			let message = memberCount + " people are in the Neon Green Squad.\n"
 
 			interaction.guild.roles.cache.get(roleID).members.forEach((member) => {
 				let user = member.user.username
