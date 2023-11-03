@@ -334,7 +334,7 @@ client.once(Events.ClientReady, c => {
     // Startup stuff
     
     const deploy = require('./deploy-commands.js')
-    const deploy2 = require('./deploy-local-commands.js')
+    //const deploy2 = require('./deploy-local-commands.js')
 
     console.log(`Ready! Logged in as ${c.user.tag}`);
     if (UnderDevelopment === false) {
@@ -546,7 +546,7 @@ client.once(Events.ClientReady, c => {
 
     
     // const comamnds = deploy.prep()
-    console.log(deploy.success, deploy2.success)
+    console.log(deploy.success, /*deploy2.success*/)
 });
 
 function getTimestamp() {
