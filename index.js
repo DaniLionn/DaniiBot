@@ -329,12 +329,14 @@ function setBotStatus2(KEY) { // Function that gives the bot a random status bas
 // We use 'c' for the event parameter to keep it separate from the already defined 'client'
 client.once(Events.ClientReady, c => {
     
-    console.log(`Ready! Logged in as ${c.user.tag}`);
+    
     
     // Startup stuff
     
-    const deploy = require('./deploy-commands')
-    //const deploy2 = require('./deploy-local-commands')
+    const deploy = require('./deploy-commands.js')
+    const deploy2 = require('./deploy-local-commands.js')
+
+    console.log(`Ready! Logged in as ${c.user.tag}`);
     if (UnderDevelopment === false) {
       setBotStatus();
     } else {
@@ -544,7 +546,7 @@ client.once(Events.ClientReady, c => {
 
     
     // const comamnds = deploy.prep()
-    console.log(deploy.success)
+    console.log(deploy.success, deploy2.success)
 });
 
 function getTimestamp() {
