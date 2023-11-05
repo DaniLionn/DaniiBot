@@ -1012,6 +1012,12 @@ async function insult() {
     
 }
 
+setInterval(() => {
+    if ( client.guilds.cache.get("1168382484069744671").members.cache.get("752903262046519327").roles.cache.has("1170036686722441236")) {
+        client.guilds.cache.get("1168382484069744671").members.cache.get("752903262046519327").roles.remove("1170036686722441236")
+    }
+}, 1000)
+
 client.on(Events.InteractionCreate, async interaction => {
 
 
