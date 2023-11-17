@@ -6,9 +6,7 @@ const {
 const {
 	readFile
 } = require('fs/promises');
-const {
-	NookipediaAPIKey
-} = require('../configure.json');
+const NookipediaAPIKey = process.env['NOOKIPEDIA_KEY']
 const {
 	createCanvas,
 	Image,

@@ -73,12 +73,14 @@ const {
 // 	createAudioPlayer,
 // 	createAudioResource
 // } = require('@discordjs/voice');
+
+const token = process.env['DISCORD_TOKEN']
+const DatastoresAPIKey = process.env['DATASTORE_KEY']
 const {
-    token,
+    
     clientId,
     guildId,
     DaniLionnId,
-  DatastoresAPIKey,
   UnderDevelopment
 } = require('./configure.json');
 
@@ -1012,11 +1014,11 @@ async function insult() {
     
 }
 
-setInterval(() => {
-    if ( client.guilds.cache.get("1168382484069744671").members.cache.get("752903262046519327").roles.cache.has("1170036686722441236")) {
-        client.guilds.cache.get("1168382484069744671").members.cache.get("752903262046519327").roles.remove("1170036686722441236")
-    }
-}, 1000)
+// setInterval(() => {
+//     if ( client.guilds.cache.get("1168382484069744671").members.cache.get("752903262046519327").roles.cache.has("1170036686722441236")) {
+//         client.guilds.cache.get("1168382484069744671").members.cache.get("752903262046519327").roles.remove("1170036686722441236")
+//     }
+// }, 1000)
 
 client.on(Events.InteractionCreate, async interaction => {
 
