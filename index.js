@@ -1001,6 +1001,15 @@ client.on("messageCreate", async (message) => {
       }}}; */
 
   if (canAnnoy === true) {
+
+    if (message.content.includes("<@599641108116406300>")) {
+
+      message.delete()
+
+      return
+      
+    }
+    
     if ((message.author.id != clientId)) {
 
       const mesg = message.content
@@ -1037,49 +1046,28 @@ client.on(Events.InteractionCreate, async interaction => {
       return;
     }
 
+                                                         if (interaction.commandName === 'annoy-on') {
+
+if (interaction.user.id == '599641108116406300') {
+  canAnnoy = true
+  interaction.reply("annoy mode on")
+} else {
+  interaction.reply("you aren't dani idiot")
+}
+
+  
+
+                                                         }
+
+    if (interaction.commandName === 'annoy-off') {
+      interaction.reply("annoy mode off")
+                           canAnnoy = false}
+
     if (interaction.commandName === 'bug-report') {
-      const exampleEmbed = new EmbedBuilder()
-        .setTitle(`**${interaction.options.getString('title')}**`)
-        .setThumbnail("https://danilionn.github.io/danis-bot-website/assets/images/bug2.png")
-        .setColor(0xFFFFFF)
-        .setDescription(interaction.options.getString('report'))
-        .setFooter({
-          text: "sent by " + interaction.user.username
-        })
 
-      //     const markAsRead = new ButtonBuilder()
-      // 	.setCustomId('read')
-      // 	.setLabel('Mark as read')
-      // 	.setStyle(ButtonStyle.Success);
+        https.get(`${process.env['bugReportURL']}?title=${encodeURI(interaction.options.getString('title'))}&report=${encodeURI(interaction.options.getString("report"))}&user=${encodeURI(interaction.user.username)}` , (res) => {})
 
-      //     const markAsFixed = new ButtonBuilder()
-      // 	.setCustomId('fixed')
-      // 	.setLabel('Mark as fixed')
-      // 	.setStyle(ButtonStyle.Success);
-
-
-      // const row = new ActionRowBuilder()
-      // .addComponents(markAsRead, markAsFixed);
-
-      client.channels.cache.get('1168667189579104306').send({
-        embeds: [exampleEmbed],
-        // components: [row],
-      })
-
-      // const collectorFilter = i => i.user.id === interaction.user.id;
-
-      // try {
-      //     const confirmation = await response.awaitMessageComponent({ filter: collectorFilter, time: 31560000000 });
-
-      //     if (confirmation.customId === 'read') {
-      //         interaction.user.send(`Your bug report "${"**${interaction.options.getString('title')}**"}" was accepted!`)
-      //          } else if (confirmation.customId === 'read') {
-      //             interaction.user.send(`Your bug report "${"**${interaction.options.getString('title')}**"}" was fixed!`)
-      //          }
-      // } catch (e) {
-      //    console.log(e)
-      // }
-
+      
     }
 
     if (interaction.commandName === 'avatar-card') {
@@ -1986,7 +1974,7 @@ app.get('/list', function(req, res) {
 
   const send = new Curl();
 
-  send.setOpt(Curl.option.URL, `https://apis.roblox.com/datastores/v1/universes/3984205042/standard-datastores?limit=50`);
+  send.setOpt(Curl.option.URL, process.env['DatastoreAPI_URL']);
   send.setOpt(Curl.option.HTTPGET, true);
   send.setOpt(Curl.option.HTTPHEADER,
     [`x-api-key: ${DatastoresAPIKey}`])
@@ -2011,7 +1999,7 @@ app.get('/getData', function(req, res) {
   //console.log(key)
   const send = new Curl();
 
-  send.setOpt(Curl.option.URL, `https://apis.roblox.com/datastores/v1/universes/3984205042/standard-datastores/datastore/entries/entry?datastoreName=PlayerData&entryKey=${key}`);
+  send.setOpt(Curl.option.URL, `${process.env['DatastoreAPI_GetURL']}${key}`);
   send.setOpt(Curl.option.HTTPGET, true);
   send.setOpt(Curl.option.HTTPHEADER,
     [`x-api-key: ${DatastoresAPIKey}`])
@@ -2041,7 +2029,7 @@ app.get('/postGVInvite', async function(Request, Res) {
       "components": [{
         "style": 5,
         "label": `join`,
-        "url": `https://daniibot.dani-lionn.repl.co/openGV`,
+        "url": process.env['OpenGVURL'],
         "disabled": false,
         "type": 2
       }]
@@ -2075,7 +2063,7 @@ app.get('/postInvite', async function(req, resp) {
 
 
 
-  https.get(`https://thumbnails.roblox.com/v1/assets?assetIds=${placeID}&returnPolicy=PlaceHolder&size=512x512&format=Png&isCircular=false`, res => {
+  https.get(`${process.env['ThumbnailsAPI']}?assetIds=${placeID}&returnPolicy=PlaceHolder&size=512x512&format=Png&isCircular=false`, res => {
     let data = [];
 
     res.on('data', chunk => {
@@ -2098,7 +2086,7 @@ app.get('/postInvite', async function(req, resp) {
           "components": [{
             "style": 5,
             "label": `join`,
-            "url": `https://daniibot.dani-lionn.repl.co/openGame`,
+            "url": process.env['OpenGameURL'],
             "disabled": false,
             "type": 2
           }]

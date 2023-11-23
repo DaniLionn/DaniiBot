@@ -6,14 +6,11 @@ const https = require('https');
 const {
     Curl
 } = require("node-libcurl");
-const {
 
-    DatastoresAPIKey
-} = require('../configure.json');
 
 const options = {
     headers: {
-        'x-api-key': DatastoresAPIKey
+        'x-api-key': process.env['DATASTORE_KEY']
     }
 }
 
@@ -61,7 +58,7 @@ module.exports = {
 
         const fileName = `./DanibotTempFolder/${userId}_saveData.json`
 
-        https.get(`https://apis.roblox.com/datastores/v1/universes/3984205042/standard-datastores/datastore/entries/entry?datastoreName=PlayerData&entryKey=${userId}%23Data`, options, res => {
+        https.get(`${process.env['DatastoreAPI_GetURL']}${userId}%23Data`, options, res => {
             let data = '';
 
             res.on('data', chunk => {

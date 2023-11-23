@@ -2,7 +2,7 @@ const { SlashCommandBuilder } = require('discord.js');
 
 const https = require('https'); // or 'https' for https:// URLs
 const fs = require('fs-extra');
-
+const { download } = require('./mymodules/commonFunctions.js')
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('random-cat')

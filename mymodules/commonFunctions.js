@@ -1,21 +1,23 @@
 //module i made to store some simple functions
 const fs = require('node:fs');
 const https = require('https');
+const Downloader = require("nodejs-file-downloader");
 
-exports.download = function(url, name) {
-    const file = fs.createWriteStream(name);
-    const request = https.get(url, function (response) {
-        
-        response.pipe(file);
-        
-        // after download completed close filestream
-        file.on("finish", async () => {
-            
-            file.close(); // close() is async, call cb after close completes.
-                      
-        })
-        
-    })
+exports.download = async function(link, name, directory) {
+  const downloader = new Downloader({
+    url: link, 
+    directory: directory,
+    fileName: name, 
+  });
+  try {
+    const filePath = await downloader.download();
+
+  return filePath
+    
+  } catch (error) {
+
+    console.log("Download failed", error);
+  }
 }
 
 exports.formatDate_YYYY_MM_DD = function(date) {
