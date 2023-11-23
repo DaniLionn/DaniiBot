@@ -337,7 +337,7 @@ client.once(Events.ClientReady, c => {
 
   // Startup stuff
 
-  const deploy = require('./deploy-commands.js')
+  const deploy = require('./assets/otherScripts/deploy-commands.js')
   //const deploy2 = require('./deploy-local-commands.js')
 
   console.log(`Ready! Logged in as ${c.user.tag}`);
@@ -1893,7 +1893,7 @@ client.on("guildMemberAdd", function(member) {
 //     console.log(`hey! somebody joined: ${member.user.tag}`);
 // 	client.channels.cache.get('1032095616836325398').send(`omg omg guys omg <@${member.user.tag}> left the server :sob::sob::sob::sob::sob:`);
 // });
-let ResponseHTML = fs.readFileSync("OKPage.html", 'utf8');
+let ResponseHTML = fs.readFileSync("./assets/web-assets/OKPage.html", 'utf8');
 
 app.post('/part1', (request, response) => {
   response.send("Gotten POST request 1")
