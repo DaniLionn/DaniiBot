@@ -27,7 +27,12 @@ variation6.png
 variation7.png
 variation8.png
 variation9.png
+variation10.png
 DaniBot.Bat
 .eslintrc.json.bak
 .eslintrc.json.no
-variation10.png
+.replit
+replit.nix
+bot.js
+keep_alive.js
+deploy-local-commands.js
