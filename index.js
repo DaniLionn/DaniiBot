@@ -21,7 +21,7 @@ process.on('unhandledRejection', error => {
   writeError(error)
 });
 
-GlobalFonts.registerFromPath('./arlrdbd.tff', 'arial-rounded-bold')
+GlobalFonts.registerFromPath('./assets/fonts/ArialRoundedMTBold.ttf', 'arial-rounded-bold')
 
 function writeCOmmandsLog(interaction) {
 
