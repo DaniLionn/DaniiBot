@@ -9,6 +9,7 @@ commands/ffmpeg.exe
 .tmp.driveupload
 .space/README
 .space/meta
+retired-commands
 DanibotTempFolder
 danibot/
 ignore/
@@ -26,4 +27,7 @@ variation6.png
 variation7.png
 variation8.png
 variation9.png
+DaniBot.Bat
+.eslintrc.json.bak
+.eslintrc.json.no
 variation10.png
