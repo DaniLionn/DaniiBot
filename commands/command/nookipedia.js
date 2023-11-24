@@ -14,7 +14,7 @@ const {
 const fs = require('node:fs');
 const https = require('https');
 
-const commonFunc = require('../assets/mymodules/commonFunctions.js');
+const commonFunc = require('../../assets/mymodules/commonFunctions.js');
 
 const options = {
 	headers: {

@@ -337,7 +337,7 @@ client.once(Events.ClientReady, c => {
 
   // Startup stuff
 
-  const deploy = require('./assets/otherScripts/deploy-commands.js')
+  const deploy = require('./deploy-commands.js')
   //const deploy2 = require('./deploy-local-commands.js')
 
   console.log(`Ready! Logged in as ${c.user.tag}`);
@@ -562,21 +562,21 @@ function getTimestamp() {
   return stamp
 }
 
-function getOnlineMembers(g) {
+// function getOnlineMembers(g) {
 
-  // First use guild.members.fetch to make sure all members are cached
-  g.members.fetch({
-      withPresences: true
-    })
-    .then(fetchedMembers => {
-      const totalOnline = fetchedMembers.filter(member => member.presence?.status === 'online');
-      // Now you have a collection with all online member objects in the totalOnline variable
-      console.log(totalOnline)
-      return totalOnline
+//   // First use guild.members.fetch to make sure all members are cached
+//   g.members.fetch({
+//       withPresences: true
+//     })
+//     .then(fetchedMembers => {
+//       const totalOnline = fetchedMembers.filter(member => member.presence?.status === 'online');
+//       // Now you have a collection with all online member objects in the totalOnline variable
+//       console.log(totalOnline)
+//       return totalOnline
 
-    });
+//     });
 
-}
+// }
 
 function writeError(error) {
   console.log("Error detected! Saving to error log...")
