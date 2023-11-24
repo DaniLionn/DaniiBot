@@ -87,6 +87,8 @@ for (const folder of commandFolders) {
 	}
 }
 
+console.log(client.commands)
+
 // async function updateDatastore(universeId, message, user, channel, channelid, server, serverid) {
 
 //   messages.unshift([message, user, [channel, channelid],
@@ -780,14 +782,14 @@ client.on(Events.InteractionCreate, async interaction => {
   if (!interaction.isChatInputCommand()) return;
   if (canPing === true) {
     
-    // const command = client.application.commands.cache.get(interaction.commandName);
+    const command = client.application.commands.cache.get(interaction.commandName);
 
-    // writeCOmmandsLog(interaction)
-    // console.log(command.name)
-    // if (!command) {
-    //   console.error(`No command matching ${interaction.commandName} was found.`);
-    //   return;
-    // }
+    writeCOmmandsLog(interaction)
+    console.log(command.name)
+    if (!command) {
+      console.error(`No command matching ${interaction.commandName} was found.`);
+      return;
+    }
 
                                                          if (interaction.commandName === 'annoy-on') {
 
