@@ -1037,10 +1037,12 @@ client.on(Events.InteractionCreate, async interaction => {
   if (!interaction.isChatInputCommand()) return;
   if (canPing === true) {
 
+  console.log('')
+    
     const command = interaction.client.commands.get(interaction.commandName);
 
     writeCOmmandsLog(interaction)
-
+    console.log(command)
     if (!command) {
       console.error(`No command matching ${interaction.commandName} was found.`);
       return;
