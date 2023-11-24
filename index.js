@@ -521,10 +521,10 @@ async function systemessage(guildID, channelID, message, user, member) {
   let main;
 
   if (guildID === "1134908713078095933") {
-    background = await readFile('./tamari.jpg');
+    background = await readFile('./assets/images/tamari.jpg');
     main = '#DFFF00';
   } else {
-    background = await readFile('./regular.jpg');
+    background = await readFile('./assets/images/regular.jpg');
     main = '#FFFFFF';
   }
 
