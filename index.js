@@ -87,8 +87,6 @@ for (const folder of commandFolders) {
 	}
 }
 
-console.log(client.commands)
-
 // async function updateDatastore(universeId, message, user, channel, channelid, server, serverid) {
 
 //   messages.unshift([message, user, [channel, channelid],
