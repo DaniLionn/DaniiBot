@@ -16,7 +16,6 @@
     "node-libcurl": "^3.0.0",
     "nodejs-file-downloader": "^4.12.1",
     "querystring": "^0.2.1",
-    "rblx": "^1.5.1",
     "undici": "^5.22.1",
     "youtube-mp3-converter": "^1.0.3"
   },

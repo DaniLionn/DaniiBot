@@ -1,192 +1,104 @@
+//========Requires========
 const express = require('express')
 const bodyparser = require('body-parser')
-//const keep_alive = require('./keep_alive.js')
-const {
-
-  createCanvas,
-  Image,
-  GlobalFonts
-} = require('@napi-rs/canvas');
-const {
-  readFile
-} = require('fs/promises');
-const {
-  request
-} = require('undici');
-const {
-  OpenCloudDataStore
-} = require('rblx');
+const { createCanvas, Image, GlobalFonts } = require('@napi-rs/canvas');
+const { readFile } = require('fs/promises');
+const { request } = require('undici');
 const fs = require('node:fs');
-process.on('unhandledRejection', error => {
-  writeError(error)
-});
-
-GlobalFonts.registerFromPath('./assets/fonts/ArialRoundedMTBold.ttf', 'arial-rounded-bold')
-
-function writeCOmmandsLog(interaction) {
-
-  let s = getTimestamp();
-  const read = fs.readFileSync('./CommandsLogg.txt', 'utf8', err => {
-    if (err) {
-      console.log(err)
-    }
-  })
-  const command = interaction.commandName
-
-  const data = `${read}\n${s}: Command ${command} used by ${interaction.user.tag}!`
-  //console.log(data)
-  fs.writeFileSync('./CommandsLogg.txt', data, err => {
-    if (err) {
-      console.error(err);
-    }
-    // file written successfully
-  });
-}
-
 const https = require('https');
-
-const port3 = 80
-
-let currentUniverseId = 0
-
-// Require the necessary discord.js classes
-const {
-  Client,
-  Collection,
-  Events,
-  AttachmentBuilder,
-  GatewayIntentBits,
-  ActivityType,
-  DiscordAPIError,
-  EmbedBuilder,
-  ButtonBuilder,
-  ButtonStyle,
-  ActionRowBuilder,
-  Attachment,
-} = require('discord.js');
-// const
-// {
-// 	joinVoiceChannel,
-// 	getVoiceConnection,
-// 	VoiceConnectionStatus,
-// 	NoSubscriberBehavior,
-// 	createAudioPlayer,
-// 	createAudioResource
-// } = require('@discordjs/voice');
-
+const { Client, Collection, Events, AttachmentBuilder, GatewayIntentBits, ActivityType, EmbedBuilder, /*DiscordAPIError, ButtonBuilder, ButtonStyle, ActionRowBuilder, Attachment*/ } = require('discord.js');
 const token = process.env['DISCORD_TOKEN']
 const DatastoresAPIKey = process.env['DATASTORE_KEY']
-const {
-
-  clientId,
-  guildId,
-  DaniLionnId,
-  UnderDevelopment
-} = require('./configure.json');
-
+const { clientId, guildId, DaniLionnId, UnderDevelopment } = require('./configure.json');
 const path = require('node:path');
-//const emojiCharacters = require('./emojiCharacters.js');
 const EventEmitter = require('node:events');
-const {
-  setInterval
-} = require('node:timers');
-const {
-  channel
-} = require('node:diagnostics_channel');
-const {
-  err
-} = require('rblx/dist/util');
-// const emojiRegex = require('emoji-regex/RGI_Emoji.js');
+const { setInterval } = require('node:timers');
+//=============================================
 
-const audios = ['./postable-assets/fart.mp3', './postable-assets/janky-ass-music.mp3', './postable-assets/mimimimimimi.mp3', './postable-assets/laugh.mp3', './postable-assets/amog.mp3', './postable-assets/alert.mp3', './postable-assets/arooga.mp3', './postable-assets/BANG.mp3', './postable-assets/bluekid.mp3', './postable-assets/cough.mp3', './postable-assets/fart.mp3', './postable-assets/omg.mp3', , './postable-assets/omg2.mp3', './postable-assets/poop.mp3', './postable-assets/run.mp3', './postable-assets/scary.mp3', './postable-assets/scream.mp3']
-
-var currentAudioPlayer
-
-var CurrentAuudioConnection
-
-var canPlaySounds = false
-
-var canAnnoy = false
-
-EventEmitter.setMaxListeners(100)
-
-const client = new Client({
-  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildPresences, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildVoiceStates]
-});
-
-// Log in to Discord with your client's token
-
-client.login(token);
-
-client.commands = new Collection();
-const KoTFGeneral = client.channels.cache.get('1032095616836325398');
-const commandsPath = path.join(__dirname, 'commands');
-const commandFiles = fs.readdirSync(commandsPath)
-  .filter(file => file.endsWith('.js'));
-
+//==========Variables==========
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildPresences, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildVoiceStates] });
 const emotes = (str) => str.match(/<a?:.+?:\d{18}>|\p{Extended_Pictographic}/gu)
-
-for (const file of commandFiles) {
-  const filePath = path.join(commandsPath, file);
-  const command = require(filePath);
-  // Set a new item in the Collection with the key as the command name and the value as the exported module
-  if ('data' in command && 'execute' in command) {
-    client.commands.set(command.data.name, command);
-  } else {
-    console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
-  }
-}
-
 const activityTypes = ['PLAYING', 'WATCHING', 'LISTENING', 'COMPETING'];
 const statusTypes = ['ONLINE', 'IDLE', 'DND']
-const PlayingMessages = [ /*'with myself 😏'*/ , 'some game i enjoy', 'a board game', 'Roblox', 'something very scary 👻👻👻', 'the piano', 'Playing Playing Playing Playing Playing Playing Playing Playing Playing Playing', 'with a bomb', 'with a ouija board', 'Doubutsu no Mori (Animal Forest)', 'Doubutsu no Mori+ (Animal Forest+)', 'Animal Crossing GCN', 'Doubutsu no Mori e+ (Animal Forest e+)', 'Animal Crossing: Wild World', 'Animal Crossing: City Folk', 'Animal Crossing: New Leaf', 'Animal Crossing: New Horizons', 'Rhythm Tengoku', 'Rhythm Heaven', 'Rhythm Heaven Fever', 'Rhythm Heaven Megamix', 'Hatsune Miku: Project Diva Megamix', "Demon Slayer -Kimetsu no Yaibu- THe Hinokami Chronicles", "Pokémon Diamond", "Pokémon X", "Pokémon Ultra Sun", "Pokémon Legends: Arceus", "Pokémon Violet", "Pokémon Sword"];
-const WatchingMessages = [ /*'porn'*/ , 'cat videos', 'how 2 take over the universe', 'idiots in cars', 'terraria challeng videos', 'is', 'the', "Minions: Rise of Gru", "Gekijōban Doubutsu no Mori"];
+const PlayingMessages = ['some game i enjoy', 'a board game', 'Roblox', 'something very scary 👻👻👻', 'the piano', 'Playing Playing Playing Playing Playing Playing Playing Playing Playing Playing', 'with a bomb', 'with a ouija board', 'Doubutsu no Mori (Animal Forest)', 'Doubutsu no Mori+ (Animal Forest+)', 'Animal Crossing GCN', 'Doubutsu no Mori e+ (Animal Forest e+)', 'Animal Crossing: Wild World', 'Animal Crossing: City Folk', 'Animal Crossing: New Leaf', 'Animal Crossing: New Horizons', 'Rhythm Tengoku', 'Rhythm Heaven', 'Rhythm Heaven Fever', 'Rhythm Heaven Megamix', 'Hatsune Miku: Project Diva Megamix', "Demon Slayer -Kimetsu no Yaibu- THe Hinokami Chronicles", "Pokémon Diamond", "Pokémon X", "Pokémon Ultra Sun", "Pokémon Legends: Arceus", "Pokémon Violet", "Pokémon Sword"];
+const WatchingMessages = [ 'cat videos', 'how 2 take over the universe', 'idiots in cars', 'terraria challeng videos', 'is', 'the', "Minions: Rise of Gru", "Gekijōban Doubutsu no Mori"];
 const ListeningMessages = ['music', 'the voices in my head', 'ghost and pals 😌', 'Spotify', "new leaf's hourly soundtrack", "miitpoia ost"];
 const CompetingMessages = [`sexiest bot championships ${new Date().getFullYear()}`, 'pipe bomb building', "winning your mom's heart"]
-const GayMessages = ['yes i am :smiley:', 'no u :rage:', 'you\'re gay too, i can smell it (you smell like fruit that\'s how i can tell)'];
 const Reactions = ['😭', '🥺', '🏳‍🌈', '😒', '😡', '🤦‍♀️', '✨', '🤪', '🥰', '🔥', /* '😏' , */ /* '😩', */ '😳', '🤩', '👍', '🤔', '🥔', '😔', '❤', '💕', '💔', '😛', '😎', '💀', '🤓', '😈', '🤡', '🤭', '😥', '1048083800590131272', '1056275303720296448'];
-// const RandomMessages = ['haha', 'shut up', 'no u', 'rip bozo', 'L']
-//stop pinging me :rage:
 const busyMessages = ["napping", "waiting to execute commands", "taking *bytes* of a digital sandwich", "being cool", "doing things"]
 const PingMessages = ["yes hello that's my name", "what do you want", "danibot danibot", "hello", "be quiet, i'm busy taking over the worl- i mean i'm busy %s", "We're no strangers to love\nYou know the rules, and so do I"]
 const Insults = [" your feet stink", " you look like a wall", " you look like a floor", "you made me wet my pants", " you are a mild inconvienece", " i slightly dislike you", " you look like an empty pop can", " yo mama so fat her belly button gets home 60 minutes before she does", " yo mama so stupid she thought twitter was social media", " YO MAMA SO FAT SHE TRIED TO EAT THE SUPERBOWL", " you remind me of a wet sock", " you're as dry as the 2 week old poo stain in the bathroom", " you look like a rubber ball", " you're as clean as the mcdonalds fry maker", " you stink (slightly)", " you smell like chiken wing", " you look like microwave", " you're about as useful as a shattered light bulb", "you smell as good as a wet napkin", "you are a fire truckS"]
 const COmplimens = ["you smell slightly better than usual", "you're as clean as my fresh load of laundry", "your personality is so wet! (thanks duck)", "you look more human than usual", "you remind me of canned beans", /*"you're not as dumb as you look"*/ , "you have really nice veins 🥰", /*"you're so charming when you make an effort.", "you're pretty…\non the inside.", "i don't care what others say about you.\nyou're alright in my book.", "i love how you just don't care what anyone thinks of you."*/ , "you smell as good as this cupcake i ate last week", "your hair smells good", "you're disgusting in a cute way 🥰", "you have attractive ribs 🥰"]
-const crayonColours = ["orange", "green", "purple", "pink", "brown", "black", "white"]
-const MariMessages = [" is my best friend we watch my little pony together and colour in colouring books", " you're my best friend :blush:", " i ate all the %c crayons"]
-const reply = ["hello", "yo", " hey how are you doing", "heyy", "i am dani bot", "😱", "😀", "yo yo waffle stick i really think you smell like wooden flooring with cheese involved", "afosdklfbmdskjlfvkjnmakjwlfsdvnmdjlk;fdvjnm,zjldk;vjnm zdkjlkvnmc,m", "Unfortunately you'd better stop with that popcorn mess of the butter, so that you could have it for a movie theater actually, so that you could drink a soda and then eat a candy and then-- burp Excuse me. Eat popcorn. So- grunt I was in a movie theater and I eat popcorn with a- seasoning cheese- and then, I drink a cherry sprite in the movie theater. And that was ago when I was actually well about that. Plus I would rather- eat chocolate, as well. So, that butter mess; clean it up please. So, I don't wanna cause any more troublemakers.", "hi"]
-
-// var CurrentSubscription
-
-// var audioresources = []
-
-// audios.forEach(audio => {
-
-// audioresources.push(createAudioResource(audio))
-
-// })
-var emojiList = require('emoji.json')
-
 const emojiPool = []
 const PingLimit = 7
-var pingNumber = 0
 const PingCooldown = 15 * 1000
+const emojiCharacters = require('./assets/emojiStuff/emojiCharacters.js');
+const foldersPath = path.join(__dirname, 'commands');
+const commandFolders = fs.readdirSync(foldersPath);
+
 var canPing = true
 var CurrnentTimeout = undefined
-//console.log(audioresources)
-let messages = []
+var pingNumber = 0
+var emojiList = require('emoji.json')
+var canAnnoy = false
+//=============================================
 
-async function updateDatastore(universeId, message, user, channel, channelid, server, serverid) {
+//--variables no longer needed but i'm too lazy to remove lol--
 
-  messages.unshift([message, user, [channel, channelid],
-    [server, serverid]
-  ])
+//const KoTFGeneral = client.channels.cache.get('1032095616836325398');
+// const RandomMessages = ['haha', 'shut up', 'no u', 'rip bozo', 'L']
+//const crayonColours = ["orange", "green", "purple", "pink", "brown", "black", "white"]
+// const MariMessages = [" is my best friend we watch my little pony together and colour in colouring books", " you're my best friend :blush:", " i ate all the %c crayons"]
+// const reply = ["hello", "yo", " hey how are you doing", "heyy", "i am dani bot", "😱", "😀", "yo yo waffle stick i really think you smell like wooden flooring with cheese involved", "afosdklfbmdskjlfvkjnmakjwlfsdvnmdjlk;fdvjnm,zjldk;vjnm zdkjlkvnmc,m", "Unfortunately you'd better stop with that popcorn mess of the butter, so that you could have it for a movie theater actually, so that you could drink a soda and then eat a candy and then-- burp Excuse me. Eat popcorn. So- grunt I was in a movie theater and I eat popcorn with a- seasoning cheese- and then, I drink a cherry sprite in the movie theater. And that was ago when I was actually well about that. Plus I would rather- eat chocolate, as well. So, that butter mess; clean it up please. So, I don't wanna cause any more troublemakers.", "hi"]
+//const GayMessages = ['yes i am :smiley:', 'no u :rage:', 'you\'re gay too, i can smell it (you smell like fruit that\'s how i can tell)'];
+// const port3 = 80
+//const keep_alive = require('./keep_alive.js')
+// const emojiRegex = require('emoji-regex/RGI_Emoji.js');
+// const audios = ['./postable-assets/fart.mp3', './postable-assets/janky-ass-music.mp3', './postable-assets/mimimimimimi.mp3', './postable-assets/laugh.mp3', './postable-assets/amog.mp3', './postable-assets/alert.mp3', './postable-assets/arooga.mp3', './postable-assets/BANG.mp3', './postable-assets/bluekid.mp3', './postable-assets/cough.mp3', './postable-assets/fart.mp3', './postable-assets/omg.mp3', , './postable-assets/omg2.mp3', './postable-assets/poop.mp3', './postable-assets/run.mp3', './postable-assets/scary.mp3', './postable-assets/scream.mp3']
 
-  const ds = new OpenCloudDataStore(universeId, "Messages", "global")
+// var currentAudioPlayer
+// var CurrentAuudioConnection
+// var canPlaySounds = false
+// var CurrentSubscription
+// var audioresources = []
 
-  ds.authenticate("/pLIGHsGHEugDcROwnVD93O362Xuj6eTnmashCMchxCzmJaq")
+// let currentUniverseId = 0
+//let messages = []
+//=================================
 
-  ds.set("Messages", messages)
+GlobalFonts.registerFromPath('./assets/fonts/ArialRoundedMTBold.ttf', 'arial-rounded-bold')
+EventEmitter.setMaxListeners(100)
+client.commands = new Collection();
+
+
+
+for (const folder of commandFolders) {
+	const commandsPath = path.join(foldersPath, folder);
+	const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+	for (const file of commandFiles) {
+		const filePath = path.join(commandsPath, file);
+		const command = require(filePath);
+		// Set a new item in the Collection with the key as the command name and the value as the exported module
+		if ('data' in command && 'execute' in command) {
+			client.commands.set(command.data.name, command);
+		} else {
+			console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
+		}
+	}
 }
+
+// async function updateDatastore(universeId, message, user, channel, channelid, server, serverid) {
+
+//   messages.unshift([message, user, [channel, channelid],
+//     [server, serverid]
+//   ])
+
+//   const ds = new OpenCloudDataStore(universeId, "Messages", "global")
+
+//   ds.authenticate("/pLIGHsGHEugDcROwnVD93O362Xuj6eTnmashCMchxCzmJaq")
+
+//   ds.set("Messages", messages)
+// }
 
 function setBotStatus() { // Function that gives the bot a random status based on the tables above
 
@@ -249,6 +161,26 @@ function setBotStatus() { // Function that gives the bot a random status based o
     }
   }, 1500);
 
+}
+
+function writeCOmmandsLog(interaction) {
+
+  let s = getTimestamp();
+  const read = fs.readFileSync('./CommandsLogg.txt', 'utf8', err => {
+    if (err) {
+      console.log(err)
+    }
+  })
+  const command = interaction.commandName
+
+  const data = `${read}\n${s}: Command ${command} used by ${interaction.user.tag}!`
+  //console.log(data)
+  fs.writeFileSync('./CommandsLogg.txt', data, err => {
+    if (err) {
+      console.error(err);
+    }
+    // file written successfully
+  });
 }
 
 function setBotStatus2(KEY) { // Function that gives the bot a random status based on the tables above
@@ -327,88 +259,8 @@ function setBotStatus2(KEY) { // Function that gives the bot a random status bas
 
 }
 
-// Create a new client instance
-
-// When the client is ready, run this code (only once)
-// We use 'c' for the event parameter to keep it separate from the already defined 'client'
-client.once(Events.ClientReady, c => {
-
-
-
-  // Startup stuff
-
-  const deploy = require('./deploy-commands.js')
-  //const deploy2 = require('./deploy-local-commands.js')
-
-  console.log(`Ready! Logged in as ${c.user.tag}`);
-  if (UnderDevelopment === false) {
-    setBotStatus();
-  } else {
-    client.user.setActivity("🔨 Bot currently under development. Commands might not be executed due to frequent restarting.", {
-      type: ActivityType.Playing
-    });
-  }
-
-
-  for (var emojitype in emojiList) {
-
-    emojiPool.push(emojiList[emojitype]["char"])
-  }
-  client.guilds.cache.get(guildId).emojis.cache.forEach((emoji) => {
-    emojiPool.push(emoji.id)
-  })
-
-
-  // Call random status function
-  // 	let s = new Date().toLocaleString();
-  // 	console.log(s)
-
-  // 	let split1 = s.split(",")
-  // 	console.log(split1)
-  // 	let split2 = split1[0].split("/")
-  // 	console.log(split2)
-
-  // 	if (s.includes("10/19")) {
-  // 		console.log("danibot bday!!")
-  // 		client.user.setAvatar('./DaniBotBirthdayPFP.png');
-  // 		client.channels.cache.get('1032095616836325398').send("hey guys!! today is my birthday!!!")}
-
-  // 		else if ((Number(split2[0]) === 12 && (Number(split2[1]) >= 17 && Number(split2[1]) <= 25)) || (Number(split2[0]) === 1 && (Number(split2[1]) >= 1 && Number(split2[1]) <= 5))) {
-  // 			console.log("christmas")
-  // 			client.user.setAvatar('./DaniBotChristmasPFP.png');
-
-  // 	}
-
-  // 	else if ((Number(split2[0]) === 12 && (Number(split2[1]) >= 26 && Number(split2[1]) <= 31))) {
-  // 		console.log("new years")
-  // 		client.user.setAvatar('./DaniBotBirthdayPFP.png');
-
-  // }
-
-  // 		else if (Number(split2[0]) === 10 && (Number(split2[1]) >= 24 && Number(split2[1]) <= 31)) {
-  // 			console.log("halloween")
-  // 			client.user.setAvatar('./DaniBotHalloweenPFP.png');
-
-  // 	} 
-
-  // 	else if (Number(split2[0]) === 6 && (Number(split2[1]) >= 1 && Number(split2[1]) <= 30)) {
-  // 		console.log("pride month")
-  // 		client.user.setAvatar('./DaniBotPrideMonthPFP.png');
-  // 	} else if (Number(split2[0]) === 7 && (Number(split2[1]) === 1)) {
-  // 		console.log("canada day")
-  // 		client.user.setAvatar('./DaniBotCanadaDayPFP.png');}
-  // 	else {
-  // 		client.user.setAvatar('./DaniBotPFP.png');
-  // 	}
-
-  //testStatusGet()
-
-  let lastStatus = "Operational"
-
-  setInterval(() => {
-
-    try {
-      https.get(`https://4277980205320394.hostedstatus.com/1.0/status/59db90dbcdeb2f04dadcf16d`, (resp) => {
+function getRobloxStatus(lastStatus, channelID) {
+  https.get(`https://4277980205320394.hostedstatus.com/1.0/status/59db90dbcdeb2f04dadcf16d`, (resp) => {
 
         let data = '';
 
@@ -527,7 +379,7 @@ client.once(Events.ClientReady, c => {
                 },
               )
 
-            client.channels.cache.get("1168669731482521671")
+            client.channels.cache.get(channelID)
               .send({
                 embeds: [StatusEmbed]
               })
@@ -537,21 +389,7 @@ client.once(Events.ClientReady, c => {
 
         })
       })
-
-    } catch (err) {
-      writeError(err)
-    }
-
-  }, 180000)
-
-  if (UnderDevelopment === false) {
-    setInterval(setBotStatus, 420000); // Calls setBotStatus() every 7 minutes
-  }
-
-
-  // const comamnds = deploy.prep()
-  console.log(deploy.success, /*deploy2.success*/ )
-});
+}
 
 function getTimestamp() {
   const date = new Date();
@@ -561,22 +399,6 @@ function getTimestamp() {
 
   return stamp
 }
-
-// function getOnlineMembers(g) {
-
-//   // First use guild.members.fetch to make sure all members are cached
-//   g.members.fetch({
-//       withPresences: true
-//     })
-//     .then(fetchedMembers => {
-//       const totalOnline = fetchedMembers.filter(member => member.presence?.status === 'online');
-//       // Now you have a collection with all online member objects in the totalOnline variable
-//       console.log(totalOnline)
-//       return totalOnline
-
-//     });
-
-// }
 
 function writeError(error) {
   console.log("Error detected! Saving to error log...")
@@ -749,141 +571,100 @@ async function systemessage(guildID, channelID, message, user, member) {
 
 }
 
-function testStatusGet() {
-  https.get(`https://4277980205320394.hostedstatus.com/1.0/status/59db90dbcdeb2f04dadcf16d`, (resp) => {
+client.once(Events.ClientReady, c => {
 
-    let data = '';
+  // Startup stuff
 
-    resp.on('data', (chunk) => {
+  const deploy = require('./deploy-commands.js')
+  //const deploy2 = require('./deploy-local-commands.js')
 
-      data += chunk;
+  console.log(`Ready! Logged in as ${c.user.tag}`);
+  if (UnderDevelopment === false) {
+    setBotStatus();
+  } else {
+    client.user.setActivity("🔨 Bot currently under development. Commands might not be executed due to frequent restarting.", {
+      type: ActivityType.Playing
     });
+  }
 
-    resp.on('end', async () => {
-      const result = JSON.parse(data)
 
-      let status_overall = result["result"]["status_overall"]["status"]
-      let full_status = result["result"]["status"]
+  for (var emojitype in emojiList) {
 
-      const StatusEmbed = new EmbedBuilder()
-        .setColor(0xFFFFFF)
-        .setTitle("ROBLOX STATUS UPDATE!")
-        .setURL('https://status.roblox.com')
-        .setDescription(`Current Status: ${status_overall}`)
-        .addFields({
-            name: full_status[0]['name'],
-            value: full_status[0]['status']
-          }, {
-            name: full_status[0]['containers'][0]['name'],
-            value: full_status[0]['containers'][0]['status']
-          }, {
-            name: full_status[0]['containers'][1]['name'],
-            value: full_status[0]['containers'][1]['status'],
-            inline: true
-          }, {
-            name: full_status[0]['containers'][2]['name'],
-            value: full_status[0]['containers'][2]['status'],
-            inline: true
-          }, {
-            name: full_status[0]['containers'][3]['name'],
-            value: full_status[0]['containers'][3]['status'],
-            inline: true
-          },
-
-          {
-            name: full_status[1]['name'],
-            value: full_status[1]['status']
-          }, {
-            name: full_status[1]['containers'][0]['name'],
-            value: full_status[1]['containers'][0]['status']
-          }, {
-            name: full_status[1]['containers'][1]['name'],
-            value: full_status[1]['containers'][1]['status'],
-            inline: true
-          }, {
-            name: full_status[1]['containers'][2]['name'],
-            value: full_status[1]['containers'][2]['status'],
-            inline: true
-          }, {
-            name: full_status[1]['containers'][3]['name'],
-            value: full_status[1]['containers'][3]['status'],
-            inline: true
-          }, {
-            name: full_status[1]['containers'][4]['name'],
-            value: full_status[1]['containers'][4]['status'],
-            inline: true
-          },
-
-          {
-            name: full_status[2]['name'],
-            value: full_status[2]['status']
-          }, {
-            name: full_status[2]['containers'][0]['name'],
-            value: full_status[2]['containers'][0]['status']
-          }, {
-            name: full_status[2]['containers'][1]['name'],
-            value: full_status[2]['containers'][1]['status'],
-            inline: true
-          }, {
-            name: full_status[2]['containers'][2]['name'],
-            value: full_status[2]['containers'][2]['status'],
-            inline: true
-          }, {
-            name: full_status[2]['containers'][3]['name'],
-            value: full_status[2]['containers'][3]['status'],
-            inline: true
-          }, {
-            name: full_status[2]['containers'][4]['name'],
-            value: full_status[2]['containers'][4]['status'],
-            inline: true
-          }, {
-            name: full_status[2]['containers'][5]['name'],
-            value: full_status[2]['containers'][5]['status'],
-            inline: true
-          }, {
-            name: full_status[2]['containers'][6]['name'],
-            value: full_status[2]['containers'][6]['status'],
-            inline: true
-          }, {
-            name: full_status[2]['containers'][7]['name'],
-            value: full_status[2]['containers'][7]['status'],
-            inline: true
-          }, {
-            name: full_status[2]['containers'][8]['name'],
-            value: full_status[2]['containers'][8]['status'],
-            inline: true
-          }, {
-            name: full_status[2]['containers'][9]['name'],
-            value: full_status[2]['containers'][9]['status'],
-            inline: true
-          }, {
-            name: full_status[2]['containers'][10]['name'],
-            value: full_status[2]['containers'][10]['status'],
-            inline: true
-          }, {
-            name: full_status[2]['containers'][11]['name'],
-            value: full_status[2]['containers'][11]['status'],
-            inline: true
-          },
-        )
-        .setFooter({
-          text: 'Say "statusupdates-subscribe" to get pinged for new updates and "statusupdates-unsubscribe" to stop getting pinged for new updates. '
-        })
-
-      client.channels.cache.get("946797124824203307")
-        .send({
-          embeds: [StatusEmbed]
-        })
-      lastStatus = status_overall
-      console.log(status_overall)
-
-    })
+    emojiPool.push(emojiList[emojitype]["char"])
+  }
+  client.guilds.cache.get(guildId).emojis.cache.forEach((emoji) => {
+    emojiPool.push(emoji.id)
   })
-}
 
+
+  // Call random status function
+  // 	let s = new Date().toLocaleString();
+  // 	console.log(s)
+
+  // 	let split1 = s.split(",")
+  // 	console.log(split1)
+  // 	let split2 = split1[0].split("/")
+  // 	console.log(split2)
+
+  // 	if (s.includes("10/19")) {
+  // 		console.log("danibot bday!!")
+  // 		client.user.setAvatar('./DaniBotBirthdayPFP.png');
+  // 		client.channels.cache.get('1032095616836325398').send("hey guys!! today is my birthday!!!")}
+
+  // 		else if ((Number(split2[0]) === 12 && (Number(split2[1]) >= 17 && Number(split2[1]) <= 25)) || (Number(split2[0]) === 1 && (Number(split2[1]) >= 1 && Number(split2[1]) <= 5))) {
+  // 			console.log("christmas")
+  // 			client.user.setAvatar('./DaniBotChristmasPFP.png');
+
+  // 	}
+
+  // 	else if ((Number(split2[0]) === 12 && (Number(split2[1]) >= 26 && Number(split2[1]) <= 31))) {
+  // 		console.log("new years")
+  // 		client.user.setAvatar('./DaniBotBirthdayPFP.png');
+
+  // }
+
+  // 		else if (Number(split2[0]) === 10 && (Number(split2[1]) >= 24 && Number(split2[1]) <= 31)) {
+  // 			console.log("halloween")
+  // 			client.user.setAvatar('./DaniBotHalloweenPFP.png');
+
+  // 	} 
+
+  // 	else if (Number(split2[0]) === 6 && (Number(split2[1]) >= 1 && Number(split2[1]) <= 30)) {
+  // 		console.log("pride month")
+  // 		client.user.setAvatar('./DaniBotPrideMonthPFP.png');
+  // 	} else if (Number(split2[0]) === 7 && (Number(split2[1]) === 1)) {
+  // 		console.log("canada day")
+  // 		client.user.setAvatar('./DaniBotCanadaDayPFP.png');}
+  // 	else {
+  // 		client.user.setAvatar('./DaniBotPFP.png');
+  // 	}
+
+  //testStatusGet()
+
+  let lastStatus = "Operational"
+
+  setInterval(() => {
+
+    try {
+      
+      getRobloxStatus(lastStatus, "1168669731482521671")
+
+    } catch (err) {
+      writeError(err)
+    }
+
+  }, 180000)
+
+  if (UnderDevelopment === false) {
+    setInterval(setBotStatus, 420000); // Calls setBotStatus() every 7 minutes
+  }
+
+
+  // const comamnds = deploy.prep()
+  console.log(deploy.success, /*deploy2.success*/ )
+});
+  
 client.on("messageCreate", async (message) => {
-
-  //updateDatastore(3984205042, message.content, message.author.username, message.channel.name, message.channel.id, message.guild.name, message.guild.id)
 
   if (message.channelId == "1168723486655647744") {
     let emoji = emojiPool[Math.floor(Math.random() * emojiPool.length)]
@@ -891,40 +672,6 @@ client.on("messageCreate", async (message) => {
       await message.react(emoji)
     } catch (error) {
       await message.react("1168734317464272966")
-    }
-
-  }
-
-  if (message.content.includes("https://cdn.discordapp.com/attachments/1032095616836325398/1163679405948801034/IMG_8016.gif?ex=654073e6&is=652dfee6&hm=b1ef39884c446fe6bd2b706af0b730852953a68ff0bdb7d0fb53a480c0ada5f8&")) {
-
-
-    message.delete()
-  }
-
-  if (message.channelId == "946797124824203307") {
-
-    if (message.content.toLowerCase() == "statusupdates-subscribe") {
-
-      message.delete()
-
-      message.channel.send({
-        content: 'Role added!',
-        ephemeral: true
-      })
-
-      message.author.roles.add("1133866225093574858");
-
-    } else if (message.content.toLowerCase() == "statusupdates-unsubscribe") {
-
-      message.delete()
-
-      message.channel.send({
-        content: 'Role removed!',
-        ephemeral: true
-      })
-
-      message.author.roles.remove("1133866225093574858");
-
     }
 
   }
@@ -1020,10 +767,6 @@ client.on("messageCreate", async (message) => {
     }
   };
 });
-
-async function insult() {
-
-}
 
 // setInterval(() => {
 //     if ( client.guilds.cache.get("1168382484069744671").members.cache.get("752903262046519327").roles.cache.has("1170036686722441236")) {
@@ -1840,46 +1583,8 @@ if (interaction.user.id == '599641108116406300') {
 });
 
 const app = express()
-var port = 3000
-var port2 = 3001
+
 app.use(bodyparser.text())
-
-var got = 0
-
-var message = ""
-
-function send() {
-
-  client.channels.cache.get('1032095616836325398')
-    .send(message);
-
-  message = ""
-}
-
-function download(url, name) {
-  let path
-
-  const file = fs.createWriteStream(name);
-  const request = https.get(url, function(response) {
-
-    response.pipe(file);
-
-    // after download completed close filestream
-    file.on("finish", async () => {
-
-      console.log("downloaded")
-
-      path = file.path
-
-      file.close(); // close() is async, call cb after close completes.
-
-      return path
-
-    })
-
-  })
-
-}
 
 client.on("guildMemberAdd", function(member) {
 
@@ -1889,32 +1594,32 @@ client.on("guildMemberAdd", function(member) {
 
 });
 
-// client.on("guildMemberRemove", function(member){
-//     console.log(`hey! somebody joined: ${member.user.tag}`);
-// 	client.channels.cache.get('1032095616836325398').send(`omg omg guys omg <@${member.user.tag}> left the server :sob::sob::sob::sob::sob:`);
-// });
+///http stuff for my replit hosting
+
+
+
+// app.post('/part1', (request, response) => {
+//   response.send("Gotten POST request 1")
+//   console.log(request.body)
+//   message = message.concat(request.body)
+
+// })
+// app.post('/part2', (request, response) => {
+//   response.send("Gotten POST request 2")
+//   console.log(request.body)
+//   message = message.concat(`\n"${request.body}"`)
+
+//   send()
+// })
+
+// app.post('/universeID', (request, response) => {
+//   response.send("Gotten POST request 2")
+//   console.log(request.body)
+//   currentUniverseId = request.body
+
+// })
+
 let ResponseHTML = fs.readFileSync("./assets/web-assets/OKPage.html", 'utf8');
-
-app.post('/part1', (request, response) => {
-  response.send("Gotten POST request 1")
-  console.log(request.body)
-  message = message.concat(request.body)
-
-})
-app.post('/part2', (request, response) => {
-  response.send("Gotten POST request 2")
-  console.log(request.body)
-  message = message.concat(`\n"${request.body}"`)
-
-  send()
-})
-
-app.post('/universeID', (request, response) => {
-  response.send("Gotten POST request 2")
-  console.log(request.body)
-  currentUniverseId = request.body
-
-})
 
 app.post('/SendMessage', (request, response) => {
   response.send("messageRequest")
@@ -1926,9 +1631,6 @@ app.post('/SendMessage', (request, response) => {
   client.channels.cache.get(ChannelId)
     .send(message);
 })
-
-
-
 
 
 var inviteLink = ""
@@ -2163,3 +1865,5 @@ app.listen(80)
 //     }
 
 // }, (1800 * 1000) - 1000)
+
+client.login(token); //login
