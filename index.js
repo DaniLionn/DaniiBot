@@ -778,11 +778,11 @@ client.on("messageCreate", async (message) => {
 
 client.on(Events.InteractionCreate, async interaction => {
 
-
+  console.log(interaction.commandName)
   if (!interaction.isChatInputCommand()) return;
   if (canPing === true) {
     
-    const command = client.application.commands.cache.get(interaction.commandName);
+    const command = client.commands.get(interaction.commandName);
 
     writeCOmmandsLog(interaction)
     console.log(command.name)
