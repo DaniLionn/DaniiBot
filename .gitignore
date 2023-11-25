@@ -36,3 +36,4 @@ replit.nix
 bot.js
 keep_alive.js
 deploy-local-commands.js
+format-all.bat
