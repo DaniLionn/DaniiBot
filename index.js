@@ -95,7 +95,7 @@ for (const folder of commandFolders) {
 
 //   const ds = new OpenCloudDataStore(universeId, "Messages", "global")
 
-//   ds.authenticate("/pLIGHsGHEugDcROwnVD93O362Xuj6eTnmashCMchxCzmJaq")
+//   ds.authenticate("")
 
 //   ds.set("Messages", messages)
 // }

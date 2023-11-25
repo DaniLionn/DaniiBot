@@ -1,7 +1,20 @@
 //module i made to store some simple functions
 const fs = require('node:fs');
-const https = require('https');
+//const https = require('https');
 const Downloader = require("nodejs-file-downloader");
+const nodemailer = require('nodemailer');
+
+let transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    type: 'OAuth2',
+    user: process.env['EMAIL'],
+    pass: process.env['EMAIL_PASSWORD'],
+    clientId: process.env['CLIENTID'],
+    clientSecret: process.env['CLIENTSECRET'],
+    refreshToken: process.env['REFRESH']
+  }
+});
 
 exports.download = async function(link, name, directory) {
   const downloader = new Downloader({
@@ -108,4 +121,21 @@ exports.del = function(files) {
 
 exports.formatNumberWithCommas = function(num) {
     return num.toLocaleString("en-US")
+}
+
+exports.emailSomething = function(subject, message, to) {
+  let mailOptions = {
+    from: process.env['EMAIL'],
+    to: to,
+    subject: subject,
+    text: message
+  };
+
+  transporter.sendMail(mailOptions, function(err, data) {
+    if (err) {
+      console.log("Error " + err);
+    } else {
+      console.log("Email sent successfully");
+    }
+  });
 }
