@@ -1,83 +1,82 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder } = require("discord.js");
 
-const https = require('https'); // or 'https' for https:// URLs
-const fs = require('fs-extra');
+const https = require("https"); // or 'https' for https:// URLs
+const fs = require("fs-extra");
 
 module.exports = {
-	data: new SlashCommandBuilder()
-		.setName('random-cat')
-		.setDescription("gives you a random image of a cat")
-		// .addStringOption(option =>
-		// 	option.setName('options')
-		// 		.setDescription('options for the cat image')
-		// 		.setRequired(true))
-				// .addChoices(
-				// 	{ name: 'Regular', value: 'isRegular' },
-				// 	//{ name: 'Gif', value: 'isGif' },
-				// 	{ name: 'Kitten', value: 'isKitten' },
-				// 	{ name: 'Cute', value: 'isCute' },
-				// 	{ name: 'Ugly', value: 'isUgly' },
-				// 	//{ name: 'Old', value: 'isOld' },
-					
-				// ))
-				.addStringOption(option =>
-					option.setName('text')
-						.setDescription('optional text for the image')
-						.setRequired(false)
-				),
+  data: new SlashCommandBuilder()
+    .setName("random-cat")
+    .setDescription("gives you a random image of a cat")
+    // .addStringOption(option =>
+    // 	option.setName('options')
+    // 		.setDescription('options for the cat image')
+    // 		.setRequired(true))
+    // .addChoices(
+    // 	{ name: 'Regular', value: 'isRegular' },
+    // 	//{ name: 'Gif', value: 'isGif' },
+    // 	{ name: 'Kitten', value: 'isKitten' },
+    // 	{ name: 'Cute', value: 'isCute' },
+    // 	{ name: 'Ugly', value: 'isUgly' },
+    // 	//{ name: 'Old', value: 'isOld' },
 
-	async execute(interaction) {
-		await interaction.deferReply()
+    // ))
+    .addStringOption((option) =>
+      option
+        .setName("text")
+        .setDescription("optional text for the image")
+        .setRequired(false),
+    ),
 
-		//const options = interaction.options.getString('options');
-		var text = interaction.options.getString('text');
-		let url
-		let path
-		if (text != undefined) {
+  async execute(interaction) {
+    await interaction.deferReply();
 
-			text = text.replaceAll(" ", "%20")
+    //const options = interaction.options.getString('options');
+    var text = interaction.options.getString("text");
+    let url;
+    let path;
+    if (text != undefined) {
+      text = text.replaceAll(" ", "%20");
 
-			 url = `https://cataas.com/cat/says/${text}`
+      url = `https://cataas.com/cat/says/${text}`;
+    } else {
+      url = "https://cataas.com/cat";
+    }
 
-			} else {
-				url = "https://cataas.com/cat"
-			}
+    const file = fs.createWriteStream("tempcat.png");
+    const request = https.get(url, function (response) {
+      response.pipe(file);
 
-			const file = fs.createWriteStream("tempcat.png");
-            const request = https.get(url, function (response) {
-                    response.pipe(file);
-                    
-                    // after download completed close filestream
-                    file.on("finish", async () => {
-                        
-                        path = file.path
+      // after download completed close filestream
+      file.on("finish", async () => {
+        path = file.path;
 
-                        
+        file.close(); // close() is async, call cb after close completes.
 
-                        file.close(); // close() is async, call cb after close completes.
-                        
-                        await interaction.editReply({files: [path]})
+        await interaction.editReply({ files: [path] });
 
-						setTimeout(async() => {
+        setTimeout(async () => {
+          await fs.unlink(path);
+        }, 1000);
+      });
+    });
+  },
+};
 
-							await fs.unlink(path)
-
-						}, 1000)
-
-          })
-        })
-},};
-
-
-process.on('unhandledRejection', error =>
-{
-	console.log("Error detected! Saving to error log...")
-	let s = new Date().toLocaleString();
-	const read = fs.readFileSync('./ErrorLog.txt', 'utf8', err => {if (err) {console.log(err)}}) 
-	const data = `${read}\n${s}: ${error}`
-	//console.log(data)
-	fs.writeFileSync('./ErrorLog.txt', data, err =>{ if (err) {console.error(err);}
-		// file written successfully
-		console.log("Successfully wrote error!")
-	});
+process.on("unhandledRejection", (error) => {
+  console.log("Error detected! Saving to error log...");
+  let s = new Date().toLocaleString();
+  const read = fs.readFileSync("./ErrorLog.txt", "utf8", (err) => {
+    if (err) {
+      console.log(err);
+    }
+  });
+  const data = `${read}\n${s}: ${error}`;
+  //console.log(data)
+  fs.writeFileSync("./ErrorLog.txt", data, (err) => {
+    if (err) {
+      console.error(err);
+    }
+    // file written successfully
+    console.log("Successfully wrote error!");
+  });
 });

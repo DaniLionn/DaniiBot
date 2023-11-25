@@ -1,12 +1,10 @@
-const { AttachmentBuilder, SlashCommandBuilder } = require('discord.js');
-const fs = require('node:fs');
-const {
-    createCanvas,
-} = require('@napi-rs/canvas');
+const { AttachmentBuilder, SlashCommandBuilder } = require("discord.js");
+const fs = require("node:fs");
+const { createCanvas } = require("@napi-rs/canvas");
 
-const { path } = require('path')
+const { path } = require("path");
 
-let canvasX, canvasY
+let canvasX, canvasY;
 
 function random(min, max) {
   min = Math.ceil(min);
@@ -15,308 +13,378 @@ function random(min, max) {
 }
 
 function randomHex() {
-  return `#${Math.floor(Math.random()*16777215).toString(16)}`
+  return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
-
 
 function sample(array) {
+  const index = Math.floor(Math.random() * array.length);
 
-    const index = Math.floor(Math.random() * array.length);
-  
-    return array[index];
-  
-  }
-
-
-
-function generateTitle() {
-
-    var name_prefixes = ["Master", "Mr.", "Professor", "Mrs.", "Princess", "Prince", "The Pauper's", "The", "Betsy", "Billy", "Johnny"];
-  
-    var primary_nouns = ["Crystal", "Bugle", "Dreamer", "Dream", "Castle", "Moss", "Mountain", "Pit", "Bigfoot", "Dream maker", "Oathbreaker", "Bard", "X'arahan'tu", "Magic", "Acorn", "Sun", "Son", "Stump", "Arm"];
-  
-    var adjectives = ["Lost", "Five", "Faded", "Ancient", "Blackened", "Den of", "Despairing", "Golden", "Many", "Merry", "Clever", "Wonderful", "Sullen", "Angry", "Little", "Cowardly", "Silver", "Lasting", "Heavy", "Festive", "Gleeful", "Enchanted", "Wise", "Wistful", "Dark", "Untold"];
-  
-    var secondary_nouns = ["Hearts", "Stones", "Diamond Dogs", "Painted Toes", "Songs", "Tales", "Lords", "Promise", "Screams", "Plagues", "Dreams", "Roads", "Curses", "Spells", "Gloam", "Lands", "Marsh", "Hearts", "Rules", "Swamp", "Tale", "Apex", "Beggar"];
-  
-    var name_prefix = sample(name_prefixes);
-  
-    var primary_noun = sample(primary_nouns);
-  
-    var adjective = sample(adjectives);
-
-    var secondary_noun = sample(secondary_nouns);
-
-    var title = "";
-
-    if (Math.random() < 0.5) {
-
-      title = `${name_prefix} ${primary_noun} and the ${adjective} ${secondary_noun}`;
-
-    } else {
-
-      title = `The ${adjective} ${secondary_noun} of ${name_prefix} ${primary_noun}`;
-
-    }
-
-    return title;
-
+  return array[index];
 }
 
-  function triangles(ctx) {
-     //triangles
-     for (let i = 0; i < random(3, 6); i++) {
+function generateTitle() {
+  var name_prefixes = [
+    "Master",
+    "Mr.",
+    "Professor",
+    "Mrs.",
+    "Princess",
+    "Prince",
+    "The Pauper's",
+    "The",
+    "Betsy",
+    "Billy",
+    "Johnny",
+  ];
 
-       let a 
-       let b
-       let c 
+  var primary_nouns = [
+    "Crystal",
+    "Bugle",
+    "Dreamer",
+    "Dream",
+    "Castle",
+    "Moss",
+    "Mountain",
+    "Pit",
+    "Bigfoot",
+    "Dream maker",
+    "Oathbreaker",
+    "Bard",
+    "X'arahan'tu",
+    "Magic",
+    "Acorn",
+    "Sun",
+    "Son",
+    "Stump",
+    "Arm",
+  ];
 
-       let r = Math.random()
+  var adjectives = [
+    "Lost",
+    "Five",
+    "Faded",
+    "Ancient",
+    "Blackened",
+    "Den of",
+    "Despairing",
+    "Golden",
+    "Many",
+    "Merry",
+    "Clever",
+    "Wonderful",
+    "Sullen",
+    "Angry",
+    "Little",
+    "Cowardly",
+    "Silver",
+    "Lasting",
+    "Heavy",
+    "Festive",
+    "Gleeful",
+    "Enchanted",
+    "Wise",
+    "Wistful",
+    "Dark",
+    "Untold",
+  ];
 
-       if (r > 0.5) {
-         a = Math.floor(Math.random() * canvasX)
-       } else {
-         a = Math.floor(Math.random() * canvasY)
-       }
+  var secondary_nouns = [
+    "Hearts",
+    "Stones",
+    "Diamond Dogs",
+    "Painted Toes",
+    "Songs",
+    "Tales",
+    "Lords",
+    "Promise",
+    "Screams",
+    "Plagues",
+    "Dreams",
+    "Roads",
+    "Curses",
+    "Spells",
+    "Gloam",
+    "Lands",
+    "Marsh",
+    "Hearts",
+    "Rules",
+    "Swamp",
+    "Tale",
+    "Apex",
+    "Beggar",
+  ];
 
-       r = Math.random()
+  var name_prefix = sample(name_prefixes);
 
-       if (r > 0.5) {
-         b = Math.floor(Math.random() * canvasX)
-       } else {
-         b = Math.floor(Math.random() * canvasY)
-       }
+  var primary_noun = sample(primary_nouns);
 
-       r = Math.random()
+  var adjective = sample(adjectives);
 
-       if (r > 0.5) {
-         c = Math.floor(Math.random() * canvasX)
-       } else {
-         c = Math.floor(Math.random() * canvasY)
-       }
+  var secondary_noun = sample(secondary_nouns);
 
-      ctx.fillStyle = randomHex()
-      ctx.strokeStyle = randomHex()
+  var title = "";
 
-      ctx.beginPath()
-      ctx.moveTo(a, b)
-      ctx.lineTo(b, c)
-      ctx.lineTo(c, a)
-      ctx.fill()
+  if (Math.random() < 0.5) {
+    title = `${name_prefix} ${primary_noun} and the ${adjective} ${secondary_noun}`;
+  } else {
+    title = `The ${adjective} ${secondary_noun} of ${name_prefix} ${primary_noun}`;
+  }
 
-      ctx.beginPath()
-      ctx.moveTo(a+1, b+1)
-      ctx.lineTo(b+1, c+1)
-      ctx.lineTo(c+1, a+1)
-      ctx.stroke()
-      ctx.closePath()
+  return title;
+}
 
+function triangles(ctx) {
+  //triangles
+  for (let i = 0; i < random(3, 6); i++) {
+    let a;
+    let b;
+    let c;
+
+    let r = Math.random();
+
+    if (r > 0.5) {
+      a = Math.floor(Math.random() * canvasX);
+    } else {
+      a = Math.floor(Math.random() * canvasY);
     }
+
+    r = Math.random();
+
+    if (r > 0.5) {
+      b = Math.floor(Math.random() * canvasX);
+    } else {
+      b = Math.floor(Math.random() * canvasY);
+    }
+
+    r = Math.random();
+
+    if (r > 0.5) {
+      c = Math.floor(Math.random() * canvasX);
+    } else {
+      c = Math.floor(Math.random() * canvasY);
+    }
+
+    ctx.fillStyle = randomHex();
+    ctx.strokeStyle = randomHex();
+
+    ctx.beginPath();
+    ctx.moveTo(a, b);
+    ctx.lineTo(b, c);
+    ctx.lineTo(c, a);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.moveTo(a + 1, b + 1);
+    ctx.lineTo(b + 1, c + 1);
+    ctx.lineTo(c + 1, a + 1);
+    ctx.stroke();
+    ctx.closePath();
   }
+}
 
-  function rectangles(ctx) {
-    //rectangles
-    for (let i = 0; i < random(3, 6); i++) {
-      var x =  Math.floor(Math.random() * canvasX)
-      var y = Math.floor(Math.random() * canvasY)
-      var w = Math.floor(Math.random() * canvasX)
-      var h = Math.floor(Math.random() * canvasY)
+function rectangles(ctx) {
+  //rectangles
+  for (let i = 0; i < random(3, 6); i++) {
+    var x = Math.floor(Math.random() * canvasX);
+    var y = Math.floor(Math.random() * canvasY);
+    var w = Math.floor(Math.random() * canvasX);
+    var h = Math.floor(Math.random() * canvasY);
 
-      if (w > x) {
-          w = w - x
-      }
+    if (w > x) {
+      w = w - x;
+    }
 
-      if (h > y) {
-          h = h - y
-      }
+    if (h > y) {
+      h = h - y;
+    }
 
-      ctx.fillStyle = randomHex()
-      ctx.strokeStyle = randomHex()
+    ctx.fillStyle = randomHex();
+    ctx.strokeStyle = randomHex();
 
-      ctx.strokeRect(x, y, w, h)
-      ctx.fillRect(x, y, w, h)
-
-
-    } 
+    ctx.strokeRect(x, y, w, h);
+    ctx.fillRect(x, y, w, h);
   }
+}
 
-  function circles(ctx) {
-    for (let i = 0; i < random(3, 6); i++) {
-      var x =  Math.floor(Math.random() * canvasX)
-      var y = Math.floor(Math.random() * canvasY)
-      var s = Math.floor(Math.random() * 100)
+function circles(ctx) {
+  for (let i = 0; i < random(3, 6); i++) {
+    var x = Math.floor(Math.random() * canvasX);
+    var y = Math.floor(Math.random() * canvasY);
+    var s = Math.floor(Math.random() * 100);
 
+    ctx.fillStyle = randomHex();
+    ctx.strokeStyle = randomHex();
 
+    ctx.beginPath();
+    ctx.arc(x, y, s, 0, Math.PI * 2, true);
+    ctx.fill();
 
-      ctx.fillStyle = randomHex()
-      ctx.strokeStyle = randomHex()
-
-      ctx.beginPath();
-      ctx.arc(x, y, s, 0, Math.PI * 2, true); 
-      ctx.fill()
-
-      ctx.beginPath();
-      ctx.arc(x, y, s + 1, 0, Math.PI * 2, true); 
-      ctx.stroke()
-      ctx.closePath()
-
-    } 
+    ctx.beginPath();
+    ctx.arc(x, y, s + 1, 0, Math.PI * 2, true);
+    ctx.stroke();
+    ctx.closePath();
   }
- 
+}
+
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName('draw')
+    .setName("draw")
     .setDescription('creates "art" ')
-    .addBooleanOption(option =>
-      option.setName('random-size')
-          .setDescription('if the canvas will be a random size')
-          .setRequired(true))
-          
-          .addIntegerOption(option =>
-            option.setName('amount')
-                .setDescription('how many images to generate')
-                .setRequired(false)),
+    .addBooleanOption((option) =>
+      option
+        .setName("random-size")
+        .setDescription("if the canvas will be a random size")
+        .setRequired(true),
+    )
+
+    .addIntegerOption((option) =>
+      option
+        .setName("amount")
+        .setDescription("how many images to generate")
+        .setRequired(false),
+    ),
   async execute(interaction) {
-        await interaction.deferReply()
+    await interaction.deferReply();
 
+    let useRandom = interaction.options.getBoolean("random-size");
+    let numberOfImages = interaction.options.getInteger("amount");
+    let times = 1;
+    if (numberOfImages != undefined) {
+      if (numberOfImages > 10) {
+        numberOfImages = 10;
+      }
 
-    
-        let useRandom = interaction.options.getBoolean('random-size')
-        let numberOfImages = interaction.options.getInteger('amount') 
-        let times = 1
-        if (numberOfImages != undefined) {
-          if (numberOfImages > 10) {
-            numberOfImages = 10
+      times = numberOfImages;
+    }
+
+    if (times === 1) {
+      const title = generateTitle();
+      const fileName = `${title}.png`; //`${title.replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')}.png`
+      if (useRandom === true) {
+        canvasX = random(256, 768);
+        canvasY = random(256, 768);
+      } else {
+        canvasX = 512;
+        canvasY = 512;
+      }
+
+      const canvas = createCanvas(canvasX, canvasY);
+      const ctx = canvas.getContext("2d");
+
+      ctx.fillStyle = randomHex();
+      ctx.fillRect(0, 0, canvasX, canvasY);
+      ctx.lineWidth = 3;
+
+      triangles(ctx);
+
+      rectangles(ctx);
+
+      circles(ctx);
+
+      const pngData = await canvas.encode("png");
+
+      fs.writeFile(
+        `./DanibotTempFolder/${fileName}`,
+        pngData,
+        async function (err) {
+          if (err) {
+            return console.log(err);
           }
 
-          times = numberOfImages
-
-        }
-
-        if (times === 1) {
-          const title = generateTitle()
-          const fileName = `${title}.png`//`${title.replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')}.png`
-          if (useRandom === true) {
-            canvasX = random(256, 768)
-            canvasY = random(256, 768)
-          } else {
-            canvasX = 512
-            canvasY = 512
-          }
-  
-          const canvas = createCanvas(canvasX, canvasY)
-          const ctx = canvas.getContext('2d')
-  
-          ctx.fillStyle = randomHex()
-          ctx.fillRect(0,0,canvasX, canvasY)
-          ctx.lineWidth = 3
-  
-          triangles(ctx)
-  
-          rectangles(ctx)
-  
-          circles(ctx)
-  
-  
-            const pngData = await canvas.encode('png') 
-  
-      fs.writeFile(`./DanibotTempFolder/${fileName}`, pngData, async function(err) {
-          if(err) {
-              return console.log(err);
-          }
-        
           await interaction.editReply({
             content: `Here's your drawing! I call it "${title}".`,
-            files: [`./DanibotTempFolder/${fileName}`] 
-          })
-  
-        setTimeout(() => {
-          fs.unlink(`./DanibotTempFolder/${fileName}`, function (err) {
-            if (err) throw err;
+            files: [`./DanibotTempFolder/${fileName}`],
           });
-  
-        }, 1000) })
-        } else {
-          var stuff = []
-          var msg = "Here are your drawings! I call them:\n"
 
-          for (let index = 0; index < times; index++) {
-            var title = generateTitle()
-            var fileName = `${title.replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')}.png`
-            
-            if (useRandom === true) {
-              canvasX = random(256, 768)
-              canvasY = random(256, 768)
-            } else {
-              canvasX = 512
-              canvasY = 512
-            }
-    
-            var canvas = createCanvas(canvasX, canvasY)
-            var ctx = canvas.getContext('2d')
-    
-            ctx.fillStyle = randomHex()
-            ctx.fillRect(0,0,canvasX, canvasY)
-            ctx.lineWidth = 3
-    
-            triangles(ctx)
-    
-            rectangles(ctx)
-    
-            circles(ctx)
-    
-    
-              var pngData = await canvas.encode('png') 
-    
-        fs.writeFile(`./DanibotTempFolder/${fileName}`, pngData, async function(err) {
-            if(err) {
-                return console.log(err);
-            }
-
-          })
-
-          stuff.push(`./DanibotTempFolder/${fileName}`)
-          msg = msg + `\n${index}. ${title}`
-        }
-        await interaction.editReply({
-          content: msg,
-          files: stuff
-        })
-
-        setTimeout(() => {
-          for (let index = 0; index < stuff.length; index++) {
-            fs.unlink(stuff[index], function (err) {
+          setTimeout(() => {
+            fs.unlink(`./DanibotTempFolder/${fileName}`, function (err) {
               if (err) throw err;
             });
-            
-          }
-        }, 1000);
+          }, 1000);
+        },
+      );
+    } else {
+      var stuff = [];
+      var msg = "Here are your drawings! I call them:\n";
 
+      for (let index = 0; index < times; index++) {
+        var title = generateTitle();
+        var fileName = `${title.replace(
+          /[&\/\\#, +()$~%.'":*?<>{}]/g,
+          "_",
+        )}.png`;
+
+        if (useRandom === true) {
+          canvasX = random(256, 768);
+          canvasY = random(256, 768);
+        } else {
+          canvasX = 512;
+          canvasY = 512;
         }
 
+        var canvas = createCanvas(canvasX, canvasY);
+        var ctx = canvas.getContext("2d");
 
-        
-  }
+        ctx.fillStyle = randomHex();
+        ctx.fillRect(0, 0, canvasX, canvasY);
+        ctx.lineWidth = 3;
 
+        triangles(ctx);
 
+        rectangles(ctx);
 
-        //   const attachment = new AttachmentBuilder(canvas.toBuffer('image/png'), {
-        //     name: fileName
-        // });
-        
+        circles(ctx);
 
+        var pngData = await canvas.encode("png");
 
-    };
+        fs.writeFile(
+          `./DanibotTempFolder/${fileName}`,
+          pngData,
+          async function (err) {
+            if (err) {
+              return console.log(err);
+            }
+          },
+        );
 
-process.on('unhandledRejection', error =>
-{
-  console.log("Error detected! Saving to error log...")
+        stuff.push(`./DanibotTempFolder/${fileName}`);
+        msg = msg + `\n${index}. ${title}`;
+      }
+      await interaction.editReply({
+        content: msg,
+        files: stuff,
+      });
+
+      setTimeout(() => {
+        for (let index = 0; index < stuff.length; index++) {
+          fs.unlink(stuff[index], function (err) {
+            if (err) throw err;
+          });
+        }
+      }, 1000);
+    }
+  },
+
+  //   const attachment = new AttachmentBuilder(canvas.toBuffer('image/png'), {
+  //     name: fileName
+  // });
+};
+
+process.on("unhandledRejection", (error) => {
+  console.log("Error detected! Saving to error log...");
   let s = new Date().toLocaleString();
-  const read = fs.readFileSync('./ErrorLog.txt', 'utf8', err => {if (err) {console.log(err)}}) 
-  const data = `${read}\n${s}: ${error}`
+  const read = fs.readFileSync("./ErrorLog.txt", "utf8", (err) => {
+    if (err) {
+      console.log(err);
+    }
+  });
+  const data = `${read}\n${s}: ${error}`;
   //console.log(data)
-  fs.writeFileSync('./ErrorLog.txt', data, err =>{ if (err) {console.error(err);}
+  fs.writeFileSync("./ErrorLog.txt", data, (err) => {
+    if (err) {
+      console.error(err);
+    }
     // file written successfully
-    console.log("Successfully wrote error!")
+    console.log("Successfully wrote error!");
   });
 });
