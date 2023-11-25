@@ -128,10 +128,10 @@
     return num.toLocaleString("en-US");
   };
 
-  exports.emailSomething = function (subject, message) {
+  exports.emailSomething = function (subject, message, recipient) {
     let mailOptions = {
       from: process.env["EMAIL"],
-      to: process.env["RECIPIENT_EMAIL"],
+      to: recipient,
       subject: subject,
       text: message,
     };
