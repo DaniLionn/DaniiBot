@@ -863,7 +863,7 @@ async function playNextInQueue(connection, queue, message) {
           clearInterval(checkStatus);
           setTimeout(() => {
             resolve();
-          }, 5000)
+          }, 5000);
         }
       }, 1000); // Check every second
     });
