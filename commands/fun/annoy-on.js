@@ -15,4 +15,3 @@ module.exports = {
     // category must be one of 'gif_funny', 'gif_meme', or 'gif_movie'
   },
 };
-

@@ -119,4 +119,3 @@ module.exports = {
     interaction.reply(imageURLs[Math.floor(Math.random() * imageURLs.length)]);
   },
 };
-

@@ -6,4 +6,3 @@ module.exports = {
     .setDescription("causes the bot to crash (only dani can use)"),
   async execute(interaction) {},
 };
-

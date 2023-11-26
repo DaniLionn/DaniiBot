@@ -369,5 +369,3 @@ module.exports = {
   //     name: fileName
   // });
 };
-
-

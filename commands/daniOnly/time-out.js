@@ -6,4 +6,3 @@ module.exports = {
     .setDescription("puts danibot in time out (only dani can use)"),
   async execute(interaction) {},
 };
-

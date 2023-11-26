@@ -15,7 +15,7 @@ const { readFile } = require("fs/promises");
 const { request } = require("undici");
 const fs = require("node:fs");
 const https = require("https");
-const logError = require("./logErrors.js").logErrors
+const logError = require("./logErrors.js").logErrors;
 
 const {
   Client,
@@ -587,7 +587,7 @@ function getTimestamp() {
 }
 
 function writeError(error) {
-  logError(error, "./ErrorLog.txt")
+  logError(error, "./ErrorLog.txt");
 }
 
 const applyText = (canvas, text) => {
@@ -839,9 +839,6 @@ client.once(Events.ClientReady, (c) => {
   console.log(deploy.success /*deploy2.success*/);
 });
 
-
-
-
 async function playNextInQueue(connection, queue, message) {
   while (queue.length > 0) {
     const nextItem = queue.shift();
@@ -853,14 +850,14 @@ async function playNextInQueue(connection, queue, message) {
 
     client.user.setActivity({
       name: `"${info.audioName} " in server ${info.serverName}'s  "${info.channelName}" voice channel`,
-      type: 'LISTENING',
+      type: "LISTENING",
     });
 
     audioPlayer.play(audioResource);
     connection.subscribe(audioPlayer);
 
     // Wait for the audio to finish playing
-    await new Promise(resolve => {
+    await new Promise((resolve) => {
       const checkStatus = setInterval(() => {
         if (audioPlayer.state.status === AudioPlayerStatus.Idle) {
           clearInterval(checkStatus);
@@ -870,9 +867,9 @@ async function playNextInQueue(connection, queue, message) {
     });
   }
 
-  setBotStatus()
-  changeStatusLoop = setInterval(setBotStatus, 420000); // 
-  message.reply('Done playing.');
+  setBotStatus();
+  changeStatusLoop = setInterval(setBotStatus, 420000); //
+  message.reply("Done playing.");
 }
 const queues = new Map();
 
@@ -888,9 +885,11 @@ client.on("messageCreate", async (message) => {
 
   const voiceChannel = message.member.voice.channel;
 
-  if (message.content.toLowerCase() === '!play') {
+  if (message.content.toLowerCase() === "!play") {
     if (!voiceChannel) {
-      return message.reply('You need to be in a voice channel to use this command!');
+      return message.reply(
+        "You need to be in a voice channel to use this command!",
+      );
     }
 
     try {
@@ -900,10 +899,14 @@ client.on("messageCreate", async (message) => {
         adapterCreator: voiceChannel.guild.voiceAdapterCreator,
       });
 
-      const attachments = message.attachments.filter(attachment => attachment.contentType = "audio/mpeg");
+      const attachments = message.attachments.filter(
+        (attachment) => (attachment.contentType = "audio/mpeg"),
+      );
 
       if (attachments.size === 0) {
-        return message.reply('Please attach at least one valid .mp3 file to play.');
+        return message.reply(
+          "Please attach at least one valid .mp3 file to play.",
+        );
       }
 
       if (!queues.has(message.guild.id)) {
@@ -926,7 +929,10 @@ client.on("messageCreate", async (message) => {
           },
         });
 
-        if (!audioPlayer.state.status || audioPlayer.state.status === AudioPlayerStatus.Idle) {
+        if (
+          !audioPlayer.state.status ||
+          audioPlayer.state.status === AudioPlayerStatus.Idle
+        ) {
           playNextInQueue(connection, queue, message);
         }
       });
@@ -934,11 +940,15 @@ client.on("messageCreate", async (message) => {
       message.reply(`Now playing ${attachments.size} MP3 files.`);
     } catch (error) {
       console.error(error);
-      message.reply('There was an error while trying to join the voice channel.');
+      message.reply(
+        "There was an error while trying to join the voice channel.",
+      );
     }
-  } else if (message.content.toLowerCase() === '!stop') {
+  } else if (message.content.toLowerCase() === "!stop") {
     if (!voiceChannel) {
-      return message.reply('You need to be in a voice channel to use this command!');
+      return message.reply(
+        "You need to be in a voice channel to use this command!",
+      );
     }
 
     try {
@@ -950,15 +960,17 @@ client.on("messageCreate", async (message) => {
 
       connection.destroy();
       queues.delete(message.guild.id);
-      client.user.setActivity({ name: 'Nothing', type: 'LISTENING' }); // Reset the activity
-      message.reply('Playback stopped, and the bot left the voice channel.');
+      client.user.setActivity({ name: "Nothing", type: "LISTENING" }); // Reset the activity
+      message.reply("Playback stopped, and the bot left the voice channel.");
     } catch (error) {
       console.error(error);
-      message.reply('There was an error while trying to stop the playback.');
+      message.reply("There was an error while trying to stop the playback.");
     }
-  } else if (message.content.toLowerCase() === '!next') {
+  } else if (message.content.toLowerCase() === "!next") {
     if (!voiceChannel) {
-      return message.reply('You need to be in a voice channel to use this command!');
+      return message.reply(
+        "You need to be in a voice channel to use this command!",
+      );
     }
 
     try {
@@ -971,18 +983,20 @@ client.on("messageCreate", async (message) => {
       const queue = queues.get(message.guild.id);
 
       if (!queue || queue.length === 0) {
-        return message.reply('There are no songs in the queue.');
+        return message.reply("There are no songs in the queue.");
       }
 
       audioPlayer.stop();
-      message.reply('Skipped to the next song in the queue.');
+      message.reply("Skipped to the next song in the queue.");
 
       audioPlayer.once(AudioPlayerStatus.Idle, () => {
         playNextInQueue(connection, queue, message);
       });
     } catch (error) {
       console.error(error);
-      message.reply('There was an error while trying to skip to the next song.');
+      message.reply(
+        "There was an error while trying to skip to the next song.",
+      );
     }
   }
 
