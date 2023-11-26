@@ -37,6 +37,6 @@ bot.js
 keep_alive.js
 deploy-local-commands.js
 format-all.bat
-node_modules/ffmpeg-static/ffmpeg
+
 ffmpeg
 purge.js

@@ -874,10 +874,6 @@ client.on("messageCreate", async (message) => {
     try {
 
       clearInterval(changeStatusLoop);
-
-
-      clearInterval(changeStatusLoop)
-
       const connection = joinVoiceChannel({
         channelId: voiceChannel.id,
         guildId: voiceChannel.guild.id,
