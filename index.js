@@ -2,6 +2,8 @@
 const express = require("express");
 const bodyparser = require("body-parser");
 const { createCanvas, Image, GlobalFonts } = require("@napi-rs/canvas");
+const { createAudioPlayer, createAudioResource, joinVoiceChannel, NoSubscriberBehavior, StreamType, AudioPlayerStatus } = require('@discordjs/voice');
+
 const { readFile } = require("fs/promises");
 const { request } = require("undici");
 const fs = require("node:fs");
@@ -39,6 +41,13 @@ const client = new Client({
     GatewayIntentBits.GuildVoiceStates,
   ],
 });
+
+const audioPlayer = createAudioPlayer({
+  behaviors: {
+    noSubscriber: NoSubscriberBehavior.Play,
+  },
+});
+
 const emotes = (str) =>
   str.match(/<a?:.+?:\d{18}>|\p{Extended_Pictographic}/gu);
 const activityTypes = ["PLAYING", "WATCHING", "LISTENING", "COMPETING"];
@@ -190,6 +199,8 @@ var CurrnentTimeout = undefined;
 var pingNumber = 0;
 var emojiList = require("emoji.json");
 var canAnnoy = false;
+
+var changeStatusLoop
 //=============================================
 
 //--variables no longer needed but i'm too lazy to remove lol--
@@ -827,7 +838,7 @@ client.once(Events.ClientReady, (c) => {
   }, 180000);
 
   if (UnderDevelopment === false) {
-    setInterval(setBotStatus, 420000); // Calls setBotStatus() every 7 minutes
+    changeStatusLoop = setInterval(setBotStatus, 420000); // Calls setBotStatus() every 7 minutes
   }
 
   // const comamnds = deploy.prep()
@@ -843,6 +854,86 @@ client.on("messageCreate", async (message) => {
       await message.react("1168734317464272966");
     }
   }
+
+
+  const voiceChannel = message.member.voice.channel;
+
+  if (message.content.toLowerCase() === '!play') {
+    if (!voiceChannel) {
+      return message.reply('You need to be in a voice channel to use this command!');
+    }
+
+    try {
+      clearInterval(changeStatusLoop)
+      const connection = joinVoiceChannel({
+        channelId: voiceChannel.id,
+        guildId: voiceChannel.guild.id,
+        adapterCreator: voiceChannel.guild.voiceAdapterCreator,
+      });
+
+      const attachments = message.attachments.filter(attachment => attachment.contentType == 'audio/mpeg');
+
+      if (attachments.size === 0) {
+        return message.reply('Please attach at least one valid .mp3 file to play.');
+      }
+
+      
+      let guildName = client.guilds.cache.get(message.guildId).name
+      let channelName = voiceChannel.name
+
+      
+      attachments.forEach(async (attachment) => {
+        let mp3Name = attachment.name
+        console.log("playing " + attachment.name)
+        client.user.setActivity(`"${mp3Name}" in ${guildName}'s "${channelName}" voice channel`, { type: ActivityType.Listening });
+        
+        const audioResource = createAudioResource(attachment.url, {
+          inputType: StreamType.Arbitrary,
+        });
+
+        const playPromise = new Promise((resolve) => {
+          audioPlayer.once(AudioPlayerStatus.Idle, () => {
+            resolve();
+          });
+        });
+
+        audioPlayer.play(audioResource);
+        connection.subscribe(audioPlayer);
+
+        await playPromise;
+      });
+
+      connection.subscribe(audioPlayer);
+
+      const fileNames = attachments.map(attachment => attachment.name).join(', ');
+      message.reply(`Now playing: ${fileNames}`);
+    } catch (error) {
+      console.error(error);
+      message.reply('There was an error while trying to join the voice channel.');
+    }
+  } else if (message.content.toLowerCase() === '!stop') {
+    if (!voiceChannel) {
+      return message.reply('You need to be in a voice channel to use this command!');
+    }
+
+    try {
+      const voice = require('@discordjs/voice');
+      voice.getVoiceConnection(message.guildId).disconnect();
+      audioPlayer.stop();
+      message.reply('Playback stopped, and the bot left the voice channel.');
+    } catch (error) {
+      console.error(error);
+      message.reply('There was an error while trying to stop the playback.');
+    } finally {
+
+      if (UnderDevelopment === false) {
+        setBotStatus()
+        changeStatusLoop = setInterval(setBotStatus, 420000); // Calls setBotStatus() every 7 minutes
+      }
+      
+    }
+  }
+  
 
   if (message.content.includes("<@1032426388457787402>")) {
     if (message.author.id == "1032426388457787402") {
