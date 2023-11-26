@@ -861,7 +861,9 @@ async function playNextInQueue(connection, queue, message) {
       const checkStatus = setInterval(() => {
         if (audioPlayer.state.status === AudioPlayerStatus.Idle) {
           clearInterval(checkStatus);
-          resolve();
+          setTimeout(() => {
+            resolve();
+          }, 5000)
         }
       }, 1000); // Check every second
     });
