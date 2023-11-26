@@ -15,6 +15,8 @@ const { readFile } = require("fs/promises");
 const { request } = require("undici");
 const fs = require("node:fs");
 const https = require("https");
+const logError = require("./logErrors.js").logErrors
+
 const {
   Client,
   Collection,
@@ -585,22 +587,7 @@ function getTimestamp() {
 }
 
 function writeError(error) {
-  console.log("Error detected! Saving to error log...");
-  let s = getTimestamp();
-  const read = fs.readFileSync("./ErrorLog.txt", "utf8", (err) => {
-    if (err) {
-      console.log(err);
-    }
-  });
-  const data = `${read}\n${s}: ${error}`;
-  //console.log(data)
-  fs.writeFileSync("./ErrorLog.txt", data, (err) => {
-    if (err) {
-      console.error(err);
-    }
-    // file written successfully
-    console.log("Successfully wrote error!");
-  });
+  logError(error, "./ErrorLog.txt")
 }
 
 const applyText = (canvas, text) => {
