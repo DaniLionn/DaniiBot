@@ -870,9 +870,14 @@ client.on("messageCreate", async (message) => {
         "You need to be in a voice channel to use this command!",
       );
     }
-
+  let stopped = true
     try {
+<<<<<<< HEAD
       clearInterval(changeStatusLoop);
+=======
+      stopped = false
+      clearInterval(changeStatusLoop)
+>>>>>>> fbd98a0 (wde)
       const connection = joinVoiceChannel({
         channelId: voiceChannel.id,
         guildId: voiceChannel.guild.id,
