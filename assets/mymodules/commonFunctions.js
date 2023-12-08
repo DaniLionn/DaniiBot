@@ -30,7 +30,7 @@ exports.download = async function (url, downloadDirectory) {
     return filePath;
   } catch (error) {
     console.error(`Error downloading ${url}: ${error.message}`);
-    throw error; // Re-throw the error to be caught by the caller if needed
+    throw error; 
   }
 };
 
@@ -146,26 +146,24 @@ exports.emailSomething = function (subject, message, recipient) {
 };
 
 exports.mergeImages = async function (filePaths, canvasWidth, canvasHeight) {
-  // Create a new canvas
+
   const canvas = createCanvas(canvasWidth, canvasHeight);
   const ctx = canvas.getContext("2d");
 
-  // Calculate the width of each image on the canvas
+
   const imageWidth = canvasWidth / filePaths.length;
 
-  // Loop through each file path and draw the image on the canvas
+
   for (let i = 0; i < filePaths.length; i++) {
     const filePath = filePaths[i];
 
     try {
-      // Load the image from the file path
+
       const image = await loadImage(await fsPromises.readFile(filePath));
 
-      // Calculate the position to draw the image on the canvas
       const x = i * imageWidth;
       const y = 0;
 
-      // Draw the image on the canvas
       ctx.drawImage(image, x, y, imageWidth, canvasHeight);
     } catch (error) {
       console.error(
@@ -174,6 +172,45 @@ exports.mergeImages = async function (filePaths, canvasWidth, canvasHeight) {
     }
   }
 
-  // Return the PNG buffer
+
   return canvas.toBuffer("image/png");
 };
+
+exports.createImageGrid = async function (images) {
+  const canvasWidth = 800; 
+  const canvasHeight = 600; 
+  const columns = 5; 
+
+  const canvas = createCanvas(canvasWidth, canvasHeight);
+  const context = canvas.getContext("2d");
+
+  const imageWidth = canvasWidth / columns;
+  const imageHeight = canvasHeight / Math.ceil(images.length / columns);
+
+  for (let i = 0; i < images.length; i++) {
+    const row = Math.floor(i / columns);
+    const col = i % columns;
+
+    const image = await loadImage(images[i]);
+
+    const x = col * imageWidth;
+    const y = row * imageHeight;
+
+
+    context.drawImage(image, x, y, imageWidth, imageHeight);
+
+    const text = images[i].name || "No Name"; 
+    const textX = x + imageWidth / 2;
+    const textY = y + imageHeight - 10; 
+
+    context.fillStyle = "white";
+    context.strokeStyle = "black"
+    context.font = "16px Arial"; 
+    context.textAlign = "center";
+
+    context.fillText(text, textX, textY);
+    context.strokeText(text, textX, textY);
+  }
+
+  return canvas.toBuffer("image/png");
+}

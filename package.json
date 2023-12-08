@@ -3,7 +3,7 @@
     "@discordjs/voice": "^0.16.1",
     "@napi-rs/canvas": "^0.1.41",
     "assets": "^3.0.1",
-    "axios": "^1.5.1",
+    "axios": "^1.6.2",
     "body-parser": "^1.20.2",
     "discord.js": "^14.14.1",
     "emoji.json": "^15.0.0",
