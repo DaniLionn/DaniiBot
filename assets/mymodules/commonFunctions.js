@@ -36,12 +36,15 @@ exports.download = async function (url, downloadDirectory) {
 
 exports.downloadMultiple = async (links, downloadDirectory) => {
   const downloadedFilePaths = [];
-
+  let downloaded = 0
   for (const link of links) {
     try {
       const downloader = new Downloader({
         url: link,
         directory: downloadDirectory,
+        // onBeforeSave: (deducedName) => {
+        //   return deducedName + downloaded
+        // },
       });
 
       const { filePath } = await downloader.download();
@@ -52,6 +55,7 @@ exports.downloadMultiple = async (links, downloadDirectory) => {
     }
   }
 
+  downloaded++
   return downloadedFilePaths;
 };
 
@@ -177,8 +181,8 @@ exports.mergeImages = async function (filePaths, canvasWidth, canvasHeight) {
 };
 
 exports.createImageGrid = async function (images) {
-  const canvasWidth = 800; 
-  const canvasHeight = 600; 
+  const canvasWidth = 1200
+  const canvasHeight = 1200
   const columns = 5; 
 
   const canvas = createCanvas(canvasWidth, canvasHeight);
@@ -187,11 +191,17 @@ exports.createImageGrid = async function (images) {
   const imageWidth = canvasWidth / columns;
   const imageHeight = canvasHeight / Math.ceil(images.length / columns);
 
+  console.log(imageWidth, imageHeight);
+
   for (let i = 0; i < images.length; i++) {
+
+    if (images[i] && images[i].path && images[i].name) {
     const row = Math.floor(i / columns);
     const col = i % columns;
 
-    const image = await loadImage(images[i]);
+  
+    
+    const image = await loadImage(images[i].path);
 
     const x = col * imageWidth;
     const y = row * imageHeight;
@@ -201,16 +211,18 @@ exports.createImageGrid = async function (images) {
 
     const text = images[i].name || "No Name"; 
     const textX = x + imageWidth / 2;
-    const textY = y + imageHeight - 10; 
+    const textY = y + imageHeight - 15; 
 
     context.fillStyle = "white";
     context.strokeStyle = "black"
-    context.font = "16px Arial"; 
+    context.font = "27px Arial"; 
     context.textAlign = "center";
 
     context.fillText(text, textX, textY);
     context.strokeText(text, textX, textY);
   }
 
+  
+}
   return canvas.toBuffer("image/png");
 }
