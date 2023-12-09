@@ -182,7 +182,7 @@ exports.mergeImages = async function (filePaths, canvasWidth, canvasHeight) {
 
 exports.createImageGrid = async function (images) {
   const canvasWidth = 1200
-  const canvasHeight = 1200
+  const canvasHeight = 1200 
   const columns = 5; 
 
   const canvas = createCanvas(canvasWidth, canvasHeight);
