@@ -37,6 +37,6 @@ bot.js
 keep_alive.js
 deploy-local-commands.js
 format-all.bat
-
+secretsbackup.json
 ffmpeg
 purge.js
