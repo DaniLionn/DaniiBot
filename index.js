@@ -1952,6 +1952,9 @@ app.get("/openGame", function (req, res) {
 });
 
 app.get("/postGVInvite", async function (Request, Res) {
+
+  inviteLink = `roblox://experiences/start?placeId=11138886508`;
+  
   await client.channels.cache.get("1059267554025152514").send({
     content: `<@1130288851521392750> join me pls`,
     tts: false,
@@ -1962,7 +1965,7 @@ app.get("/postGVInvite", async function (Request, Res) {
           {
             style: 5,
             label: `join`,
-            url: process.env["OpenGVURL"],
+            url: process.env["OpenGameURL"],
             disabled: false,
             type: 2,
           },
