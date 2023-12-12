@@ -90,6 +90,7 @@ const PlayingMessages = [
   "Pokémon Legends: Arceus",
   "Pokémon Violet",
   "Pokémon Sword",
+  "danibot is danihot"
 ];
 const WatchingMessages = [
   "cat videos",
