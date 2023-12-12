@@ -16,6 +16,7 @@ const farts = [
   "assets/farts/fart13.mp3",
   "assets/farts/fart14.mp3",
   "assets/farts/fart15.mp3",
+  "assets/farts/fart16.mp3",
 ];
 
 const wait = require("node:timers/promises").setTimeout;
