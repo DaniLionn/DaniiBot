@@ -90,7 +90,7 @@ const PlayingMessages = [
   "Pokémon Legends: Arceus",
   "Pokémon Violet",
   "Pokémon Sword",
-  "danibot is danihot"
+  "danibot is danihot",
 ];
 const WatchingMessages = [
   "cat videos",
@@ -1952,9 +1952,8 @@ app.get("/openGame", function (req, res) {
 });
 
 app.get("/postGVInvite", async function (Request, Res) {
-
   inviteLink = `roblox://experiences/start?placeId=11138886508`;
-  
+
   await client.channels.cache.get("1059267554025152514").send({
     content: `<@1130288851521392750> join me pls`,
     tts: false,
