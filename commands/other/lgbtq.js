@@ -51,17 +51,159 @@ module.exports = {
           .setRequired(true),
       ))),
   async execute(interaction) {
-    await interaction.deferRelpy();
+    const response = await interaction.deferReply();
     let term = encodeURI(interaction.options.getString("search"));
     let termData = [];
     let currentPage = 0;
 
-    axios
+    if (interaction.isButton()) {
+
+      console.log("button")
+      const collectorFilter = (i) => i.user.id === interaction.user.id;
+
+
+      const nextButton = new ButtonBuilder()
+        .setCustomId("next")
+        .setLabel("➡️")
+        .setStyle(ButtonStyle.Primary);
+
+      const pageDisplay = new ButtonBuilder()
+        .setCustomId("page")
+        .setLabel(`1/${termData.length} 📃`)
+        .setStyle(ButtonStyle.Secondary)
+        .setDisabled(true);
+
+      const backButton = new ButtonBuilder()
+        .setCustomId("back")
+        .setLabel("⬅️")
+        .setStyle(ButtonStyle.Primary);
+
+      let row = new ActionRowBuilder().addComponents(
+        backButton,
+        pageDisplay,
+        nextButton,
+      );
+
+      try {
+        let confirmation = await response.awaitMessageComponent({
+            filter: collectorFilter,
+            time: 1_800_000,
+          });
+
+        if (confirmation.customId === "next") {
+
+
+
+          currentPage += 1;
+
+          if (currentPage === termData.length) {
+            nextButton.setDisabled(true);
+          } else {
+            nextButton.setDisabled(false);
+          }
+
+          if (currentPage === 0) {
+            pageDisplay.setLabel(`1/${termData.length} 📃`);
+          } else {
+            pageDisplay.setLabel(`${currentPage}/${termData.length} 📃`);
+          }
+
+          let origin = processString(termData[currentPage]["original"])
+
+          if (origin === '') {
+            origin = 'None listed.'
+          }
+
+          let embed = new EmbedBuilder()
+            .setTitle(`Search Results for "${term}"`)
+            .addFields(
+            { name: processString(termData[currentPage]["term"]), value: "\u200b" },
+            {
+              name: "Definition",
+              value: processString(termData[currentPage]["definition"]),
+            },
+            {
+              name: "Term origin",
+              value: origin,
+            },
+            {
+              name: "Category",
+              value: processString(termData[currentPage]["category"]),
+            },
+          );
+
+          row = new ActionRowBuilder().addComponents(
+            backButton,
+            pageDisplay,
+            nextButton,
+          );
+
+          await confirmation.update({
+            embeds: [embed],
+            components: [row],
+          });
+        } else if (confirmation.customId === "back") {
+
+
+          currentPage -= 1;
+
+          if (currentPage === 0) {
+            backButton.setDisabled(true);
+          } else {
+            backButton.setDisabled(false);
+          }
+
+          if (currentPage === 0) {
+            pageDisplay.setLabel(`1/${termData.length} 📃`);
+          } else {
+            pageDisplay.setLabel(`${currentPage}/${termData.length} 📃`);
+          }
+
+          let origin = processString(termData[currentPage]["original"])
+
+          if (origin === '') {
+            origin = 'None listed.'
+          }
+
+          let embed = new EmbedBuilder()
+            .setTitle(`Search Results for "${term}"`)
+            .addFields(
+            { name: processString(termData[currentPage]["term"]), value: "\u200b" },
+            {
+              name: "Definition",
+              value: processString(termData[currentPage]["definition"]),
+            },
+            {
+              name: "Term origin",
+              value: origin,
+            },
+            {
+              name: "Category",
+              value: processString(termData[currentPage]["category"]),
+            },
+          );
+
+          row = new ActionRowBuilder().addComponents(
+            backButton,
+            pageDisplay,
+            nextButton,
+          );
+
+          await confirmation.update({
+            embeds: [embed],
+            components: [row],
+          });
+        }
+      } catch (e) {
+        console.log("error", e)
+      }
+    } else {
+      axios
       .get(`https://en.pronouns.page/api/terms/search/${term}`)
       .then(async (data) => {
         let responseData = data.data;
         for (let i = 0; i < responseData.length; i++) {
-          const element = array[i];
+          const element = responseData[i];
 
           let newDataEntry = [];
 
@@ -90,20 +232,30 @@ module.exports = {
           .setStyle(ButtonStyle.Primary);
 
         let row = new ActionRowBuilder().addComponents(
-          nextButton,
-          pageDisplay,
           backButton,
+          pageDisplay,
+          nextButton,
         );
 
-        let embed = new EmbedBuilder().setFields(
-          { name: termData[currentPage]["term"], value: "" },
+        console.log(termData, termData[currentPage]);
+
+        let origin = processString(termData[currentPage]["original"])
+
+        if (origin === '') {
+          origin = 'None listed.'
+        }
+
+        let embed = new EmbedBuilder()
+          .setTitle(`Search Results for "${term}"`)
+          .addFields(
+          { name: processString(termData[currentPage]["term"]), value: "\u200b" },
           {
             name: "Definition",
             value: processString(termData[currentPage]["definition"]),
           },
           {
             name: "Term origin",
-            value: processString(termData[currentPage]["original"]),
+            value: origin,
           },
           {
             name: "Category",
@@ -111,105 +263,15 @@ module.exports = {
           },
         );
 
-        const response = await interaction.reply({
+         await interaction.editReply({
           embeds: [embed],
           components: [row],
         });
 
-        const collectorFilter = (i) => i.user.id === interaction.user.id;
+   
 
-        try {
-          const confirmation = await response.awaitMessageComponent({
-            filter: collectorFilter,
-            time: 1_800_000,
-          });
-
-          if (confirmation.customId === "next") {
-            currentPage += 1;
-
-            if (currentPage === termData.length) {
-              nextButton.setDisabled(true);
-            } else {
-              nextButton.setDisabled(false);
-            }
-
-            if (currentPage === 0) {
-              pageDisplay.setLabel(`1/${termData.length} 📃`);
-            } else {
-              pageDisplay.setLabel(`${currentPage}/${termData.length} 📃`);
-            }
-
-            let embed = new EmbedBuilder().setFields(
-              { name: termData[currentPage]["term"], value: "" },
-              {
-                name: "Definition",
-                value: processString(termData[currentPage]["definition"]),
-              },
-              {
-                name: "Term origin",
-                value: processString(termData[currentPage]["original"]),
-              },
-              {
-                name: "Category",
-                value: processString(termData[currentPage]["category"]),
-              },
-            );
-
-            row = new ActionRowBuilder().addComponents(
-              nextButton,
-              pageDisplay,
-              backButton,
-            );
-
-            await confirmation.update({
-              embeds: [embed],
-              components: [row],
-            });
-          } else if (confirmation.customId === "back") {
-            currentPage -= 1;
-
-            if (currentPage === 0) {
-              backButton.setDisabled(true);
-            } else {
-              backButton.setDisabled(false);
-            }
-
-            if (currentPage === 0) {
-              pageDisplay.setLabel(`1/${termData.length} 📃`);
-            } else {
-              pageDisplay.setLabel(`${currentPage}/${termData.length} 📃`);
-            }
-
-            let embed = new EmbedBuilder().setFields(
-              { name: termData[currentPage]["term"], value: "" },
-              {
-                name: "Definition",
-                value: processString(termData[currentPage]["definition"]),
-              },
-              {
-                name: "Term origin",
-                value: processString(termData[currentPage]["original"]),
-              },
-              {
-                name: "Category",
-                value: processString(termData[currentPage]["category"]),
-              },
-            );
-
-            row = new ActionRowBuilder().addComponents(
-              nextButton,
-              pageDisplay,
-              backButton,
-            );
-
-            await confirmation.update({
-              embeds: [embed],
-              components: [row],
-            });
-          }
-        } catch (e) {
-          await interaction.deleteReply();
-        }
+        
       });
-  },
+  }
+  }
 };
