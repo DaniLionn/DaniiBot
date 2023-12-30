@@ -3,6 +3,7 @@ configure.json
 CommandsLogg.txt
 ErrorsLog.txt
 ErrorLog.txt
+ErrorLog.txt.old
 ffmpeg.exe
 tempcat.png
 commands/ffmpeg.exe
