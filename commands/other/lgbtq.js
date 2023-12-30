@@ -40,12 +40,16 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName("lgbtq")
     .setDescription("commands for lgbtq+ related stuff")
-    .addSubcommand((subcommand) =>
+    .addSubcommand((subcommand =>
       subcommand
         .setName("terminology")
         .setDescription("definitions for lgbtq+ terms")
-        .addStringOption("search"),
-    ),
+      .addStringOption((option) =>
+        option
+          .setName("search")
+          .setDescription("the term to get info about")
+          .setRequired(true),
+      ))),
   async execute(interaction) {
     await interaction.deferRelpy();
     let term = encodeURI(interaction.options.getString("search"));
