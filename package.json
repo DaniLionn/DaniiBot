@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@devraelfreeze/discordjs-pagination": "^2.7.6",
     "@discordjs/voice": "^0.16.1",
     "@napi-rs/canvas": "^0.1.41",
     "assets": "^3.0.1",
