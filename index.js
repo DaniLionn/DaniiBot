@@ -581,7 +581,7 @@ function getRobloxStatus(lastStatus, channelID) {
 function getTimestamp() {
   const date = new Date();
   const stamp = date.toLocaleString("en-US", {
-    timeZone: "America/Edmonton",
+    timeZone: process.env['TIMESTAMP_LOCATION'],
   });
 
   return stamp;
@@ -835,9 +835,6 @@ client.once(Events.ClientReady, (c) => {
   if (UnderDevelopment === false) {
     changeStatusLoop = setInterval(setBotStatus, 420000); // Calls setBotStatus() every 7 minutes
   }
-
-  // const comamnds = deploy.prep()
-  console.log(deploy.success /*deploy2.success*/);
 });
 
 async function playNextInQueue(connection, queue, message) {
@@ -1103,13 +1100,11 @@ client.on("messageCreate", async (message) => {
 // }, 1000)
 
 client.on(Events.InteractionCreate, async (interaction) => {
-  console.log(interaction.commandName);
   if (!interaction.isChatInputCommand()) return;
   if (canPing === true) {
     const command = client.commands.get(interaction.commandName);
 
     writeCOmmandsLog(interaction);
-    console.log(command.name);
     if (!command) {
       console.error(
         `No command matching ${interaction.commandName} was found.`,

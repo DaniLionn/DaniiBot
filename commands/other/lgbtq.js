@@ -42,6 +42,10 @@ function processString(input) {
   return result;
 }
 
+function chunkString(str, length) {
+  return str.match(new RegExp('.{1,' + length + '}', 'g'));
+}
+
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("lgbtq")
@@ -58,75 +62,146 @@ module.exports = {
         ),
     ),
   async execute(interaction) {
-    const response = await interaction.deferReply();
-    let term = encodeURI(interaction.options.getString("search"));
+    await interaction.deferReply();
+    let searchTerm = encodeURI(interaction.options.getString("search"));
     let termData = [];
-    let currentPage = 0;
 
     axios
-      .get(`https://en.pronouns.page/api/terms/search/${term}`)
+      .get(`https://en.pronouns.page/api/terms/search/${searchTerm}`)
       .then(async (data) => {
         let responseData = data.data;
-        for (let i = 0; i < responseData.length; i++) {
-          const element = responseData[i];
+        
+        if (responseData.length > 0) {
+          for (let i = 0; i < responseData.length; i++) {
+            const element = responseData[i];
 
-          let origin = processString(element["original"]);
+            let origin = processString(element["original"]);
 
-          if (origin === "") {
-            origin = "None listed.";
-          }
+            if (origin === "") {
+              origin = "None listed.";
+            }
 
-          let embed = new EmbedBuilder()
-            .setTitle(`Search Results for "${term}"`)
+            let term = processString(element["term"]);
+
+            if (term === "") {
+                term = "None listed.";
+            }
+
+
+
+            let def = processString(element["definition"]);
+
+            if (def === "") {
+                def = "None listed.";
+            }
+
+            let category = processString(element["category"]);
+
+            if (category === "") {
+                  category = "None listed.";
+            }
+
+            let author = processString(element["author"]) + " on pronouns.page";
+
+            if (author === "") {
+                    author = "None listed.";
+            }
+
+
+            let embed = new EmbedBuilder()
+              .setTitle(`Search Results for "${searchTerm}"`)
+
             .addFields(
               {
-                name: processString(element["term"]),
+                name: term,
                 value: "\u200b",
               },
-              {
-                name: "Definition",
-                value: processString(element["definition"]),
-              },
+
+            );
+
+
+            if (def.length <= 1024) {
+              embed.addFields(
+                {
+                  name: "Definition",
+                  value: def,
+                },
+
+              );
+            } else {
+              let chunks = chunkString(term, 1024);
+
+                for (let i = 0; i < chunks.length; i++) {
+                  let chunk = chunks[i];
+
+                  if (i === 0) {
+                    embed.addFields(
+                      {
+                        name: "Definition",
+                        value: chunk,
+                      },
+
+                    );
+                  } else {
+                    embed.addFields(
+                      {
+                        name: "\u200b",
+                        value: chunk,
+                      },
+
+                    );
+                  }
+
+                }
+            }
+
+
+            embed.addFields( 
               {
                 name: "Term origin",
                 value: origin,
               },
+
               {
-                name: "Category",
-                value: processString(element["category"]),
+                name: "Definition author",
+                value: author,
               },
-            );
+          )
 
-          termData[i] = newDataEntry;
+            termData[i] = embed;
+          }
+
+          await pagination({
+            client: interaction.client,
+            embeds: termData,
+            interaction: interaction,
+            ephemeral: true,
+            time: 1800000,
+            customFilter: () => {
+              return interaction.member.user.id == interaction.member.user.id || interaction.member.user.id != interaction.member.user.id ;
+            },
+            disableButtons: true,
+            fastSkip: false,
+            pageTravel: false,
+            buttons: [
+              {
+                type: ButtonTypes.previous,
+                label: "Previous",
+                style: ButtonStyles.Primary,
+              },
+              {
+                type: ButtonTypes.next,
+                label: "Next",
+                style: ButtonStyles.Success,
+              },
+            ],
+          });
+
+        } else {
+          await interaction.editReply("No results found!")
         }
+       
 
-        await pagination({
-          embeds: termData,
-          author: null,
-          interaction: interaction,
-          ephemeral: true,
-          time: 1_800_000,
-          disableButtons: true,
-          fastSkip: false,
-          pageTravel: false,
-          buttons: [
-            {
-              type: ButtonTypes.previous,
-              label: "⬅️",
-              style: ButtonStyles.Primary,
-            },
-            {
-              type: ButtonTypes.next,
-              label: "➡️",
-              style: ButtonStyles.Success,
-            },
-          ],
-        });
-
-        await interaction.editReply({
-          embeds: [embed],
-          components: [row],
-        });
       });
   },
 };
