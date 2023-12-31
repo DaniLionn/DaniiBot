@@ -2,6 +2,7 @@ configure.json
 CommandsLogg.txt
 ErrorsLog.txt
 ErrorLog.txt
+ErrorLog.txt.old
 ffmpeg.exe
 tempcat.png
 commands/ffmpeg.exe
@@ -35,3 +36,7 @@ replit.nix
 bot.js
 keep_alive.js
 deploy-local-commands.js
+format-all.bat
+secretsbackup.json
+ffmpeg
+purge.js

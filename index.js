@@ -581,7 +581,7 @@ function getRobloxStatus(lastStatus, channelID) {
 function getTimestamp() {
   const date = new Date();
   const stamp = date.toLocaleString("en-US", {
-    timeZone: process.env['TIMESTAMP_LOCATION'],
+    timeZone: process.env["TIMESTAMP_LOCATION"],
   });
 
   return stamp;

@@ -43,7 +43,7 @@ function processString(input) {
 }
 
 function chunkString(str, length) {
-  return str.match(new RegExp('.{1,' + length + '}', 'g'));
+  return str.match(new RegExp(".{1," + length + "}", "g"));
 }
 
 module.exports = {
@@ -70,7 +70,7 @@ module.exports = {
       .get(`https://en.pronouns.page/api/terms/search/${searchTerm}`)
       .then(async (data) => {
         let responseData = data.data;
-        
+
         if (responseData.length > 0) {
           for (let i = 0; i < responseData.length; i++) {
             const element = responseData[i];
@@ -84,79 +84,61 @@ module.exports = {
             let term = processString(element["term"]);
 
             if (term === "") {
-                term = "None listed.";
+              term = "None listed.";
             }
-
-
 
             let def = processString(element["definition"]);
 
             if (def === "") {
-                def = "None listed.";
+              def = "None listed.";
             }
 
             let category = processString(element["category"]);
 
             if (category === "") {
-                  category = "None listed.";
+              category = "None listed.";
             }
 
             let author = processString(element["author"]) + " on pronouns.page";
 
             if (author === "") {
-                    author = "None listed.";
+              author = "None listed.";
             }
-
 
             let embed = new EmbedBuilder()
               .setTitle(`Search Results for "${searchTerm}"`)
 
-            .addFields(
-              {
+              .addFields({
                 name: term,
                 value: "\u200b",
-              },
-
-            );
-
+              });
 
             if (def.length <= 1024) {
-              embed.addFields(
-                {
-                  name: "Definition",
-                  value: def,
-                },
-
-              );
+              embed.addFields({
+                name: "Definition",
+                value: def,
+              });
             } else {
               let chunks = chunkString(term, 1024);
 
-                for (let i = 0; i < chunks.length; i++) {
-                  let chunk = chunks[i];
+              for (let i = 0; i < chunks.length; i++) {
+                let chunk = chunks[i];
 
-                  if (i === 0) {
-                    embed.addFields(
-                      {
-                        name: "Definition",
-                        value: chunk,
-                      },
-
-                    );
-                  } else {
-                    embed.addFields(
-                      {
-                        name: "\u200b",
-                        value: chunk,
-                      },
-
-                    );
-                  }
-
+                if (i === 0) {
+                  embed.addFields({
+                    name: "Definition",
+                    value: chunk,
+                  });
+                } else {
+                  embed.addFields({
+                    name: "\u200b",
+                    value: chunk,
+                  });
                 }
+              }
             }
 
-
-            embed.addFields( 
+            embed.addFields(
               {
                 name: "Term origin",
                 value: origin,
@@ -166,7 +148,7 @@ module.exports = {
                 name: "Definition author",
                 value: author,
               },
-          )
+            );
 
             termData[i] = embed;
           }
@@ -178,7 +160,10 @@ module.exports = {
             ephemeral: true,
             time: 1800000,
             customFilter: () => {
-              return interaction.member.user.id == interaction.member.user.id || interaction.member.user.id != interaction.member.user.id ;
+              return (
+                interaction.member.user.id == interaction.member.user.id ||
+                interaction.member.user.id != interaction.member.user.id
+              );
             },
             disableButtons: true,
             fastSkip: false,
@@ -196,12 +181,9 @@ module.exports = {
               },
             ],
           });
-
         } else {
-          await interaction.editReply("No results found!")
+          await interaction.editReply("No results found!");
         }
-       
-
       });
   },
 };
