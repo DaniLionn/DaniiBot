@@ -75,7 +75,7 @@ module.exports = {
           for (let i = 0; i < responseData.length; i++) {
             const element = responseData[i];
 
-            let origin = element["original"]
+            let origin = element["original"];
 
             if (origin === "") {
               origin = "None listed.";
@@ -83,7 +83,7 @@ module.exports = {
 
             origin = processString(origin);
 
-            let term = element["term"]
+            let term = element["term"];
 
             if (term === "") {
               term = "None listed.";
@@ -97,7 +97,7 @@ module.exports = {
               def = "None listed.";
             }
 
-            def = processString(def)
+            def = processString(def);
 
             let category = element["category"];
 
@@ -105,16 +105,16 @@ module.exports = {
               category = "None listed.";
             }
 
-          category = processString(category)
-            
+            category = processString(category);
+
             let author = element["author"] + " on pronouns.page";
 
             if (author === "") {
               author = "None listed.";
             }
 
-            author = processString(author)
-            
+            author = processString(author);
+
             let embed = new EmbedBuilder()
               .setTitle(`Search Results for "${searchTerm}"`)
 
